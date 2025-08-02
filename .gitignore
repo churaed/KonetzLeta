@@ -1,0 +1,37 @@
+# Dependency directory
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+
+# Vite cache
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Optional: local env files
+.env
+.env.*.local
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# TypeScript build info
+*.tsbuildinfo
+
+# IDE-related
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Optional: if you're using coverage tools like Vitest or Jest
+coverage/
