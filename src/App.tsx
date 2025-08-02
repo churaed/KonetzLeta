@@ -157,14 +157,14 @@ export default function App() {
       <ServicesSection />
       <ContactSection />
 
-      <style jsx>{`
+      {/* <style jsx>{`
         .font-cormorant {
           font-family: 'Cormorant Garamond', serif;
         }
         .font-mono {
           font-family: 'JetBrains Mono', monospace;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 }

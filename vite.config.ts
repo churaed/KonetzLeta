@@ -46,6 +46,10 @@ function removeVersionSpecifiers() {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), removeVersionSpecifiers()],
+  plugins: [react({
+    babel: {
+      plugins: ['styled-jsx/babel'],
+    },
+  }), tailwindcss(), removeVersionSpecifiers()],
 })
 
