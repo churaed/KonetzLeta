@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -186,4 +188,11 @@
 
 html {
   font-size: var(--font-size);
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
 }

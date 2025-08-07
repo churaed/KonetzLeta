@@ -1,4 +1,5 @@
 import { motion, useInView } from 'motion/react';
+import { cubicBezier } from 'motion-utils';
 import { useRef } from 'react';
 
 export function AboutSection() {
@@ -24,7 +25,9 @@ export function AboutSection() {
       rotateX: 0,
       transition: {
         duration: 1,
-        ease: [0.215, 0.61, 0.355, 1],
+        // TODO: Fix TypeScript error - ease property type mismatch
+        // Current: number[] -> Expected: Easing | Easing[] | undefined
+        ease: cubicBezier(0.215, 0.61, 0.355, 1),
       },
     },
   };

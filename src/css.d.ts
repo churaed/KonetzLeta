@@ -7,3 +7,7 @@ declare module '*.css' {
   const css: string
   export default css
 }
+
+declare module 'styled-jsx' {
+  export function css(props: { children: string }): JSX.Element;
+}
