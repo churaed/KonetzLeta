@@ -169,8 +169,8 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 1.8 }}
         >
           <p className="text-2xl md:text-3xl font-cormorant italic text-gray-300 leading-relaxed">
-            Где кончается лето — <br />
-            <span className="text-red-400">начинается кино</span>
+            Время <br />
+            <span className="text-red-400">Собирать урожай</span>
           </p>
           
           <motion.div

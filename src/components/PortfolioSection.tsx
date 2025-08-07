@@ -72,17 +72,17 @@ const portfolioItems: PortfolioItem[] = [
     image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=300&fit=crop",
     size: "small",
   },
-  {
-    id: 6,
-    title: "Корпоративная вселенная",
-    subtitle: "Презентация для Сбербанка",
-    category: "Коммерческая анимация",
-    year: "2024",
-    description: "Анимированная презентация стратегии развития на 2025-2030 годы. 15 минут визуального повествования.",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop",
-    size: "large",
-    isVideo: true,
-  },
+  // {
+  //   id: 6,
+  //   title: "Цифровая экосистема",
+  //   subtitle: "Корпоративная анимация",
+  //   category: "Коммерческий проект",
+  //   year: "2024",
+  //   description: "Серия анимированных роликов для IT-компании: от объяснения продукта до внутренних коммуникаций.",
+  //   image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop",
+  //   size: "medium",
+  //   isVideo: true,
+  // },
 ];
 
 export function PortfolioSection() {
@@ -93,11 +93,11 @@ export function PortfolioSection() {
   const getSizeClasses = (size: string) => {
     switch (size) {
       case 'large':
-        return 'md:col-span-2 h-[400px] md:h-[500px]';
+        return 'lg:col-span-2 md:col-span-2 h-[400px] lg:h-[500px]';
       case 'medium':
-        return 'md:col-span-1 h-[350px] md:h-[500px]';
+        return 'lg:col-span-2 md:col-span-1 h-[350px] lg:h-[400px]';
       default:
-        return 'md:col-span-1 h-[280px] md:h-[320px]';
+        return 'lg:col-span-1 md:col-span-1 h-[280px] lg:h-[350px]';
     }
   };
 
@@ -117,7 +117,7 @@ export function PortfolioSection() {
           className="text-center mb-20 space-y-8"
         >
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            Наши <span className="text-red-400">проекты</span>
+            Заготовки <span className="text-red-400">на зиму</span>
           </h2>
           
           <motion.div
@@ -135,7 +135,7 @@ export function PortfolioSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 0.3 }}

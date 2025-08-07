@@ -92,9 +92,7 @@ export function ServicesSection() {
           className="text-center mb-20 space-y-8"
         >
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            Что мы
-            <br />
-            <span className="text-red-400">создаём</span>
+            Сезонные <span className="text-red-400">работы</span>
           </h2>
           
           <motion.div
