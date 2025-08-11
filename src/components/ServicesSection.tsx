@@ -115,7 +115,6 @@ export function ServicesSection() {
               key={index}
               service={service}
               index={index}
-              isInView={isInView}
             />
           ))}
         </div>
@@ -124,7 +123,7 @@ export function ServicesSection() {
   );
 }
 
-function ServiceCard({ service, index, isInView }: { service: Service; index: number; isInView: boolean }) {
+function ServiceCard({ service, index }: { service: Service; index: number }) {
   const cardRef = useRef(null);
   const cardInView = useInView(cardRef, { once: true, margin: "-50px" });
 
