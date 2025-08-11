@@ -2,11 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 
-interface NavbarProps {
-  currentSection?: string;
-}
 
-export function Navbar({ currentSection }: NavbarProps) {
+export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
