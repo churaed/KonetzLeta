@@ -168,34 +168,15 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.8 }}
         >
-          <p className="text-2xl md:text-3xl font-cormorant italic text-gray-300 leading-relaxed">
-            Время <br />
-            <span className="text-red-400">Собирать урожай</span>
-          </p>
-          
           <motion.div
             className="w-24 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 2.2 }}
           />
-          
           <p className="text-lg font-mono text-gray-400 tracking-wide">
             Студия авторской коммерческой анимации
           </p>
-          
-          <motion.div
-            className="flex flex-wrap justify-center gap-6 text-sm font-mono text-gray-500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 2.8 }}
-          >
-            <span>Панк жив</span>
-            <span>•</span>
-            <span>Искусство вечно</span>
-            <span>•</span>
-            <span>Кино остается</span>
-          </motion.div>
         </motion.div>
       </div>
 
