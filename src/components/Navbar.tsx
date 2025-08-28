@@ -50,12 +50,13 @@ export function Navbar() {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: 'Лета', href: '#hero' },
-    { name: 'Наш Сад', href: '#about' },
-    { name: 'Урожай', href: '#showreel' },
-    { name: 'Заготовки', href: '#portfolio' },
-    { name: 'Сезонные Работы', href: '#services' },
-    { name: 'Сотрудничать', href: '#contact' },
+    { name: 'Начало', subtitle: 'Лета', href: '#hero' },
+    { name: 'О Нас', subtitle: 'И нашем Саде', href: '#about' },
+    { name: 'Шоурил', subtitle: 'Всходов', href: '#showreel' },
+    { name: 'Проекты', subtitle: 'и Заготовки', href: '#portfolio' },
+    { name: 'Услуги', subtitle: 'и Продукты', href: '#services' },
+    { name: 'Связаться', subtitle: 'с нами', href: '#contact' },
+    { name: 'Конец', subtitle: 'Лета', href: '#hero' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -137,19 +138,30 @@ export function Navbar() {
           </div>
 
           {/* Center - Desktop Navigation */}
-          <div className="hidden lg:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
+          <div className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-sm font-mono tracking-wider hover:text-red-400 transition-colors duration-300 opacity-80 hover:opacity-100 whitespace-nowrap"
-                whileHover={{ y: -1 }}
-                transition={{
-                  duration: 0.4,
-                  ease: [0.4, 0.0, 0.2, 1],
-                }}
+                className="relative rounded-md px-4 py-2 text-sm font-mono tracking-wider text-white/80 hover:text-white transition-colors duration-300 whitespace-nowrap"
+                whileHover="hover"
+                initial="rest"
+                variants={{ rest: { y: 0 }, hover: { y: -1 } }}
+                transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
               >
-                {item.name}
+                <div className="flex flex-col items-center">
+                  <span>{item.name}</span>
+                  <motion.div
+                    className="text-sm font-mono text-red-400 overflow-hidden"
+                    variants={{
+                      rest: { opacity: 0, height: 0 },
+                      hover: { opacity: 1, height: 'auto' },
+                    }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  >
+                    <div className="pt-1">{item.subtitle}</div>
+                  </motion.div>
+                </div>
               </motion.button>
             ))}
           </div>
@@ -184,7 +196,7 @@ export function Navbar() {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left text-sm font-mono tracking-wider hover:text-red-400 transition-colors duration-300 whitespace-nowrap"
+                className="block w-full text-left text-sm font-mono tracking-wider group transition-colors duration-300"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{
                   opacity: isMenuOpen ? 1 : 0,
@@ -196,7 +208,8 @@ export function Navbar() {
                   ease: [0.4, 0.0, 0.2, 1],
                 }}
               >
-                {item.name}
+                <span className="text-white/80 group-hover:text-white">{item.name}</span>
+                <span className="text-red-400/80 ml-2 group-hover:text-red-400">{item.subtitle}</span>
               </motion.button>
             ))}
           </div>
