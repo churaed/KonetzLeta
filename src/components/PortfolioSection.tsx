@@ -25,6 +25,8 @@ interface PortfolioItem {
   size: 'small' | 'medium' | 'large';
   isVideo?: boolean;
   awards?: string[];
+  url?: string;
+  component?: React.ReactNode;
 }
 
 const portfolioItems: PortfolioItem[] = [
@@ -198,7 +200,7 @@ export function PortfolioSection() {
           {portfolioItems.map((item, index) => (
             <motion.div
               key={item.id}
-              className={`relative group cursor-pointer ${getSizeClasses(item.size)}`}
+              className={`relative group ${item.url || item.component ? "cursor-pointer" : "cursor-default"} ${getSizeClasses(item.size)}`}
               initial={{ opacity: 0, y: 100, rotateY: -20 }}
               animate={isInView ? { 
                 opacity: 1, 
@@ -332,20 +334,25 @@ export function PortfolioSection() {
                     )}
                   </motion.div>
 
-                  {/* Action button */}
-                  <motion.button
-                    className="flex items-center space-x-2 text-white hover:text-red-400 transition-colors"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ 
-                      y: hoveredItem === item.id ? 0 : 20,
-                      opacity: hoveredItem === item.id ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    whileHover={{ x: 5 }}
-                  >
-                    <span className="text-sm font-mono tracking-wide">Смотреть проект</span>
-                    <ExternalLink size={14} />
-                  </motion.button>
+                  {/* Action button – only render if url/component exists */}
+                  {(item.url || item.component) && (
+                    <motion.a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-white hover:text-red-400 transition-colors"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{
+                        y: hoveredItem === item.id ? 0 : 20,
+                        opacity: hoveredItem === item.id ? 1 : 0,
+                      }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                      whileHover={{ x: 5 }}
+                    >
+                      <span className="text-sm font-mono tracking-wide">Смотреть проект</span>
+                      <ExternalLink size={14} />
+                    </motion.a>
+                  )}
                 </div>
 
                 {/* Decorative border */}
