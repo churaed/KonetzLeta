@@ -3,6 +3,17 @@ import { useRef, useState } from 'react';
 import { ExternalLink, Play, Award, Calendar } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
+import mechtyOStarosti from '@/assets/images/portfolio/mechty-o-starosti.webp'
+import spiachka from '@/assets/images/portfolio/spiachka.webp'
+import kapiITapi from '@/assets/images/portfolio/kapi-i-tapi.webp'
+import obyknovennyiDrakon from '@/assets/images/portfolio/obyknovennyi-drakon.webp'
+import chtoIaZdesDelaiu from '@/assets/images/portfolio/chto-ia-zdes-delaiu.webp'
+import blokadnaiaMozaika from '@/assets/images/portfolio/blokadnaia-mozaika.webp'
+import bumZemliKakEtoBylo from '@/assets/images/portfolio/bum-zemli-kak-eto-bylo.webp'
+import gospodinVelikii from '@/assets/images/portfolio/gospodin-velikii.webp'
+import mifyOGefesteBogeIStroiotriade from '@/assets/images/portfolio/mify-o-gefeste-boge-i-stroiotriade.webp'
+import strashnyiGorod from '@/assets/images/portfolio/strashnyi-gorod.webp'
+
 interface PortfolioItem {
   id: number;
   title: string;
@@ -14,75 +25,121 @@ interface PortfolioItem {
   size: 'small' | 'medium' | 'large';
   isVideo?: boolean;
   awards?: string[];
+  url?: string;
+  component?: React.ReactNode;
 }
 
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: "Последний кадр",
-    subtitle: "Полнометражный фильм",
-    category: "Авторское кино",
-    year: "2024",
-    description: "История о режиссёре, который ищет последний кадр для своего фильма в лабиринтах собственной памяти.",
-    image: "https://images.unsplash.com/photo-1489599162653-5123c83bc2cb?w=800&h=600&fit=crop",
+    title: "Анимационные вставки и титры для фильма А. Федорченко «Мифы о Гефесте, Боге и Стройотряде»",
+    subtitle: "Полнометражный документальный фильм",
+    category: "Анимационные вставки",
+    year: "2025",
+    description: "Анимационные истории о жизни Гефеста-бога, рассказанные с помощью значков, рисунков и нашивок на стройотрядовской спецовке - целинке.",
+    image: mifyOGefesteBogeIStroiotriade,
     size: "large",
-    isVideo: true,
-    awards: ["Гран-при Суздаль", "Лучшая анимация ММКФ"],
+    isVideo: false,
   },
   {
-    id: 2,
-    title: "Квантовые сны",
-    subtitle: "Научпоп сериал",
-    category: "Образовательный контент",
-    year: "2024",
-    description: "8-серийный анимационный сериал о квантовой физике для подростков. Сложные концепции через поэтические метафоры.",
-    image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=600&fit=crop",
-    size: "medium",
-    isVideo: true,
+  id: 2,
+  title: "Страшный город",
+  subtitle: "Документальная анимация",
+  category: "Короткометражный анимационный фильм",
+  year: "2024",
+  description: "Иммерсивная анимация, разворачивающаяся перед колесами ночного трамвая. Три страшные истории, которые случились с тремя разными героями в городе Екатеринбурге.",
+  image: strashnyiGorod,
+  size: "large",
+  isVideo: false,
+  },
+    {
+  id: 3,
+  title: "«Бум Земли. Как это было»",
+  subtitle: "Телеграм-канал и подкаст",
+  category: "Продвижение",
+  year: "2024-",
+  description: "История и хроники создания первого уральского анимационного сериала «Бум Земли»",
+  image: bumZemliKakEtoBylo,
+  size: "large",
+  isVideo: false,
+  },
+    {
+  id: 4,
+  title: "Анимационные вставки в фильм Э.Тухарели «Господин Великий»",
+  subtitle: "Полнометражный документальный фильм",
+  category: "Анимационные вставки",
+  year: "2024",
+  description: "Ожившие летописные иллюстрации повествуют об истории становления Новгородского музейного комплекса и его преобразований в связи с приходом нового директора.",
+  image: gospodinVelikii,
+  size: "large",
+  isVideo: false,
+  },
+    {
+  id: 5,
+  title: "Разработка анимационной технологии для проекта А. Федорченко «Блокадная мозаика»",
+  subtitle: "Полнометражный игровой фильм",
+  category: "Анимационные вставки",
+  year: "2024",
+  description: "Рассказывание блокадных историй с помощью оживших объемных скульптур из мозаичной смальты",
+  image: blokadnaiaMozaika,
+  size: "large",
+  isVideo: false,
   },
   {
-    id: 3,
-    title: "Титры Горького",
-    subtitle: "Открывающие титры",
-    category: "Кинематограф",
-    year: "2023",
-    description: "Анимированные титры для фильма 'Мать' в постановке театра им. Горького.",
-    image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=300&fit=crop",
-    size: "small",
+    id: 6,
+    title: "Мечты о старости",
+    subtitle: "Лаборатория, веб-сериал, радость жизни",
+    category: "Социокультурный проект",
+    year: "",
+    description: "Анимационные шортсы из жизни двух пожилых соседей. Мы хотели бы напомнить пожилым людям, а заодно и самим себе, как получать удовольствие от мгновений, чувствовать настоящее, радоваться тому, что есть, и не скорбеть о том, что уже ушло и потеряно.",
+    image: mechtyOStarosti,
+    size: "large",
+    isVideo: false,
   },
   {
-    id: 4,
-    title: "Музей будущего",
-    subtitle: "VR инсталляция",
-    category: "Интерактив",
-    year: "2023",
-    description: "Иммерсивная VR-инсталляция для Государственного музея изобразительных искусств им. А.С. Пушкина.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
-    size: "medium",
-    isVideo: true,
-    awards: ["Золотая пчела"],
+    id: 7,
+    title: "Спячка",
+    subtitle: "Фэнтези для подростков",
+    category: "Полнометражный анимационный фильм",
+    year: "",
+    description: "Паркурщица и пранкерша, лесная мышка Соня, считающая сон самым скучным занятием на свете, впадает в спячку против своей воли и путешествует по миру чужих сновидений в поисках выхода и себя",
+    image: spiachka,
+    size: "large",
+    isVideo: false,
   },
   {
-    id: 5,
-    title: "Фестиваль 'Артдокфест'",
-    subtitle: "Заставки и брендинг",
-    category: "Фестивальный контент",
-    year: "2023",
-    description: "Комплексный визуальный язык фестиваля документального кино: от заставок до церемонии закрытия.",
-    image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=300&fit=crop",
-    size: "small",
+    id: 8,
+    title: "Капи и Тапи",
+    subtitle: "Плюшевые приключения в дебрях Амазонки",
+    category: "Анимационный сериал",
+    year: "",
+    description: "Две подружки Капибара и Тапир вместе с хищным другом Ягуаром каждый день делают невозможное возможным.",
+    image: kapiITapi,
+    size: "large",
+    isVideo: false,
   },
-  // {
-  //   id: 6,
-  //   title: "Цифровая экосистема",
-  //   subtitle: "Корпоративная анимация",
-  //   category: "Коммерческий проект",
-  //   year: "2024",
-  //   description: "Серия анимированных роликов для IT-компании: от объяснения продукта до внутренних коммуникаций.",
-  //   image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop",
-  //   size: "medium",
-  //   isVideo: true,
-  // },
+  {
+    id: 9,
+    title: "Обыкновенный дракон",
+    subtitle: "Не брызгай кетчупом на мой гобелен .",
+    category: "Анимационный сериал",
+    year: "",
+    description: "Очень правильный дракон знакомится с очень неправильной королевской семьей.",
+    image: obyknovennyiDrakon,
+    size: "large",
+    isVideo: false,
+  },
+  {
+    id: 10,
+    title: "Что я здесь делаю?",
+    subtitle: "Докуменотально-анимационная комедия",
+    category: "Полнометражный фильм",
+    year: "",
+    description: "Две девушки решают покорить кинематограф самым неочевидным способом.",
+    image: chtoIaZdesDelaiu,
+    size: "large",
+    isVideo: false,
+  }
 ];
 
 export function PortfolioSection() {
@@ -143,7 +200,7 @@ export function PortfolioSection() {
           {portfolioItems.map((item, index) => (
             <motion.div
               key={item.id}
-              className={`relative group cursor-pointer ${getSizeClasses(item.size)}`}
+              className={`relative group ${item.url || item.component ? "cursor-pointer" : "cursor-default"} ${getSizeClasses(item.size)}`}
               initial={{ opacity: 0, y: 100, rotateY: -20 }}
               animate={isInView ? { 
                 opacity: 1, 
@@ -277,20 +334,25 @@ export function PortfolioSection() {
                     )}
                   </motion.div>
 
-                  {/* Action button */}
-                  <motion.button
-                    className="flex items-center space-x-2 text-white hover:text-red-400 transition-colors"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ 
-                      y: hoveredItem === item.id ? 0 : 20,
-                      opacity: hoveredItem === item.id ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    whileHover={{ x: 5 }}
-                  >
-                    <span className="text-sm font-mono tracking-wide">Смотреть проект</span>
-                    <ExternalLink size={14} />
-                  </motion.button>
+                  {/* Action button – only render if url/component exists */}
+                  {(item.url || item.component) && (
+                    <motion.a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-white hover:text-red-400 transition-colors"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{
+                        y: hoveredItem === item.id ? 0 : 20,
+                        opacity: hoveredItem === item.id ? 1 : 0,
+                      }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                      whileHover={{ x: 5 }}
+                    >
+                      <span className="text-sm font-mono tracking-wide">Смотреть проект</span>
+                      <ExternalLink size={14} />
+                    </motion.a>
+                  )}
                 </div>
 
                 {/* Decorative border */}
