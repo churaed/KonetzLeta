@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 
@@ -9,6 +9,22 @@ export function Navbar() {
   const [navVisible, setNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  
+  // Calculate height of the navbar for HeroSection content top padding
+  const navRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const updateHeight = () => {
+      if (navRef.current) {
+        const rect = navRef.current.getBoundingClientRect()
+        const height = rect.height
+        document.documentElement.style.setProperty('--navbar-height', `${height}px`);
+      }
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,6 +105,7 @@ export function Navbar() {
 
       {/* Navigation */}
       <motion.nav
+        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? 'bg-black/90 backdrop-blur-md border-b border-white/10'

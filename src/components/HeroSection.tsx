@@ -2,6 +2,9 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
+import imgHeroBird from '@/assets/images/hero-bird.webp'
+
+
 export function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -120,7 +123,10 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      id="hero" className="relative h-screen flex items-center justify-center overflow-hidden"
+      style={{ paddingTop: 'var(--navbar-height)' }}
+    >
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
@@ -138,11 +144,11 @@ export function HeroSection() {
       <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
         <motion.div
           className="mb-8"
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1}}
           transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
         >
-          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-cormorant italic leading-none">
+          <h1 className="text-8xl md:text-8xl lg:text-[10rem] font-cormorant italic leading-none">
             <motion.span 
               className="block text-white"
               initial={{ opacity: 0, x: -100 }}
@@ -178,6 +184,14 @@ export function HeroSection() {
             Студия авторской коммерческой анимации
           </p>
         </motion.div>
+      <motion.img
+            src={imgHeroBird}
+            alt="Hero Bird"
+            className="mx-auto w-full h-auto max-w-xs md:max-w-sm lg:max-w-md object-contain"            
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut", delay: 2.5 }}
+          />
       </div>
 
       <motion.div
