@@ -1,6 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Mail, Phone, MapPin, ArrowRight, Send, Heart } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Send, Heart, MessageCircle } from 'lucide-react';
 import { Button } from './ui/button';
 
 export function ContactSection() {
@@ -11,19 +11,25 @@ export function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@konetzleta.art",
-      action: "mailto:hello@konetzleta.art"
+      value: "konetzleta@gmail.com",
+      action: "mailto:konetzleta@gmail.com"
+    },
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      value: "+79041745621",
+      action: "https://wa.me/79041745621"
     },
     {
       icon: Phone,
       label: "Телефон",
-      value: "+7 (XXX) XXX-XX-XX",
-      action: "tel:+7XXXXXXXXXX"
+      value: "+79022610028",
+      action: "tel:+79022610028"
     },
     {
       icon: MapPin,
       label: "Студия",
-      value: "Москва, Россия",
+      value: "Екатеринбург, Россия",
       action: "#"
     }
   ];
@@ -164,8 +170,8 @@ export function ContactSection() {
               <select className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-red-400 focus:outline-none transition-all duration-300 font-mono text-sm">
                 <option value="">Выберите тип проекта</option>
                 <option value="full-length">Полный метр / Сериал</option>
-                <option value="animation-inserts">Анимационные вставки</option>
-                <option value="titles">Титры и заставки</option>
+                <option value="animation-inserts">Анимационные вставки и титры</option>
+                <option value="titles">Анимационное сопровождение спектаклей</option>
                 <option value="educational">Научпоп анимация</option>
                 <option value="festival">Фестивальный проект</option>
                 <option value="museum">Музейная инсталляция</option>
