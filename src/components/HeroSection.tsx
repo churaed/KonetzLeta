@@ -4,7 +4,6 @@ import { ChevronDown } from 'lucide-react';
 
 import imgHeroBird from '@/assets/images/hero-bird.webp'
 
-
 export function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -141,112 +140,118 @@ export function HeroSection() {
         }}
       />
       
-      <div className="relative z-10 h-full flex items-center justify-center">
-        <div className="text-center max-w-5xl mx-auto px-6 flex flex-col items-center gap-4">
-        <motion.div
-          className="flex-shrink-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1}}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
-        >
-          <h1 className="text-6xl @md:text-8xl @lg:text-[9rem] @xl:text-[10rem] font-cormorant italic leading-none">
-            <motion.span 
-              className="block text-white"
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.2, delay: 0.8 }}
-            >
-              Конец
-            </motion.span>
-            <motion.span 
-              className="block text-red-400 -mt-2 @md:-mt-4"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.2, delay: 1.2 }}
-            >
-              лета
-            </motion.span>
-          </h1>
-        </motion.div>
-
-        <motion.div
-          className="flex-shrink-0 space-y-4 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.8 }}
-        >
+      {/* This is the main content container. All content, including absolutely positioned
+          elements, now lives inside here to respect the navbar's height. */}
+      <div className="relative z-10 h-full flex flex-col items-center">
+        
+        {/* Centered Content Block */}
+        <div className="flex-1 min-h-0 w-full text-center max-w-5xl mx-auto px-6 flex flex-col items-center justify-center gap-4">
           <motion.div
-            className="w-24 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1, delay: 2.2 }}
-          />
-          <p className="text-lg font-mono text-gray-400 tracking-wide">
-            Студия авторской коммерческой анимации
-          </p>
-        </motion.div>
-        <div className="flex-1 min-h-0 w-full flex justify-center">
-          <motion.img
-            src={imgHeroBird}
-            alt="Hero Bird"
-            className="w-full h-full object-contain max-w-xs md:max-w-sm lg:max-w-md"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut", delay: 2.5 }}
-          />
-        </div>
-        </div>
-      </div>
-
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 3.2 }}
-      >
-        <motion.button
-          onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-          className="flex flex-col items-center text-gray-400 hover:text-red-400 transition-colors group"
-          whileHover={{ y: -5 }}
-          transition={{ type: "spring", stiffness: 400 }}
-        >
-          <span className="text-xs font-mono tracking-wider mb-2">Смотреть далее</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex-shrink-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1}}
+            transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
           >
-            <ChevronDown size={20} className="group-hover:scale-110 transition-transform" />
+            <h1 className="text-6xl @md:text-8xl @lg:text-[9rem] @xl:text-[10rem] font-cormorant italic leading-none">
+              <motion.span 
+                className="block text-white"
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.2, delay: 0.8 }}
+              >
+                Конец
+              </motion.span>
+              <motion.span 
+                className="block text-red-400 -mt-2 @md:-mt-4"
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.2, delay: 1.2 }}
+              >
+                лета
+              </motion.span>
+            </h1>
           </motion.div>
-        </motion.button>
-      </motion.div>
 
-      {/* Floating geometric elements */}
-      <motion.div
-        className="absolute top-1/4 right-1/4 w-2 h-2 bg-red-400 transform rotate-45"
-        animate={{
-          y: [0, -30, 0],
-          opacity: [0.5, 1, 0.5],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      
-      <motion.div
-        className="absolute bottom-1/3 left-1/4 w-px h-12 bg-white opacity-30"
-        animate={{
-          scaleY: [1, 1.5, 1],
-          opacity: [0.3, 0.7, 0.3],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
+          <motion.div
+            className="flex-shrink-0 space-y-4 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.8 }}
+          >
+            <motion.div
+              className="w-24 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 2.2 }}
+            />
+            <p className="text-lg font-mono text-gray-400 tracking-wide">
+              Студия авторской коммерческой анимации
+            </p>
+          </motion.div>
+
+          <div className="flex-1 min-h-0 w-full flex justify-center">
+            <motion.img
+              src={imgHeroBird}
+              alt="Hero Bird"
+              className="w-full h-full object-contain max-w-xs md:max-w-sm lg:max-w-md"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 2.5 }}
+            />
+          </div>
+        </div>
+
+        <motion.div
+          className="flex-shrink-0 pb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 3.2 }}
+        >
+        {/* Scroll Down Button (now positioned relative to this container) */}
+          <motion.button
+            onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex flex-col items-center text-gray-400 hover:text-red-400 transition-colors group"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
+            <span className="text-xs font-mono tracking-wider mb-2">Смотреть далее</span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown size={20} className="group-hover:scale-110 transition-transform" />
+            </motion.div>
+          </motion.button>
+        </motion.div>
+
+        {/* Floating geometric elements (now positioned relative to this container) */}
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-2 h-2 bg-red-400 transform rotate-45"
+          animate={{
+            y: [0, -30, 0],
+            opacity: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-1/3 left-1/4 w-px h-12 bg-white opacity-30"
+          animate={{
+            scaleY: [1, 1.5, 1],
+            opacity: [0.3, 0.7, 0.3],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+      </div>
     </section>
   );
 }
