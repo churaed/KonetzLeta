@@ -35,3 +35,8 @@ pnpm-debug.log*
 
 # Optional: if you're using coverage tools like Vitest or Jest
 coverage/
+
+
+.kilocode/
+.kilocodemodes
+
