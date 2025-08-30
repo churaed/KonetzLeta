@@ -105,6 +105,20 @@ export function Navbar() {
     { name: 'Конец', subtitle: 'Лета', href: '#hero' },
   ];
 
+  // Add this new function inside your Navbar component
+  const handleMobileNavClick = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Use a small delay to close the menu.
+    // This gives the browser time to start the scroll before the menu disappears.
+    setTimeout(() => {
+      setIsMenuOpen(false);
+    }, 300); // 300ms is a safe delay
+  };
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -210,7 +224,8 @@ export function Navbar() {
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
+                // V-- CHANGE THIS LINE --V
+                onClick={() => handleMobileNavClick(item.href)}
                 className="block w-full text-left text-sm font-mono tracking-wider group transition-colors duration-300"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{
