@@ -2,16 +2,20 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 
+const HOVER_DELAY = 600; // ms
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [navbarPinned, setNavbarPinned] = useState(false);
+  const hoverTimerRef = useRef<number | null>(null);
+
+  
+  const navRef = useRef<HTMLDivElement>(null);
   
   // Calculate height of the navbar for HeroSection content top padding
-  const navRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const updateHeight = () => {
       if (navRef.current) {
@@ -26,20 +30,19 @@ export function Navbar() {
     return () => window.removeEventListener('resize', updateHeight);
   }, []);
 
+  // Effect for scroll and mouse move detection
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      // Set scrolled state for background styling
-      setScrolled(currentScrollY > 50);
 
       // Navbar visibility logic with threshold to prevent jittery behavior
       if (currentScrollY < 50) {
         // Always show navbar at the top
         setNavVisible(true);
       } else if (currentScrollY > lastScrollY + 10) {
-        // Scrolling down - hide navbar (with 10px threshold)
+        // Scrolling down - hide navbar (with 10px threshold). Un-pin the navbar when scrolling down
         setNavVisible(false);
+        setNavbarPinned(false);
         setIsMenuOpen(false); // Close mobile menu when hiding
       } else if (currentScrollY < lastScrollY - 10) {
         // Scrolling up - show navbar (with 10px threshold)
@@ -49,13 +52,15 @@ export function Navbar() {
       setLastScrollY(currentScrollY);
     };
 
+    // This function's ONLY job is now to report if the mouse is in the hover zone.
     const handleMouseMove = (e: MouseEvent) => {
-      // Show navbar on hover near top of screen (desktop only)
       if (window.innerWidth >= 1024) {
         setIsHovering(e.clientY < 100);
+      } else {
+        setIsHovering(false);
       }
     };
-
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     
@@ -64,6 +69,31 @@ export function Navbar() {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, [lastScrollY]);
+
+
+  // This effect runs ONLY when the `isHovering` state changes.
+  useEffect(() => {
+    if (isHovering) {
+      // If user is hovering, start a timer.
+      hoverTimerRef.current = window.setTimeout(() => {
+        setNavbarPinned(true); // After the delay, pin the navbar.
+      }, HOVER_DELAY);
+    } else {
+      // If user stops hovering, clear any existing timer.
+      // This prevents the navbar from appearing if they leave the area too soon.
+      if (hoverTimerRef.current) {
+        clearTimeout(hoverTimerRef.current);
+      }
+    }
+
+    // Cleanup function: clear the timer if the component unmounts.
+    return () => {
+      if (hoverTimerRef.current) {
+        clearTimeout(hoverTimerRef.current);
+      }
+    };
+  }, [isHovering]);
+
 
   const navItems = [
     { name: 'Начало', subtitle: 'Лета', href: '#hero' },
@@ -81,8 +111,8 @@ export function Navbar() {
     setIsMenuOpen(false);
   };
 
-  // Show navbar if visible by scroll logic OR hovering near top (desktop only)
-  const shouldShow = navVisible || (isHovering && window.innerWidth >= 1024);
+  // Modified visibility logic:
+  const shouldShow = navVisible || navbarPinned;
 
   return (
     <>
@@ -97,7 +127,7 @@ export function Navbar() {
           }}
           transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
         >
-          <div className="bg-white/10 backdrop-blur-sm rounded-b-lg px-4 py-2 border-x border-b border-white/20">
+          <div className="bg-white/10 rounded-b-lg px-4 py-2">
             <div className="w-8 h-1 bg-white/50 rounded-full mx-auto" />
           </div>
         </motion.div>
@@ -106,21 +136,16 @@ export function Navbar() {
       {/* Navigation */}
       <motion.nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-black/90 backdrop-blur-md border-b border-white/10'
-            : 'bg-transparent'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-linear-to-b from-black/90 to-black/60"
         initial={{ y: -100 }}
         animate={{
           y: shouldShow ? 0 : -100,
         }}
         transition={{ duration: 0.2, delay: 0.25, ease: 'easeInOut' }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 h-20 @md:h-24 flex justify-between items-center">
           {/* Left Side - Studio Description + Mobile Menu */}
           <div className="flex items-center space-x-4">
-            {/* Mobile Menu Button - moved to left */}
             <motion.button
               className="lg:hidden order-first"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -134,65 +159,38 @@ export function Navbar() {
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
 
-            {/* Studio Description */}
-            <motion.div
-              className="font-mono text-sm tracking-wider text-gray-300"
-              whileHover={{ color: '#ffffff' }}
-              transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
-            >
-              {/* Desktop version */}
-              <span className="hidden xl:inline">
-                Авангардная <span className="text-red-400">Студия Анимации</span>
-              </span>
-              {/* Tablet version */}
-              <span className="hidden lg:inline xl:hidden">
-                Авангардная <span className="text-red-400">Студия</span>
-              </span>
-              {/* Mobile version - hidden when menu is closed */}
-              <span className="lg:hidden">
-              </span>
-            </motion.div>
+            
           </div>
 
-          {/* Center - Desktop Navigation */}
-          <div className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+          {/* Desktop Navigation - Centered nav items with responsive spacing */}
+            <div className="
+              hidden lg:flex items-center justify-center 
+              absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+              gap-x-6 md:gap-x-8 lg:gap-x-12 xl:gap-x-16
+            ">
             {navItems.map((item) => (
-              <motion.button
+              <a
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="relative rounded-md px-4 py-2 text-sm font-mono tracking-wider text-white/80 hover:text-white transition-colors duration-300 whitespace-nowrap"
-                whileHover="hover"
-                initial="rest"
-                variants={{ rest: { y: 0 }, hover: { y: -1 } }}
-                transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
+                href={item.href}
+                onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
+                className="group relative text-sm font-mono tracking-wider text-white/80 hover:text-white transition-colors duration-300 whitespace-nowrap"
               >
-                <div className="flex flex-col items-center">
-                  <span>{item.name}</span>
-                  <motion.div
-                    className="text-sm font-mono text-red-400 overflow-hidden"
-                    variants={{
-                      rest: { opacity: 0, height: 0 },
-                      hover: { opacity: 1, height: 'auto' },
-                    }}
-                    transition={{ duration: 0.3, ease: 'easeOut' }}
-                  >
-                    <div className="pt-1">{item.subtitle}</div>
-                  </motion.div>
+                {/* This container moves up on hover to keep the whole block centered */}
+                <div className="relative transition-transform duration-300 ease-out group-hover:-translate-y-2">
+                  <span className="block text-center">{item.name}</span>
+                  <span className="
+                    block text-center text-xs text-red-400
+                    absolute top-full left-1/2 -translate-x-1/2 mt-1
+                    opacity-0 transition-opacity duration-300 group-hover:opacity-100
+                  ">
+                    {item.subtitle}
+                  </span>
                 </div>
-              </motion.button>
+              </a>
             ))}
           </div>
 
-          {/* Right Side - Logo */}
-          <motion.div
-            className="text-3xl font-cormorant italic cursor-pointer"
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.2, delay: 0.25, ease: 'easeInOut' }}
-            onClick={() => scrollToSection('#hero')}
-          >
-            <span className="text-white">Конец</span>
-            <span className="text-red-400 ml-2">лета</span>
-          </motion.div>
+         
         </div>
 
         {/* Mobile Navigation */}
