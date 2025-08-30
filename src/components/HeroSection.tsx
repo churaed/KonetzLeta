@@ -124,8 +124,8 @@ export function HeroSection() {
 
   return (
     <section 
-      id="hero" className="relative h-screen flex items-center justify-center overflow-hidden"
-      style={{ paddingTop: 'var(--navbar-height)' }}
+      id="hero" 
+      className="relative h-screen overflow-hidden pt-[var(--navbar-height)] box-border @container"
     >
       <canvas
         ref={canvasRef}
@@ -141,14 +141,15 @@ export function HeroSection() {
         }}
       />
       
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
+      <div className="relative z-10 h-full flex items-center justify-center">
+        <div className="text-center max-w-5xl mx-auto px-6 flex flex-col items-center gap-4">
         <motion.div
-          className="mb-8"
+          className="flex-shrink-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1}}
           transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
         >
-          <h1 className="text-8xl md:text-8xl lg:text-[10rem] font-cormorant italic leading-none">
+          <h1 className="text-6xl @md:text-8xl @lg:text-[9rem] @xl:text-[10rem] font-cormorant italic leading-none">
             <motion.span 
               className="block text-white"
               initial={{ opacity: 0, x: -100 }}
@@ -158,7 +159,7 @@ export function HeroSection() {
               Конец
             </motion.span>
             <motion.span 
-              className="block text-red-400 -mt-4"
+              className="block text-red-400 -mt-2 @md:-mt-4"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, delay: 1.2 }}
@@ -169,7 +170,7 @@ export function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="space-y-8 max-w-3xl mx-auto"
+          className="flex-shrink-0 space-y-4 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.8 }}
@@ -184,14 +185,17 @@ export function HeroSection() {
             Студия авторской коммерческой анимации
           </p>
         </motion.div>
-      <motion.img
+        <div className="flex-1 min-h-0 w-full flex justify-center">
+          <motion.img
             src={imgHeroBird}
             alt="Hero Bird"
-            className="mx-auto w-full h-auto max-w-xs md:max-w-sm lg:max-w-md object-contain"            
+            className="w-full h-full object-contain max-w-xs md:max-w-sm lg:max-w-md"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut", delay: 2.5 }}
           />
+        </div>
+        </div>
       </div>
 
       <motion.div
