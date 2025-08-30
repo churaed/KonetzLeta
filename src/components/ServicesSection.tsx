@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
-import { Film, Tv, Globe, Microscope, Trophy, Building } from 'lucide-react';
+import { Film, Tv, Microscope, Trophy, Building, Drama } from 'lucide-react';
 
 interface Service {
   icon: React.ElementType;
@@ -22,18 +22,23 @@ const services: Service[] = [
   },
   {
     icon: Tv,
-    title: "Анимационные вставки",
-    description: "Органичная интеграция анимации в игровые и документальные фильмы. Мы превращаем сложные идеи в визуальные метафоры.",
-    audience: "Продюсеры фильмов",
-    examples: ["Игровые фильмы", "Документалистика", "Визуальные эффекты", "Анимированная графика"],
+    title: "Анимационные вставки и титры",
+    description: "Графические и анимационные решения — от метафоричных вставок до выразительных титров и заставок. Они дополняют фильмы и игры, превращая идеи в образы и задавая тон с первых до последних кадров.",
+    audience: "Кинопродюсеры",
+    examples: [ "Визуальные эффекты", "Анимированная графика", "Открывающие/Финальные титры", "Фантазийные сцены" ,"Анимадок"],
     gradient: "from-orange-500 to-red-500"
   },
   {
-    icon: Globe,
-    title: "Титры и заставки",
-    description: "Открывающие и закрывающие титры, которые задают тон всему произведению. Первое и последнее впечатление — самые важные.",
-    audience: "Кинопродюсеры",
-    examples: ["Открывающие титры", "Финальные титры", "Заставки каналов", "Брендинг проектов"],
+    icon: Drama,
+    title: "Анимационное сопровождение спектаклей",
+    description: "Анимационный видеоарт для вашей театральной постановки. Визуальная поэзия на сцене.",
+    audience: "Театральные продюсеры",
+    examples: [
+      "Анимированные персонажи",
+      "Анимированные фоны",
+      "Анимированные сцены",
+      "Визуальные спецэффекты"
+    ],
     gradient: "from-amber-500 to-orange-500"
   },
   {
@@ -92,7 +97,7 @@ export function ServicesSection() {
           className="text-center mb-20 space-y-8"
         >
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            Сезонные <span className="text-red-400">работы</span>
+            Услуги
           </h2>
           
           <motion.div
