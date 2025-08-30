@@ -52,7 +52,7 @@ export function AboutSection() {
           <motion.div variants={itemVariants} className="text-center space-y-8">
             <div className="space-y-4">
               <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-                Наш <span className="text-red-400">сад</span>
+                О <span className="text-red-400">Нас</span>
               </h2>
               <motion.div
                 className="w-32 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"

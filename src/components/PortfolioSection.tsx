@@ -174,7 +174,7 @@ export function PortfolioSection() {
           className="text-center mb-20 space-y-8"
         >
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            Заготовки <span className="text-red-400">на зиму</span>
+            Проекты
           </h2>
           
           <motion.div
