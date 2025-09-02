@@ -2,6 +2,7 @@ import { motion, useInView, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { Film, Tv, Microscope, Trophy, Building, Drama } from 'lucide-react';
 
+// Define interface for service data structure
 interface Service {
   icon: React.ElementType;
   title: string;
@@ -11,6 +12,7 @@ interface Service {
   gradient: string;
 }
 
+// Array of service objects with detailed information
 const services: Service[] = [
   {
     icon: Film,
@@ -67,19 +69,24 @@ const services: Service[] = [
   }
 ];
 
+// Main ServicesSection component
 export function ServicesSection() {
+  // Reference for the section container
   const containerRef = useRef(null);
+  // Track scroll progress within the section
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
+  // Calculate background position based on scroll progress
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  // Check if section is in view for animations
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
     <section id="services" ref={containerRef} className="py-32 bg-black relative overflow-hidden">
-      {/* Animated background */}
+      {/* Animated background with gradient circles */}
       <motion.div
         className="absolute inset-0 opacity-5"
         style={{ y: backgroundY }}
@@ -90,6 +97,7 @@ export function ServicesSection() {
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Section header with animated title and description */}
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
@@ -99,14 +107,15 @@ export function ServicesSection() {
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
             Услуги
           </h2>
-          
+
+          {/* Animated underline for section title */}
           <motion.div
             className="w-32 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           />
-          
+
           <p className="text-xl font-cormorant italic text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Каждый проект — это диалог между художником и зрителем,
             <br />
@@ -114,6 +123,7 @@ export function ServicesSection() {
           </p>
         </motion.div>
 
+        {/* Grid of service cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard
@@ -128,41 +138,44 @@ export function ServicesSection() {
   );
 }
 
+// Individual service card component
 function ServiceCard({ service, index }: { service: Service; index: number }) {
+  // Reference for the card element
   const cardRef = useRef(null);
+  // Check if card is in view for animations
   const cardInView = useInView(cardRef, { once: true, margin: "-50px" });
 
   return (
     <motion.div
       ref={cardRef}
       className="relative group h-full"
-      initial={{ 
-        opacity: 0, 
-        y: 100, 
+      initial={{
+        opacity: 0,
+        y: 100,
         rotateY: -30,
         transformPerspective: 1000
       }}
-      animate={cardInView ? { 
-        opacity: 1, 
-        y: 0, 
+      animate={cardInView ? {
+        opacity: 1,
+        y: 0,
         rotateY: 0,
-      } : { 
-        opacity: 0, 
-        y: 100, 
-        rotateY: -30 
+      } : {
+        opacity: 0,
+        y: 100,
+        rotateY: -30
       }}
       transition={{
         duration: 0.8,
         delay: index * 0.15,
         ease: [0.215, 0.61, 0.355, 1],
       }}
-      whileHover={{ 
+      whileHover={{
         y: -15,
         transition: { duration: 0.3, ease: "easeOut" }
       }}
     >
       <div className="relative p-8 rounded-2xl bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-sm border border-gray-800/50 h-full flex flex-col">
-        {/* Gradient border effect */}
+        {/* Gradient border effect that appears on hover */}
         <motion.div
           className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
@@ -173,11 +186,11 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           }}
         />
 
-        {/* Icon */}
+        {/* Service icon with gradient background */}
         <motion.div
           className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 relative`}
-          whileHover={{ 
-            scale: 1.1, 
+          whileHover={{
+            scale: 1.1,
             rotate: 5,
             transition: { type: "spring", stiffness: 400 }
           }}
@@ -191,7 +204,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           />
         </motion.div>
 
-        {/* Content */}
+        {/* Card content with title, description, audience, and examples */}
         <motion.div
           className="flex-1 flex flex-col"
           initial={{ opacity: 0, y: 20 }}
@@ -201,12 +214,12 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           <h3 className="text-2xl font-cormorant italic text-white mb-4 leading-tight">
             {service.title}
           </h3>
-          
+
           <p className="text-gray-300 font-mono text-sm leading-relaxed mb-6 flex-1">
             {service.description}
           </p>
 
-          {/* Audience */}
+          {/* Audience badge */}
           <div className="mb-6">
             <motion.div
               className="inline-block px-3 py-1 bg-red-400/20 border border-red-400/30 rounded-full"
@@ -219,7 +232,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             </motion.div>
           </div>
 
-          {/* Examples */}
+          {/* List of examples with animated bullet points */}
           <div className="space-y-2">
             {service.examples.map((example, exampleIndex) => (
               <motion.div
@@ -227,9 +240,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
                 className="flex items-center space-x-3"
                 initial={{ opacity: 0, x: -20 }}
                 animate={cardInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ 
-                  duration: 0.4, 
-                  delay: index * 0.1 + 0.5 + exampleIndex * 0.1 
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.1 + 0.5 + exampleIndex * 0.1
                 }}
               >
                 <motion.div
