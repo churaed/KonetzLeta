@@ -144,10 +144,10 @@ export function ShowreelSection() {
               onLoadedMetadata={handleLoadedMetadata}
               onClick={() => setIsPlaying(!isPlaying)}
             >
-              <source src={showreel720pWEBM} type="video/webm" />
-              <source src={showreel720pMP4} type="video/mp4" />
               <source src={showreelWEBM} type="video/webm" />
               <source src={showreelMP4} type="video/mp4" />
+              <source src={showreel720pWEBM} type="video/webm" />
+              <source src={showreel720pMP4} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
