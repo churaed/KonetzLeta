@@ -70,14 +70,6 @@ export function ShowreelSection() {
     }
   }, [isPlaying, hasStarted]);
 
-  // Effect to auto-start video on desktop when component mounts
-  useEffect(() => {
-    if (!hasStarted && isDesktop) {
-        // We set isPlaying to true, but it will only actually play
-        // once the component is visible and mounted.
-        setIsPlaying(true);
-    }
-  }, [hasStarted, isDesktop]);
 
   // Effect to sync mute state with video element
   useEffect(() => {
