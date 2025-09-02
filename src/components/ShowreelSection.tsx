@@ -9,15 +9,13 @@ import showreelMP4 from '../assets/video/showreel.mp4';
 import showreelWEBM from '../assets/video/showreel.webm';
 import showreelPoster from '../assets/images/showreel-poster.webp';
 
-// <-- FIX: Renamed and adjusted breakpoint for clarity. Disables autoplay on mobile AND tablet.
+// Custom hook to detect desktop devices for autoplay control
 const useIsDesktop = (breakpoint = 1024) => {
     const [isDesktop, setIsDesktop] = useState(false);
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const checkDevice = () => {
                 const isDesktopDevice = window.innerWidth >= breakpoint;
-                // --- DEBUG ---
-                console.log(`[useIsDesktop] Window width: ${window.innerWidth}, Is Desktop: ${isDesktopDevice}`);
                 setIsDesktop(isDesktopDevice);
             };
             checkDevice();
@@ -28,7 +26,7 @@ const useIsDesktop = (breakpoint = 1024) => {
     return isDesktop;
 };
 
-// Helper function to format time in MM:SS format
+// Helper function to format video time in MM:SS format
 const formatTime = (time: number): string => {
   const minutes = Math.floor(time / 60);
   const seconds = Math.floor(time % 60);
@@ -39,18 +37,22 @@ const formatTime = (time: number): string => {
 };
 
 export function ShowreelSection() {
+  // Detect if user is on desktop for autoplay functionality
   const isDesktop = useIsDesktop();
-  // const containerRef = useRef<HTMLDivElement>(null); <-- No longer needed
+  // Reference to the video element for direct control
   const videoRef = useRef<HTMLVideoElement>(null);
-  // const isInView = useInView(containerRef, ...); <-- No longer needed
-
+  // State for video playback control
   const [isPlaying, setIsPlaying] = useState(false);
+  // State for audio mute control
   const [isMuted, setIsMuted] = useState(true);
+  // State to track if video has started playing
   const [hasStarted, setHasStarted] = useState(false);
+  // State for total video duration
   const [duration, setDuration] = useState(0);
+  // State for current video playback time
   const [currentTime, setCurrentTime] = useState(0);
 
-  // Effect to handle video playback based on isPlaying state
+  // Effect to handle video playback state changes
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
@@ -68,9 +70,7 @@ export function ShowreelSection() {
     }
   }, [isPlaying, hasStarted]);
 
-  // <-- KEY CHANGE: The autoplay logic is now simplified
-  // It triggers when the component starts, but only on desktop.
-  // The `whileInView` will handle making it visible at the right time.
+  // Effect to auto-start video on desktop when component mounts
   useEffect(() => {
     if (!hasStarted && isDesktop) {
         // We set isPlaying to true, but it will only actually play
@@ -79,30 +79,34 @@ export function ShowreelSection() {
     }
   }, [hasStarted, isDesktop]);
 
-  // Effect to handle muting
+  // Effect to sync mute state with video element
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = isMuted;
     }
   }, [isMuted]);
 
+  // Handler for initial video play interaction
   const handleInitialPlay = () => {
     setIsMuted(false);
     setIsPlaying(true);
   };
 
+  // Handler to update current video time during playback
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       setCurrentTime(videoRef.current.currentTime);
     }
   };
 
+  // Handler to get video duration when metadata loads
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
       setDuration(videoRef.current.duration);
     }
   };
 
+  // Calculate video progress percentage for display
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
@@ -110,7 +114,7 @@ export function ShowreelSection() {
       id="showreel"
       className="py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
     >
-      {/* Background texture */}
+      {/* Animated background texture with red accents */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 to-transparent" />
         <div className="absolute left-0 top-0 w-full h-full">
@@ -134,25 +138,26 @@ export function ShowreelSection() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* <-- KEY CHANGE: Use whileInView instead of the hook --> */}
+        {/* Animated title section with Russian text */}
         <motion.div
-          // ref={containerRef} <-- No longer needed
           initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }} // This triggers the animation
-          viewport={{ once: true}} // These are the options for whileInView
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true}}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16 space-y-8"
         >
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
             <span className="text-red-400">Шоу</span>рил
           </h2>
+          {/* Animated decorative line under title */}
           <motion.div
             className="w-32 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
             initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }} // Also use whileInView here
+            whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.5 }}
           />
+          {/* Russian subtitle with description */}
           <div className="max-w-3xl mx-auto space-y-4">
             <p className="text-xl font-cormorant italic text-gray-300 leading-relaxed">
               Пусть наша работа говорит сама за себя —
@@ -161,6 +166,7 @@ export function ShowreelSection() {
           </div>
         </motion.div>
 
+        {/* Main video container with controls */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -168,13 +174,15 @@ export function ShowreelSection() {
           transition={{ duration: 1, delay: 0.3 }}
           className="relative max-w-4xl mx-auto"
         >
+          {/* Video wrapper with responsive aspect ratio */}
           <div
             className="relative w-full rounded-2xl overflow-hidden bg-black border border-gray-800/50 group"
-            style={{ paddingTop: '56.25%' }} // 16:9 Aspect Ratio (9 / 16 * 100)
+            style={{ paddingTop: '56.25%' }}
           >
+            {/* Main video element with multiple format sources */}
             <video
               ref={videoRef}
-              className="absolute top-0 left-0 w-full h-full object-cover cursor-pointer" // Video fills the container
+              className="absolute top-0 left-0 w-full h-full object-cover cursor-pointer"
               loop
               playsInline
               muted={isMuted}
@@ -191,12 +199,13 @@ export function ShowreelSection() {
               Your browser does not support the video tag.
             </video>
 
-            {/* Pre-play overlay */}
+            {/* Overlay shown before video starts with play button */}
             <motion.div
               initial={{ opacity: 1 }}
               animate={{ opacity: hasStarted ? 0 : 1, transition: { duration: 0.5 } }}
               className={`absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm ${hasStarted ? 'pointer-events-none' : ''}`}
             >
+              {/* Main play button with hover animations */}
               <motion.button
                 onClick={handleInitialPlay}
                 className="relative mb-8"
@@ -204,6 +213,7 @@ export function ShowreelSection() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
+                {/* Play button circle with hover effects */}
                 <motion.div
                   className="w-24 h-24 border-2 border-red-400/50 rounded-full flex items-center justify-center"
                   whileHover={{
@@ -214,6 +224,7 @@ export function ShowreelSection() {
                 >
                   <Play size={32} className="text-red-400 ml-1" />
                 </motion.div>
+                {/* Animated ripple effect around play button */}
                 <motion.div
                   className="absolute inset-0 border-2 border-red-400 rounded-full"
                   animate={{
@@ -227,6 +238,7 @@ export function ShowreelSection() {
                   }}
                 />
               </motion.button>
+              {/* Video info text shown before play */}
               <div className="text-center space-y-3">
                 <p className="text-gray-400 font-mono text-sm">
                   1 минута нашего мира
@@ -237,13 +249,15 @@ export function ShowreelSection() {
               </div>
             </motion.div>
 
-            {/* Video controls */}
+            {/* Video control buttons overlay */}
             <motion.div
               className="absolute bottom-6 left-6 right-6 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
             >
+              {/* Left side controls: play/pause and mute */}
               <div className="flex items-center space-x-4">
+                {/* Play/pause toggle button */}
                 <motion.button
                   onClick={() => setIsPlaying(!isPlaying)}
                   className="w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
@@ -257,6 +271,7 @@ export function ShowreelSection() {
                   )}
                 </motion.button>
 
+                {/* Mute/unmute toggle button */}
                 <motion.button
                   onClick={() => setIsMuted(!isMuted)}
                   className="w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
@@ -271,12 +286,13 @@ export function ShowreelSection() {
                 </motion.button>
               </div>
 
+              {/* Video time display */}
               <div className="text-xs text-red-400/80 font-mono">
                 {formatTime(currentTime)} / {formatTime(duration)}
               </div>
             </motion.div>
 
-            {/* Progress bar */}
+            {/* Video progress bar at bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <motion.div
                 className="h-full bg-gradient-to-r from-red-500 to-red-400"
@@ -285,7 +301,7 @@ export function ShowreelSection() {
             </div>
           </div>
 
-          {/* Decorative elements */}
+          {/* Animated decorative corner elements */}
           <motion.div
             className="absolute -top-4 -right-4 w-8 h-8 border-2 border-red-400/30 transform rotate-45"
             animate={{ rotate: [45, 135, 45], scale: [1, 1.2, 1] }}
