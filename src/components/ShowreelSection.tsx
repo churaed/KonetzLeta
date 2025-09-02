@@ -9,22 +9,6 @@ import showreelMP4 from '../assets/video/showreel.mp4';
 import showreelWEBM from '../assets/video/showreel.webm';
 import showreelPoster from '../assets/images/showreel-poster.webp';
 
-// Custom hook to detect desktop devices for autoplay control
-const useIsDesktop = (breakpoint = 1024) => {
-    const [isDesktop, setIsDesktop] = useState(false);
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const checkDevice = () => {
-                const isDesktopDevice = window.innerWidth >= breakpoint;
-                setIsDesktop(isDesktopDevice);
-            };
-            checkDevice();
-            window.addEventListener('resize', checkDevice);
-            return () => window.removeEventListener('resize', checkDevice);
-        }
-    }, [breakpoint]);
-    return isDesktop;
-};
 
 // Helper function to format video time in MM:SS format
 const formatTime = (time: number): string => {
