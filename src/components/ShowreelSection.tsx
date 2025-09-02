@@ -37,8 +37,6 @@ const formatTime = (time: number): string => {
 };
 
 export function ShowreelSection() {
-  // Detect if user is on desktop for autoplay functionality
-  const isDesktop = useIsDesktop();
   // Reference to the video element for direct control
   const videoRef = useRef<HTMLVideoElement>(null);
   // State for video playback control
