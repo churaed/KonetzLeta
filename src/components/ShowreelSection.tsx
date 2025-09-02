@@ -1,12 +1,32 @@
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
-// Import video assets
+// Import video assets and a poster image
 import showreel720pMP4 from '../assets/video/showreel_720p.mp4';
 import showreel720pWEBM from '../assets/video/showreel_720p.webm';
 import showreelMP4 from '../assets/video/showreel.mp4';
 import showreelWEBM from '../assets/video/showreel.webm';
+import showreelPoster from '../assets/images/showreel-poster.webp';
+
+// <-- FIX: Renamed and adjusted breakpoint for clarity. Disables autoplay on mobile AND tablet.
+const useIsDesktop = (breakpoint = 1024) => {
+    const [isDesktop, setIsDesktop] = useState(false);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const checkDevice = () => {
+                const isDesktopDevice = window.innerWidth >= breakpoint;
+                // --- DEBUG ---
+                console.log(`[useIsDesktop] Window width: ${window.innerWidth}, Is Desktop: ${isDesktopDevice}`);
+                setIsDesktop(isDesktopDevice);
+            };
+            checkDevice();
+            window.addEventListener('resize', checkDevice);
+            return () => window.removeEventListener('resize', checkDevice);
+        }
+    }, [breakpoint]);
+    return isDesktop;
+};
 
 // Helper function to format time in MM:SS format
 const formatTime = (time: number): string => {
@@ -19,9 +39,10 @@ const formatTime = (time: number): string => {
 };
 
 export function ShowreelSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const isDesktop = useIsDesktop();
+  // const containerRef = useRef<HTMLDivElement>(null); <-- No longer needed
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-200px" });
+  // const isInView = useInView(containerRef, ...); <-- No longer needed
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -31,22 +52,32 @@ export function ShowreelSection() {
 
   // Effect to handle video playback based on isPlaying state
   useEffect(() => {
-    if (videoRef.current) {
+    const video = videoRef.current;
+    if (video) {
       if (isPlaying) {
-        videoRef.current.play();
+        // play() returns a promise. Handle potential browser rejection.
+        video.play().catch((error: any) => {
+          console.error("Video play failed:", error);
+          // If autoplay fails, pause the video state
+          setIsPlaying(false);
+        });
         if (!hasStarted) setHasStarted(true);
       } else {
-        videoRef.current.pause();
+        video.pause();
       }
     }
   }, [isPlaying, hasStarted]);
 
-  // Autoplay when the video comes into view
+  // <-- KEY CHANGE: The autoplay logic is now simplified
+  // It triggers when the component starts, but only on desktop.
+  // The `whileInView` will handle making it visible at the right time.
   useEffect(() => {
-    if (isInView && !hasStarted) {
-      setIsPlaying(true);
+    if (!hasStarted && isDesktop) {
+        // We set isPlaying to true, but it will only actually play
+        // once the component is visible and mounted.
+        setIsPlaying(true);
     }
-  }, [isInView, hasStarted]);
+  }, [hasStarted, isDesktop]);
 
   // Effect to handle muting
   useEffect(() => {
@@ -103,10 +134,12 @@ export function ShowreelSection() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* <-- KEY CHANGE: Use whileInView instead of the hook --> */}
         <motion.div
-          ref={containerRef}
+          // ref={containerRef} <-- No longer needed
           initial={{ opacity: 0, y: 100 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }} // This triggers the animation
+          viewport={{ once: true}} // These are the options for whileInView
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16 space-y-8"
         >
@@ -116,7 +149,8 @@ export function ShowreelSection() {
           <motion.div
             className="w-32 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
             initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
+            whileInView={{ scaleX: 1 }} // Also use whileInView here
+            viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.5 }}
           />
           <div className="max-w-3xl mx-auto space-y-4">
@@ -129,17 +163,23 @@ export function ShowreelSection() {
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.3 }}
           className="relative max-w-4xl mx-auto"
         >
-          <div className="aspect-video bg-black rounded-2xl overflow-hidden relative group border border-gray-800/50">
+          <div
+            className="relative w-full rounded-2xl overflow-hidden bg-black border border-gray-800/50 group"
+            style={{ paddingTop: '56.25%' }} // 16:9 Aspect Ratio (9 / 16 * 100)
+          >
             <video
               ref={videoRef}
-              className="w-full h-full object-cover cursor-pointer"
+              className="absolute top-0 left-0 w-full h-full object-cover cursor-pointer" // Video fills the container
               loop
               playsInline
               muted={isMuted}
+              poster={showreelPoster}
+              preload="metadata"
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
               onClick={() => setIsPlaying(!isPlaying)}
@@ -188,16 +228,11 @@ export function ShowreelSection() {
                 />
               </motion.button>
               <div className="text-center space-y-3">
-                <h3 className="text-2xl font-cormorant italic text-white">
-                  Лучшие работы 2024
-                </h3>
                 <p className="text-gray-400 font-mono text-sm">
-                  {duration > 0 ? `${Math.floor(duration / 60)} минуты нашего мира` : "Загрузка..."}
+                  1 минута нашего мира
                 </p>
                 <div className="flex items-center justify-center space-x-4 text-xs font-mono text-gray-500 mt-4">
-                  <span>Режиссёр: Александр К.</span>
-                  <span>•</span>
-                  <span>Оператор: Мария Л.</span>
+                  <span>Режиссёр: Мария С.</span>
                 </div>
               </div>
             </motion.div>
