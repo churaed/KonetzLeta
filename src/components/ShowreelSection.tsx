@@ -124,9 +124,6 @@ export function ShowreelSection() {
               Пусть наша работа говорит сама за себя —
               <br />в каждом кадре живёт история.
             </p>
-            <p className="text-sm font-mono text-gray-500 tracking-wide">
-              Нажмите для воспроизведения
-            </p>
           </div>
         </motion.div>
 
