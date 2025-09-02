@@ -176,7 +176,7 @@ export function ShowreelSection() {
         >
           {/* Video wrapper with responsive aspect ratio */}
           <div
-            className="relative w-full rounded-2xl overflow-hidden bg-black border border-gray-800/50 group"
+            className="relative w-full rounded-2xl overflow-hidden bg-black border border-gray-800/50"
             style={{ paddingTop: '56.25%' }}
           >
             {/* Main video element with multiple format sources */}
@@ -213,16 +213,16 @@ export function ShowreelSection() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
-                {/* Play button circle with hover effects */}
+                {/* Play button circle with hover effects and adaptive size */}
                 <motion.div
-                  className="w-24 h-24 border-2 border-red-400/50 rounded-full flex items-center justify-center"
+                  className="size-16 md:size-28 border-2 border-red-400/50 rounded-full flex items-center justify-center"
                   whileHover={{
                     borderColor: "rgba(239, 68, 68, 0.8)",
                     backgroundColor: "rgba(239, 68, 68, 0.1)",
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Play size={32} className="text-red-400 ml-1" />
+                  <Play className="size-6 md:size-12 text-red-400 ml-1" />
                 </motion.div>
                 {/* Animated ripple effect around play button */}
                 <motion.div
@@ -249,56 +249,62 @@ export function ShowreelSection() {
               </div>
             </motion.div>
 
-            {/* Video control buttons overlay */}
+            {/* Video control buttons overlay - now visible after start */}
             <motion.div
-              className="absolute bottom-6 left-6 right-6 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
+              className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 flex justify-between items-center"
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: hasStarted ? 0 : 10, opacity: hasStarted ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
               {/* Left side controls: play/pause and mute */}
-              <div className="flex items-center space-x-4">
-                {/* Play/pause toggle button */}
+              <div className="flex items-center space-x-2 md:space-x-3">
+                {/* Play/pause toggle button with adaptive size */}
                 <motion.button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
+                  className="size-9 md:size-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
                   whileHover={{ scale: 1.1, borderColor: "rgba(239, 68, 68, 0.8)" }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {isPlaying ? (
-                    <Pause size={16} className="text-red-400" />
+                    <Pause className="text-red-400 size-4 md:size-5" />
                   ) : (
-                    <Play size={16} className="text-red-400 ml-0.5" />
+                    <Play className="text-red-400 size-4 md:size-5 ml-0.5" />
                   )}
                 </motion.button>
 
-                {/* Mute/unmute toggle button */}
+                {/* Mute/unmute toggle button with adaptive size */}
                 <motion.button
                   onClick={() => setIsMuted(!isMuted)}
-                  className="w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
+                  className="size-9 md:size-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
                   whileHover={{ scale: 1.1, borderColor: "rgba(239, 68, 68, 0.8)" }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {isMuted ? (
-                    <VolumeX size={16} className="text-red-400" />
+                    <VolumeX className="text-red-400 size-4 md:size-5" />
                   ) : (
-                    <Volume2 size={16} className="text-red-400" />
+                    <Volume2 className="text-red-400 size-4 md:size-5" />
                   )}
                 </motion.button>
               </div>
 
-              {/* Video time display */}
-              <div className="text-xs text-red-400/80 font-mono">
+              {/* Video time display with adaptive text size */}
+              <div className="text-[10px] md:text-xs text-red-400/80 font-mono bg-black/50 backdrop-blur-sm px-2 py-1 rounded-md">
                 {formatTime(currentTime)} / {formatTime(duration)}
               </div>
             </motion.div>
 
-            {/* Video progress bar at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {/* Video progress bar at bottom - now visible after start */}
+            <motion.div 
+              className="absolute bottom-0 left-0 right-0 h-0.5 md:h-1 bg-black/30"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: hasStarted ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
               <motion.div
                 className="h-full bg-gradient-to-r from-red-500 to-red-400"
                 style={{ width: `${progress}%` }}
               />
-            </div>
+            </motion.div>
           </div>
 
           {/* Animated decorative corner elements */}
