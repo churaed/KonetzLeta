@@ -136,12 +136,13 @@ export function ShowreelSection() {
           <div className="aspect-video bg-black rounded-2xl overflow-hidden relative group border border-gray-800/50">
             <video
               ref={videoRef}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover cursor-pointer"
               loop
               playsInline
               muted={isMuted}
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
+              onClick={() => setIsPlaying(!isPlaying)}
             >
               <source src={showreel720pWEBM} type="video/webm" />
               <source src={showreel720pMP4} type="video/mp4" />
