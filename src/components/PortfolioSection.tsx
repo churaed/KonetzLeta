@@ -243,17 +243,16 @@ export function PortfolioSection() {
                   className="w-full h-full object-cover"
                 />
                 
-                {/* Overlay */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"
                   initial={{ opacity: 0.7 }}
                   animate={{ 
-                    opacity: hoveredItem === item.id ? 0.9 : 0.7 
+                    opacity: hoveredItem === item.id ? 0.95 : 0.7 
                   }}
                   transition={{ duration: 0.3 }}
                 />
 
-                {/* Awards */}
+                {/* Awards badge (top-left) */}
                 {item.awards && (
                   <motion.div
                     className="absolute top-4 left-4 flex items-center space-x-2"
@@ -262,7 +261,7 @@ export function PortfolioSection() {
                     transition={{ delay: 0.3 }}
                   >
                     <Award size={16} className="text-red-400" />
-                      <span className="text-xs font-mono text-red-400">Награды</span>
+                    {/* <span className="text-xs font-mono text-red-400">Награды</span> */}
                   </motion.div>
                 )}
 
@@ -280,16 +279,8 @@ export function PortfolioSection() {
                   </motion.div>
                 )}
 
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ 
-                      y: hoveredItem === item.id ? 0 : 10, 
-                      opacity: 1 
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
+                <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end h-full">
+                  <div> {/* Wrapper for bottom content */}
                     {/* Category and year */}
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-xs font-mono text-red-400 tracking-wider">
@@ -301,73 +292,67 @@ export function PortfolioSection() {
                       </div>
                     </div>
 
-                    {/* Title */}
                     <h3 className="text-xl md:text-2xl font-cormorant italic text-white mb-1 leading-tight">
                       {item.title}
                     </h3>
                     
-                    {/* Subtitle */}
                     <p className="text-sm font-mono text-gray-400 mb-3">
                       {item.subtitle}
                     </p>
 
-                    {/* Description */}
-                    <motion.p
-                      className="text-gray-300 text-sm font-mono leading-relaxed mb-4"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ 
-                        height: hoveredItem === item.id ? "auto" : 0,
-                        opacity: hoveredItem === item.id ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {item.description}
-                    </motion.p>
-
-                    {/* Awards list */}
-                    {item.awards && (
-                      <motion.div
-                        className="space-y-1 mb-4"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ 
-                          height: hoveredItem === item.id ? "auto" : 0,
-                          opacity: hoveredItem === item.id ? 1 : 0,
-                        }}
-                        transition={{ duration: 0.3, delay: 0.1 }}
-                      >
-                        {item.awards.map((award, awardIndex) => (
-                          <div key={awardIndex} className="flex items-center space-x-2">
-                            <div className="w-1 h-1 bg-red-400 rounded-full" />
-                            <span className="text-xs font-mono text-red-400">
-                              {award}
-                            </span>
-                          </div>
-                        ))}
-                      </motion.div>
-                    )}
-                  </motion.div>
-
-                  {/* Action button – only render if url/component exists */}
-                  {(item.url || item.component) && (
-                    <motion.a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-white hover:text-red-400 transition-colors"
-                      initial={{ y: 20, opacity: 0 }}
+                    {/* Collapsible content container */}
+                    <motion.div
+                      className="overflow-hidden"
+                      initial={{ height: 0 }}
                       animate={{
-                        y: hoveredItem === item.id ? 0 : 20,
-                        opacity: hoveredItem === item.id ? 1 : 0,
+                        height: hoveredItem === item.id ? 'auto' : 0,
                       }}
-                      transition={{ duration: 0.3, delay: 0.1 }}
-                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
                     >
-                      <span className="text-sm font-mono tracking-wide">Смотреть проект</span>
-                      <ExternalLink size={14} />
-                    </motion.a>
-                  )}
-                </div>
+                      {/* Description */}
+                      <p className="text-gray-300 text-sm font-mono leading-relaxed mb-4 pt-1">
+                        {item.description}
+                      </p>
 
+                      {/* Awards list with new header */}
+                      {item.awards && (
+                        <div className="mb-4">
+                          {/* NEW: Header that "echos" the top-left badge */}
+                          <div className="flex items-center space-x-2 mb-2">
+                            <Award size={14} className="text-red-400/80"/>
+                            <h4 className="text-sm font-mono text-white/80">Награды и фестивали</h4>
+                          </div>
+                          
+                          {/* CHANGED: List styling updated for clarity */}
+                          <div className="space-y-1 pl-1">
+                            {item.awards.map((award, awardIndex) => (
+                              <div key={awardIndex} className="flex items-center space-x-2">
+                                <div className="w-1.5 h-px bg-red-400" />
+                                <span className="text-xs font-mono text-red-400">
+                                  {award}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Action button */}
+                      {(item.url || item.component) && (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-2 text-white hover:text-red-400 transition-colors group/link mt-2"
+                        >
+                          <span className="text-sm font-mono tracking-wide">Смотреть проект</span>
+                          <ExternalLink size={14} className="transition-transform group-hover/link:translate-x-1" />
+                        </a>
+                      )}
+                    </motion.div>
+                  </div>
+                </div>
+                
                 {/* Decorative border */}
                 <motion.div
                   className="absolute inset-0 rounded-2xl"
