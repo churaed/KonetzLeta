@@ -70,7 +70,7 @@ const portfolioItems: PortfolioItem[] = [
     title: "«Бум Земли. Как это было»",
     subtitle: "Телеграм-канал и подкаст",
     category: "Продвижение",
-    year: "2024-",
+    year: "2024",
     description: "История и хроники создания первого уральского анимационного сериала «Бум Земли»",
     image: bumZemliKakEtoBylo,
     size: "medium",
