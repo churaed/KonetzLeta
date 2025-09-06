@@ -1,7 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Mail, Phone, MapPin, ArrowRight, Send, Heart, MessageCircle } from 'lucide-react';
-import { Button } from './ui/button';
+import { Mail, Phone, MapPin, Heart, MessageCircle } from 'lucide-react';
 
 // Contact section component
 export function ContactSection() {
