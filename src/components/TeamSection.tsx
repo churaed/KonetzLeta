@@ -6,16 +6,13 @@ import { InteractiveLogoGrid } from './InteractiveLogoGrid';
 
 import teamImg from '@/assets/images/team.webp'
 
-// Array of partner logos for display
-const partnerLogos = [
-  "/logos/logo1.svg", "/logos/logo2.svg", "/logos/logo3.svg", "/logos/logo4.svg",
-  "/logos/logo5.svg", "/logos/logo6.svg", "/logos/logo7.svg", "/logos/logo8.svg",
-  "/logos/logo9.svg", "/logos/logo10.svg", "/logos/logo11.svg", "/logos/logo12.svg",
-  "/logos/logo13.svg", "/logos/logo14.svg", "/logos/logo15.svg", "/logos/logo16.svg",
-  "/logos/logo17.svg", "/logos/logo18.svg", "/logos/logo19.svg", "/logos/logo20.svg",
-  "/logos/logo21.svg", "/logos/logo22.svg", "/logos/logo23.svg", "/logos/logo24.svg",
-];
+// --- The Vite Way to Import All Logos ---
+// This tells Vite to find all .png, .jpg, and .svg files in the awards directory.
+// `eager: true` makes it import them all at once, which is fine for this use case.
+const logoModules = import.meta.glob('@/assets/images/awards/**/*.{png,jpg,svg}', { eager: true });
 
+// This transforms the imported modules into a simple array of URLs.
+const partnerLogos = Object.values(logoModules).map((module: any) => module.default);
 
 // TeamSection component for displaying team information and partner logos
 export function TeamSection() {
