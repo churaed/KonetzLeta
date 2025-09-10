@@ -1,5 +1,5 @@
 import { HeroSection } from './components/HeroSection';
-import { AboutSection } from './components/AboutSection';
+import { TeamSection } from './components/TeamSection';
 import { ShowreelSection } from './components/ShowreelSection';
 import { PortfolioSection } from './components/PortfolioSection';
 import { ServicesSection } from './components/ServicesSection';
@@ -19,7 +19,7 @@ export default function App() {
 
       {/* Sections */}
       <HeroSection />
-      <AboutSection />
+      <TeamSection />
       <ShowreelSection />
       <PortfolioSection />
       <ServicesSection />
