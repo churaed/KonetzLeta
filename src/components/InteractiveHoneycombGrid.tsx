@@ -11,8 +11,8 @@ import {
 // Configuration for mouse interaction effects
 const LENS_CONFIG = {
   RADIUS: 100,        // Effect radius in pixels
-  MAX_SCALE: 1.5,     // Maximum logo scale on hover
-  MIN_SCALE: .4,       // Minimum logo scale when far from cursor
+  MAX_SCALE: 1.75,     // Maximum logo scale on hover
+  MIN_SCALE: .5,       // Minimum logo scale when far from cursor
 };
 
 // Individual logo component with interactive scaling based on mouse position
@@ -66,7 +66,7 @@ const LogoItem = memo(
         <motion.div
           className="absolute inset-0 bg-red-400 pointer-events-none"
           style={{
-            opacity: useTransform(easedProximity, [0, 1], [0, 0.6]), // e.g. max 90% tint            
+            opacity: useTransform(easedProximity, [0, 1], [0, 0.8]), // e.g. max 90% tint            
             WebkitMaskImage: `url(${logo})`,
             WebkitMaskRepeat: "no-repeat",
             WebkitMaskPosition: "center",

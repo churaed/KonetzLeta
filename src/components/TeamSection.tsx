@@ -80,7 +80,7 @@ export function TeamSection() {
           </motion.div>
 
           {/* Central team image */}
-          <motion.div variants={itemVariants} className="relative w-full max-w-4xl md:max-w-2xl lg:max-w-4xl group">
+          <motion.div variants={itemVariants} className="relative w-full max-w-4xl md:max-w-2xl lg:max-w-3xl group">
             <motion.img
               src={teamImg}
               alt="Команда"
@@ -94,8 +94,8 @@ export function TeamSection() {
           {/* Description text block with an avatar */}
           <motion.div variants={itemVariants} className="relative max-w-3xl">
              {/* Main descriptive paragraph */}
-             <p className="p-8 bg-gray-800/50 backdrop-blur-md border border-gray-700 rounded-lg text-center text-lg md:text-xl font-cormorant leading-relaxed text-gray-300 shadow-lg">
-                Текст-текст-текст, какие мы хорошенькие и пригоженькие и как весело с нами работать и вообще, мы суперопытные и талантливые. Поверьте нам на слово!
+             <p className="p-8 pl-7 bg-gray-800/50 backdrop-blur-md border border-gray-700 border-l-4 border-l-red-400 rounded-lg text-center text-lg md:text-xl font-cormorant leading-relaxed text-gray-300 shadow-lg">
+              Наша команда собралась из разных сфер: анимации, кино, музыки, литературы, художественного искусства, IT, театра. поэтому вы видите так много логотипов разных фестивалей, конкурсов, премий. мы участвовали в них, получали награды и призы. но работали не ради призов, а потому что знаем и любим своё дело. это правда. 
              </p>
           </motion.div>
 
