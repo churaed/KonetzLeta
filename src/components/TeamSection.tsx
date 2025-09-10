@@ -2,14 +2,16 @@
 import { motion, useInView } from 'motion/react';
 import { cubicBezier } from 'motion-utils';
 import { useRef } from 'react';
-import { InteractiveLogoGrid } from './InteractiveLogoGrid';
+
+// import { InteractiveLogoGrid } from './InteractiveLogoGrid';
+import { InteractiveHoneycombGrid } from './InteractiveHoneycombGrid';
 
 import teamImg from '@/assets/images/team.webp'
 
 // --- The Vite Way to Import All Logos ---
 // This tells Vite to find all .png, .jpg, and .svg files in the awards directory.
 // `eager: true` makes it import them all at once, which is fine for this use case.
-const logoModules = import.meta.glob('@/assets/images/awards/**/*.{png,jpg,svg}', { eager: true });
+const logoModules = import.meta.glob('@/assets/images/awards/**/*.{webp,png,jpg,svg}', { eager: true });
 
 // This transforms the imported modules into a simple array of URLs.
 const partnerLogos = Object.values(logoModules).map((module: any) => module.default);
@@ -97,7 +99,8 @@ export function TeamSection() {
              </p>
           </motion.div>
 
-          <InteractiveLogoGrid logos={partnerLogos} />
+          {/* <InteractiveLogoGrid logos={partnerLogos} /> */}
+          <InteractiveHoneycombGrid logos={partnerLogos} />
 
         </motion.div>
       </div>
