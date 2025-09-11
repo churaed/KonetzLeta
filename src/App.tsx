@@ -5,6 +5,7 @@ import { PortfolioSection } from './components/PortfolioSection';
 import { ServicesSection } from './components/ServicesSection';
 import { ContactSection } from './components/ContactSection';
 import { Navbar } from './components/Navbar';
+import { PrivacyNotice } from './components/PrivacyNotice';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
       <PortfolioSection />
       <ServicesSection />
       <ContactSection />
+      <PrivacyNotice />
 
       {/* <style jsx>{`
         .font-cormorant {
