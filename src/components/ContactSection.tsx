@@ -96,14 +96,9 @@ export function ContactSection() {
           {/* Introductory paragraph */}
           <div className="max-w-3xl mx-auto space-y-6">
             <p className="text-xl font-cormorant italic text-gray-300 leading-relaxed">
-              У вас есть идея? Мы готовы её оживить.
+              У вас есть идея?
               <br />
-              Расскажите нам о своём проекте — и мы найдём способ удивить.
-            </p>
-            
-            {/* Response time notice */}
-            <p className="text-sm font-mono text-gray-500 tracking-wide">
-              Обычно отвечаем в течение 24 часов
+              Мы поможем представить её вашей аудитории.
             </p>
           </div>
         </motion.div>

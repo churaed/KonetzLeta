@@ -198,9 +198,9 @@ export function PortfolioSection() {
           />
           
           <p className="text-xl font-cormorant italic text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Каждая работа — это диалог с времением,
+            Будем честны: мы любим придумывать, чем нам заняться.
             <br />
-            каждый проект — попытка остановить мгновение.
+            Посмотрите! Правда интересно?
           </p>
         </motion.div>
 
