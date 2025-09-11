@@ -1,12 +1,45 @@
 // src/components/InteractiveHoneycombGrid.tsx
 
-import { useRef, useEffect, memo } from 'react';
+import { useRef, useEffect, memo, useState } from 'react';
 import {
   motion,
   MotionValue,
   useMotionValue,
   useTransform,
 } from 'motion/react';
+
+// Hook to detect mobile devices
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+}
+
+// Mobile grid configuration
+const MOBILE_CONFIG = {
+  LOGOS_PER_ROW: 6,
+  ITEM_WIDTH: 64,
+  HORIZONTAL_SPACING: 0.7,
+  VERTICAL_SPACING: 0.6
+};
+
+// Desktop grid configuration
+const DESKTOP_CONFIG = {
+  LOGOS_PER_ROW: 8,
+  ITEM_WIDTH: 96,
+  HORIZONTAL_SPACING: 0.9,
+  VERTICAL_SPACING: 0.75
+};
 
 // Configuration for mouse interaction effects
 const LENS_CONFIG = {
@@ -15,7 +48,7 @@ const LENS_CONFIG = {
   MIN_SCALE: .5,       // Minimum logo scale when far from cursor
 };
 
-// Individual logo component with interactive scaling based on mouse position
+// Individual logo component for desktop only
 const LogoItem = memo(
   ({
     logo,
@@ -45,40 +78,36 @@ const LogoItem = memo(
 
     const scale = useTransform(distance, [0, LENS_CONFIG.RADIUS], [LENS_CONFIG.MAX_SCALE, LENS_CONFIG.MIN_SCALE], { clamp: true });
     const proximity = useTransform(distance, [0, LENS_CONFIG.RADIUS], [1, 0], { clamp: true });
-    // apply easing for gentler curve
-    const easedProximity = useTransform(proximity, (p) => Math.pow(p, 2)); // smoother
-
+    const easedProximity = useTransform(proximity, (p) => Math.pow(p, 2));
 
     return (
       <motion.div
         ref={logoRef}
-        className="w-[6rem] h-[6rem] relative"
+        className="w-full h-full relative"
         style={{ scale, zIndex: scale }}
       >
-        {/* Base logo (greyed out) */}
         <img
           src={logo}
           alt="Partner logo"
           className="w-full h-full object-contain pointer-events-none grayscale brightness-75"
         />
 
-        {/* Red tint overlay masked by the logo */}
         <motion.div
           className="absolute inset-0 bg-red-400 pointer-events-none"
           style={{
-            opacity: useTransform(easedProximity, [0, 1], [0, 0.8]), // e.g. max 90% tint            
+            opacity: useTransform(easedProximity, [0, 1], [0, 0.8]),
             WebkitMaskImage: `url(${logo})`,
             WebkitMaskRepeat: "no-repeat",
             WebkitMaskPosition: "center",
             WebkitMaskSize: "contain",
             WebkitMaskComposite: "source-in",
-            WebkitMask: "alpha",  // Safari needs this
+            WebkitMask: "alpha",
             maskImage: `url(${logo})`,
             maskRepeat: "no-repeat",
             maskPosition: "center",
             maskSize: "contain",
             maskType: "alpha",
-            }}
+          }}
         />
       </motion.div>
     );
@@ -96,15 +125,17 @@ interface InteractiveHoneycombGridProps {
 export const InteractiveHoneycombGrid = memo(function InteractiveHoneycombGrid({
   logos,
 }: InteractiveHoneycombGridProps) {
-  // Track mouse position (initialize offscreen)
+  const isMobile = useIsMobile();
   const mouseX = useMotionValue(Infinity);
   const mouseY = useMotionValue(Infinity);
 
   // Grid layout configuration
-  const itemWidth = 96;
-  const horizontalSpacing = itemWidth * 0.9;  // Horizontal gap between items
-  const verticalSpacing = itemWidth * 0.75;   // Vertical gap between rows
-  const logosPerRow = 8;                     // Logos per row
+  // Get grid configuration based on device
+  const config = isMobile ? MOBILE_CONFIG : DESKTOP_CONFIG;
+  const logosPerRow = config.LOGOS_PER_ROW;
+  const itemWidth = config.ITEM_WIDTH;
+  const horizontalSpacing = itemWidth * config.HORIZONTAL_SPACING;
+  const verticalSpacing = itemWidth * config.VERTICAL_SPACING;
 
   // Calculate number of rows needed
   const rowCount = Math.ceil(logos.length / logosPerRow);
@@ -115,14 +146,13 @@ export const InteractiveHoneycombGrid = memo(function InteractiveHoneycombGrid({
 
   return (
     <div
-      className="relative flex justify-center items-center overflow-visible pb-16"
+      className="relative flex justify-center items-center overflow-visible"
       // Update mouse position on move
-      onMouseMove={(e) => {
+      onMouseMove={isMobile ? undefined : (e) => {
         mouseX.set(e.pageX);
         mouseY.set(e.pageY);
       }}
-      // Reset mouse position when leaving grid
-      onMouseLeave={() => {
+      onMouseLeave={isMobile ? undefined : () => {
         mouseX.set(Infinity);
         mouseY.set(Infinity);
       }}
@@ -152,7 +182,20 @@ export const InteractiveHoneycombGrid = memo(function InteractiveHoneycombGrid({
                 height: `${itemWidth}px`
               }}
             >
-              <LogoItem logo={logo} mouseX={mouseX} mouseY={mouseY} />
+              {isMobile ? (
+                <img
+                  src={logo}
+                  alt="Partner logo"
+                  className="w-full h-full object-contain pointer-events-none grayscale brightness-75"
+                  style={{ transform: 'scale(0.6)' }}
+                />
+              ) : (
+                <LogoItem
+                  logo={logo}
+                  mouseX={mouseX}
+                  mouseY={mouseY}
+                />
+              )}
             </div>
           );
         })}
