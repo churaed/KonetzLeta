@@ -1,10 +1,15 @@
 import { motion, useInView, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
-import { Film, Tv, Microscope, Trophy, Building, Drama } from 'lucide-react';
+import PolnyMetryIcon from '@/assets/images/services/polny-metry.webp';
+import AnimationIcon from '@/assets/images/services/animation.webp';
+import ScienceIcon from '@/assets/images/services/science.webp';
+import TheatherIcon from '@/assets/images/services/theather.webp';
+import FestivalIcon from '@/assets/images/services/festival.webp';
+import MuseumIcon from '@/assets/images/services/museum.webp';
 
 // Define interface for service data structure
 interface Service {
-  icon: React.ElementType;
+  icon: string;
   title: string;
   description: string;
   audience: string;
@@ -15,7 +20,7 @@ interface Service {
 // Array of service objects with detailed information
 const services: Service[] = [
   {
-    icon: Film,
+    icon: PolnyMetryIcon,
     title: "Полные метры и сериалы",
     description: "Авторские анимационные проекты — от концепции до финального монтажа. Это точно интересно!",
     audience: "Дистрибьюторы",
@@ -23,7 +28,7 @@ const services: Service[] = [
     gradient: "from-red-500 to-pink-500"
   },
   {
-    icon: Tv,
+    icon: AnimationIcon,
     title: "Анимационные вставки и титры",
     description: "Атмосфера складывается из деталей. Титры, графические и анимационные эпизоды помогут объяснить сложные темы, пробудить и поддержать эмоции.",
     audience: "Кинопродюсеры",
@@ -31,7 +36,7 @@ const services: Service[] = [
     gradient: "from-orange-500 to-red-500"
   },
   {
-    icon: Microscope,
+    icon: ScienceIcon,
     title: "Научпоп анимация",
     description: "Превращаем сложные научные концепции в увлекательные визуальные истории. Наука становится искусством.",
     audience: "Хай-тек бизнес",
@@ -39,7 +44,7 @@ const services: Service[] = [
     gradient: "from-blue-500 to-cyan-500"
   },
   {
-    icon: Drama,
+    icon: TheatherIcon,
     title: "Анимационное сопровождение спектаклей",
     description: "Анимационный видеоарт для вашей театральной постановки. Это то, чего ждёт сцена.",
     audience: "Театральные продюсеры",
@@ -52,7 +57,7 @@ const services: Service[] = [
     gradient: "from-amber-500 to-orange-500"
   },
   {
-    icon: Trophy,
+    icon: FestivalIcon,
     title: "Фестивальные проекты",
     description: "От каждого фестиваля зрители ждут уникальной энергетики. Мы берёмся сделать анимационные заставки и полное визуальное оформление.",
     audience: "Организаторы фестивалей",
@@ -60,7 +65,7 @@ const services: Service[] = [
     gradient: "from-purple-500 to-blue-500"
   },
   {
-    icon: Building,
+    icon: MuseumIcon,
     title: "Музейные инсталляции",
     description: "Видеоэкспонаты, VR-инсталляции и комплексное видеобрендирование музеев и галерей. Искусство в диалоге с технологиями.",
     audience: "Директора музеев и галерей",
@@ -188,14 +193,14 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
         {/* Service icon with gradient background */}
         <motion.div
-          className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 relative`}
+          className={`w-16 h-12 rounded-xl bg-gradient-to-br ${service.gradient} mb-6 relative`}
           whileHover={{
             scale: 1.1,
             rotate: 5,
             transition: { type: "spring", stiffness: 400 }
           }}
         >
-          <service.icon size={28} className="text-white" />
+          <img src={service.icon} alt={`${service.title} icon`} className="w-full h-full object-cover" />
           <motion.div
             className="absolute inset-0 rounded-xl bg-white/20"
             initial={{ opacity: 0, scale: 0.8 }}
