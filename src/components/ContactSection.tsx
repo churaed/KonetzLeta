@@ -127,7 +127,7 @@ export function ContactSection() {
                 transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
               >
                 {/* Icon for the contact method */}
-                <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-500 to-red-600 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-400 to-red-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                   <method.icon size={18} className="text-white" />
                 </div>
                 {/* Label and value for the contact method */}
@@ -141,7 +141,7 @@ export function ContactSection() {
             ))}
           </div>
       
-          {/* Philosophy statement box */}
+          {/* // Philosophy statement box
           <motion.div
             className="p-6 rounded-lg bg-gradient-to-br from-gray-900/50 to-black/50 border border-red-400/20"
             // Animation for the philosophy box
@@ -149,20 +149,19 @@ export function ContactSection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 1 }}
           >
-            {/* Philosophy title */}
             <div className="flex items-center space-x-3 mb-4">
               <Heart size={20} className="text-red-400" />
               <h4 className="text-lg font-cormorant italic text-white">
                 Наша философия
               </h4>
             </div>
-            {/* Philosophy text */}
+
             <p className="text-gray-400 font-mono text-sm leading-relaxed">
               «Панк жив, искусство вечно» — мы верим, что каждый проект должен
               нести в себе частичку бунтарского духа и художественной правды.
               Технологии служат искусству, а не наоборот.
             </p>
-          </motion.div>
+          </motion.div> */}
       
           {/* Social media preview text */}
           <motion.div
