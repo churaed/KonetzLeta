@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HOVER_DELAY = 600; // ms
 
@@ -107,9 +108,11 @@ export function Navbar() {
 
   // Add this new function inside your Navbar component
   const handleMobileNavClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     // Use a small delay to close the menu.
@@ -120,8 +123,10 @@ export function Navbar() {
   };
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsMenuOpen(false);
   };
 
@@ -135,7 +140,7 @@ export function Navbar() {
         <motion.div
           className="fixed top-0 left-1/2 transform -translate-x-1/2 z-40 hidden lg:block"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ 
+          animate={{
             opacity: isHovering ? 1 : 0,
             y: isHovering ? 5 : -20
           }}
@@ -178,15 +183,20 @@ export function Navbar() {
 
           {/* Desktop Navigation - Centered nav items with responsive spacing */}
             <div className="
-              hidden lg:flex items-center justify-center 
+              hidden lg:flex items-center justify-center
               absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
               gap-x-6 md:gap-x-8 lg:gap-x-12 xl:gap-x-16
             ">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
-                onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
+                to={item.href}
+                onClick={(e) => {
+                  if (item.href.startsWith('#')) {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }
+                }}
                 className="group relative text-sm font-mono tracking-wider text-white/80 hover:text-white transition-colors duration-300 whitespace-nowrap"
               >
                 {/* This container moves up on hover to keep the whole block centered */}
@@ -200,11 +210,11 @@ export function Navbar() {
                     {item.subtitle}
                   </span>
                 </div>
-              </a>
+              </Link>
             ))}
-          </div>
+            </div>
 
-         
+           
         </div>
 
         {/* Mobile Navigation */}
@@ -222,25 +232,28 @@ export function Navbar() {
         >
           <div className="bg-black/95 backdrop-blur-md px-6 py-4 space-y-4 border-t border-white/10">
             {navItems.map((item, index) => (
-              <motion.button
+              <Link
                 key={item.name}
-                // V-- CHANGE THIS LINE --V
+                to={item.href}
                 onClick={() => handleMobileNavClick(item.href)}
                 className="block w-full text-left text-sm font-mono tracking-wider group transition-colors duration-300"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{
-                  opacity: isMenuOpen ? 1 : 0,
-                  x: isMenuOpen ? 0 : -20,
-                }}
-                transition={{
-                  duration: 0.4,
-                  delay: isMenuOpen ? index * 0.05 : 0,
-                  ease: [0.4, 0.0, 0.2, 1],
-                }}
               >
-                <span className="text-white/80 group-hover:text-white">{item.name}</span>
-                <span className="text-red-400/80 ml-2 group-hover:text-red-400">{item.subtitle}</span>
-              </motion.button>
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.05,
+                    ease: [0.4, 0.0, 0.2, 1],
+                  }}
+                >
+                  <span className="text-white/80 group-hover:text-white">{item.name}</span>
+                  <span className="text-red-400/80 ml-2 group-hover:text-red-400">{item.subtitle}</span>
+                </motion.span>
+              </Link>
             ))}
           </div>
         </motion.div>
