@@ -179,39 +179,22 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         transition: { duration: 0.3, ease: "easeOut" }
       }}
     >
-      <div className="relative p-8 rounded-2xl bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-sm border border-gray-800/50 h-full flex flex-col">
-        {/* Gradient border effect that appears on hover */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      <div className="relative p-8 rounded-2xl bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-sm border border-gray-800/50 h-full flex flex-col overflow-hidden">
+        {/* Background pictogram in top-left, 4:3 aspect, ~1/4 coverage, with transparency */}
+        <div
+          className="absolute top-1/25 left-1/25 w-3/4 aspect-[4/3] z-0"
           style={{
-            background: `linear-gradient(135deg, transparent, rgba(248, 113, 113, 0.3), transparent)`,
-            padding: "1px",
-            mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-            maskComposite: "subtract",
+            backgroundImage: `url(${service.icon})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.5
           }}
         />
 
-        {/* Service icon with gradient background */}
-        <motion.div
-          className={`w-32 h-24 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 relative`}
-          whileHover={{
-            scale: 1.1,
-            rotate: 5,
-            transition: { type: "spring", stiffness: 400 }
-          }}
-        >
-          <img src={service.icon} alt={`${service.title} icon`} className="w-full h-full object-cover" />
-          <motion.div
-            className="absolute inset-0 rounded-xl bg-white/20"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileHover={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-          />
-        </motion.div>
-
         {/* Card content with title, description, audience, and examples */}
         <motion.div
-          className="flex-1 flex flex-col"
+          className="flex-1 flex flex-col relative z-10 pt-8"  // Add some top padding to space from background
           initial={{ opacity: 0, y: 20 }}
           animate={cardInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
