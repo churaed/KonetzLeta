@@ -173,7 +173,10 @@ export function ContactSection() {
           >
             <p className="text-sm font-mono text-gray-500 italic leading-relaxed">
               "Конец лета" — студия авторской коммерческой анимации
+              <br />
+              ООО “Конец лета” ИНН: 6679179711 ОГРН: 1246600054601
             </p>
+
           </motion.div>
         </motion.div>
 
