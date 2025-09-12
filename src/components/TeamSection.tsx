@@ -3,7 +3,6 @@ import { motion, useInView } from 'motion/react';
 import { cubicBezier } from 'motion-utils';
 import { useRef } from 'react';
 
-// import { InteractiveLogoGrid } from './InteractiveLogoGrid';
 import { InteractiveHoneycombGrid } from './InteractiveHoneycombGrid';
 
 import teamImg from '@/assets/images/team.webp'
@@ -95,7 +94,14 @@ export function TeamSection() {
           <motion.div variants={itemVariants} className="relative max-w-3xl">
              {/* Main descriptive paragraph */}
              <p className="p-8 pl-7 bg-gray-800/50 backdrop-blur-md border border-gray-700 border-l-4 border-l-red-400 rounded-lg text-center text-lg md:text-xl font-cormorant leading-relaxed text-gray-300 shadow-lg">
-              Наша команда собралась из разных сфер: анимации, кино, музыки, литературы, художественного искусства, IT, театра. поэтому вы видите так много логотипов разных фестивалей, конкурсов, премий. мы участвовали в них, получали награды и призы. но работали не ради призов, а потому что знаем и любим своё дело. это правда. 
+              Наша команда собралась из разных сфер: 
+              <br />
+              Анимации, Кино, Музыки, Литературы, Художественного Искусства, IT, Театра. 
+              <br />
+              Поэтому вы видите так много логотипов разных фестивалей, конкурсов, премий. 
+              <br />
+              Мы участвовали в них, получали награды и призы. Но работали не ради призов, а потому что знаем и любим своё дело. 
+              Это правда. 
              </p>
           </motion.div>
 
