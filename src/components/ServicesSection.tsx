@@ -193,7 +193,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
         {/* Service icon with gradient background */}
         <motion.div
-          className={`w-16 h-12 rounded-xl bg-gradient-to-br ${service.gradient} mb-6 relative`}
+          className={`w-32 h-24 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 relative`}
           whileHover={{
             scale: 1.1,
             rotate: 5,
