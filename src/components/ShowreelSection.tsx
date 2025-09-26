@@ -62,7 +62,7 @@ export function ShowreelSection() {
 
   // Handler for initial video play interaction
   const handleInitialPlay = () => {
-    setIsMuted(false);
+    setIsMuted(true);
     setIsPlaying(true);
   };
 
