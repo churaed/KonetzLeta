@@ -1,0 +1,269 @@
+{
+    "navbar": {
+        "start": "Start",
+        "start_subtitle": "of Summer",
+        "about": "About Us",
+        "about_subtitle": "And our Garden",
+        "showreel": "Showreel",
+        "showreel_subtitle": "of New Growth",
+        "projects": "Projects",
+        "projects_subtitle": "and Preserves",
+        "services": "Services",
+        "services_subtitle": "and Products",
+        "contact": "Contact",
+        "contact_subtitle": "us",
+        "end": "End",
+        "end_subtitle": "of Summer"
+    },
+    "hero": {
+        "title_part1": "End",
+        "title_part2": "of Summer",
+        "subtitle": "Independent commercial animation studio",
+        "scroll_down": "See more"
+    },
+    "footer": {
+        "privacy_policy": "Privacy Policy"
+    },
+    "about": {
+        "title_part1": "About",
+        "title_part2": "Us",
+        "philosophy": "We create animation where technology meets heart,\nwhere every frame is a breath between the past and the future.",
+        "innovation": {
+            "title": "Innovation",
+            "description": "Bold projects require bold solutions. We are not afraid to experiment with form and content."
+        },
+        "technology": {
+            "title": "Technology",
+            "description": "From classic hand-drawn animation to VR — we master the full spectrum of modern tools."
+        },
+        "soul": {
+            "title": "Soul",
+            "description": "Behind every pixel lies a human story. We don't just animate objects — we bring feelings to life."
+        },
+        "haiku": {
+            "line1": "Frame by frame —",
+            "line2": "time turns to eternity,",
+            "line3": "motion becomes poetry."
+        },
+        "stats": {
+            "projects": "Projects",
+            "years": "Years of experience",
+            "ideas": "Ideas",
+            "passion": "Passion"
+        }
+    },
+    "contact": {
+        "title_part1": "Contact",
+        "title_part2": "us",
+        "intro": "Have an idea?\nWe'll help present it to your audience.",
+        "email": "Email",
+        "whatsapp": "WhatsApp",
+        "phone": "Phone",
+        "studio": "Studio",
+        "studio_address": "Yekaterinburg, Russia",
+        "legal_info": "\"End of Summer\" — independent commercial animation studio\nLLC \"End of Summer\" INN: 6679179711 OGRN: 1246600054601"
+    },
+    "portfolio": {
+        "title": "Projects",
+        "intro": "Let's be honest: we love inventing things to do.\nLook! Isn't it interesting?",
+        "awards_badge": "Awards",
+        "awards_title": "Awards and festivals",
+        "watch_project": "Watch project",
+        "items": {
+            "peizazh": {
+                "title": "Landscape Awaiting",
+                "subtitle": "Documentary animation",
+                "category": "Short film",
+                "description": "A study of the author's anxiety through walks on the island of Sviyazhsk",
+                "awards": [
+                    "Rudnik Festival"
+                ]
+            },
+            "mify": {
+                "title": "Animation inserts and titles for A. Fedorchenko's film \"Myths about Hephaestus, God and the Construction Brigade\"",
+                "subtitle": "Feature documentary film",
+                "category": "Animation inserts",
+                "description": "Animated stories about the life of the god Hephaestus, told through badges, drawings, and patches on a construction brigade jacket."
+            },
+            "strashnyi": {
+                "title": "Scary City",
+                "subtitle": "Documentary animation",
+                "category": "Short animated film",
+                "description": "Immersive animation unfolding before the wheels of a night tram. Three scary stories that happened to three different characters in the city of Yekaterinburg."
+            },
+            "bum": {
+                "title": "\"Earth Boom: How It Began\"",
+                "subtitle": "Telegram channel and podcast",
+                "category": "Promotion",
+                "description": "History and chronicles of the creation of the first Ural animated series \"Earth Boom\""
+            },
+            "gospodin": {
+                "title": "Animation inserts for E. Tukhareli's film \"Mr. Great\"",
+                "subtitle": "Feature documentary film",
+                "category": "Animation inserts",
+                "description": "Animated chronicle illustrations tell the history of the Novgorod Museum Complex and its transformations with the arrival of a new director."
+            },
+            "blokadnaia": {
+                "title": "Development of animation technology for A. Fedorchenko's project \"Blockade Mosaic\"",
+                "subtitle": "Feature film",
+                "category": "Animation inserts",
+                "description": "Telling blockade stories with the help of living volumetric sculptures made of mosaic smalt"
+            },
+            "mechty": {
+                "title": "Dreams of Old Age",
+                "subtitle": "Laboratory, web series, joy of life",
+                "category": "Sociocultural project",
+                "description": "Animated shorts from the life of two elderly neighbors. We would like to remind elderly people, and ourselves at the same time, how to enjoy moments, feel the present, rejoice in what is, and not grieve for what is already gone and lost."
+            },
+            "spiachka": {
+                "title": "Hibernation",
+                "subtitle": "Fantasy for teenagers",
+                "category": "Feature animated film",
+                "description": "A parkour-loving prankster, the forest mouse Sonya, who considers sleep the most boring activity in the world, falls into hibernation against her will and travels through the world of other people's dreams in search of a way out and herself"
+            },
+            "kapi": {
+                "title": "Capi and Tapi",
+                "subtitle": "Plush adventures in the Amazon jungle",
+                "category": "Animated series",
+                "description": "Two friends—Capybara and Tapir—along with their fierce companion Jaguar, make the impossible possible every day."
+            },
+            "drakon": {
+                "title": "Ordinary Dragon",
+                "subtitle": "Don't splash ketchup on my tapestry.",
+                "category": "Animated series",
+                "description": "A very proper dragon meets a very improper royal family."
+            },
+            "chto": {
+                "title": "What am I doing here?",
+                "subtitle": "A docu-animated comedy",
+                "category": "Feature film",
+                "description": "Two girls decide to conquer the cinema in the most unobvious way."
+            }
+        }
+    },
+    "services": {
+        "title": "Services",
+        "intro": "Every project is a dialogue between the artist and the viewer,\nbetween technology and soul, between the idea and its embodiment.",
+        "items": {
+            "polny": {
+                "title": "Feature films and series",
+                "description": "Original animation projects — from concept to final cut. It's definitely interesting!",
+                "audience": "Distributors",
+                "examples": [
+                    "Feature films",
+                    "TV series",
+                    "Web series",
+                    "Author cinema"
+                ]
+            },
+            "animation": {
+                "title": "Animation inserts and titles",
+                "description": "Atmosphere is made up of details. Titles, graphic and animation episodes will help explain complex topics, awaken and support emotions.",
+                "audience": "Film producers",
+                "examples": [
+                    "Visual effects",
+                    "Motion graphics",
+                    "Opening/Closing titles",
+                    "Fantasy scenes",
+                    "Animadoc"
+                ]
+            },
+            "science": {
+                "title": "Science-explainer animation",
+                "description": "We turn complex scientific concepts into fascinating visual stories. Science becomes art.",
+                "audience": "High-tech business",
+                "examples": [
+                    "Educational films",
+                    "Corporate presentations",
+                    "Technical visualizations",
+                    "Product demos"
+                ]
+            },
+            "theater": {
+                "title": "Animation support for performances",
+                "description": "Animated video art for your theatrical production. This is what the stage is waiting for.",
+                "audience": "Theater producers",
+                "examples": [
+                    "Animated characters",
+                    "Animated backgrounds",
+                    "Animated scenes",
+                    "Visual special effects"
+                ]
+            },
+            "festival": {
+                "title": "Festival projects",
+                "description": "Viewers expect unique energy from every festival. We undertake to make animated screensavers and full visual design.",
+                "audience": "Festival organizers",
+                "examples": [
+                    "Festival screensavers",
+                    "Opening ceremonies",
+                    "Nomination videos",
+                    "Event branding"
+                ]
+            },
+            "museum": {
+                "title": "Museum installations",
+                "description": "Video exhibits, VR installations and complex video branding of museums and galleries. Art in dialogue with technology.",
+                "audience": "Museum and gallery directors",
+                "examples": [
+                    "VR installations",
+                    "Video exhibits",
+                    "Museum branding",
+                    "Interactive exhibitions"
+                ]
+            }
+        }
+    },
+    "showreel": {
+        "title_part1": "Show",
+        "title_part2": "reel",
+        "subtitle": "Let our work speak for itself —\na story lives in every frame.",
+        "video_info": "1 minute of our world",
+        "director": "Director: Maria S."
+    },
+    "team": {
+        "title_part1": "About",
+        "title_part2": "Us",
+        "description": "Our team gathered from different spheres:\nAnimation, Film, Music, Literature, Fine Arts, IT, Theater.\nThat's why you see so many logos of different festivals, competitions, awards.\nWe participated in them, received awards and prizes. But we worked not for prizes, but because we know and love our business.\nIt's true."
+    },
+    "privacy_notice": {
+        "text_desktop": "We do not use cookies and we do not collect any personal data.",
+        "text_mobile": "We do not collect your data.",
+        "dismiss": "Thanks"
+    },
+    "privacy_page": {
+        "title": "Personal Data Processing Policy",
+        "back_home": "Back to Home",
+        "sections": {
+            "general": {
+                "title": "General Provisions",
+                "p1": "This Policy determines the procedure for processing and protecting personal data that may be processed when using the site endofsummer.fun.",
+                "p2": "The operator of personal data is LLC \"End of Summer\", OGRN 1246600054601, INN 6679179711"
+            },
+            "data": {
+                "title": "Personal data we may receive",
+                "p1": "We do not collect and process user personal data on the site.",
+                "p2": "Technical data may be automatically recorded: IP address, browser information, date and time of access. The specified data is processed automatically by the hosting provider GitHub Pages solely for the purpose of functioning and ensuring the security of the site."
+            },
+            "purposes": {
+                "title": "Processing purposes",
+                "p1": "Technical data is used for:",
+                "li1": "maintaining site operability;",
+                "li2": "protection against unauthorized actions."
+            },
+            "transfer": {
+                "title": "Transfer to third parties",
+                "p1": "We do not transfer personal data to third parties. Technical information is processed by the hosting provider GitHub."
+            },
+            "storage": {
+                "title": "Data storage and protection",
+                "p1": "Technical data is stored for a limited time in server logs and is protected by means provided by the hosting provider."
+            },
+            "contact": {
+                "title": "Contact information",
+                "p1": "For questions related to the processing of personal data, you can contact:",
+                "p2": "E-mail: konetzleta@gmail.com"
+            }
+        }
+    }
+}

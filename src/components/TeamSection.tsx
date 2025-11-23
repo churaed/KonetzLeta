@@ -2,8 +2,9 @@
 import { motion, useInView } from 'motion/react';
 import { cubicBezier } from 'motion-utils';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { InteractiveHoneycombGrid } from './InteractiveHoneycombGrid';
+import { InteractiveLogoGrid } from './InteractiveLogoGrid';
 
 import teamImg from '@/assets/images/team.webp'
 
@@ -17,6 +18,7 @@ const partnerLogos = Object.values(logoModules).map((module: any) => module.defa
 
 // TeamSection component for displaying team information and partner logos
 export function TeamSection() {
+  const { t } = useTranslation();
   // TYPE SAFETY: Explicitly type the ref for better code analysis
   const ref = useRef<HTMLDivElement>(null);
   // Hook to determine if the component is in view for animation triggering
@@ -66,8 +68,8 @@ export function TeamSection() {
         >
           {/* Section headline */}
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-5xl md:text-7xl font-cormorant italic text-white leading-tight">
-              О <span className="text-red-400">Нас</span> {/* "About Us" in Russian */}
+            <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
+              {t('team.title_part1')} <span className="text-red-400">{t('team.title_part2')}</span>
             </h2>
             {/* Animated decorative divider */}
             <motion.div
@@ -92,21 +94,14 @@ export function TeamSection() {
 
           {/* Description text block with an avatar */}
           <motion.div variants={itemVariants} className="relative max-w-3xl">
-             {/* Main descriptive paragraph */}
-             <p className="p-8 pl-7 bg-gray-800/50 backdrop-blur-md border border-gray-700 border-l-4 border-l-red-400 rounded-lg text-center text-lg md:text-xl font-cormorant leading-relaxed text-gray-300 shadow-lg">
-              Наша команда собралась из разных сфер: 
-              <br />
-              Анимации, Кино, Музыки, Литературы, Художественного Искусства, IT, Театра. 
-              <br />
-              Поэтому вы видите так много логотипов разных фестивалей, конкурсов, премий. 
-              <br />
-              Мы участвовали в них, получали награды и призы. Но работали не ради призов, а потому что знаем и любим своё дело. 
-              Это правда. 
-             </p>
+            {/* Main descriptive paragraph */}
+            <p className="text-xl font-cormorant italic text-gray-300 max-w-4xl mx-auto leading-relaxed whitespace-pre-line">
+              {t('team.description')}
+            </p>
           </motion.div>
 
           {/* <InteractiveLogoGrid logos={partnerLogos} /> */}
-          <InteractiveHoneycombGrid logos={partnerLogos} />
+          <InteractiveLogoGrid logos={partnerLogos} />
 
         </motion.div>
       </div>

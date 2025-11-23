@@ -1,6 +1,7 @@
 import { motion, useInView } from 'motion/react';
 import { useRef, useState } from 'react';
 import { ExternalLink, Play, Award, Calendar } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 import mechtyOStarosti from '@/assets/images/portfolio/mechty-o-starosti.webp'
@@ -30,135 +31,136 @@ interface PortfolioItem {
   component?: React.ReactNode;
 }
 
-const portfolioItems: PortfolioItem[] = [
-  {
-    id: 5,
-    title: "Пейзаж с ожиданием",
-    subtitle: "Документальная анимация",
-    category: "Короткометражный фильм",
-    year: "2025",
-    description: "Исследование тревожности автора посредством прогулок по острову Свияжск",
-    image: peizazhSOzhidaniem,
-    size: "medium",
-    isVideo: false,
-    awards: ["Фестиваль Рудник"],
-  },
-  {
-    id: 10,
-    title: "Анимационные вставки и титры для фильма А. Федорченко «Мифы о Гефесте, Боге и Стройотряде»",
-    subtitle: "Полнометражный документальный фильм",
-    category: "Анимационные вставки",
-    year: "2025",
-    description: "Анимационные истории о жизни Гефеста-бога, рассказанные с помощью значков, рисунков и нашивок на стройотрядовской спецовке - целинке.",
-    image: mifyOGefesteBogeIStroiotriade,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 20,
-    title: "Страшный город",
-    subtitle: "Документальная анимация",
-    category: "Короткометражный анимационный фильм",
-    year: "2024",
-    description: "Иммерсивная анимация, разворачивающаяся перед колесами ночного трамвая. Три страшные истории, которые случились с тремя разными героями в городе Екатеринбурге.",
-    image: strashnyiGorod,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 30,
-    title: "«Бум Земли. Как это было»",
-    subtitle: "Телеграм-канал и подкаст",
-    category: "Продвижение",
-    year: "2024",
-    description: "История и хроники создания первого уральского анимационного сериала «Бум Земли»",
-    image: bumZemliKakEtoBylo,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 40,
-    title: "Анимационные вставки в фильм Э.Тухарели «Господин Великий»",
-    subtitle: "Полнометражный документальный фильм",
-    category: "Анимационные вставки",
-    year: "2024",
-    description: "Ожившие летописные иллюстрации повествуют об истории становления Новгородского музейного комплекса и его преобразований в связи с приходом нового директора.",
-    image: gospodinVelikii,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 50,
-    title: "Разработка анимационной технологии для проекта А. Федорченко «Блокадная мозаика»",
-    subtitle: "Полнометражный игровой фильм",
-    category: "Анимационные вставки",
-    year: "2024",
-    description: "Рассказывание блокадных историй с помощью оживших объемных скульптур из мозаичной смальты",
-    image: blokadnaiaMozaika,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 60,
-    title: "Мечты о старости",
-    subtitle: "Лаборатория, веб-сериал, радость жизни",
-    category: "Социокультурный проект",
-    year: "",
-    description: "Анимационные шортсы из жизни двух пожилых соседей. Мы хотели бы напомнить пожилым людям, а заодно и самим себе, как получать удовольствие от мгновений, чувствовать настоящее, радоваться тому, что есть, и не скорбеть о том, что уже ушло и потеряно.",
-    image: mechtyOStarosti,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 70,
-    title: "Спячка",
-    subtitle: "Фэнтези для подростков",
-    category: "Полнометражный анимационный фильм",
-    year: "",
-    description: "Паркурщица и пранкерша, лесная мышка Соня, считающая сон самым скучным занятием на свете, впадает в спячку против своей воли и путешествует по миру чужих сновидений в поисках выхода и себя",
-    image: spiachka,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 80,
-    title: "Капи и Тапи",
-    subtitle: "Плюшевые приключения в дебрях Амазонки",
-    category: "Анимационный сериал",
-    year: "",
-    description: "Две подружки Капибара и Тапир вместе с хищным другом Ягуаром каждый день делают невозможное возможным.",
-    image: kapiITapi,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 90,
-    title: "Обыкновенный дракон",
-    subtitle: "Не брызгай кетчупом на мой гобелен .",
-    category: "Анимационный сериал",
-    year: "",
-    description: "Очень правильный дракон знакомится с очень неправильной королевской семьей.",
-    image: obyknovennyiDrakon,
-    size: "medium",
-    isVideo: false,
-  },
-  {
-    id: 100,
-    title: "Что я здесь делаю?",
-    subtitle: "Докуменотально-анимационная комедия",
-    category: "Полнометражный фильм",
-    year: "",
-    description: "Две девушки решают покорить кинематограф самым неочевидным способом.",
-    image: chtoIaZdesDelaiu,
-    size: "medium",
-    isVideo: false,
-  }
-];
-
 export function PortfolioSection() {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+
+  const portfolioItems: PortfolioItem[] = [
+    {
+      id: 5,
+      title: t('portfolio.items.peizazh.title'),
+      subtitle: t('portfolio.items.peizazh.subtitle'),
+      category: t('portfolio.items.peizazh.category'),
+      year: "2025",
+      description: t('portfolio.items.peizazh.description'),
+      image: peizazhSOzhidaniem,
+      size: "medium",
+      isVideo: false,
+      awards: t('portfolio.items.peizazh.awards', { returnObjects: true }) as string[],
+    },
+    {
+      id: 10,
+      title: t('portfolio.items.mify.title'),
+      subtitle: t('portfolio.items.mify.subtitle'),
+      category: t('portfolio.items.mify.category'),
+      year: "2025",
+      description: t('portfolio.items.mify.description'),
+      image: mifyOGefesteBogeIStroiotriade,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 20,
+      title: t('portfolio.items.strashnyi.title'),
+      subtitle: t('portfolio.items.strashnyi.subtitle'),
+      category: t('portfolio.items.strashnyi.category'),
+      year: "2024",
+      description: t('portfolio.items.strashnyi.description'),
+      image: strashnyiGorod,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 30,
+      title: t('portfolio.items.bum.title'),
+      subtitle: t('portfolio.items.bum.subtitle'),
+      category: t('portfolio.items.bum.category'),
+      year: "2024",
+      description: t('portfolio.items.bum.description'),
+      image: bumZemliKakEtoBylo,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 40,
+      title: t('portfolio.items.gospodin.title'),
+      subtitle: t('portfolio.items.gospodin.subtitle'),
+      category: t('portfolio.items.gospodin.category'),
+      year: "2024",
+      description: t('portfolio.items.gospodin.description'),
+      image: gospodinVelikii,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 50,
+      title: t('portfolio.items.blokadnaia.title'),
+      subtitle: t('portfolio.items.blokadnaia.subtitle'),
+      category: t('portfolio.items.blokadnaia.category'),
+      year: "2024",
+      description: t('portfolio.items.blokadnaia.description'),
+      image: blokadnaiaMozaika,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 60,
+      title: t('portfolio.items.mechty.title'),
+      subtitle: t('portfolio.items.mechty.subtitle'),
+      category: t('portfolio.items.mechty.category'),
+      year: "",
+      description: t('portfolio.items.mechty.description'),
+      image: mechtyOStarosti,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 70,
+      title: t('portfolio.items.spiachka.title'),
+      subtitle: t('portfolio.items.spiachka.subtitle'),
+      category: t('portfolio.items.spiachka.category'),
+      year: "",
+      description: t('portfolio.items.spiachka.description'),
+      image: spiachka,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 80,
+      title: t('portfolio.items.kapi.title'),
+      subtitle: t('portfolio.items.kapi.subtitle'),
+      category: t('portfolio.items.kapi.category'),
+      year: "",
+      description: t('portfolio.items.kapi.description'),
+      image: kapiITapi,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 90,
+      title: t('portfolio.items.drakon.title'),
+      subtitle: t('portfolio.items.drakon.subtitle'),
+      category: t('portfolio.items.drakon.category'),
+      year: "",
+      description: t('portfolio.items.drakon.description'),
+      image: obyknovennyiDrakon,
+      size: "medium",
+      isVideo: false,
+    },
+    {
+      id: 100,
+      title: t('portfolio.items.chto.title'),
+      subtitle: t('portfolio.items.chto.subtitle'),
+      category: t('portfolio.items.chto.category'),
+      year: "",
+      description: t('portfolio.items.chto.description'),
+      image: chtoIaZdesDelaiu,
+      size: "medium",
+      isVideo: false,
+    }
+  ];
 
   const getSizeClasses = (size: string) => {
     switch (size) {
@@ -187,20 +189,18 @@ export function PortfolioSection() {
           className="text-center mb-20 space-y-8"
         >
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            Проекты
+            {t('portfolio.title')}
           </h2>
-          
+
           <motion.div
             className="w-32 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           />
-          
-          <p className="text-xl font-cormorant italic text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Будем честны: мы любим придумывать, чем нам заняться.
-            <br />
-            Посмотрите! Правда интересно?
+
+          <p className="text-xl font-cormorant italic text-gray-300 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
+            {t('portfolio.intro')}
           </p>
         </motion.div>
 
@@ -215,14 +215,14 @@ export function PortfolioSection() {
               key={item.id}
               className={`relative group ${item.url || item.component ? "cursor-pointer" : "cursor-default"} ${getSizeClasses(item.size)}`}
               initial={{ opacity: 0, y: 100, rotateY: -20 }}
-              animate={isInView ? { 
-                opacity: 1, 
-                y: 0, 
-                rotateY: 0 
-              } : { 
-                opacity: 0, 
-                y: 100, 
-                rotateY: -20 
+              animate={isInView ? {
+                opacity: 1,
+                y: 0,
+                rotateY: 0
+              } : {
+                opacity: 0,
+                y: 100,
+                rotateY: -20
               }}
               transition={{
                 duration: 0.8,
@@ -231,7 +231,7 @@ export function PortfolioSection() {
               }}
               onHoverStart={() => setHoveredItem(item.id)}
               onHoverEnd={() => setHoveredItem(null)}
-              whileHover={{ 
+              whileHover={{
                 y: -8,
                 transition: { duration: 0.3 }
               }}
@@ -242,12 +242,12 @@ export function PortfolioSection() {
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
-                
+
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"
                   initial={{ opacity: 0.7 }}
-                  animate={{ 
-                    opacity: hoveredItem === item.id ? 0.95 : 0.7 
+                  animate={{
+                    opacity: hoveredItem === item.id ? 0.95 : 0.7
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -261,7 +261,7 @@ export function PortfolioSection() {
                     transition={{ delay: 0.3 }}
                   >
                     <Award size={16} className="text-red-400" />
-                    {/* <span className="text-xs font-mono text-red-400">Награды</span> */}
+                    {/* <span className="text-xs font-mono text-red-400">{t('portfolio.awards_badge')}</span> */}
                   </motion.div>
                 )}
 
@@ -269,7 +269,7 @@ export function PortfolioSection() {
                 {item.isVideo && (
                   <motion.div
                     className="absolute top-4 right-4 w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       borderColor: "rgba(239, 68, 68, 0.8)"
                     }}
@@ -295,7 +295,7 @@ export function PortfolioSection() {
                     <h3 className="text-xl md:text-2xl font-cormorant italic text-white mb-1 leading-tight">
                       {item.title}
                     </h3>
-                    
+
                     <p className="text-sm font-mono text-gray-400 mb-3">
                       {item.subtitle}
                     </p>
@@ -319,10 +319,10 @@ export function PortfolioSection() {
                         <div className="mb-4">
                           {/* NEW: Header that "echos" the top-left badge */}
                           <div className="flex items-center space-x-2 mb-2">
-                            <Award size={14} className="text-red-400/80"/>
-                            <h4 className="text-sm font-mono text-white/80">Награды и фестивали</h4>
+                            <Award size={14} className="text-red-400/80" />
+                            <h4 className="text-sm font-mono text-white/80">{t('portfolio.awards_title')}</h4>
                           </div>
-                          
+
                           {/* CHANGED: List styling updated for clarity */}
                           <div className="space-y-1 pl-1">
                             {item.awards.map((award, awardIndex) => (
@@ -336,7 +336,7 @@ export function PortfolioSection() {
                           </div>
                         </div>
                       )}
-                      
+
                       {/* Action button */}
                       {(item.url || item.component) && (
                         <a
@@ -345,14 +345,14 @@ export function PortfolioSection() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center space-x-2 text-white hover:text-red-400 transition-colors group/link mt-2"
                         >
-                          <span className="text-sm font-mono tracking-wide">Смотреть проект</span>
+                          <span className="text-sm font-mono tracking-wide">{t('portfolio.watch_project')}</span>
                           <ExternalLink size={14} className="transition-transform group-hover/link:translate-x-1" />
                         </a>
                       )}
                     </motion.div>
                   </div>
                 </div>
-                
+
                 {/* Decorative border */}
                 <motion.div
                   className="absolute inset-0 rounded-2xl"
@@ -363,8 +363,8 @@ export function PortfolioSection() {
                     maskComposite: "subtract",
                   }}
                   initial={{ opacity: 0 }}
-                  animate={{ 
-                    opacity: hoveredItem === item.id ? 1 : 0 
+                  animate={{
+                    opacity: hoveredItem === item.id ? 1 : 0
                   }}
                   transition={{ duration: 0.3 }}
                 />

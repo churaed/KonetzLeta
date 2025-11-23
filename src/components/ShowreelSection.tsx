@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // Import video assets and a poster image
 import showreel720pMP4 from '../assets/video/showreel_720p.mp4';
@@ -17,10 +18,13 @@ const formatTime = (time: number): string => {
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
     2,
     "0"
-  )}`;
+  )
+    } `;
 };
 
+// Showreel section component with custom video player
 export function ShowreelSection() {
+  const { t } = useTranslation();
   // Reference to the video element for direct control
   const videoRef = useRef<HTMLVideoElement>(null);
   // State for video playback control
@@ -96,7 +100,7 @@ export function ShowreelSection() {
             <motion.div
               key={i}
               className="absolute w-px h-8 bg-red-400"
-              style={{ left: `${i * 5}%`, top: `${Math.random() * 100}%` }}
+              style={{ left: `${i * 5}% `, top: `${Math.random() * 100}% ` }}
               animate={{
                 opacity: [0.1, 0.3, 0.1],
                 scaleY: [1, 1.5, 1],
@@ -116,13 +120,10 @@ export function ShowreelSection() {
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true}}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16 space-y-8"
         >
-          <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            <span className="text-red-400">Шоу</span>рил
-          </h2>
           {/* Animated decorative line under title */}
           <motion.div
             className="w-32 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
@@ -131,13 +132,13 @@ export function ShowreelSection() {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.5 }}
           />
-          {/* Russian subtitle with description */}
-          <div className="max-w-3xl mx-auto space-y-4">
-            <p className="text-xl font-cormorant italic text-gray-300 leading-relaxed">
-              Пусть наша работа говорит сама за себя —
-              <br />в каждом кадре живёт история.
-            </p>
-          </div>
+          <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight mb-8">
+            {t('showreel.title_part1')} <span className="text-red-400">{t('showreel.title_part2')}</span>
+          </h2>
+
+          <p className="text-xl font-cormorant italic text-gray-300 max-w-2xl mx-auto leading-relaxed whitespace-pre-line">
+            {t('showreel.subtitle')}
+          </p>
         </motion.div>
 
         {/* Main video container with controls */}
@@ -177,7 +178,7 @@ export function ShowreelSection() {
             <motion.div
               initial={{ opacity: 1 }}
               animate={{ opacity: hasStarted ? 0 : 1, transition: { duration: 0.5 } }}
-              className={`absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm ${hasStarted ? 'pointer-events-none' : ''}`}
+              className={`absolute inset - 0 flex flex - col items - center justify - center bg - black / 30 backdrop - blur - sm ${hasStarted ? 'pointer-events-none' : ''} `}
             >
               {/* Main play button with hover animations */}
               <motion.button
@@ -215,12 +216,11 @@ export function ShowreelSection() {
               {/* Video info text shown before play */}
               <div className="text-center space-y-3">
                 <p className="text-gray-400 font-mono text-sm">
-                  1 минута нашего мира
+                  {t('showreel.video_info')}
                 </p>
-                <div className="flex items-center justify-center space-x-4 text-xs font-mono text-gray-500 mt-4">
-                  <span>Режиссёр: Мария С.</span>
-                </div>
-              </div>
+                <div className="flex items-center space-x-4 text-sm font-mono text-gray-400">
+                  <span>{t('showreel.director')}</span>
+                </div></div>
             </motion.div>
 
             {/* Video control buttons overlay - now visible after start */}
@@ -268,7 +268,7 @@ export function ShowreelSection() {
             </motion.div>
 
             {/* Video progress bar at bottom - now visible after start */}
-            <motion.div 
+            <motion.div
               className="absolute bottom-0 left-0 right-0 h-0.5 md:h-1 bg-black/30"
               initial={{ opacity: 0 }}
               animate={{ opacity: hasStarted ? 1 : 0 }}
@@ -276,7 +276,7 @@ export function ShowreelSection() {
             >
               <motion.div
                 className="h-full bg-gradient-to-r from-red-500 to-red-400"
-                style={{ width: `${progress}%` }}
+                style={{ width: `${progress}% ` }}
               />
             </motion.div>
           </div>
