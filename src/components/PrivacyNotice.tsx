@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShieldCheck } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function PrivacyNotice() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(true);
 
   if (!isVisible) {
@@ -32,10 +34,10 @@ export function PrivacyNotice() {
             <ShieldCheck className="size-5 flex-shrink-0 text-red-400" />
             {/* Responsive text: shorter on mobile, longer on larger screens */}
             <p className="text-sm font-mono text-gray-300 hidden sm:block">
-              Мы не используем cookie и не собираем никаких персональных данных.
+              {t('privacy_notice.text_desktop')}
             </p>
             <p className="text-sm font-mono text-gray-300 sm:hidden">
-              Мы не собираем ваши данные.
+              {t('privacy_notice.text_mobile')}
             </p>
           </div>
 
@@ -50,9 +52,9 @@ export function PrivacyNotice() {
             "
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            aria-label="Спасибо, понятно"
+            aria-label={t('privacy_notice.dismiss')}
           >
-            Спасибо
+            {t('privacy_notice.dismiss')}
           </motion.button>
         </motion.div>
       )}

@@ -1,9 +1,11 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // Contact section component
 export function ContactSection() {
+  const { t } = useTranslation();
   // Ref for scroll-based animation
   const ref = useRef(null);
   // Hook to check if the component is in view for animations
@@ -13,26 +15,26 @@ export function ContactSection() {
   const contactMethods = [
     {
       icon: Mail,
-      label: "Email",
+      label: t('contact.email'),
       value: "konetzleta@gmail.com",
       action: "mailto:konetzleta@gmail.com"
     },
     {
       icon: MessageCircle,
-      label: "WhatsApp",
+      label: t('contact.whatsapp'),
       value: "+79041745621",
       action: "https://wa.me/79041745621"
     },
     {
       icon: Phone,
-      label: "Телефон",
+      label: t('contact.phone'),
       value: "+79022610028",
       action: "tel:+79022610028"
     },
     {
       icon: MapPin,
-      label: "Студия",
-      value: "Екатеринбург, Россия",
+      label: t('contact.studio'),
+      value: t('contact.studio_address'),
       action: "#"
     }
   ];
@@ -79,11 +81,11 @@ export function ContactSection() {
         >
           {/* Main heading */}
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            Связаться
+            {t('contact.title_part1')}
             <br />
-            <span className="text-red-400">с нами</span>
+            <span className="text-red-400">{t('contact.title_part2')}</span>
           </h2>
-          
+
           {/* Decorative divider line */}
           <motion.div
             className="w-32 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
@@ -92,18 +94,16 @@ export function ContactSection() {
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           />
-          
+
           {/* Introductory paragraph */}
           <div className="max-w-3xl mx-auto space-y-6">
-            <p className="text-xl font-cormorant italic text-gray-300 leading-relaxed">
-              У вас есть идея?
-              <br />
-              Мы поможем представить её вашей аудитории.
+            <p className="text-xl font-cormorant italic text-gray-300 leading-relaxed whitespace-pre-line">
+              {t('contact.intro')}
             </p>
           </div>
         </motion.div>
 
-      
+
         {/* Contact Information section */}
         <motion.div
           // Animation for the contact info block
@@ -112,7 +112,7 @@ export function ContactSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="space-y-8"
         >
-      
+
           {/* Renders contact methods dynamically */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactMethods.map((method, index) => (
@@ -140,7 +140,7 @@ export function ContactSection() {
               </motion.a>
             ))}
           </div>
-      
+
           {/* // Philosophy statement box
           <motion.div
             className="p-6 rounded-lg bg-gradient-to-br from-gray-900/50 to-black/50 border border-red-400/20"
@@ -162,7 +162,7 @@ export function ContactSection() {
               Технологии служат искусству, а не наоборот.
             </p>
           </motion.div> */}
-      
+
           {/* Social media preview text */}
           <motion.div
             className="text-center p-6 rounded-lg border border-gray-800/50 bg-black/30"
@@ -171,10 +171,8 @@ export function ContactSection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <p className="text-sm font-mono text-gray-500 italic leading-relaxed">
-              "Конец лета" — студия авторской коммерческой анимации
-              <br />
-              ООО “Конец лета” ИНН: 6679179711 ОГРН: 1246600054601
+            <p className="text-sm font-mono text-gray-500 italic leading-relaxed whitespace-pre-line">
+              {t('contact.legal_info')}
             </p>
 
           </motion.div>

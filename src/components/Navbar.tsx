@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 const HOVER_DELAY = 600; // ms
 
@@ -13,9 +15,9 @@ export function Navbar() {
   const [navbarPinned, setNavbarPinned] = useState(false);
   const hoverTimerRef = useRef<number | null>(null);
 
-  
+
   const navRef = useRef<HTMLDivElement>(null);
-  
+
   // Calculate height of the navbar for HeroSection content top padding
   useEffect(() => {
     const updateHeight = () => {
@@ -61,10 +63,10 @@ export function Navbar() {
         setIsHovering(false);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -96,14 +98,16 @@ export function Navbar() {
   }, [isHovering]);
 
 
+  const { t } = useTranslation();
+
   const navItems = [
-    { name: 'Начало', subtitle: 'Лета', href: '#hero' },
-    { name: 'О Нас', subtitle: 'И нашем Саде', href: '#about' },
-    { name: 'Шоурил', subtitle: 'Всходов', href: '#showreel' },
-    { name: 'Проекты', subtitle: 'и Заготовки', href: '#portfolio' },
-    { name: 'Услуги', subtitle: 'и Продукты', href: '#services' },
-    { name: 'Связаться', subtitle: 'с нами', href: '#contact' },
-    { name: 'Конец', subtitle: 'Лета', href: '#hero' },
+    { name: t('navbar.start'), subtitle: t('navbar.start_subtitle'), href: '#hero' },
+    { name: t('navbar.about'), subtitle: t('navbar.about_subtitle'), href: '#about' },
+    { name: t('navbar.showreel'), subtitle: t('navbar.showreel_subtitle'), href: '#showreel' },
+    { name: t('navbar.projects'), subtitle: t('navbar.projects_subtitle'), href: '#portfolio' },
+    { name: t('navbar.services'), subtitle: t('navbar.services_subtitle'), href: '#services' },
+    { name: t('navbar.contact'), subtitle: t('navbar.contact_subtitle'), href: '#contact' },
+    { name: t('navbar.end'), subtitle: t('navbar.end_subtitle'), href: '#hero' },
   ];
 
   // Add this new function inside your Navbar component
@@ -178,11 +182,18 @@ export function Navbar() {
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
 
-            
+            <div className="lg:hidden">
+              <LanguageSwitcher />
+            </div>
+          </div>
+
+          {/* Desktop Language Switcher - Absolute positioned to the right */}
+          <div className="hidden lg:block absolute right-6 top-1/2 -translate-y-1/2">
+            <LanguageSwitcher />
           </div>
 
           {/* Desktop Navigation - Centered nav items with responsive spacing */}
-            <div className="
+          <div className="
               hidden lg:flex items-center justify-center
               absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
               gap-x-6 md:gap-x-8 lg:gap-x-12 xl:gap-x-16
@@ -212,9 +223,9 @@ export function Navbar() {
                 </div>
               </Link>
             ))}
-            </div>
+          </div>
 
-           
+
         </div>
 
         {/* Mobile Navigation */}

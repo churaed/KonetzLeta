@@ -1,5 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import PolnyMetryIcon from '@/assets/images/services/polny-metry.webp';
 import AnimationIcon from '@/assets/images/services/animation.webp';
 import ScienceIcon from '@/assets/images/services/science.webp';
@@ -17,65 +18,9 @@ interface Service {
   gradient: string;
 }
 
-// Array of service objects with detailed information
-const services: Service[] = [
-  {
-    icon: PolnyMetryIcon,
-    title: "Полные метры и сериалы",
-    description: "Авторские анимационные проекты — от концепции до финального монтажа. Это точно интересно!",
-    audience: "Дистрибьюторы",
-    examples: ["Полнометражные фильмы", "Телесериалы", "Веб-сериалы", "Авторское кино"],
-    gradient: "from-red-500 to-pink-500"
-  },
-  {
-    icon: AnimationIcon,
-    title: "Анимационные вставки и титры",
-    description: "Атмосфера складывается из деталей. Титры, графические и анимационные эпизоды помогут объяснить сложные темы, пробудить и поддержать эмоции.",
-    audience: "Кинопродюсеры",
-    examples: [ "Визуальные эффекты", "Анимированная графика", "Открывающие/Финальные титры", "Фантазийные сцены" ,"Анимадок"],
-    gradient: "from-orange-500 to-red-500"
-  },
-  {
-    icon: ScienceIcon,
-    title: "Научпоп анимация",
-    description: "Превращаем сложные научные концепции в увлекательные визуальные истории. Наука становится искусством.",
-    audience: "Хай-тек бизнес",
-    examples: ["Обучающие фильмы", "Корпоративные презентации", "Технические визуализации", "Продуктовые демо"],
-    gradient: "from-blue-500 to-cyan-500"
-  },
-  {
-    icon: TheatherIcon,
-    title: "Анимационное сопровождение спектаклей",
-    description: "Анимационный видеоарт для вашей театральной постановки. Это то, чего ждёт сцена.",
-    audience: "Театральные продюсеры",
-    examples: [
-      "Анимированные персонажи",
-      "Анимированные фоны",
-      "Анимированные сцены",
-      "Визуальные спецэффекты"
-    ],
-    gradient: "from-amber-500 to-orange-500"
-  },
-  {
-    icon: FestivalIcon,
-    title: "Фестивальные проекты",
-    description: "От каждого фестиваля зрители ждут уникальной энергетики. Мы берёмся сделать анимационные заставки и полное визуальное оформление.",
-    audience: "Организаторы фестивалей",
-    examples: ["Фестивальные заставки", "Церемонии открытия", "Номинационные ролики", "Брендинг событий"],
-    gradient: "from-purple-500 to-blue-500"
-  },
-  {
-    icon: MuseumIcon,
-    title: "Музейные инсталляции",
-    description: "Видеоэкспонаты, VR-инсталляции и комплексное видеобрендирование музеев и галерей. Искусство в диалоге с технологиями.",
-    audience: "Директора музеев и галерей",
-    examples: ["VR инсталляции", "Видеоэкспонаты", "Музейный брендинг", "Интерактивные выставки"],
-    gradient: "from-green-500 to-emerald-500"
-  }
-];
-
 // Main ServicesSection component
 export function ServicesSection() {
+  const { t } = useTranslation();
   // Reference for the section container
   const containerRef = useRef(null);
   // Track scroll progress within the section
@@ -88,6 +33,58 @@ export function ServicesSection() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   // Check if section is in view for animations
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  // Array of service objects with detailed information
+  const services: Service[] = [
+    {
+      icon: PolnyMetryIcon,
+      title: t('services.items.polny.title'),
+      description: t('services.items.polny.description'),
+      audience: t('services.items.polny.audience'),
+      examples: t('services.items.polny.examples', { returnObjects: true }) as string[],
+      gradient: "from-red-500 to-pink-500"
+    },
+    {
+      icon: AnimationIcon,
+      title: t('services.items.animation.title'),
+      description: t('services.items.animation.description'),
+      audience: t('services.items.animation.audience'),
+      examples: t('services.items.animation.examples', { returnObjects: true }) as string[],
+      gradient: "from-orange-500 to-red-500"
+    },
+    {
+      icon: ScienceIcon,
+      title: t('services.items.science.title'),
+      description: t('services.items.science.description'),
+      audience: t('services.items.science.audience'),
+      examples: t('services.items.science.examples', { returnObjects: true }) as string[],
+      gradient: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: TheatherIcon,
+      title: t('services.items.theater.title'),
+      description: t('services.items.theater.description'),
+      audience: t('services.items.theater.audience'),
+      examples: t('services.items.theater.examples', { returnObjects: true }) as string[],
+      gradient: "from-amber-500 to-orange-500"
+    },
+    {
+      icon: FestivalIcon,
+      title: t('services.items.festival.title'),
+      description: t('services.items.festival.description'),
+      audience: t('services.items.festival.audience'),
+      examples: t('services.items.festival.examples', { returnObjects: true }) as string[],
+      gradient: "from-purple-500 to-blue-500"
+    },
+    {
+      icon: MuseumIcon,
+      title: t('services.items.museum.title'),
+      description: t('services.items.museum.description'),
+      audience: t('services.items.museum.audience'),
+      examples: t('services.items.museum.examples', { returnObjects: true }) as string[],
+      gradient: "from-green-500 to-emerald-500"
+    }
+  ];
 
   return (
     <section id="services" ref={containerRef} className="py-32 bg-black relative overflow-hidden">
@@ -110,7 +107,7 @@ export function ServicesSection() {
           className="text-center mb-20 space-y-8"
         >
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            Услуги
+            {t('services.title')}
           </h2>
 
           {/* Animated underline for section title */}
@@ -121,10 +118,8 @@ export function ServicesSection() {
             transition={{ duration: 1, delay: 0.5 }}
           />
 
-          <p className="text-xl font-cormorant italic text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Каждый проект — это диалог между художником и зрителем,
-            <br />
-            между технологией и душой, между идеей и её воплощением.
+          <p className="text-xl font-cormorant italic text-gray-400 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
+            {t('services.intro')}
           </p>
         </motion.div>
 

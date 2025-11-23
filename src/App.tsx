@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { HeroSection } from './components/HeroSection';
 import { TeamSection } from './components/TeamSection';
 import { ShowreelSection } from './components/ShowreelSection';
@@ -11,6 +12,7 @@ import { PrivacyPage } from './components/PrivacyPage';
 
 export default function App() {
   const location = useLocation();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -38,7 +40,7 @@ export default function App() {
                   to="/privacy"
                   className="text-gray-500 hover:text-red-400 font-mono text-sm transition-colors duration-200"
                 >
-                  Политика конфиденциальности
+                  {t('footer.privacy_policy')}
                 </Link>
               </footer>
               <PrivacyNotice />
