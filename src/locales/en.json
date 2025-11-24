@@ -81,9 +81,9 @@
                 ]
             },
             "mify": {
-                "title": "Animation inserts and titles for A. Fedorchenko's film \"Myths about Hephaestus, God and the Construction Brigade\"",
+                "title": "Animated scenes and titles for A. Fedorchenko's film \"Myths about Hephaestus, God and the Construction Brigade\"",
                 "subtitle": "Feature documentary film",
-                "category": "Animation inserts",
+                "category": "Animated scenes",
                 "description": "Animated stories about the life of the god Hephaestus, told through badges, drawings, and patches on a construction brigade jacket."
             },
             "strashnyi": {
@@ -99,15 +99,15 @@
                 "description": "History and chronicles of the creation of the first Ural animated series \"BOOMBOOM: Save the Planet\""
             },
             "gospodin": {
-                "title": "Animation inserts for E. Tukhareli's film \"Mr. Great\"",
+                "title": "Animated scenes for E. Tukhareli's film \"Mr. Great\"",
                 "subtitle": "Feature documentary film",
-                "category": "Animation inserts",
+                "category": "Animated scenes",
                 "description": "Animated chronicle illustrations tell the history of the Novgorod Museum Complex and its transformations with the arrival of a new director."
             },
             "blokadnaia": {
                 "title": "Development of animation technology for A. Fedorchenko's project \"Blockade Mosaic\"",
                 "subtitle": "Feature film",
-                "category": "Animation inserts",
+                "category": "Animated scenes",
                 "description": "Telling blockade stories with the help of living volumetric sculptures made of mosaic smalt"
             },
             "mechty": {
