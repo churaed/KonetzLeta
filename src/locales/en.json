@@ -61,7 +61,7 @@
         "phone": "Phone",
         "studio": "Studio",
         "studio_address": "Yekaterinburg, Russia",
-        "legal_info": "\"End of Summer\" — independent commercial animation studio\nLLC \"End of Summer\" INN: 6679179711 OGRN: 1246600054601"
+        "legal_info": "\"End of Summer\" — independent commercial animation studio\n \"End of Summer\" Co. Ltd. INN: 6679179711 OGRN: 1246600054601"
     },
     "portfolio": {
         "title": "Projects",
@@ -71,7 +71,7 @@
         "watch_project": "Watch project",
         "items": {
             "peizazh": {
-                "title": "Landscape Awaiting",
+                "title": "Landscape Waiting",
                 "subtitle": "Documentary animation",
                 "category": "Short film",
                 "description": "A study of the author's anxiety through walks on the island of Sviyazhsk",
@@ -86,13 +86,13 @@
                 "description": "Animated stories about the life of the god Hephaestus, told through badges, drawings, and patches on a construction brigade jacket."
             },
             "strashnyi": {
-                "title": "Scary City",
+                "title": "Terrible City",
                 "subtitle": "Documentary animation",
                 "category": "Short animated film",
                 "description": "Immersive animation unfolding before the wheels of a night tram. Three scary stories that happened to three different characters in the city of Yekaterinburg."
             },
             "bum": {
-                "title": "\"Earth Boom: How It Began\"",
+                "title": "\"BOOMBOOM: How It Began\"",
                 "subtitle": "Telegram channel and podcast",
                 "category": "Promotion",
                 "description": "History and chronicles of the creation of the first Ural animated series \"Earth Boom\""
@@ -110,7 +110,7 @@
                 "description": "Telling blockade stories with the help of living volumetric sculptures made of mosaic smalt"
             },
             "mechty": {
-                "title": "Dreams of Old Age",
+                "title": "Dreams of Old Bones",
                 "subtitle": "Laboratory, web series, joy of life",
                 "category": "Sociocultural project",
                 "description": "Animated shorts from the life of two elderly neighbors. We would like to remind elderly people, and ourselves at the same time, how to enjoy moments, feel the present, rejoice in what is, and not grieve for what is already gone and lost."
@@ -143,21 +143,21 @@
     },
     "services": {
         "title": "Services",
-        "intro": "Every project is a dialogue between the artist and the viewer,\nbetween technology and soul, between the idea and its embodiment.",
+        "intro": "Every project is a dialogue between the artist and the viewer,\nbetween technology and soul, between the idea and its realisation.",
         "items": {
             "polny": {
                 "title": "Feature films and series",
                 "description": "Original animation projects — from concept to final cut. It's definitely interesting!",
                 "audience": "Distributors",
                 "examples": [
-                    "Feature films",
+                    "Animated Feature films",
                     "TV series",
                     "Web series",
-                    "Author cinema"
+                    "Short films"
                 ]
             },
             "animation": {
-                "title": "Animation inserts and titles",
+                "title": "Animated scenes",
                 "description": "Atmosphere is made up of details. Titles, graphic and animation episodes will help explain complex topics, awaken and support emotions.",
                 "audience": "Film producers",
                 "examples": [
@@ -169,7 +169,7 @@
                 ]
             },
             "science": {
-                "title": "Science-explainer animation",
+                "title": "Popular Science",
                 "description": "We turn complex scientific concepts into fascinating visual stories. Science becomes art.",
                 "audience": "High-tech business",
                 "examples": [
