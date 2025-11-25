@@ -76,7 +76,8 @@
                 "category": "Short film",
                 "description": "A study of the author's anxiety through walks on the island of Sviyazhsk",
                 "awards": [
-                    "Rudnik Festival"
+                    "Rudnik Festival",
+                    "Message to Man Film Festival"
                 ]
             },
             "mify": {
@@ -89,13 +90,13 @@
                 "title": "Terrible City",
                 "subtitle": "Documentary animation",
                 "category": "Short animated film",
-                "description": "Immersive animation unfolding before the wheels of a night tram. Three scary stories that happened to three different characters in the city of Yekaterinburg."
+                "description": "Immersive animation unfolding before the wheels of a night tram. Three scary stories that happened to three different people in the city of Yekaterinburg."
             },
             "bum": {
                 "title": "\"BOOMBOOM: How It Began\"",
                 "subtitle": "Telegram channel and podcast",
                 "category": "Promotion",
-                "description": "History and chronicles of the creation of the first Ural animated series \"Earth Boom\""
+                "description": "History and chronicles of the creation of the first Ural animated series \"BOOMBOOM: Save the Planet\""
             },
             "gospodin": {
                 "title": "Animation inserts for E. Tukhareli's film \"Mr. Great\"",
@@ -110,8 +111,8 @@
                 "description": "Telling blockade stories with the help of living volumetric sculptures made of mosaic smalt"
             },
             "mechty": {
-                "title": "Dreams of Old Bones",
-                "subtitle": "Laboratory, web series, joy of life",
+                "title": "Old Bones",
+                "subtitle": "Web series,laboratory, joy of life",
                 "category": "Sociocultural project",
                 "description": "Animated shorts from the life of two elderly neighbors. We would like to remind elderly people, and ourselves at the same time, how to enjoy moments, feel the present, rejoice in what is, and not grieve for what is already gone and lost."
             },
@@ -119,7 +120,7 @@
                 "title": "Hibernation",
                 "subtitle": "Fantasy for teenagers",
                 "category": "Feature animated film",
-                "description": "A parkour-loving prankster, the forest mouse Sonya, who considers sleep the most boring activity in the world, falls into hibernation against her will and travels through the world of other people's dreams in search of a way out and herself"
+                "description": "A parkour-loving prankster, the forest dormouse Sonya, who considers sleep the most boring activity in the world, falls into hibernation against her will and travels through the world of other creatures's dreams in search of a way out and herself"
             },
             "kapi": {
                 "title": "Capi and Tapi",
