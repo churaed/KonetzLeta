@@ -68,77 +68,173 @@
         "intro": "Let's be honest: we love inventing things to do.\nLook! Isn't it interesting?",
         "awards_badge": "Awards",
         "awards_title": "Awards and festivals",
+        "awards_show_all": "Show all",
+        "awards_show_less": "Show less",
         "watch_project": "Watch project",
+        "status": {
+            "released": "Released",
+            "in_production": "In Production",
+            "in_development": "In Development"
+        },
         "items": {
             "peizazh": {
                 "title": "Landscape Waiting",
-                "subtitle": "Documentary animation",
-                "category": "Short film",
-                "description": "A study of the author's anxiety through walks on the island of Sviyazhsk",
+                "subtitle": "Documentary animated short film • 2025",
+                "tagline": "A contemplative walk through the landscape of anxiety.",
+                "status": "released",
+                "description": "An exercise in capturing anxiety scattered in space, in people and in the author’s head.",
+                "credits": "Director: Mariia Sediaeva | Sound: Evgenij Rudakov | Producer: Marina Razbezhkina",
+                "video": "https://drive.google.com/file/d/1LKJV08402_Ss2KTjCUApPzGyUvTgv_zy/view?usp=sharing",
                 "awards": [
-                    "Rudnik Festival",
-                    "Message to Man Film Festival"
+                    "Rudnik Documentary Film Festival",
+                    "Message to Man International Film Festival"
                 ]
             },
             "mify": {
-                "title": "Animated scenes and titles for A. Fedorchenko's film \"Myths about Hephaestus, God and the Construction Brigade\"",
-                "subtitle": "Feature documentary film",
-                "category": "Animated scenes",
-                "description": "Animated stories about the life of the god Hephaestus, told through badges, drawings, and patches on a construction brigade jacket."
+                "title": "Myths about God, Hephaestus, and the Construction Brigade",
+                "subtitle": "Animated sequence for documentary feature film • 2025",
+                "tagline": "Divine myths captured on a construction brigade jacket.",
+                "status": "released",
+                "description": "Alexey Fedorchenko’s film 'Myths about God, Hephaestus, and the Construction Brigade' is dedicated to the 55-year history of the 'Hephaestus' student construction brigade from the Ural Polytechnic Institute, which built projects all across the Soviet Union during their summer practices.\n\nOur studio created animated sequences for the film with a total duration of 10 minutes. To solve the artistic challenge—telling Ancient Greek myths associated with the god Hephaestus through imagery familiar to brigade members—we chose the following stylistic approach: the entire narrative unfolds on the surface of a 'tselinka' (a special student brigade jacket), while all characters, locations, and special effects are represented by elements that no 'battle-hardened' tselinka is complete without: badges, patches, and drawings directly on the jacket.",
+                "credits": "Animation Director: Mariia Sediaeva | Animators: Liza Konysheva, Daria Puchkova, Ksenia Starikova",
+                "links": [
+                    { "label": "Kremniy Festival", "url": "https://xn----8sbfkbqcfgsdm0bvp3a7l.xn--p1ai/mify-o-gefeste-boge-i-strojotryade" }
+                ],
+                "video": "https://drive.google.com/file/d/1Y6UE38XZA_A_66T_3c6DihDNyYSfAzkM/view?usp=sharing",
+                "awards": [
+                    "Kremniy Festival",
+                    "Ural Film Days"
+                ]
             },
             "strashnyi": {
                 "title": "Terrible City",
-                "subtitle": "Documentary animation",
-                "category": "Short animated film",
-                "description": "Immersive animation unfolding before the wheels of a night tram. Three scary stories that happened to three different people in the city of Yekaterinburg."
+                "subtitle": "Documentary animated short film • 2024",
+                "tagline": "Immersive animation unfolding before the wheels of a night tram. Three scary stories that happened to three different people in Yekaterinburg.",
+                "status": "released",
+                "description": "In the dark cabin of the tram driver, the city is visible through the windows. The rails run ahead, twisting. Houses and bus stops flash by on the sides. Off-screen, we hear three stories that follow each other, and through the windows we see how the events described in the stories unfold right before our eyes.",
+                "credits": "Director: Mariia Sediaeva | Screenplay: Sabrina Karabaeva | Animation: Danil Strizhov | Sound: Evgenij Rudakov",
+                "video": "https://disk.yandex.ru/i/gRixdtbHg1Fq8Q",
+                "awards": [
+                    "Suzdal Open Animation Festival",
+                    "Big Cartoon Festival",
+                    "Diogen Film Festival"
+                ]
             },
             "bum": {
-                "title": "\"BOOMBOOM: How It Began\"",
-                "subtitle": "Telegram channel and podcast",
-                "category": "Promotion",
-                "description": "History and chronicles of the creation of the first Ural animated series \"BOOMBOOM: Save the Planet\""
+                "title": "BOOMBOOM: Save the planet!",
+                "subtitle": "Promotion of the 'BOOMBOOM: Save the planet!' animated series • 2024",
+                "status": "in_production",
+                "description": "'BOOMBOOM: Save the planet!' is an adventure animated series in which various ecosystems compete for survival on planet Earth, while the planet itself has its own unique perspective on the matter.\n\nAs part of the series promotion, we produce the podcast 'How It Was,' where creator and director Mariia Sediaeva discusses the creative journey with various participants—from screenwriters and artists to animators, voice actors, and sound designers.\n\nWe also maintain a Telegram blog dedicated to the collaborative process of building the series' original universe.",
+                "credits": "Author & Director: Mariia Sediaeva",
+                "links": [
+                    { "label": "Telegram Blog", "url": "https://t.me/earth_boom" },
+                    { "label": "YouTube Channel", "url": "https://www.youtube.com/playlist?list=PLkCm3WAAG1JypRj-41kZOKjP3TXT6l56m" },
+                    { "label": "8 Informed Legs", "url": "https://t.me/nashe_dno_news" }
+                ],
+                "video": "https://drive.google.com/file/d/1_yr5t8V5XP3TqMa6T_ZOULBZ9vr6OkTw/view?usp=sharing"
             },
             "gospodin": {
-                "title": "Animated scenes for E. Tukhareli's film \"Mr. Great\"",
-                "subtitle": "Feature documentary film",
-                "category": "Animated scenes",
-                "description": "Animated chronicle illustrations tell the history of the Novgorod Museum Complex and its transformations with the arrival of a new director."
+                "title": "Mr. Great",
+                "subtitle": "Animated sequence for documentary feature film • 2024",
+                "tagline": "History told through Radziwill chronicle miniatures.",
+                "status": "released",
+                "description": "“Mr. Great” by Ella Tukhareli is a documentary about the Novgorod Museum-Reserve and the people who create it. Animated sequences were used to illustrate the centuries-old history of Veliky Novgorod. Miniatures of the Radziwill Chronicle were chosen as the visual style.",
+                "credits": "Technology: AI and Cutout animation",
+                "links": [
+                    { "label": "Kinopoisk", "url": "https://www.kinopoisk.ru/film/7381732/" }
+                ],
+                "video": "https://drive.google.com/file/d/1oEdHQD8magj_WNgHcFkyzYgZ6U8qdTuK/view?usp=sharing",
+                "awards": [
+                    "Unknown Russia Festival",
+                    "RUSSIA Doc Film Festival"
+                ]
             },
             "blokadnaia": {
-                "title": "Development of animation technology for A. Fedorchenko's project \"Blockade Mosaic\"",
-                "subtitle": "Feature film",
-                "category": "Animated scenes",
-                "description": "Telling blockade stories with the help of living volumetric sculptures made of mosaic smalt"
+                "title": "Siege Mosaic",
+                "subtitle": "Development of animation technology • 2024",
+                "tagline": "Telling stories of the Siege through animated three-dimensional sculptures made of mosaic smalt.",
+                "status": "released",
+                "description": "Development of a production technology for smalt-based puppet animation for a feature-length live-action film project by Alexey Fedorchenko, dedicated to the work of mosaic artist Vladimir Frolov’s workshop during the Siege of Leningrad. Our task was to develop a technology that would make it possible to produce 15 minutes of three-dimensional smalt animation within three months. As a solution, we selected and successfully tested motion capture of actors and puppets, followed by simulation into a sculptural, moving smalt image using generative diffusion-based neural network models.",
+                "video": "https://drive.google.com/file/d/1AGSyZdjKsrUWTArPrTQpv1bwWabBxUCU/view?usp=sharing"
+            },
+            "chto": {
+                "title": "What I am doing here?",
+                "subtitle": "Feature length animated documentary • 2017",
+                "tagline": "Two young women decide to take on cinema in the most unexpected way possible.",
+                "status": "in_production",
+                "description": "Masha and Sabrina, inexperienced but passionate filmmakers, are making an unconventional animated documentary series. They have neither money nor connections, but they do have a strong desire to make films and plenty of free time. Episode by episode, they build the series—until eventually they begin making films separately. Yet it feels as though something in their shared experience remains unfinished. «We should bring the episodes together into a feature-length anthology,» Masha suggests. «That way our creations will reach the big screen.» Sabrina is skeptical—but willing to give it a try…",
+                "credits": "Authors: Mariia Sediaeva, Sabrina Karabaeva",
+                "links": [
+                    { "label": "Community VK", "url": "https://vk.com/what_am_i_doing_here" }
+                ],
+                "video": "https://drive.google.com/file/d/1Flg6g3l5ALOOxDRrXZ9G_x3V9I-lZvOs/view?usp=sharing",
+                "awards": [
+                    "MIFF (2018)",
+                    "LINOLEUM International Contemporary Animation and Media Art Festival (2017, 2018)",
+                    "«BCF» International Animation Festival (2018)",
+                    "ArtDocFest (2017, 2018)",
+                    "«Picture this...» Film Festival (2019)",
+                    "OKIEM MLODYCH (2018)",
+                    "OSEN kinofest — best animated film (2017)",
+                    "Message to Man Film Festival (2017, 2020)",
+                    "Summer School Festival at Muzeon (2018)",
+                    "«Delai Film» International Documentary Film Festival (2018)",
+                    "«CENTER.» Documentary and Art Film Festival (2018)",
+                    "Window to Europe — best animation in internet competition (2017)",
+                    "Women Media Arts and Film Festival (2017)",
+                    "ATLANTA PHILOSOPHY FILM FESTIVAL (2017)",
+                    "Kinoproba International Film Festival — Grand Prix (2017)",
+                    "St. Anna Film Festival — jury diploma «For sincerity and a stirring of life» (2018)",
+                    "Cinema Perpetuum Mobile (2018)",
+                    "«Bazhov Fest» Contemporary Art Festival (2018)",
+                    "Koroche Film Festival (2018)",
+                    "INCINERANTE FEST (2018)",
+                    "FerFilm Festival (2018)",
+                    "«Debarkader» Contemporary Art Festival (2018)",
+                    "DokuBaku IDFF (2018)",
+                    "8th Russian Film Festival in Bordeaux (2018)",
+                    "«Castelvolturno Città di Cinema» Festival (2018)",
+                    "Raskadrovka Film Festival — audience award (2016)"
+                ]
+            },
+            "novyi": {
+                "title": "SkotAI",
+                "subtitle": "AI-powered short horror film",
+                "tagline": "A new taste demands sacrifices.",
+                "status": "in_production",
+                "description": "The 21st century offers astonishing opportunities for digital and product-driven revolution. But what if progress has a dark side? A small journey into the horror genre, descending into the depths of the meat production industry of the future.\n\nTechnology: classical animation and AI animation\nTarget audience: 18+, working young adults (25–40)",
+                "credits": "Author: Yana Makarevich",
+                "video": "https://drive.google.com/file/d/1O3Qxm54lbLBG0j9ikqlywGLdJ4APsn1N/view?usp=sharing"
             },
             "mechty": {
-                "title": "Old Bones",
-                "subtitle": "Web series,laboratory, joy of life",
-                "category": "Sociocultural project",
-                "description": "Animated shorts from the life of two elderly neighbors. We would like to remind elderly people, and ourselves at the same time, how to enjoy moments, feel the present, rejoice in what is, and not grieve for what is already gone and lost."
+                "title": "Dreams of Old Age",
+                "subtitle": "Socio-cultural project • Laboratory • Web series",
+                "tagline": "Learning to enjoy the moment and cherish the present.",
+                "status": "in_development",
+                "description": "Animated shorts from the lives of two elderly neighbors. We want to remind older people, and ourselves, how to enjoy the moment, feel the present, rejoice in what is, and not mourn for what is already gone and lost.\n\nProject format: a series with an unlimited number of 1-minute episodes. Currently, scripts for 30 episodes, animatics, and visual designs for characters and locations are ready.",
+                "video": "https://drive.google.com/file/d/1OZXWd2MJdtz7vPKiHDt2WPqVjNiUgdiU/view?usp=sharing"
             },
             "spiachka": {
                 "title": "Hibernation",
-                "subtitle": "Fantasy for teenagers",
-                "category": "Feature animated film",
-                "description": "A parkour-loving prankster, the forest dormouse Sonya, who considers sleep the most boring activity in the world, falls into hibernation against her will and travels through the world of other creatures's dreams in search of a way out and herself"
+                "subtitle": "Feature-length animated film • Fantasy for teenagers",
+                "tagline": "A fearless parkouring mouse on a journey through the world of others' dreams.",
+                "status": "in_development",
+                "description": "Sonya, a forest dormouse, parkour enthusiast, and prankster who considers sleep the most boring thing in the world, falls into hibernation against her will. She must navigate a world of others' dreams to find her way out—and find herself.\n\nProject format: feature-length film (75 minutes). Currently, the script synopsis and visual designs for characters and locations are ready.",
+                "video": "https://drive.google.com/file/d/1OZXWd2MJdtz7vPKiHDt2WPqVjNiUgdiU/view?usp=sharing"
             },
             "kapi": {
                 "title": "Capi and Tapi",
-                "subtitle": "Plush adventures in the Amazon jungle",
-                "category": "Animated series",
-                "description": "Two friends—Capybara and Tapir—along with their fierce companion Jaguar, make the impossible possible every day."
+                "subtitle": "Animated series • Plush adventures in the Amazon",
+                "tagline": "Friendship makes the impossible possible in the deep jungle.",
+                "status": "in_development",
+                "description": "Two best friends—a Capybara and a Tapir—along with their fierce companion Jaguar, make the impossible possible every day.\n\nProject format: animated series (26 episodes x 6 minutes per season). Currently, the scripts for three episodes, the season's episode-by-episode plan, characters, and the project bible are ready. Preparation for animation tests and team building is underway."
             },
             "drakon": {
                 "title": "Ordinary Dragon",
-                "subtitle": "Don't splash ketchup on my tapestry.",
-                "category": "Animated series",
-                "description": "A very proper dragon meets a very improper royal family."
-            },
-            "chto": {
-                "title": "What am I doing here?",
-                "subtitle": "A docu-animated comedy",
-                "category": "Feature film",
-                "description": "Two girls decide to conquer the cinema in the most unobvious way."
+                "subtitle": "Animated series • Don't splash ketchup on my tapestry",
+                "tagline": "A very proper dragon meets a very improper royal family.",
+                "status": "in_development",
+                "description": "A very proper dragon meets a very improper royal family.\n\nProject format: vertical animated series (26 episodes x 6 minutes per season). Currently, episode synopses, character designs, the project bible, and a season plan are in development."
             }
         }
     },
