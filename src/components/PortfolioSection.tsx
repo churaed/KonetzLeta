@@ -37,6 +37,19 @@ interface PortfolioItem {
 
 export function PortfolioSection() {
   const { t } = useTranslation();
+  
+  // --- ADD THESE HELPERS ---
+  const getLinks = (key: string) => {
+    const data = t(key, { returnObjects: true });
+    return Array.isArray(data) ? data : [];
+  };
+
+  const getAwards = (key: string) => {
+    const data = t(key, { returnObjects: true });
+    return Array.isArray(data) ? data : [];
+  };
+  // -------------------------
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
@@ -60,7 +73,7 @@ export function PortfolioSection() {
       image: peizazhSOzhidaniem,
       size: "medium",
       videoUrl: t('portfolio.items.peizazh.video'),
-      awards: t('portfolio.items.peizazh.awards', { returnObjects: true }) as string[],
+      awards: getAwards('portfolio.items.peizazh.awards'),
     },
     // Myths about God / Мифы о Гефесте
     {
@@ -74,8 +87,8 @@ export function PortfolioSection() {
       image: mifyOGefesteBogeIStroiotriade,
       size: "medium",
       videoUrl: t('portfolio.items.mify.video'),
-      links: t('portfolio.items.mify.links', { returnObjects: true }) as { label: string; url: string }[] || [],
-      awards: t('portfolio.items.mify.awards', { returnObjects: true }) as string[],
+      links: getLinks('portfolio.items.mify.links') as { label: string; url: string }[],
+      awards: getAwards('portfolio.items.mify.awards'),
     },
     // Terrible City / Страшный город
     {
@@ -89,7 +102,7 @@ export function PortfolioSection() {
       image: strashnyiGorod,
       size: "medium",
       videoUrl: t('portfolio.items.strashnyi.video'),
-      awards: t('portfolio.items.strashnyi.awards', { returnObjects: true }) as string[],
+      awards: getAwards('portfolio.items.strashnyi.awards'),
     },
     // BOOMBOOM / Бум Земли
     {
@@ -103,7 +116,7 @@ export function PortfolioSection() {
       image: bumZemliKakEtoBylo,
       size: "medium",
       videoUrl: t('portfolio.items.bum.video'),
-      links: t('portfolio.items.bum.links', { returnObjects: true }) as { label: string; url: string }[] || [],
+      links: getLinks('portfolio.items.bum.links') as { label: string; url: string }[],
     },
     // Mr. Great / Господин Великий
     {
@@ -117,8 +130,8 @@ export function PortfolioSection() {
       image: gospodinVelikii,
       size: "medium",
       videoUrl: t('portfolio.items.gospodin.video'),
-      links: t('portfolio.items.gospodin.links', { returnObjects: true }) as { label: string; url: string }[] || [],
-      awards: t('portfolio.items.gospodin.awards', { returnObjects: true }) as string[],
+      links: getLinks('portfolio.items.gospodin.links') as { label: string; url: string }[],
+      awards: getAwards('portfolio.items.gospodin.awards'),
     },
     // Siege Mosaic / Блокадная мозаика
     {
@@ -189,8 +202,8 @@ export function PortfolioSection() {
       image: chtoIaZdesDelaiu,
       size: "medium",
       videoUrl: t('portfolio.items.chto.video'),
-      links: t('portfolio.items.chto.links', { returnObjects: true }) as { label: string; url: string }[] || [],
-      awards: t('portfolio.items.chto.awards', { returnObjects: true }) as string[],
+      links: getLinks('portfolio.items.chto.links') as { label: string; url: string }[],
+      awards: getAwards('portfolio.items.chto.awards'),
     },
     // SkotAI / СкотИИна
     {
@@ -204,8 +217,8 @@ export function PortfolioSection() {
       image: novyiVkus,
       size: "medium",
       videoUrl: t('portfolio.items.novyi.video'),
-      links: t('portfolio.items.novyi.links', { returnObjects: true }) as { label: string; url: string }[] || [],
-    },
+      links: getLinks('portfolio.items.novyi.links') as { label: string; url: string }[],
+    }
   ];
   
   const getSizeClasses = (size: string) => {
@@ -258,11 +271,11 @@ export function PortfolioSection() {
     if (!url) return null;
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
       const videoId = url.split('v=')[1] || url.split('/').pop();
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&modestbranding=1&rel=0`;
     }
     if (url.includes('vimeo.com')) {
       const videoId = url.split('/').pop();
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1`;
     }
     if (url.includes('drive.google.com')) {
       return url.replace('/view?usp=sharing', '/preview').replace('/view', '/preview');
@@ -586,7 +599,8 @@ export function PortfolioSection() {
 
                         {/* 7. Action Links */}
                         <div className="flex flex-wrap justify-center gap-4 mb-4">
-                          {selectedItem.links && selectedItem.links.map((link, idx) => (
+                          {/* FIX: Check Array.isArray() before mapping */}
+                          {Array.isArray(selectedItem.links) && selectedItem.links.map((link, idx) => (
                             <a
                               key={idx}
                               href={link.url}
@@ -602,7 +616,7 @@ export function PortfolioSection() {
                           ))}
                           
                           {/* Fallback for projects with only videoUrl and no explicit links */}
-                          {(!selectedItem.links || selectedItem.links.length === 0) && selectedItem.videoUrl && (
+                          {(!Array.isArray(selectedItem.links) || selectedItem.links.length === 0) && selectedItem.videoUrl && (
                             <a
                               href={selectedItem.videoUrl}
                               target="_blank"
