@@ -56,9 +56,25 @@ export function PortfolioSection() {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [showAllAwards, setShowAllAwards] = useState(false);
+  const modalScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setShowAllAwards(false);
+    if (selectedId !== null) {
+      document.body.style.overflow = 'hidden';
+      const element = document.getElementById(`portfolio-item-${selectedId}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      if (modalScrollRef.current) {
+        modalScrollRef.current.scrollTop = 0;
+      }
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [selectedId]);
 
   const portfolioItems: PortfolioItem[] = [
@@ -329,6 +345,7 @@ export function PortfolioSection() {
           {portfolioItems.map((item, index) => (
             <motion.div
               key={item.id}
+              id={`portfolio-item-${item.id}`}
               className={`relative group cursor-pointer ${getSizeClasses(item.size)}`}
               initial={{ opacity: 0, y: 100, rotateY: -20 }}
               animate={isInView ? {
@@ -479,6 +496,13 @@ export function PortfolioSection() {
               >
                 <ChevronRight size={40} />
               </button>
+              
+              <button
+                className="absolute top-24 right-2 md:right-8 z-50 p-3 text-red-400 opacity-50 hover:opacity-100 hover:bg-white/10 rounded-full transition-all"
+                onClick={() => setSelectedId(null)}
+              >
+                <X size={40} />
+              </button>
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -488,12 +512,6 @@ export function PortfolioSection() {
                 className="relative w-full max-w-6xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                <button
-                  className="absolute -top-12 right-0 md:-right-12 md:top-0 z-50 p-2 text-white/50 hover:text-white bg-black/50 hover:bg-black/80 rounded-full backdrop-blur-sm transition-all"
-                  onClick={() => setSelectedId(null)}
-                >
-                  <X size={24} />
-                </button>
 
                 <div className="relative w-full bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col max-h-[85vh]">
                   <div className="flex flex-col w-full h-full overflow-hidden">
@@ -501,7 +519,10 @@ export function PortfolioSection() {
 
                     {/* Content Section */}
                     {/* OPTION 2: Centered "Festival" Layout */}
-                    <div className="w-full flex flex-col overflow-y-auto custom-scrollbar flex-1 bg-gray-900 min-h-0">
+                    <div 
+                      ref={modalScrollRef}
+                      className="w-full flex flex-col overflow-y-auto custom-scrollbar flex-1 bg-gray-900 min-h-0"
+                    >
 
                       {/* Top Element: Poster/Media (Fixed Height for cinematic feel) */}
                       <div className="w-full h-[45vh] md:h-[55vh] relative bg-black shrink-0 border-b border-gray-800">
@@ -593,8 +614,8 @@ export function PortfolioSection() {
                         <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-10" />
 
                         {/* 5. Description */}
-                        <div className="prose prose-invert prose-lg max-w-2xl mb-12 text-center">
-                           <p className="text-gray-300 font-light leading-relaxed text-lg md:text-xl inline-block whitespace-pre-line">
+                        <div className="prose prose-invert prose-lg max-w-2xl mb-12 text-left">
+                           <p className="text-gray-300 font-light leading-relaxed text-lg md:text-xl whitespace-pre-line">
                              {selectedItem.description}
                            </p>
                         </div>
