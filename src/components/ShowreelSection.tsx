@@ -3,14 +3,6 @@ import { useRef, useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-// Import video assets and a poster image
-import showreel720pMP4 from '../assets/video/showreel_720p.mp4';
-import showreel720pWEBM from '../assets/video/showreel_720p.webm';
-import showreelMP4 from '../assets/video/showreel.mp4';
-import showreelWEBM from '../assets/video/showreel.webm';
-import showreelPoster from '../assets/images/showreel-poster.webp';
-
-
 // Helper function to format video time in MM:SS format
 const formatTime = (time: number): string => {
   const minutes = Math.floor(time / 60);
@@ -161,16 +153,16 @@ export function ShowreelSection() {
               loop
               playsInline
               muted={isMuted}
-              poster={showreelPoster}
+              poster="/video/showreel/showreel-poster.webp"
               preload="metadata"
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
               onClick={() => setIsPlaying(!isPlaying)}
             >
-              <source src={showreelWEBM} type="video/webm" />
-              <source src={showreelMP4} type="video/mp4" />
-              <source src={showreel720pWEBM} type="video/webm" />
-              <source src={showreel720pMP4} type="video/mp4" />
+              <source src="/video/showreel/showreel.webm" type="video/webm" />
+              <source src="/video/showreel/showreel.mp4" type="video/mp4" />
+              <source src="/video/showreel/showreel_720p.webm" type="video/webm" />
+              <source src="/video/showreel/showreel_720p.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 

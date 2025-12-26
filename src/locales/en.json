@@ -84,7 +84,7 @@
                 "status": "released",
                 "description": "An exercise in capturing anxiety scattered in space, in people and in the author’s head.",
                 "credits": "Director: Mariia Sediaeva | Sound: Evgenij Rudakov | Producer: Marina Razbezhkina",
-                "video": "https://youtu.be/2SPOSqSl3gQ",
+                "video": "/video/landscape-waiting.mp4",
                 "awards": [
                     "Rudnik Documentary Film Festival",
                     "Message to Man International Film Festival"
@@ -100,7 +100,7 @@
                 "links": [
                     { "label": "Kremniy Festival", "url": "https://xn----8sbfkbqcfgsdm0bvp3a7l.xn--p1ai/mify-o-gefeste-boge-i-strojotryade" }
                 ],
-                "video": "https://youtu.be/Bd4EZ0P5eKM",
+                "video": "/video/myths-hephaestus.mp4",
                 "awards": [
                     "Kremniy Festival",
                     "Ural Film Days"
@@ -113,7 +113,7 @@
                 "status": "released",
                 "description": "In the dark cabin of the tram driver, the city is visible through the windows. The rails run ahead, twisting. Houses and bus stops flash by on the sides. Off-screen, we hear three stories that follow each other, and through the windows we see how the events described in the stories unfold right before our eyes.",
                 "credits": "Director: Mariia Sediaeva | Screenplay: Sabrina Karabaeva | Animation: Danil Strizhov | Sound: Evgenij Rudakov",
-                "video": "https://youtu.be/hcfhkTpWR0U",
+                "video": "/video/terrible-city.mp4",
                 "awards": [
                     "Suzdal Open Animation Festival",
                     "Big Cartoon Festival",
@@ -131,7 +131,7 @@
                     { "label": "YouTube Channel", "url": "https://www.youtube.com/playlist?list=PLkCm3WAAG1JypRj-41kZOKjP3TXT6l56m" },
                     { "label": "8 Informed Legs", "url": "https://t.me/nashe_dno_news" }
                 ],
-                "video": "https://youtu.be/0WWq_bkSCd8"
+                "video": "/video/boomboom-promo.mp4"
             },
             "gospodin": {
                 "title": "Mr. Great",
@@ -143,7 +143,7 @@
                 "links": [
                     { "label": "Kinopoisk", "url": "https://www.kinopoisk.ru/film/7381732/" }
                 ],
-                "video": "https://youtu.be/detQPdPhnXo",
+                "video": "/video/mr-great.mp4",
                 "awards": [
                     "Unknown Russia Festival",
                     "RUSSIA Doc Film Festival"
@@ -155,10 +155,10 @@
                 "tagline": "Telling stories of the Siege through animated three-dimensional sculptures made of mosaic smalt.",
                 "status": "released",
                 "description": "Development of a production technology for smalt-based puppet animation for a feature-length live-action film project by Alexey Fedorchenko, dedicated to the work of mosaic artist Vladimir Frolov’s workshop during the Siege of Leningrad. Our task was to develop a technology that would make it possible to produce 15 minutes of three-dimensional smalt animation within three months. As a solution, we selected and successfully tested motion capture of actors and puppets, followed by simulation into a sculptural, moving smalt image using generative diffusion-based neural network models.",
-                "video": "https://youtu.be/icyBvrrCwXo"
+                "video": "/video/siege-mosaic.mp4"
             },
             "chto": {
-                "title": "What I am doing here?",
+                "title": "What am I doing here?",
                 "subtitle": "Feature length animated documentary • 2017",
                 "tagline": "Two young women decide to take on cinema in the most unexpected way possible.",
                 "status": "in_production",
@@ -167,7 +167,7 @@
                 "links": [
                     { "label": "Community VK", "url": "https://vk.com/what_am_i_doing_here" }
                 ],
-                "video": "https://youtu.be/ZmGzW8nTgfI",
+                "video": "/video/chto-ya-tut-delayu.mp4",
                 "awards": [
                     "MIFF (2018)",
                     "LINOLEUM International Contemporary Animation and Media Art Festival (2017, 2018)",
@@ -204,7 +204,7 @@
                 "status": "in_production",
                 "description": "The 21st century offers astonishing opportunities for digital and product-driven revolution. But what if progress has a dark side? A small journey into the horror genre, descending into the depths of the meat production industry of the future.\n\nTechnology: classical animation and AI animation\nTarget audience: 18+, working young adults (25–40)",
                 "credits": "Author: Yana Makarevich",
-                "video": "https://youtu.be/QrebygNxigo"
+                "video": "/video/skot-ai.mp4"
             },
             "mechty": {
                 "title": "Dreams of Old Age",
@@ -212,7 +212,7 @@
                 "tagline": "Learning to enjoy the moment and cherish the present.",
                 "status": "in_development",
                 "description": "Animated shorts from the lives of two elderly neighbors. We want to remind older people, and ourselves, how to enjoy the moment, feel the present, rejoice in what is, and not mourn for what is already gone and lost.\n\nProject format: a series with an unlimited number of 1-minute episodes. Currently, scripts for 30 episodes, animatics, and visual designs for characters and locations are ready.",
-                "video": "https://youtu.be/YmgdzFfEqtQ"
+                "video": "/video/dreams-of-old-age.mp4"
             },
             "spiachka": {
                 "title": "Hibernation",

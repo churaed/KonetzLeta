@@ -283,6 +283,11 @@ export function PortfolioSection() {
     return null;
   };
 
+  // Helper to determine if a URL is local
+  const isLocalVideo = (url: string) => {
+    return url && (url.startsWith('/video/') || url.endsWith('.mp4') || url.endsWith('.webm'));
+  };
+
   return (
     <section id="portfolio" className="py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
       {/* Background texture */}
@@ -508,6 +513,20 @@ export function PortfolioSection() {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                           />
+                        ) : selectedItem.videoUrl && isLocalVideo(selectedItem.videoUrl) ? (
+                          <video
+                            className="w-full h-full object-contain md:object-cover"
+                            controls
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            poster={selectedItem.videoUrl.replace(/\.(mp4|webm)$/, '.webp')}
+                          >
+                            <source src={selectedItem.videoUrl.replace(/\.(mp4|webm)$/, '.webm')} type="video/webm" />
+                            <source src={selectedItem.videoUrl.replace(/\.(mp4|webm)$/, '.mp4')} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
                         ) : (
                           <>
                             <ImageWithFallback
