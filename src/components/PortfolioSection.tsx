@@ -3,6 +3,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import { ExternalLink, Play, Award, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { PortfolioVideoPlayer } from './PortfolioVideoPlayer';
 
 import mechtyOStarosti from '@/assets/images/portfolio/mechty-o-starosti.webp'
 import spiachka from '@/assets/images/portfolio/spiachka.webp'
@@ -515,20 +516,13 @@ export function PortfolioSection() {
                             allowFullScreen
                           />
                         ) : selectedItem.videoUrl && isLocalVideo(selectedItem.videoUrl) ? (
-                          <video
+                          <PortfolioVideoPlayer
                             key={selectedItem.id}
-                            className="w-full h-full object-contain md:object-cover"
-                            controls
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
+                            videoUrl={selectedItem.videoUrl}
                             poster={selectedItem.videoUrl.replace(/\.(mp4|webm)$/, '.webp')}
-                          >
-                            <source src={selectedItem.videoUrl.replace(/\.(mp4|webm)$/, '.webm')} type="video/webm" />
-                            <source src={selectedItem.videoUrl.replace(/\.(mp4|webm)$/, '.mp4')} type="video/mp4" />
-                            Your browser does not support the video tag.
-                          </video>
+                            overlayTitle={selectedItem.title}
+                            overlaySubtitle={selectedItem.subtitle}
+                          />
                         ) : (
                           <>
                             <ImageWithFallback
