@@ -506,6 +506,7 @@ export function PortfolioSection() {
                       <div className="w-full h-[45vh] md:h-[55vh] relative bg-black shrink-0 border-b border-gray-800">
                         {selectedItem.videoUrl && getEmbedUrl(selectedItem.videoUrl) ? (
                           <iframe
+                            key={selectedItem.id}
                             src={getEmbedUrl(selectedItem.videoUrl) || ''}
                             className="w-full h-full object-cover"
                             title={selectedItem.title}
@@ -515,6 +516,7 @@ export function PortfolioSection() {
                           />
                         ) : selectedItem.videoUrl && isLocalVideo(selectedItem.videoUrl) ? (
                           <video
+                            key={selectedItem.id}
                             className="w-full h-full object-contain md:object-cover"
                             controls
                             autoPlay
