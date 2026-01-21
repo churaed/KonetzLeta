@@ -235,6 +235,17 @@
                 "tagline": "A very proper dragon meets a very improper royal family.",
                 "status": "in_development",
                 "description": "A very proper dragon meets a very improper royal family.\n\nProject format: vertical animated series (26 episodes x 6 minutes per season). Currently, episode synopses, character designs, the project bible, and a season plan are in development."
+            },
+            "narkoz": {
+                "title": "Anesthesia",
+                "subtitle": "Experimental animated short film • 2025",
+                "tagline": "Anesthesia helps relieve pain.",
+                "status": "in_production",
+                "description": "In 2019, Alexey Fedorchenko filmed his feature-length movie, \"The Big Snakes of Ulli-Kale.\" It had an animated chapter. An episode about surgeon Nikolai Pirogov's anesthesia revolution was cut off during editing. But it seems like a little help from the painkillers is always welcome.",
+                "links": [
+                    { "label": "Kinopoisk", "url": "https://www.kinopoisk.ru/film/4839407/" },
+                    { "label": "IMDb", "url": "https://www.imdb.com/title/tt24071244/" }
+                ]
             }
         }
     },

@@ -17,6 +17,7 @@ import mifyOGefesteBogeIStroiotriade from '@/assets/images/portfolio/mify-o-gefe
 import strashnyiGorod from '@/assets/images/portfolio/strashnyi-gorod.webp'
 import peizazhSOzhidaniem from '@/assets/images/portfolio/peizazh-s-ozhidaniem.webp'
 import novyiVkus from '@/assets/images/portfolio/novyi-vkus.webp'
+import narkoz from '@/assets/images/portfolio/narkoz.webp'
 
 type ProjectStatus = 'released' | 'in_production' | 'in_development';
 
@@ -235,6 +236,18 @@ export function PortfolioSection() {
       size: "medium",
       videoUrl: t('portfolio.items.novyi.video'),
       links: getLinks('portfolio.items.novyi.links') as { label: string; url: string }[],
+    },
+    // Anesthesia / Эфирный наркоз
+    {
+      id: 120,
+      title: t('portfolio.items.narkoz.title'),
+      subtitle: t('portfolio.items.narkoz.subtitle'),
+      tagline: t('portfolio.items.narkoz.tagline', { defaultValue: '' }),
+      status: 'in_production',
+      description: t('portfolio.items.narkoz.description'),
+      image: narkoz,
+      size: "medium",
+      links: getLinks('portfolio.items.narkoz.links') as { label: string; url: string }[],
     }
   ];
   
