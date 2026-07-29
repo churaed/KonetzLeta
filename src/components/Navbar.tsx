@@ -160,11 +160,11 @@ export function Navbar() {
       <motion.nav
         ref={navRef}
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-linear-to-b from-black/90 to-black/60"
-        initial={{ y: -100 }}
+        initial={false}
         animate={{
           y: shouldShow ? 0 : -100,
         }}
-        transition={{ duration: 0.2, delay: 0.25, ease: 'easeInOut' }}
+        transition={{ duration: 0.2, ease: 'easeInOut' }}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 @md:h-24 flex justify-between items-center">
           {/* Left Side - Studio Description + Mobile Menu */}
