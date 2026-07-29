@@ -2,6 +2,7 @@ import { motion, useInView, AnimatePresence } from 'motion/react';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { ExternalLink, Play, Award, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { PortfolioVideoPlayer } from './PortfolioVideoPlayer';
 
@@ -18,6 +19,7 @@ import strashnyiGorod from '@/assets/images/portfolio/strashnyi-gorod.webp'
 import peizazhSOzhidaniem from '@/assets/images/portfolio/peizazh-s-ozhidaniem.webp'
 import novyiVkus from '@/assets/images/portfolio/novyi-vkus.webp'
 import narkoz from '@/assets/images/portfolio/narkoz.webp'
+import filmingProcessEndOfSummerStudio from '@/assets/images/portfolio/filming-process-end-of-summer-studio.webp'
 
 type ProjectStatus = 'released' | 'in_production' | 'in_development';
 
@@ -54,8 +56,9 @@ export function PortfolioSection() {
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedId = searchParams.get('project') ? Number(searchParams.get('project')) : null;
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
-  const [selectedId, setSelectedId] = useState<number | null>(null);
   const [showAllAwards, setShowAllAwards] = useState(false);
   const modalScrollRef = useRef<HTMLDivElement>(null);
 
@@ -63,10 +66,6 @@ export function PortfolioSection() {
     setShowAllAwards(false);
     if (selectedId !== null) {
       document.body.style.overflow = 'hidden';
-      const element = document.getElementById(`portfolio-item-${selectedId}`);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
       if (modalScrollRef.current) {
         modalScrollRef.current.scrollTop = 0;
       }
@@ -248,6 +247,18 @@ export function PortfolioSection() {
       image: narkoz,
       size: "medium",
       links: getLinks('portfolio.items.narkoz.links') as { label: string; url: string }[],
+    },
+    // Houyhnhnms and Us / Гуингмы и мы
+    {
+      id: 130,
+      title: t('portfolio.items.houyhnhnms.title'),
+      subtitle: t('portfolio.items.houyhnhnms.subtitle'),
+      tagline: t('portfolio.items.houyhnhnms.tagline', { defaultValue: '' }),
+      status: 'in_production',
+      description: t('portfolio.items.houyhnhnms.description'),
+      credits: t('portfolio.items.houyhnhnms.credits'),
+      image: filmingProcessEndOfSummerStudio,
+      size: "medium",
     }
   ];
   
@@ -271,23 +282,23 @@ export function PortfolioSection() {
     if (selectedId === null) return;
     const currentIndex = portfolioItems.findIndex(item => item.id === selectedId);
     const nextIndex = (currentIndex + 1) % portfolioItems.length;
-    setSelectedId(portfolioItems[nextIndex].id);
-  }, [selectedId, portfolioItems]);
+    setSearchParams({ project: String(portfolioItems[nextIndex].id) });
+  }, [selectedId, portfolioItems, setSearchParams]);
 
   const handlePrev = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (selectedId === null) return;
     const currentIndex = portfolioItems.findIndex(item => item.id === selectedId);
     const prevIndex = (currentIndex - 1 + portfolioItems.length) % portfolioItems.length;
-    setSelectedId(portfolioItems[prevIndex].id);
-  }, [selectedId, portfolioItems]);
+    setSearchParams({ project: String(portfolioItems[prevIndex].id) });
+  }, [selectedId, portfolioItems, setSearchParams]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (selectedId === null) return;
       if (e.key === 'ArrowRight') handleNext();
       if (e.key === 'ArrowLeft') handlePrev();
-      if (e.key === 'Escape') setSelectedId(null);
+      if (e.key === 'Escape') setSearchParams({});
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -377,7 +388,7 @@ export function PortfolioSection() {
               }}
               onHoverStart={() => setHoveredItem(item.id)}
               onHoverEnd={() => setHoveredItem(null)}
-              onClick={() => setSelectedId(item.id)}
+              onClick={() => setSearchParams({ project: String(item.id) })}
               whileHover={{
                 y: -8,
                 transition: { duration: 0.3 }
@@ -491,8 +502,8 @@ export function PortfolioSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10 bg-black/80 backdrop-blur-xl"
-              onClick={() => setSelectedId(null)}
+              className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-10 bg-black/80 backdrop-blur-xl"
+              onClick={() => setSearchParams({})}
             >
 
               {/* Navigation Arrows */}
@@ -512,7 +523,7 @@ export function PortfolioSection() {
               
               <button
                 className="absolute top-24 right-2 md:right-8 z-50 p-3 text-red-400 opacity-50 hover:opacity-100 hover:bg-white/10 rounded-full transition-all"
-                onClick={() => setSelectedId(null)}
+                onClick={() => setSearchParams({})}
               >
                 <X size={40} />
               </button>
@@ -629,7 +640,13 @@ export function PortfolioSection() {
                         {/* 5. Description */}
                         <div className="prose prose-invert prose-lg max-w-2xl mb-12 text-left">
                            <p className="text-gray-300 font-light leading-relaxed text-lg md:text-xl whitespace-pre-line">
-                             {selectedItem.description}
+                             {selectedItem.description.split('\n').map((line, i) => {
+                               const boldMatch = line.match(/^(· )(Мустанги|Зоологи|Кинематографисты|ML-специалисты|Mustangs|Zoologists|Filmmakers|ML specialists)( — )/);
+                               if (boldMatch) {
+                                 return <span key={i}>{boldMatch[1]}<strong>{boldMatch[2]}</strong>{boldMatch[3]}{line.slice(boldMatch[0].length)}<br /></span>;
+                               }
+                               return <span key={i}>{line}<br /></span>;
+                             })}
                            </p>
                         </div>
 
