@@ -25,6 +25,7 @@ type ProjectStatus = 'released' | 'in_production' | 'in_development';
 
 interface PortfolioItem {
   id: number;
+  slug: string;
   title: string;
   subtitle: string; // Genre/Mood/Year
   tagline?: string; // New short description for grid hover
@@ -57,14 +58,30 @@ export function PortfolioSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedId = searchParams.get('project') ? Number(searchParams.get('project')) : null;
+  const rawParam = searchParams.get('project');
+  const selectedParam: string | null = rawParam;
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [showAllAwards, setShowAllAwards] = useState(false);
   const modalScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setShowAllAwards(false);
-    if (selectedId !== null) {
+    if (selectedParam !== null) {
+      const numericId = Number(selectedParam);
+      if (!isNaN(numericId)) {
+        const itemById = portfolioItems.find(p => p.id === numericId);
+        if (itemById) {
+          setSearchParams({ project: itemById.slug }, { replace: true });
+          return;
+        }
+        setSearchParams({});
+        return;
+      }
+      const itemBySlug = portfolioItems.find(p => p.slug === selectedParam);
+      if (!itemBySlug) {
+        setSearchParams({});
+        return;
+      }
       document.body.style.overflow = 'hidden';
       if (modalScrollRef.current) {
         modalScrollRef.current.scrollTop = 0;
@@ -75,12 +92,13 @@ export function PortfolioSection() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [selectedId]);
+  }, [selectedParam]);
 
   const portfolioItems: PortfolioItem[] = [
     // Landscape Waiting / Пейзаж с ожиданием
     {
       id: 5,
+      slug: 'landscape-waiting',
       title: t('portfolio.items.peizazh.title'),
       subtitle: t('portfolio.items.peizazh.subtitle'),
       tagline: t('portfolio.items.peizazh.tagline', { defaultValue: '' }),
@@ -95,6 +113,7 @@ export function PortfolioSection() {
     // Myths about God / Мифы о Гефесте
     {
       id: 10,
+      slug: 'myths-about-god',
       title: t('portfolio.items.mify.title'),
       subtitle: t('portfolio.items.mify.subtitle'),
       tagline: t('portfolio.items.mify.tagline', { defaultValue: '' }),
@@ -110,6 +129,7 @@ export function PortfolioSection() {
     // Terrible City / Страшный город
     {
       id: 20,
+      slug: 'terrible-city',
       title: t('portfolio.items.strashnyi.title'),
       subtitle: t('portfolio.items.strashnyi.subtitle'),
       tagline: t('portfolio.items.strashnyi.tagline', { defaultValue: '' }),
@@ -124,6 +144,7 @@ export function PortfolioSection() {
     // BOOMBOOM / Бум Земли
     {
       id: 30,
+      slug: 'boomboom',
       title: t('portfolio.items.bum.title'),
       subtitle: t('portfolio.items.bum.subtitle'),
       tagline: t('portfolio.items.bum.tagline', { defaultValue: '' }),
@@ -138,6 +159,7 @@ export function PortfolioSection() {
     // Mr. Great / Господин Великий
     {
       id: 40,
+      slug: 'mr-great',
       title: t('portfolio.items.gospodin.title'),
       subtitle: t('portfolio.items.gospodin.subtitle'),
       tagline: t('portfolio.items.gospodin.tagline', { defaultValue: '' }),
@@ -153,6 +175,7 @@ export function PortfolioSection() {
     // Siege Mosaic / Блокадная мозаика
     {
       id: 50,
+      slug: 'siege-mosaic',
       title: t('portfolio.items.blokadnaia.title'),
       subtitle: t('portfolio.items.blokadnaia.subtitle'),
       tagline: t('portfolio.items.blokadnaia.tagline', { defaultValue: '' }),
@@ -165,6 +188,7 @@ export function PortfolioSection() {
     // Dreams of Old Age / Мечты о старости
     {
       id: 60,
+      slug: 'dreams-of-old-age',
       title: t('portfolio.items.mechty.title'),
       subtitle: t('portfolio.items.mechty.subtitle'),
       tagline: t('portfolio.items.mechty.tagline', { defaultValue: '' }),
@@ -177,6 +201,7 @@ export function PortfolioSection() {
     // Hibernation / Спячка
     {
       id: 70,
+      slug: 'hibernation',
       title: t('portfolio.items.spiachka.title'),
       subtitle: t('portfolio.items.spiachka.subtitle'),
       tagline: t('portfolio.items.spiachka.tagline', { defaultValue: '' }),
@@ -188,6 +213,7 @@ export function PortfolioSection() {
     // Capi and Tapi / Капи и Тапи
     {
       id: 80,
+      slug: 'capi-and-tapi',
       title: t('portfolio.items.kapi.title'),
       subtitle: t('portfolio.items.kapi.subtitle'),
       tagline: t('portfolio.items.kapi.tagline', { defaultValue: '' }),
@@ -199,6 +225,7 @@ export function PortfolioSection() {
     // Ordinary Dragon / Обыкновенный дракон
     {
       id: 90,
+      slug: 'ordinary-dragon',
       title: t('portfolio.items.drakon.title'),
       subtitle: t('portfolio.items.drakon.subtitle'),
       tagline: t('portfolio.items.drakon.tagline', { defaultValue: '' }),
@@ -210,6 +237,7 @@ export function PortfolioSection() {
     // What I am doing here? / Что я здесь делаю?
     {
       id: 100,
+      slug: 'what-i-am-doing-here',
       title: t('portfolio.items.chto.title'),
       subtitle: t('portfolio.items.chto.subtitle'),
       tagline: t('portfolio.items.chto.tagline', { defaultValue: '' }),
@@ -225,6 +253,7 @@ export function PortfolioSection() {
     // SkotAI / СкотИИна
     {
       id: 110,
+      slug: 'skotai',
       title: t('portfolio.items.novyi.title'),
       subtitle: t('portfolio.items.novyi.subtitle'),
       tagline: t('portfolio.items.novyi.tagline', { defaultValue: '' }),
@@ -239,6 +268,7 @@ export function PortfolioSection() {
     // Anesthesia / Эфирный наркоз
     {
       id: 120,
+      slug: 'anesthesia',
       title: t('portfolio.items.narkoz.title'),
       subtitle: t('portfolio.items.narkoz.subtitle'),
       tagline: t('portfolio.items.narkoz.tagline', { defaultValue: '' }),
@@ -251,6 +281,7 @@ export function PortfolioSection() {
     // Houyhnhnms and Us / Гуингмы и мы
     {
       id: 130,
+      slug: 'houyhnhnms-and-us',
       title: t('portfolio.items.houyhnhnms.title'),
       subtitle: t('portfolio.items.houyhnhnms.subtitle'),
       tagline: t('portfolio.items.houyhnhnms.tagline', { defaultValue: '' }),
@@ -279,23 +310,23 @@ export function PortfolioSection() {
 
   const handleNext = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
-    if (selectedId === null) return;
-    const currentIndex = portfolioItems.findIndex(item => item.id === selectedId);
+    if (selectedParam === null) return;
+    const currentIndex = portfolioItems.findIndex(item => item.slug === selectedParam);
     const nextIndex = (currentIndex + 1) % portfolioItems.length;
-    setSearchParams({ project: String(portfolioItems[nextIndex].id) });
-  }, [selectedId, portfolioItems, setSearchParams]);
+    setSearchParams({ project: portfolioItems[nextIndex].slug });
+  }, [selectedParam, portfolioItems, setSearchParams]);
 
   const handlePrev = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
-    if (selectedId === null) return;
-    const currentIndex = portfolioItems.findIndex(item => item.id === selectedId);
+    if (selectedParam === null) return;
+    const currentIndex = portfolioItems.findIndex(item => item.slug === selectedParam);
     const prevIndex = (currentIndex - 1 + portfolioItems.length) % portfolioItems.length;
-    setSearchParams({ project: String(portfolioItems[prevIndex].id) });
-  }, [selectedId, portfolioItems, setSearchParams]);
+    setSearchParams({ project: portfolioItems[prevIndex].slug });
+  }, [selectedParam, portfolioItems, setSearchParams]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (selectedId === null) return;
+      if (selectedParam === null) return;
       if (e.key === 'ArrowRight') handleNext();
       if (e.key === 'ArrowLeft') handlePrev();
       if (e.key === 'Escape') setSearchParams({});
@@ -303,9 +334,9 @@ export function PortfolioSection() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedId, handleNext, handlePrev]);
+  }, [selectedParam, handleNext, handlePrev]);
 
-  const selectedItem = portfolioItems.find(item => item.id === selectedId);
+  const selectedItem = portfolioItems.find(item => item.slug === selectedParam);
 
   // Helper to get embed URL (Basic YouTube/Vimeo/Drive support)
   const getEmbedUrl = (url: string) => {
@@ -388,7 +419,7 @@ export function PortfolioSection() {
               }}
               onHoverStart={() => setHoveredItem(item.id)}
               onHoverEnd={() => setHoveredItem(null)}
-              onClick={() => setSearchParams({ project: String(item.id) })}
+              onClick={() => setSearchParams({ project: item.slug })}
               whileHover={{
                 y: -8,
                 transition: { duration: 0.3 }
@@ -497,7 +528,7 @@ export function PortfolioSection() {
 
         {/* Modal Overlay */}
         <AnimatePresence>
-          {selectedId && selectedItem && (
+          {selectedParam && selectedItem && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

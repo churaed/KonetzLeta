@@ -39,5 +39,8 @@ coverage/
 
 .kilocode/
 .kilocodemodes
+.agents/
+.commandcode/
 
 src/assets/images/awards-*
+skills-lock.json
