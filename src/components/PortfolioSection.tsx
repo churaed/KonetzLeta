@@ -657,12 +657,6 @@ export function PortfolioSection() {
                              {getStatusLabel(selectedItem.status)}
                            </span>
                            <span className="w-1 h-1 bg-gray-600 rounded-full" />
-                           {viewCount && (
-                             <>
-                               <span className="text-gray-400">{viewCount} views</span>
-                               <span className="w-1 h-1 bg-gray-600 rounded-full" />
-                             </>
-                           )}
                            <span className="text-gray-400">{selectedItem.subtitle}</span>
                         </div>
 
@@ -734,6 +728,15 @@ export function PortfolioSection() {
                                  </span>
                                ))}
                              </div>
+                          </div>
+                        )}
+
+                        {/* 6.5 View Count */}
+                        {viewCount && (
+                          <div className="mb-6">
+                            <span className="text-sm font-mono text-gray-500 uppercase tracking-widest">
+                              {viewCount} views
+                            </span>
                           </div>
                         )}
 
