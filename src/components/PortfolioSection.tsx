@@ -68,6 +68,7 @@ export function PortfolioSection() {
 
   useEffect(() => {
     setShowAllAwards(false);
+    let wait: ReturnType<typeof setInterval> | undefined;
     if (selectedParam !== null) {
       const numericId = Number(selectedParam);
       if (!isNaN(numericId)) {
@@ -91,10 +92,11 @@ export function PortfolioSection() {
       if (selectedParam !== lastTrackedSlug.current) {
         lastTrackedSlug.current = selectedParam;
         let retries = 0;
-        const wait = setInterval(() => {
+        wait = setInterval(() => {
           retries++;
           if (window.goatcounter?.count) {
             clearInterval(wait);
+            wait = undefined;
             window.goatcounter.count({
               path: `/projects/${selectedParam}`,
               title: itemBySlug.title,
@@ -102,6 +104,7 @@ export function PortfolioSection() {
             });
           } else if (retries >= 30) {
             clearInterval(wait);
+            wait = undefined;
           }
         }, 100);
       }
@@ -111,6 +114,7 @@ export function PortfolioSection() {
     }
     return () => {
       document.body.style.overflow = '';
+      if (wait) clearInterval(wait);
     };
   }, [selectedParam]);
 
