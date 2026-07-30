@@ -10,6 +10,7 @@ Track overall site visits + project card modal opens via GoatCounter. Display li
 - No backend — public `/counter/<path>.json` endpoint (no auth), CORS confirmed working
 - Keep "Allow adding visitor counts" enabled in site settings
 - Counts cached up to 4 hours → not real-time
+- GoatCounter ignores localhost — tracking + counts only on production
 - No `no_onload` → auto-tracking page loads + manual modal tracking coexist
 - Cookie-free, privacy-friendly
 - React + Vite + TypeScript
@@ -43,6 +44,7 @@ V8: `?project=<id>` → redirect to slug (from main)
 V9: `?project=<slug>` → opens directly (from main)
 V10: `?project=<nonexistent>` → cleared, no modal (from main)
 V11: async wait for `goatcounter` load → max 3s (30 × 100ms), then stop polling
+V12: GoatCounter blocks localhost — tracking + counts only work on production domain
 
 ## §T Tasks
 
