@@ -366,7 +366,7 @@ export function PortfolioSection() {
     }
     setViewCount(null);
     fetch(`https://churaed.goatcounter.com/counter//projects/${slug}.json`)
-      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(r => r.json())
       .then(data => setViewCount(data.count))
       .catch(() => setViewCount(null));
   }, [selectedItem?.slug]);

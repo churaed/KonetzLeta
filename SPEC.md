@@ -7,10 +7,8 @@ Track overall site visits + project card modal opens via GoatCounter. Display li
 ## §C Constraints
 
 - GoatCounter subdomain `churaed.goatcounter.com`
-- No backend — public `/counter/<path>.json` endpoint (no auth)
-- ? URL format: `encodeURIComponent` vs literal `//path` — test both, GoatCounter docs ambiguous
-- ? CORS on `/counter/` endpoint — verify during build
-- User must enable "Allow adding visitor counts" in site settings (off by default)
+- No backend — public `/counter/<path>.json` endpoint (no auth), CORS confirmed working
+- Keep "Allow adding visitor counts" enabled in site settings
 - Counts cached up to 4 hours → not real-time
 - No `no_onload` → auto-tracking page loads + manual modal tracking coexist
 - Cookie-free, privacy-friendly
