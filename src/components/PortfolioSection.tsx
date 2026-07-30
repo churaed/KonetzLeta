@@ -63,6 +63,8 @@ export function PortfolioSection() {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [showAllAwards, setShowAllAwards] = useState(false);
   const modalScrollRef = useRef<HTMLDivElement>(null);
+  const lastTrackedSlug = useRef<string | null>(null);
+  const [viewCount, setViewCount] = useState<string | null>(null);
 
   useEffect(() => {
     setShowAllAwards(false);
@@ -86,8 +88,26 @@ export function PortfolioSection() {
       if (modalScrollRef.current) {
         modalScrollRef.current.scrollTop = 0;
       }
+      if (selectedParam !== lastTrackedSlug.current) {
+        lastTrackedSlug.current = selectedParam;
+        let retries = 0;
+        const wait = setInterval(() => {
+          retries++;
+          if (window.goatcounter?.count) {
+            clearInterval(wait);
+            window.goatcounter.count({
+              path: `/projects/${selectedParam}`,
+              title: itemBySlug.title,
+              event: false,
+            });
+          } else if (retries >= 30) {
+            clearInterval(wait);
+          }
+        }, 100);
+      }
     } else {
       document.body.style.overflow = '';
+      lastTrackedSlug.current = null;
     }
     return () => {
       document.body.style.overflow = '';
@@ -337,6 +357,19 @@ export function PortfolioSection() {
   }, [selectedParam, handleNext, handlePrev]);
 
   const selectedItem = portfolioItems.find(item => item.slug === selectedParam);
+
+  useEffect(() => {
+    const slug = selectedItem?.slug;
+    if (!slug) {
+      setViewCount(null);
+      return;
+    }
+    setViewCount(null);
+    fetch(`https://churaed.goatcounter.com/counter//projects/${slug}.json`)
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => setViewCount(data.count))
+      .catch(() => setViewCount(null));
+  }, [selectedItem?.slug]);
 
   // Helper to get embed URL (Basic YouTube/Vimeo/Drive support)
   const getEmbedUrl = (url: string) => {
@@ -620,6 +653,12 @@ export function PortfolioSection() {
                              {getStatusLabel(selectedItem.status)}
                            </span>
                            <span className="w-1 h-1 bg-gray-600 rounded-full" />
+                           {viewCount && (
+                             <>
+                               <span className="text-gray-400">{viewCount} views</span>
+                               <span className="w-1 h-1 bg-gray-600 rounded-full" />
+                             </>
+                           )}
                            <span className="text-gray-400">{selectedItem.subtitle}</span>
                         </div>
 
