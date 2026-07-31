@@ -345,6 +345,329 @@
         "title_part2": "Us",
         "description": "Our team gathered from different spheres:\nAnimation, Film, Music, Literature, Fine Arts, IT, Theater.\nThat's why you see so many logos of different festivals, competitions, awards.\nWe participated in them, received awards and prizes. But we worked not for prizes, but because we know and love our business.\nIt's true."
     },
+    "manifest": {
+        "teaser": "Here is our Manifesto"
+    },
+    "manifest_page": {
+        "title": "Manifesto of the Studio «End of Summer»",
+        "version": "Version 1.1",
+        "date": "July 16, 2026",
+        "founder": "Studio founder — Mariia Sediaeva",
+        "back_home": "Back to Home",
+        "part1": {
+            "heading": "I. Manifesto of the Studio «End of Summer»",
+            "why_exists": {
+                "title": "Why the studio exists",
+                "p1": "The studio «End of Summer» exists to create the conditions in which directors and artists can make films they truly believe in.",
+                "p2": "For me, as the founder, this means the ability to engage daily in directing, research, and artistic practice. The studio protects my time for creative work, so I don't dissolve into operations.",
+                "p3": "But the studio does not exist only for me.",
+                "p4": "It exists for the emergence of films that could not have been made alone.",
+                "p5": "We build an environment where it is interesting to work, to make mistakes, to argue, and to live.",
+                "p6": "We want to be surrounded by people who inspire one another."
+            },
+            "good_film": {
+                "title": "What a good film is",
+                "intro": "We do not divide films into art-house and commercial.",
+                "intro2": "We divide them into good and bad.",
+                "lead": "A good film is",
+                "traits": [
+                    "one that moves you,",
+                    "surprises you,",
+                    "changes a person,",
+                    "opens a world or themselves to them,",
+                    "keeps living inside you after the screening."
+                ],
+                "outro": "It is a film you want to finish watching.",
+                "outro2": "And one you want to discuss after it ends."
+            },
+            "what_is": {
+                "title": "What «End of Summer» is",
+                "p1": "It is not just a production company.",
+                "p2": "It is a studio-workshop.",
+                "p3": "It is a place",
+                "traits": [
+                    "where directors make films,",
+                    "artists search for new forms,",
+                    "teams grow together,",
+                    "and culture matters more than hierarchy."
+                ]
+            },
+            "values": {
+                "title": "Our values",
+                "lead": "We believe in:",
+                "items": [
+                    "love for what we do;",
+                    "respect;",
+                    "openness;",
+                    "responsibility;",
+                    "courage;",
+                    "transparency;",
+                    "curiosity;",
+                    "a sense of play."
+                ],
+                "middle": "We call it with one word —",
+                "fun": "FUN.",
+                "fun_explained": "Fun does not necessarily mean merriment.",
+                "fun_p1": "Fun is a state of exploration.",
+                "fun_p2": "Sometimes fun is fear.",
+                "fun_p3": "Sometimes it is risk.",
+                "fun_p4": "Sometimes it is pain.",
+                "fun_p5": "Sometimes it is the feeling that something new is about to come."
+            },
+            "mistakes": {
+                "title": "Mistakes",
+                "items": [
+                    "Mistakes are inevitable.",
+                    "They are a consequence of exploration.",
+                    "We do not hide mistakes.",
+                    "We discuss mistakes.",
+                    "We fix mistakes.",
+                    "We are grateful to those who help us see them."
+                ]
+            },
+            "money": {
+                "title": "Money",
+                "items": [
+                    "We treat money with respect.",
+                    "We highly value our own work and the work of others.",
+                    "We do not consider money the purpose of the studio's existence.",
+                    "But we consider it a necessary condition for artistic freedom."
+                ]
+            },
+            "responsibility": {
+                "title": "Responsibility",
+                "p1": "Responsibility is",
+                "p2": "not the search for someone to blame.",
+                "p3": "Responsibility is",
+                "items": [
+                    "the willingness to keep a promise,",
+                    "acknowledge a mistake,",
+                    "fix it,",
+                    "and help make things better."
+                ]
+            },
+            "we_want": {
+                "title": "What we want",
+                "items": [
+                    "Films to become better because the studio exists.",
+                    "People to become stronger through working together.",
+                    "The studio to exist for decades.",
+                    "For it to remain a place",
+                    "you want to come back to."
+                ]
+            }
+        },
+        "part2": {
+            "heading": "II. Constitution of the Studio «End of Summer»",
+            "management": {
+                "title": "Principle of governance",
+                "items": [
+                    "The studio is built on distributed responsibility.",
+                    "Each leader has a high degree of autonomy within their area.",
+                    "Strategic questions are decided jointly.",
+                    "Artistic questions — by the artistic community.",
+                    "Operational questions — by the executive team."
+                ]
+            },
+            "bodies": {
+                "title": "Main bodies of the studio",
+                "founder": {
+                    "title": "Founder",
+                    "p1": "The founder defines the studio's mission and remains the guardian of its original intent.",
+                    "p2": "The status of founder alone does not imply participation in day-to-day management."
+                },
+                "art_director": {
+                    "title": "Artistic director",
+                    "lead": "Responsible for:",
+                    "items": [
+                        "the studio's artistic development;",
+                        "the quality of original projects;",
+                        "the development of directors;",
+                        "shaping the artistic culture;",
+                        "own directing practice."
+                    ],
+                    "outro": "Not involved in day-to-day operations."
+                },
+                "art_collegium": {
+                    "title": "Artistic collegium",
+                    "lead": "Members:",
+                    "members": [
+                        "artistic director;",
+                        "studio directors;",
+                        "invited experts (when needed)."
+                    ],
+                    "p1": "The collegium is responsible solely for the studio's artistic portfolio.",
+                    "she": "It:",
+                    "items": [
+                        "accepts new projects;",
+                        "closes projects;",
+                        "defines artistic strategy."
+                    ],
+                    "outro": "It does not deal with administrative matters."
+                },
+                "studio_council": {
+                    "title": "Studio council",
+                    "lead": "Members:",
+                    "members": [
+                        "artistic director;",
+                        "chief operating officer;",
+                        "commercial director;",
+                        "head of «Blue Fence»."
+                    ],
+                    "outro": "The council is responsible for the strategic development of the organization."
+                },
+                "coo": {
+                    "title": "Chief Operating Officer (COO)",
+                    "lead": "The main task is",
+                    "lead2": "to create conditions",
+                    "lead3": "under which directors can calmly make films.",
+                    "responsibilities_lead": "Responsible for:",
+                    "items": [
+                        "processes;",
+                        "budgets;",
+                        "legal matters;",
+                        "contracts;",
+                        "the team;",
+                        "infrastructure;",
+                        "internal coordination."
+                    ]
+                }
+            },
+            "directions": {
+                "title": "Areas of activity",
+                "art_films": {
+                    "title": "Art-house cinema",
+                    "p1": "The main reason the studio exists."
+                },
+                "commission": {
+                    "title": "Commissioned production",
+                    "p1": "The studio's economic support."
+                },
+                "blue_fence": {
+                    "title": "«Blue Fence»",
+                    "p1": "The studio's cultural environment.",
+                    "p2": "A place of meetings,",
+                    "items": [
+                        "exhibitions,",
+                        "lectures,",
+                        "co-working,",
+                        "experiments,",
+                        "laboratories,",
+                        "screenings,",
+                        "community."
+                    ]
+                }
+            },
+            "teams": {
+                "title": "Production teams",
+                "items": [
+                    "Teams exist for a long time.",
+                    "They do not disband after each project.",
+                    "The director becomes the leader of the project.",
+                    "The team independently makes most production decisions."
+                ]
+            },
+            "how_accepted": {
+                "title": "How projects are accepted",
+                "p1": "Each member of the artistic collegium answers two questions.",
+                "q1": "Do I want to see this film?",
+                "q2": "Do I want to help it come into being?",
+                "p2": "If the majority answers «yes»,",
+                "p3": "the project is accepted into development."
+            }
+        },
+        "part3": {
+            "heading": "III. Studio Operations Guide",
+            "iterations": {
+                "title": "We work in short iterations",
+                "items": [
+                    "We regularly check the result.",
+                    "We gather feedback.",
+                    "We adjust the direction."
+                ]
+            },
+            "three_principles": {
+                "title": "We follow three principles",
+                "items": [
+                    "transparency;",
+                    "inspection;",
+                    "adaptation."
+                ]
+            },
+            "five_values": {
+                "title": "We practice five values",
+                "items": [
+                    "responsibility;",
+                    "courage;",
+                    "openness;",
+                    "respect;",
+                    "focus."
+                ]
+            },
+            "feedback": {
+                "title": "We give feedback",
+                "praise_lead": "When we praise —",
+                "praise": "we are specific.",
+                "crit_lead": "When we criticize —",
+                "crit": "we suggest a path to improvement."
+            },
+            "clarify": {
+                "title": "We clarify tasks",
+                "p1": "When receiving a request,",
+                "p2": "we try to understand:",
+                "items": [
+                    "what result is needed;",
+                    "why it is needed;",
+                    "in what form;",
+                    "by what deadline;",
+                    "what constraints exist."
+                ]
+            },
+            "trust": {
+                "title": "We trust",
+                "items": [
+                    "We start from the good intentions of our colleagues.",
+                    "We do not make assumptions before talking.",
+                    "We ask first.",
+                    "Then we draw conclusions."
+                ]
+            },
+            "openness": {
+                "title": "We are open",
+                "lead": "We do not hide:",
+                "items": [
+                    "the financial model of projects;",
+                    "production processes;",
+                    "the reasons behind decisions."
+                ],
+                "outro": "Transparency creates trust."
+            },
+            "buffer": {
+                "title": "We plan with a buffer",
+                "p1": "We use the «50/50» rule.",
+                "p2": "If a project seems to take four months,",
+                "p3": "we plan as if",
+                "p4": "we only have two.",
+                "p5": "This forces us to decide earlier,",
+                "p6": "search for simpler solutions,",
+                "p7": "and leave room for the unexpected."
+            },
+            "learn": {
+                "title": "We learn",
+                "p1": "Every studio employee is",
+                "p2": "both a student and a teacher.",
+                "p3": "Any project should make us stronger."
+            }
+        },
+        "final": {
+            "title": "And one last thing",
+            "p1": "There is only one item I would never change. It is not about management. It is about meaning.",
+            "quote1": "«End of Summer is an organization that protects the time of directors and artists for creative work.»",
+            "p2": "I believe this is not just a pretty phrase. It is a criterion against which, in ten years, any decision can be tested. If a new commercial project, a new department, or a new direction appears, it is enough to ask one question:",
+            "quote2": "Does this decision increase or decrease the time and opportunities for making good films?",
+            "p3": "If it increases — it aligns with the spirit of «End of Summer». If it does not — however profitable it may seem, it gradually pulls the studio away from its purpose. This is exactly the phrase I would put on the first page and never rewrite again."
+        }
+    },
     "privacy_notice": {
         "text_desktop": "We do not use cookies and we do not collect any personal data.",
         "text_mobile": "We do not collect your data.",

@@ -3,6 +3,7 @@ import { motion, useInView } from 'motion/react';
 import { cubicBezier } from 'motion-utils';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import { InteractiveLogoGrid } from './InteractiveLogoGrid';
 
@@ -98,6 +99,15 @@ export function TeamSection() {
             <p className="text-xl font-cormorant italic text-gray-300 max-w-4xl mx-auto leading-relaxed whitespace-pre-line">
               {t('team.description')}
             </p>
+            {/* Manifest teaser */}
+            <div className="mt-10 text-center">
+              <Link
+                to="/manifest"
+                className="inline-block text-2xl md:text-3xl font-cormorant italic text-red-400 hover:text-white transition-colors duration-300 underline underline-offset-8 decoration-red-400/40 hover:decoration-white"
+              >
+                {t('manifest.teaser')}
+              </Link>
+            </div>
           </motion.div>
 
           {/* <InteractiveLogoGrid logos={partnerLogos} /> */}

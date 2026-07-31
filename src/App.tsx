@@ -9,6 +9,8 @@ import { ContactSection } from './components/ContactSection';
 import { Navbar } from './components/Navbar';
 import { PrivacyNotice } from './components/PrivacyNotice';
 import { PrivacyPage } from './components/PrivacyPage';
+import { ManifestPage } from './components/ManifestPage';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export default function App() {
   const location = useLocation();
@@ -21,7 +23,9 @@ export default function App() {
         rel="stylesheet"
       />
 
-      {location.pathname !== '/privacy' && <Navbar />}
+      {location.pathname !== '/privacy' && location.pathname !== '/manifest' && <Navbar />}
+
+      <ScrollToTop />
 
       <Routes>
         <Route
@@ -48,6 +52,7 @@ export default function App() {
           }
         />
         <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/manifest" element={<ManifestPage />} />
       </Routes>
 
       {/* <style jsx>{`
