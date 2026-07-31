@@ -311,6 +311,7 @@ export function PortfolioSection() {
       tagline: t('portfolio.items.houyhnhnms.tagline', { defaultValue: '' }),
       status: 'in_production',
       description: t('portfolio.items.houyhnhnms.description'),
+      videoUrl: t('portfolio.items.houyhnhnms.video'),
       credits: t('portfolio.items.houyhnhnms.credits'),
       image: filmingProcessEndOfSummerStudio,
       size: "medium",
