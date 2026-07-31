@@ -44,3 +44,9 @@ coverage/
 
 src/assets/images/awards-*
 skills-lock.json
+
+# Playwright CLI artifacts
+.playwright-cli/
+
+# Screenshot files in root
+/*.png
