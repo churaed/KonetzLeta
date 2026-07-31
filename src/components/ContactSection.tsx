@@ -1,6 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Instagram, PlayCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 // Contact section component
@@ -17,25 +17,49 @@ export function ContactSection() {
       icon: Mail,
       label: t('contact.email'),
       value: "konetzleta@gmail.com",
-      action: "mailto:konetzleta@gmail.com"
+      action: "mailto:konetzleta@gmail.com",
+      disabled: false,
+      multiline: false
     },
     {
-      icon: MessageCircle,
-      label: t('contact.whatsapp'),
-      value: "+79041745621",
-      action: "https://wa.me/79041745621"
+      icon: Send,
+      label: t('contact.telegram'),
+      value: "t.me/konetzleta",
+      action: "https://t.me/konetzleta",
+      disabled: false,
+      multiline: false
+    },
+    {
+      icon: Instagram,
+      label: t('contact.instagram'),
+      value: "@endofsummer.fun",
+      action: "https://www.instagram.com/endofsummer.fun?igsh=a2FjcjJhc2N6N3Fw",
+      disabled: false,
+      multiline: false
+    },
+    {
+      icon: PlayCircle,
+      label: t('contact.rutube'),
+      value: t('contact.rutube_value'),
+      action: undefined,
+      disabled: true,
+      multiline: false
     },
     {
       icon: Phone,
       label: t('contact.phone'),
       value: "+79022610028",
-      action: "tel:+79022610028"
+      action: "tel:+79022610028",
+      disabled: false,
+      multiline: false
     },
     {
       icon: MapPin,
       label: t('contact.studio'),
       value: t('contact.studio_address'),
-      action: "#"
+      action: "https://xlebozavod6.ru/",
+      disabled: false,
+      multiline: true
     }
   ];
 
@@ -114,31 +138,56 @@ export function ContactSection() {
         >
 
           {/* Renders contact methods dynamically */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactMethods.map((method, index) => (
-              // Individual contact method link
-              <motion.a
-                key={index}
-                href={method.action}
-                className="group flex items-center space-x-4 p-4 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 hover:border-red-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10"
-                // Animation for each contact method
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-              >
-                {/* Icon for the contact method */}
-                <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-400 to-red-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                  <method.icon size={18} className="text-white" />
-                </div>
-                {/* Label and value for the contact method */}
-                <div>
-                  <div className="text-xs text-gray-500 font-mono tracking-wide">{method.label}</div>
-                  <div className="text-white font-mono text-sm group-hover:text-red-400 transition-colors">
-                    {method.value}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {contactMethods.map((method, index) => {
+              // Shared animation + inner content for every card variant
+              const motionProps = {
+                initial: { opacity: 0, y: 20 },
+                animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                transition: { duration: 0.6, delay: 0.6 + index * 0.1 }
+              };
+              const valueClass = method.multiline
+                ? "text-white font-mono text-sm whitespace-pre-line leading-snug"
+                : "text-white font-mono text-sm group-hover:text-red-400 transition-colors";
+              const inner = (
+                <>
+                  {/* Icon for the contact method */}
+                  <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-400 to-red-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    <method.icon size={18} className="text-white" />
                   </div>
-                </div>
-              </motion.a>
-            ))}
+                  {/* Label and value for the contact method */}
+                  <div className="min-w-0">
+                    <div className="text-xs text-gray-500 font-mono tracking-wide">{method.label}</div>
+                    <div className={valueClass}>{method.value}</div>
+                  </div>
+                </>
+              );
+              // Disabled cards (e.g. Rutube before launch) render as inert divs
+              if (method.disabled) {
+                return (
+                  <motion.div
+                    key={index}
+                    {...motionProps}
+                    aria-disabled="true"
+                    className="group flex items-center space-x-4 p-4 rounded-xl bg-white/5 border border-white/10 opacity-50 cursor-not-allowed"
+                  >
+                    {inner}
+                  </motion.div>
+                );
+              }
+              return (
+                <motion.a
+                  key={index}
+                  href={method.action}
+                  target={method.action?.startsWith('http') ? '_blank' : undefined}
+                  rel={method.action?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="group flex items-center space-x-4 p-4 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 hover:border-red-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10"
+                  {...motionProps}
+                >
+                  {inner}
+                </motion.a>
+              );
+            })}
           </div>
 
           {/* // Philosophy statement box

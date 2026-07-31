@@ -57,11 +57,14 @@
         "title_part2": "us",
         "intro": "Have an idea?\nWe'll help present it to your audience.",
         "email": "Email",
-        "whatsapp": "WhatsApp",
+        "telegram": "Telegram",
+        "instagram": "Instagram",
+        "rutube": "Rutube",
+        "rutube_value": "Coming soon",
         "phone": "Phone",
         "studio": "Studio",
-        "studio_address": "Yekaterinburg, Russia",
-        "legal_info": "\"End of Summer\" — independent commercial animation studio\n \"End of Summer\" Co. Ltd. INN: 6679179711 OGRN: 1246600054601"
+        "studio_address": "Creative Production Cluster \"Khlebozavod No. 6\"\n8 Marta, 203, 2nd floor",
+        "legal_info": "\"End of Summer\" — animation and experimental film studio\n \"End of Summer\" Co. Ltd. INN: 6679179711 OGRN: 1246600054601"
     },
     "portfolio": {
         "title": "Projects",
