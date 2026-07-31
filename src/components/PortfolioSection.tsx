@@ -758,21 +758,6 @@ export function PortfolioSection() {
                               <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
                             </a>
                           ))}
-                          
-                          {/* Fallback for projects with only videoUrl and no explicit links */}
-                          {(!Array.isArray(selectedItem.links) || selectedItem.links.length === 0) && selectedItem.videoUrl && (
-                            <a
-                              href={selectedItem.videoUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-black hover:bg-red-500 hover:text-white transition-all duration-300 rounded-full group shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(239,68,68,0.4)]"
-                            >
-                              <span className="font-mono text-xs uppercase tracking-widest font-bold">
-                                {t('portfolio.watch_project')}
-                              </span>
-                              <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-                            </a>
-                          )}
                         </div>
 
                       </div>
