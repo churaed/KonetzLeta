@@ -14,6 +14,7 @@ export function Navbar() {
   const [isHovering, setIsHovering] = useState(false);
   const [navbarPinned, setNavbarPinned] = useState(false);
   const hoverTimerRef = useRef<number | null>(null);
+  const isProgrammaticScroll = useRef(false);
 
 
   const navRef = useRef<HTMLDivElement>(null);
@@ -37,6 +38,9 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+
+      // Skip hide logic during programmatic scroll (mobile menu navigation)
+      if (isProgrammaticScroll.current) return;
 
       // Navbar visibility logic with threshold to prevent jittery behavior
       if (currentScrollY < 50) {
@@ -112,24 +116,36 @@ export function Navbar() {
 
   // Add this new function inside your Navbar component
   const handleMobileNavClick = (href: string) => {
+    // Close menu first, wait for animation to settle, then scroll
+    setIsMenuOpen(false);
+    setNavVisible(true); // Force navbar visible for upward scrolls
+
     if (href.startsWith('#')) {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        isProgrammaticScroll.current = true;
+        // Wait for menu close animation to complete before scrolling
+        setTimeout(() => {
+          const navbarHeight = navRef.current?.getBoundingClientRect().height || 80;
+          const elementTop = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: elementTop - navbarHeight, behavior: 'smooth' });
+          // Clear flag after scroll completes
+          setTimeout(() => {
+            isProgrammaticScroll.current = false;
+          }, 1500);
+        }, 300);
       }
     }
-
-    // Use a small delay to close the menu.
-    // This gives the browser time to start the scroll before the menu disappears.
-    setTimeout(() => {
-      setIsMenuOpen(false);
-    }, 300); // 300ms is a safe delay
   };
 
   const scrollToSection = (href: string) => {
     if (href.startsWith('#')) {
       const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      if (element) {
+        const navbarHeight = navRef.current?.getBoundingClientRect().height || 80;
+        const elementTop = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementTop - navbarHeight, behavior: 'smooth' });
+      }
     }
     setIsMenuOpen(false);
   };
