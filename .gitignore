@@ -47,6 +47,7 @@ skills-lock.json
 
 # Playwright CLI artifacts
 .playwright-cli/
+.playwright/
 
 # Screenshot files in root
 /*.png
