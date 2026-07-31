@@ -570,7 +570,7 @@ export function PortfolioSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-10 bg-black/80 backdrop-blur-xl"
+              className="fixed inset-0 z-[60] flex items-start justify-center pt-20 p-4 md:pt-24 md:p-10 bg-black/80 backdrop-blur-xl"
               onClick={() => setSearchParams({})}
             >
 
@@ -588,13 +588,6 @@ export function PortfolioSection() {
               >
                 <ChevronRight size={32} className="md:size-10" />
               </button>
-              
-              <button
-                className="absolute top-24 right-1 md:right-8 z-50 p-2 md:p-3 text-red-400 opacity-50 hover:opacity-100 hover:bg-white/10 rounded-full transition-all"
-                onClick={() => setSearchParams({})}
-              >
-                <X size={32} className="md:size-10" />
-              </button>
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -604,6 +597,12 @@ export function PortfolioSection() {
                 className="relative w-full max-w-6xl"
                 onClick={(e) => e.stopPropagation()}
               >
+                <button
+                  className="absolute top-3 right-3 z-50 p-2 text-red-400 opacity-50 hover:opacity-100 hover:bg-white/10 rounded-full transition-all"
+                  onClick={() => setSearchParams({})}
+                >
+                  <X size={24} />
+                </button>
 
                 <div className="relative w-full bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col max-h-[85vh] overflow-x-hidden">
                   <div className="flex flex-col w-full h-full overflow-hidden">

@@ -192,17 +192,8 @@ export function ShowreelSection() {
                   <Play className="size-6 md:size-12 text-red-400 ml-1" />
                 </motion.div>
                 {/* Animated ripple effect around play button */}
-                <motion.div
-                  className="absolute inset-0 border-2 border-red-400 rounded-full"
-                  animate={{
-                    scale: [1, 1.5, 2],
-                    opacity: [0.5, 0.2, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeOut",
-                  }}
+                <div
+                  className="absolute inset-0 border-2 border-red-400 rounded-full animate-pulse-ring"
                 />
               </motion.button>
               {/* Video info text shown before play */}
