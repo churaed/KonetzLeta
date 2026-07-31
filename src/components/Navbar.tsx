@@ -170,7 +170,7 @@ export function Navbar() {
           {/* Left Side - Studio Description + Mobile Menu */}
           <div className="flex items-center space-x-4">
             <motion.button
-              className="lg:hidden order-first text-white"
+              className="lg:hidden order-first text-white min-h-[44px] min-w-[44px] flex items-center justify-center"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

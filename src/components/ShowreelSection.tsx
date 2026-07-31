@@ -227,7 +227,7 @@ export function ShowreelSection() {
                 {/* Play/pause toggle button with adaptive size */}
                 <motion.button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="size-9 md:size-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
+                  className="bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30 min-h-[44px] min-w-[44px]"
                   whileHover={{ scale: 1.1, borderColor: "rgba(239, 68, 68, 0.8)" }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -241,7 +241,7 @@ export function ShowreelSection() {
                 {/* Mute/unmute toggle button with adaptive size */}
                 <motion.button
                   onClick={() => setIsMuted(!isMuted)}
-                  className="size-9 md:size-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
+                  className="bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30 min-h-[44px] min-w-[44px]"
                   whileHover={{ scale: 1.1, borderColor: "rgba(239, 68, 68, 0.8)" }}
                   whileTap={{ scale: 0.95 }}
                 >

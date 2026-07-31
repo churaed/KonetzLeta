@@ -193,6 +193,15 @@ html {
   font-size: var(--font-size);
 }
 
+.custom-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
 .font-cormorant {
   font-family: 'Cormorant Garamond', serif;
 }

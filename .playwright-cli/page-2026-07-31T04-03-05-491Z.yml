@@ -1,0 +1,314 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - button "RU" [ref=e6]
+      - generic [ref=e7]:
+        - link "Start of Summer" [ref=e8] [cursor=pointer]:
+          - /url: /#hero
+          - generic [ref=e9]:
+            - generic [ref=e10]: Start
+            - generic [ref=e11]: of Summer
+        - link "About Us And our Garden" [ref=e12] [cursor=pointer]:
+          - /url: /#about
+          - generic [ref=e13]:
+            - generic [ref=e14]: About Us
+            - generic [ref=e15]: And our Garden
+        - link "Showreel of New Growth" [ref=e16] [cursor=pointer]:
+          - /url: /#showreel
+          - generic [ref=e17]:
+            - generic [ref=e18]: Showreel
+            - generic [ref=e19]: of New Growth
+        - link "Projects and Preserves" [ref=e20] [cursor=pointer]:
+          - /url: /#portfolio
+          - generic [ref=e21]:
+            - generic [ref=e22]: Projects
+            - generic [ref=e23]: and Preserves
+        - link "Services and Products" [ref=e24] [cursor=pointer]:
+          - /url: /#services
+          - generic [ref=e25]:
+            - generic [ref=e26]: Services
+            - generic [ref=e27]: and Products
+        - link "Contact us" [ref=e28] [cursor=pointer]:
+          - /url: /#contact
+          - generic [ref=e29]:
+            - generic [ref=e30]: Contact
+            - generic [ref=e31]: us
+        - link "End of Summer" [ref=e32] [cursor=pointer]:
+          - /url: /#hero
+          - generic [ref=e33]:
+            - generic [ref=e34]: End
+            - generic [ref=e35]: of Summer
+  - generic [ref=e36]:
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - heading "End of Summer" [level=1] [ref=e42]:
+          - generic [ref=e43]: End
+          - generic [ref=e44]: of Summer
+        - paragraph [ref=e46]: Independent commercial animation studio
+        - img "Hero Bird" [ref=e48]
+      - button "See more" [ref=e52]
+    - generic [ref=e60]:
+      - heading "About Us" [level=2] [ref=e62]
+      - img "Команда" [ref=e64]
+      - paragraph [ref=e66]: "Our team gathered from different spheres: Animation, Film, Music, Literature, Fine Arts, IT, Theater. That's why you see so many logos of different festivals, competitions, awards. We participated in them, received awards and prizes. But we worked not for prizes, but because we know and love our business. It's true."
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - img "Partner logo 1"
+        - generic [ref=e69]:
+          - img "Partner logo 2"
+        - generic [ref=e70]:
+          - img "Partner logo 3"
+        - generic [ref=e71]:
+          - img "Partner logo 4"
+        - generic [ref=e72]:
+          - img "Partner logo 5"
+        - generic [ref=e73]:
+          - img "Partner logo 6"
+        - generic [ref=e74]:
+          - img "Partner logo 7"
+        - generic [ref=e75]:
+          - img "Partner logo 8"
+        - generic [ref=e76]:
+          - img "Partner logo 9"
+        - generic [ref=e77]:
+          - img "Partner logo 10"
+        - generic [ref=e78]:
+          - img "Partner logo 11"
+        - generic [ref=e79]:
+          - img "Partner logo 12"
+        - generic [ref=e80]:
+          - img "Partner logo 13"
+        - generic [ref=e81]:
+          - img "Partner logo 14"
+        - generic [ref=e82]:
+          - img "Partner logo 15"
+        - generic [ref=e83]:
+          - img "Partner logo 16"
+        - generic [ref=e84]:
+          - img "Partner logo 17"
+        - generic [ref=e85]:
+          - img "Partner logo 18"
+        - generic [ref=e86]:
+          - img "Partner logo 19"
+        - generic [ref=e87]:
+          - img "Partner logo 20"
+        - generic [ref=e88]:
+          - img "Partner logo 21"
+        - generic [ref=e89]:
+          - img "Partner logo 22"
+        - generic [ref=e90]:
+          - img "Partner logo 23"
+        - generic [ref=e91]:
+          - img "Partner logo 24"
+        - generic [ref=e92]:
+          - img "Partner logo 25"
+        - generic [ref=e93]:
+          - img "Partner logo 26"
+        - generic [ref=e94]:
+          - img "Partner logo 27"
+        - generic [ref=e95]:
+          - img "Partner logo 28"
+        - generic [ref=e96]:
+          - img "Partner logo 29"
+        - generic [ref=e97]:
+          - img "Partner logo 30"
+        - generic [ref=e98]:
+          - img "Partner logo 31"
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - heading "Show reel" [level=2] [ref=e125]
+        - paragraph [ref=e126]: Let our work speak for itself — a story lives in every frame.
+      - generic [ref=e128]:
+        - generic [ref=e129] [cursor=pointer]: Your browser does not support the video tag.
+        - generic [ref=e130]:
+          - button [ref=e131]
+          - generic [ref=e136]:
+            - paragraph [ref=e137]: 1 minute of our world
+            - generic [ref=e138]: "Director: Maria S."
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - button [ref=e142]
+            - button [ref=e145]
+          - generic [ref=e150]: 00:00 / 00:00
+    - generic [ref=e157]:
+      - generic [ref=e158]:
+        - heading "Projects" [level=2] [ref=e159]
+        - paragraph [ref=e160]: "Let's be honest: we love inventing things to do. Look! Isn't it interesting?"
+      - generic [ref=e161]:
+        - generic [ref=e163] [cursor=pointer]:
+          - img "Landscape Waiting" [ref=e164]
+          - generic:
+            - generic:
+              - paragraph: Documentary animated short film • 2025
+              - heading "Landscape Waiting" [level=3]
+        - generic [ref=e171] [cursor=pointer]:
+          - img "Myths about God, Hephaestus, and the Construction Brigade" [ref=e172]
+          - generic:
+            - generic:
+              - paragraph: Animated sequence for documentary feature film • 2025
+              - heading "Myths about God, Hephaestus, and the Construction Brigade" [level=3]
+        - generic [ref=e179] [cursor=pointer]:
+          - img "Terrible City" [ref=e180]
+          - generic:
+            - generic:
+              - paragraph: Documentary animated short film • 2024
+              - heading "Terrible City" [level=3]
+        - generic [ref=e187] [cursor=pointer]:
+          - 'img "BOOMBOOM: Save the planet!" [ref=e188]'
+          - generic:
+            - generic:
+              - paragraph: "Promotion of the «BOOMBOOM: Save the planet!» animated series • 2024"
+              - 'heading "BOOMBOOM: Save the planet!" [level=3]'
+        - generic [ref=e195] [cursor=pointer]:
+          - img "Mr. Great" [ref=e196]
+          - generic:
+            - generic:
+              - paragraph: Animated sequence for documentary feature film • 2024
+              - heading "Mr. Great" [level=3]
+        - generic [ref=e203] [cursor=pointer]:
+          - img "Siege Mosaic" [ref=e204]
+          - generic:
+            - generic:
+              - paragraph: Development of animation technology • 2024
+              - heading "Siege Mosaic" [level=3]
+        - generic [ref=e211] [cursor=pointer]:
+          - img "Dreams of Old Age" [ref=e212]
+          - generic:
+            - generic:
+              - paragraph: Socio-cultural project • Laboratory • Web series
+              - heading "Dreams of Old Age" [level=3]
+        - generic [ref=e219] [cursor=pointer]:
+          - img "Hibernation" [ref=e220]
+          - generic:
+            - generic:
+              - paragraph: Feature-length animated film • Fantasy for teenagers
+              - heading "Hibernation" [level=3]
+        - generic [ref=e224] [cursor=pointer]:
+          - img "Capi and Tapi" [ref=e225]
+          - generic:
+            - generic:
+              - paragraph: Animated series • Plush adventures in the Amazon
+              - heading "Capi and Tapi" [level=3]
+        - generic [ref=e229] [cursor=pointer]:
+          - img "Ordinary Dragon" [ref=e230]
+          - generic:
+            - generic:
+              - paragraph: Animated series • Don't splash ketchup on my tapestry
+              - heading "Ordinary Dragon" [level=3]
+        - generic [ref=e234] [cursor=pointer]:
+          - img "What am I doing here?" [ref=e235]
+          - generic:
+            - generic:
+              - paragraph: Feature length animated documentary • 2017
+              - heading "What am I doing here?" [level=3]
+        - generic [ref=e242] [cursor=pointer]:
+          - img "SkotAI" [ref=e243]
+          - generic:
+            - generic:
+              - paragraph: AI-powered short horror film
+              - heading "SkotAI" [level=3]
+        - generic [ref=e250] [cursor=pointer]:
+          - img "Anesthesia" [ref=e251]
+          - generic:
+            - generic:
+              - paragraph: Experimental animated short film • 2025
+              - heading "Anesthesia" [level=3]
+        - generic [ref=e255] [cursor=pointer]:
+          - img "Houyhnhnms and Us" [ref=e256]
+          - generic:
+            - generic:
+              - paragraph: experimental non-fiction, short film, 2026
+              - heading "Houyhnhnms and Us" [level=3]
+    - generic [ref=e264]:
+      - generic [ref=e265]:
+        - heading "Services" [level=2] [ref=e266]
+        - paragraph [ref=e267]: Every project is a dialogue between the artist and the viewer, between technology and soul, between the idea and its realisation.
+      - generic [ref=e268]:
+        - generic [ref=e272]:
+          - heading "Feature films and series" [level=3] [ref=e273]
+          - paragraph [ref=e274]: Original animation projects — from concept to final cut. It's definitely interesting!
+          - generic [ref=e275]: Distributors
+          - generic [ref=e277]:
+            - generic [ref=e278]: Animated Feature films
+            - generic [ref=e281]: TV series
+            - generic [ref=e284]: Web series
+            - generic [ref=e287]: Short films
+        - generic [ref=e293]:
+          - heading "Animated scenes" [level=3] [ref=e294]
+          - paragraph [ref=e295]: Atmosphere is made up of details. Titles, graphic and animation episodes will help explain complex topics, awaken and support emotions.
+          - generic [ref=e296]: Film producers
+          - generic [ref=e298]:
+            - generic [ref=e299]: Visual effects
+            - generic [ref=e302]: Motion graphics
+            - generic [ref=e305]: Opening/Closing titles
+            - generic [ref=e308]: Fantasy scenes
+            - generic [ref=e311]: Animadoc
+        - generic [ref=e317]:
+          - heading "Popular Science" [level=3] [ref=e318]
+          - paragraph [ref=e319]: We turn complex scientific concepts into fascinating visual stories. Science becomes art.
+          - generic [ref=e320]: High-tech business
+          - generic [ref=e322]:
+            - generic [ref=e323]: Educational films
+            - generic [ref=e326]: Corporate presentations
+            - generic [ref=e329]: Technical visualizations
+            - generic [ref=e332]: Product demos
+        - generic [ref=e338]:
+          - heading "Animation support for performances" [level=3] [ref=e339]
+          - paragraph [ref=e340]: Animated video art for your theatrical production. This is what the stage is waiting for.
+          - generic [ref=e341]: Theater producers
+          - generic [ref=e343]:
+            - generic [ref=e344]: Animated characters
+            - generic [ref=e347]: Animated backgrounds
+            - generic [ref=e350]: Animated scenes
+            - generic [ref=e353]: Visual special effects
+        - generic [ref=e359]:
+          - heading "Festival projects" [level=3] [ref=e360]
+          - paragraph [ref=e361]: Viewers expect unique energy from every festival. We undertake to make animated screensavers and full visual design.
+          - generic [ref=e362]: Festival organizers
+          - generic [ref=e364]:
+            - generic [ref=e365]: Festival screensavers
+            - generic [ref=e368]: Opening ceremonies
+            - generic [ref=e371]: Nomination videos
+            - generic [ref=e374]: Event branding
+        - generic [ref=e380]:
+          - heading "Museum installations" [level=3] [ref=e381]
+          - paragraph [ref=e382]: Video exhibits, VR installations and complex video branding of museums and galleries. Art in dialogue with technology.
+          - generic [ref=e383]: Museum and gallery directors
+          - generic [ref=e385]:
+            - generic [ref=e386]: VR installations
+            - generic [ref=e389]: Video exhibits
+            - generic [ref=e392]: Museum branding
+            - generic [ref=e395]: Interactive exhibitions
+    - generic [ref=e430]:
+      - generic [ref=e431]:
+        - heading "Contact us" [level=2] [ref=e432]: Contactus
+        - paragraph [ref=e434]: Have an idea? We'll help present it to your audience.
+      - generic [ref=e435]:
+        - generic [ref=e436]:
+          - link "Email konetzleta@gmail.com" [ref=e437] [cursor=pointer]:
+            - /url: mailto:konetzleta@gmail.com
+            - generic [ref=e442]:
+              - generic [ref=e443]: Email
+              - generic [ref=e444]: konetzleta@gmail.com
+          - link "WhatsApp +79041745621" [ref=e445] [cursor=pointer]:
+            - /url: https://wa.me/79041745621
+            - generic [ref=e449]:
+              - generic [ref=e450]: WhatsApp
+              - generic [ref=e451]: "+79041745621"
+          - link "Phone +79022610028" [ref=e452] [cursor=pointer]:
+            - /url: tel:+79022610028
+            - generic [ref=e456]:
+              - generic [ref=e457]: Phone
+              - generic [ref=e458]: "+79022610028"
+          - link "Studio Yekaterinburg, Russia" [ref=e459] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e464]:
+              - generic [ref=e465]: Studio
+              - generic [ref=e466]: Yekaterinburg, Russia
+        - paragraph [ref=e468]: "\"End of Summer\" — independent commercial animation studio \"End of Summer\" Co. Ltd. INN: 6679179711 OGRN: 1246600054601"
+    - contentinfo [ref=e469]:
+      - link "Privacy Policy" [ref=e470] [cursor=pointer]:
+        - /url: /privacy
+    - alert [ref=e471]:
+      - paragraph [ref=e476]: We do not use cookies and we do not collect any personal data.
+      - button "Thanks" [ref=e477]

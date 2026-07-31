@@ -156,7 +156,7 @@ export function PortfolioVideoPlayer({
         <div className="flex items-center space-x-3">
           <motion.button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="size-9 md:size-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
+            className="min-h-[44px] min-w-[44px] bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
             whileHover={{ scale: 1.1, borderColor: "rgba(239, 68, 68, 0.8)" }}
             whileTap={{ scale: 0.95 }}
           >
@@ -169,7 +169,7 @@ export function PortfolioVideoPlayer({
 
           <motion.button
             onClick={() => setIsMuted(!isMuted)}
-            className="size-9 md:size-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
+            className="min-h-[44px] min-w-[44px] bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30"
             whileHover={{ scale: 1.1, borderColor: "rgba(239, 68, 68, 0.8)" }}
             whileTap={{ scale: 0.95 }}
           >
@@ -201,12 +201,12 @@ export function PortfolioVideoPlayer({
 
       {/* Decorative corners matching studio style */}
       <motion.div
-        className="absolute -top-4 -right-4 w-6 h-6 border-t-2 border-r-2 border-red-400/20"
+        className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-red-400/20"
         animate={{ opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 4, repeat: Infinity }}
       />
       <motion.div
-        className="absolute -bottom-4 -left-4 w-6 h-6 border-b-2 border-l-2 border-red-400/20"
+        className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-red-400/20"
         animate={{ opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 4, repeat: Infinity, delay: 2 }}
       />

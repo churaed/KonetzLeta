@@ -81,7 +81,7 @@ export function ContactSection() {
         >
           {/* Main heading */}
           <h2 className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
-            {t('contact.title_part1')}
+            {t('contact.title_part1')}{' '}
             <br />
             <span className="text-red-400">{t('contact.title_part2')}</span>
           </h2>
@@ -107,8 +107,8 @@ export function ContactSection() {
         {/* Contact Information section */}
         <motion.div
           // Animation for the contact info block
-          initial={{ opacity: 0, x: 100 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="space-y-8"
         >

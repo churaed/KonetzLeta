@@ -45,7 +45,7 @@ export function PrivacyNotice() {
           <motion.button
             onClick={() => setIsVisible(false)}
             className="
-              flex-shrink-0 px-5 py-2 rounded-full
+              flex-shrink-0 px-5 py-2 rounded-full min-h-[44px]
               bg-red-500/90 hover:bg-red-500
               text-white text-sm font-mono tracking-wide
               transition-colors duration-200

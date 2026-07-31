@@ -38,7 +38,7 @@ export default function App() {
               <footer className="py-20 text-center border-t border-gray-800">
                 <Link
                   to="/privacy"
-                  className="text-gray-500 hover:text-red-400 font-mono text-sm transition-colors duration-200"
+                  className="text-gray-500 hover:text-red-400 font-mono text-sm transition-colors duration-200 inline-block min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   {t('footer.privacy_policy')}
                 </Link>

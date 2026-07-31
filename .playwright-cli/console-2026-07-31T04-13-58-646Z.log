@@ -1,0 +1,3 @@
+[     186ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=0aa19b51:17994
+[     345ms] [WARNING] Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly. @ http://localhost:5173/node_modules/.vite/deps/chunk-VEEVU3KA.js?v=0aa19b51:136
+[     417ms] [WARNING] goatcounter: not counting because of: localhost @ http://gc.zgo.at/count.js:79

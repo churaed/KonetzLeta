@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from 'motion/react';
 import { useRef, useState, useEffect, useCallback } from 'react';
-import { ExternalLink, Play, Award, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Play, Award, X, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -508,7 +508,7 @@ export function PortfolioSection() {
                     
                     {/* Always Visible Label */}
                     <motion.p 
-                      className="text-[10px] font-mono text-red-400 mb-2 uppercase tracking-[0.2em]"
+                      className="text-xs font-mono text-red-400 mb-2 uppercase tracking-[0.2em]"
                       animate={{ opacity: hoveredItem === item.id ? 1 : 0.8 }}
                     >
                       {item.subtitle}
@@ -576,24 +576,24 @@ export function PortfolioSection() {
 
               {/* Navigation Arrows */}
               <button
-                className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all z-50"
+                className="absolute left-1 md:left-8 top-1/2 -translate-y-1/2 p-2 md:p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all z-50"
                 onClick={handlePrev}
               >
-                <ChevronLeft size={40} />
+                <ChevronLeft size={32} className="md:size-10" />
               </button>
 
               <button
-                className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all z-50"
+                className="absolute right-1 md:right-8 top-1/2 -translate-y-1/2 p-2 md:p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all z-50"
                 onClick={handleNext}
               >
-                <ChevronRight size={40} />
+                <ChevronRight size={32} className="md:size-10" />
               </button>
               
               <button
-                className="absolute top-24 right-2 md:right-8 z-50 p-3 text-red-400 opacity-50 hover:opacity-100 hover:bg-white/10 rounded-full transition-all"
+                className="absolute top-24 right-1 md:right-8 z-50 p-2 md:p-3 text-red-400 opacity-50 hover:opacity-100 hover:bg-white/10 rounded-full transition-all"
                 onClick={() => setSearchParams({})}
               >
-                <X size={40} />
+                <X size={32} className="md:size-10" />
               </button>
 
               <motion.div
@@ -605,7 +605,7 @@ export function PortfolioSection() {
                 onClick={(e) => e.stopPropagation()}
               >
 
-                <div className="relative w-full bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col max-h-[85vh]">
+                <div className="relative w-full bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col max-h-[85vh] overflow-x-hidden">
                   <div className="flex flex-col w-full h-full overflow-hidden">
 
 
@@ -670,7 +670,7 @@ export function PortfolioSection() {
                           <div className="mb-10 w-full max-w-4xl">
                             <motion.div 
                               layout
-                              className="flex flex-wrap justify-center gap-x-6 gap-y-3"
+                              className="flex flex-wrap justify-center gap-3 md:gap-x-6 md:gap-y-3"
                             >
                               {(showAllAwards ? selectedItem.awards : selectedItem.awards.slice(0, 6)).map((award, i) => (
                                 <motion.div 
@@ -733,15 +733,16 @@ export function PortfolioSection() {
 
                         {/* 6.5 View Count */}
                         {viewCount && (
-                          <div className="mb-6">
+                          <div className="mb-6 flex items-center justify-center gap-2">
+                            <Eye size={14} className="text-gray-500" />
                             <span className="text-sm font-mono text-gray-500 uppercase tracking-widest">
-                              {viewCount} views
+                              {viewCount}
                             </span>
                           </div>
                         )}
 
                         {/* 7. Action Links */}
-                        <div className="flex flex-wrap justify-center gap-4 mb-4">
+                        <div className="flex flex-wrap justify-center gap-4 mb-4 w-full max-w-2xl">
                           {/* FIX: Check Array.isArray() before mapping */}
                           {Array.isArray(selectedItem.links) && selectedItem.links.map((link, idx) => (
                             <a

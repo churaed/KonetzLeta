@@ -90,12 +90,12 @@ export function ServicesSection() {
     <section id="services" ref={containerRef} className="py-32 bg-black relative overflow-hidden">
       {/* Animated background with gradient circles */}
       <motion.div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-5 overflow-hidden"
         style={{ y: backgroundY }}
       >
-        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-red-500 to-pink-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-orange-500 to-red-500 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-20 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-br from-red-500 to-pink-500 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-40 md:w-80 h-40 md:h-80 bg-gradient-to-br from-orange-500 to-red-500 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 md:w-72 h-36 md:h-72 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full blur-3xl" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

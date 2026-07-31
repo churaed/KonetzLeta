@@ -221,7 +221,7 @@ export function HeroSection() {
           {/* Button that scrolls to about section */}
           <motion.button
             onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="flex flex-col items-center text-gray-400 hover:text-red-400 transition-colors group"
+            className="flex flex-col items-center text-gray-400 hover:text-red-400 transition-colors group min-h-[44px] justify-center"
             whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 400 }}
           >

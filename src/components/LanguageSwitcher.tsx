@@ -12,7 +12,7 @@ export function LanguageSwitcher() {
     return (
         <motion.button
             onClick={toggleLanguage}
-            className="text-white/80 hover:text-white font-mono text-sm tracking-wider uppercase transition-colors"
+            className="text-white/80 hover:text-white font-mono text-sm tracking-wider uppercase transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
         >
