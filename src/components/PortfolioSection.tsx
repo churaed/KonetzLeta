@@ -119,6 +119,20 @@ export function PortfolioSection() {
   }, [selectedParam]);
 
   const portfolioItems: PortfolioItem[] = [
+    // Houyhnhnms and Us / Гуингмы и мы
+    {
+      id: 130,
+      slug: 'houyhnhnms-and-us',
+      title: t('portfolio.items.houyhnhnms.title'),
+      subtitle: t('portfolio.items.houyhnhnms.subtitle'),
+      tagline: t('portfolio.items.houyhnhnms.tagline', { defaultValue: '' }),
+      status: 'in_production',
+      description: t('portfolio.items.houyhnhnms.description'),
+      videoUrl: t('portfolio.items.houyhnhnms.video'),
+      credits: t('portfolio.items.houyhnhnms.credits'),
+      image: filmingProcessEndOfSummerStudio,
+      size: "medium",
+    },
     // Landscape Waiting / Пейзаж с ожиданием
     {
       id: 5,
@@ -301,20 +315,6 @@ export function PortfolioSection() {
       image: narkoz,
       size: "medium",
       links: getLinks('portfolio.items.narkoz.links') as { label: string; url: string }[],
-    },
-    // Houyhnhnms and Us / Гуингмы и мы
-    {
-      id: 130,
-      slug: 'houyhnhnms-and-us',
-      title: t('portfolio.items.houyhnhnms.title'),
-      subtitle: t('portfolio.items.houyhnhnms.subtitle'),
-      tagline: t('portfolio.items.houyhnhnms.tagline', { defaultValue: '' }),
-      status: 'in_production',
-      description: t('portfolio.items.houyhnhnms.description'),
-      videoUrl: t('portfolio.items.houyhnhnms.video'),
-      credits: t('portfolio.items.houyhnhnms.credits'),
-      image: filmingProcessEndOfSummerStudio,
-      size: "medium",
     }
   ];
   
