@@ -659,12 +659,15 @@
             }
         },
         "final": {
-            "title": "And one last thing",
-            "p1": "There is only one item I would never change. It is not about management. It is about meaning.",
+            "title": "PS",
+            "lead1": "Philosophy must survive the decades.",
+            "lead2": "The constitution can change every few years.",
+            "lead3": "But practices will change constantly.",
+            "p1": "There is only one item that should never be changed at all.",
             "quote1": "«End of Summer is an organization that protects the time of directors and artists for creative work.»",
-            "p2": "I believe this is not just a pretty phrase. It is a criterion against which, in ten years, any decision can be tested. If a new commercial project, a new department, or a new direction appears, it is enough to ask one question:",
+            "p2": "It is a criterion against which any decision can be tested. If a new commercial project, a new department, or a new direction appears, it is enough to ask one question:",
             "quote2": "Does this decision increase or decrease the time and opportunities for making good films?",
-            "p3": "If it increases — it aligns with the spirit of «End of Summer». If it does not — however profitable it may seem, it gradually pulls the studio away from its purpose. This is exactly the phrase I would put on the first page and never rewrite again."
+            "p3": "If it increases — it aligns with the spirit of «End of Summer». If it does not — however profitable it may seem, it gradually pulls the studio away from its purpose."
         }
     },
     "privacy_notice": {

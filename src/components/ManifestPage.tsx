@@ -378,6 +378,11 @@ export function ManifestPage() {
 
         <FadeBlock>
           <div className="space-y-5">
+            <div className="space-y-2">
+              <Para>{t('manifest_page.final.lead1')}</Para>
+              <Para>{t('manifest_page.final.lead2')}</Para>
+              <Para>{t('manifest_page.final.lead3')}</Para>
+            </div>
             <Para>{t('manifest_page.final.p1')}</Para>
             <Quote>{t('manifest_page.final.quote1')}</Quote>
             <Para>{t('manifest_page.final.p2')}</Para>
