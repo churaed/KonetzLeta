@@ -11,6 +11,12 @@ interface HouyhnhnmsMediaSource {
 
 export const houyhnhnmsMedia: HouyhnhnmsMediaSource[] = [
   {
+    "type": "video",
+    "src": "/media/houyhnhnms-and-us/video-02.mp4",
+    "poster": "/media/houyhnhnms-and-us/video-02.webp",
+    "originalFile": "видео/Horses_for_translator_session_01_withlabels.preview.mp4"
+  },
+  {
     "type": "image",
     "src": "/media/houyhnhnms-and-us/photo-01.webp",
     "altRu": "Табун диких лошадей на острове Водный",
@@ -122,12 +128,6 @@ export const houyhnhnmsMedia: HouyhnhnmsMediaSource[] = [
   },
   {
     "type": "video",
-    "src": "/media/houyhnhnms-and-us/video-02.mp4",
-    "poster": "/media/houyhnhnms-and-us/video-02.webp",
-    "originalFile": "видео/Horses_for_translator_session_01_withlabels.preview.mp4"
-  },
-  {
-    "type": "video",
     "src": "/media/houyhnhnms-and-us/video-03.mp4",
     "poster": "/media/houyhnhnms-and-us/video-03.webp",
     "originalFile": "видео/Гуингмы и мы_съемки дикий мустангов_остров Водный 2026.MOV"
@@ -173,13 +173,6 @@ export const houyhnhnmsMedia: HouyhnhnmsMediaSource[] = [
     "altRu": "Съёмки фильма на острове Водный, фото 20",
     "altEn": "Behind the scenes on Vodny Island, photo 20",
     "originalFile": "бэкстейдж/Гуингмы и мы_съемочный процесс диких лошадей на острове Водный.JPG"
-  },
-  {
-    "type": "image",
-    "src": "/media/houyhnhnms-and-us/photo-21.webp",
-    "altRu": "Съёмки фильма на острове Водный, фото 21",
-    "altEn": "Behind the scenes on Vodny Island, photo 21",
-    "originalFile": "бэкстейдж/Лидия Канашова_режиссер фильма Гуингмы_съемки на острове Водный 2026.jpg"
   },
   {
     "type": "image",
@@ -234,27 +227,6 @@ export const houyhnhnmsMedia: HouyhnhnmsMediaSource[] = [
   },
   {
     "type": "image",
-    "src": "/media/houyhnhnms-and-us/photo-29.webp",
-    "altRu": "Съёмки фильма на острове Водный, фото 29",
-    "altEn": "Behind the scenes on Vodny Island, photo 29",
-    "originalFile": "бэкстейдж/режиссер и оператор фильма Гуингмы и мы на  острове Водный 2026.jpg"
-  },
-  {
-    "type": "image",
-    "src": "/media/houyhnhnms-and-us/photo-30.webp",
-    "altRu": "Съёмки фильма на острове Водный, фото 30",
-    "altEn": "Behind the scenes on Vodny Island, photo 30",
-    "originalFile": "бэкстейдж/ритуальная тарелка фильма Гуингмы и мы.jpg"
-  },
-  {
-    "type": "image",
-    "src": "/media/houyhnhnms-and-us/photo-31.webp",
-    "altRu": "Съёмки фильма на острове Водный, фото 31",
-    "altEn": "Behind the scenes on Vodny Island, photo 31",
-    "originalFile": "бэкстейдж/сотрудники Ростовского заповедника.jpg"
-  },
-  {
-    "type": "image",
     "src": "/media/houyhnhnms-and-us/photo-32.webp",
     "altRu": "Съёмки фильма на острове Водный, фото 32",
     "altEn": "Behind the scenes on Vodny Island, photo 32",
@@ -262,37 +234,83 @@ export const houyhnhnmsMedia: HouyhnhnmsMediaSource[] = [
   },
   {
     "type": "image",
+    "src": "/media/houyhnhnms-and-us/photo-21.webp",
+    "altRu": "Съёмки фильма на острове Водный, фото 21",
+    "altEn": "Behind the scenes on Vodny Island, photo 21",
+    "originalFile": "бэкстейдж/Лидия Канашова_режиссер фильма Гуингмы_съемки на острове Водный 2026.jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
+  },
+  {
+    "type": "image",
+    "src": "/media/houyhnhnms-and-us/photo-29.webp",
+    "altRu": "Съёмки фильма на острове Водный, фото 29",
+    "altEn": "Behind the scenes on Vodny Island, photo 29",
+    "originalFile": "бэкстейдж/режиссер и оператор фильма Гуингмы и мы на  острове Водный 2026.jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
+  },
+  {
+    "type": "image",
+    "src": "/media/houyhnhnms-and-us/photo-30.webp",
+    "altRu": "Съёмки фильма на острове Водный, фото 30",
+    "altEn": "Behind the scenes on Vodny Island, photo 30",
+    "originalFile": "бэкстейдж/ритуальная тарелка фильма Гуингмы и мы.jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
+  },
+  {
+    "type": "image",
+    "src": "/media/houyhnhnms-and-us/photo-31.webp",
+    "altRu": "Съёмки фильма на острове Водный, фото 31",
+    "altEn": "Behind the scenes on Vodny Island, photo 31",
+    "originalFile": "бэкстейдж/сотрудники Ростовского заповедника.jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
+  },
+  {
+    "type": "image",
     "src": "/media/houyhnhnms-and-us/photo-33.webp",
     "altRu": "Съёмки фильма на острове Водный, фото 33",
     "altEn": "Behind the scenes on Vodny Island, photo 33",
-    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (1).jpg"
+    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (1).jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
   },
   {
     "type": "image",
     "src": "/media/houyhnhnms-and-us/photo-34.webp",
     "altRu": "Съёмки фильма на острове Водный, фото 34",
     "altEn": "Behind the scenes on Vodny Island, photo 34",
-    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (2).jpg"
+    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (2).jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
   },
   {
     "type": "image",
     "src": "/media/houyhnhnms-and-us/photo-35.webp",
     "altRu": "Съёмки фильма на острове Водный, фото 35",
     "altEn": "Behind the scenes on Vodny Island, photo 35",
-    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (3).jpg"
+    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (3).jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
   },
   {
     "type": "image",
     "src": "/media/houyhnhnms-and-us/photo-36.webp",
     "altRu": "Съёмки фильма на острове Водный, фото 36",
     "altEn": "Behind the scenes on Vodny Island, photo 36",
-    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (4).jpg"
+    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (4).jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
   },
   {
     "type": "image",
     "src": "/media/houyhnhnms-and-us/photo-37.webp",
     "altRu": "Съёмки фильма на острове Водный, фото 37",
     "altEn": "Behind the scenes on Vodny Island, photo 37",
-    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (5).jpg"
+    "originalFile": "бэкстейдж/экспедиция зоологов МГУ остров Водный 2026 (5).jpg",
+    "creditRu": "Иван Нестерец",
+    "creditEn": "Ivan Nesterets"
   }
 ];

@@ -134,7 +134,8 @@ export function PortfolioSection() {
       status: 'in_production',
       description: t('portfolio.items.houyhnhnms.description'),
       credits: t('portfolio.items.houyhnhnms.credits'),
-      image: '/media/houyhnhnms-and-us/photo-01.webp',
+      image: '/media/houyhnhnms-and-us/video-02.webp',
+      videoUrl: '/media/houyhnhnms-and-us/video-02.mp4',
       media: houyhnhnmsMedia.map((media): ProjectMedia => media.type === 'image' ? {
         type: 'image',
         src: media.src,
