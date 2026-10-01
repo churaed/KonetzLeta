@@ -14,13 +14,15 @@ interface PortfolioVideoPlayerProps {
   poster?: string;
   overlayTitle?: string;
   overlaySubtitle?: string;
+  blurPreview?: boolean;
 }
 
 export function PortfolioVideoPlayer({ 
   videoUrl, 
   poster, 
   overlayTitle, 
-  overlaySubtitle 
+  overlaySubtitle,
+  blurPreview = true,
 }: PortfolioVideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -34,7 +36,7 @@ export function PortfolioVideoPlayer({
     const video = videoRef.current;
     if (video) {
       if (isPlaying) {
-        video.play().catch((error: any) => {
+        video.play().catch((error: unknown) => {
           console.error("Video play failed:", error);
           setIsPlaying(false);
         });
@@ -79,7 +81,7 @@ export function PortfolioVideoPlayer({
     <div className="relative w-full h-full bg-black flex items-center justify-center">
       <video
         ref={videoRef}
-        className="w-full h-full object-contain md:object-cover cursor-pointer"
+        className="w-full h-full object-contain cursor-pointer"
         loop
         playsInline
         muted={isMuted}
@@ -99,7 +101,7 @@ export function PortfolioVideoPlayer({
         initial={{ opacity: 1 }}
         animate={{ opacity: hasStarted ? 0 : 1 }}
         transition={{ duration: 0.5 }}
-        className={`absolute inset-0 flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm ${hasStarted ? 'pointer-events-none' : ''}`}
+        className={`absolute inset-0 flex flex-col items-center justify-center bg-black/40 ${blurPreview ? 'backdrop-blur-sm' : ''} ${hasStarted ? 'pointer-events-none' : ''}`}
       >
         <motion.button
           onClick={handleInitialPlay}
