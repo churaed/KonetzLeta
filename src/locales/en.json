@@ -67,6 +67,18 @@
         "legal_info": "\"End of Summer\" — animation and experimental film studio\n \"End of Summer\" Co. Ltd. INN: 6679179711 OGRN: 1246600054601"
     },
     "portfolio": {
+        "gallery": {
+            "label": "{{title}} media",
+            "carousel": "carousel",
+            "credit": "Photo: {{name}}",
+            "first": "First slide",
+            "last": "Last slide",
+            "previous": "Previous photo or video",
+            "next": "Next photo or video",
+            "image": "Photo {{number}}",
+            "video": "Video {{number}}",
+            "position": "{{current}} of {{total}}"
+        },
         "title": "Projects",
         "intro": "Let's be honest: we love inventing things to do.\nLook! Isn't it interesting?",
         "awards_badge": "Awards",
@@ -254,8 +266,17 @@
                 "subtitle": "experimental non-fiction, short film, 2026",
                 "tagline": "The film was produced as part of a competition organized by the Foundation for the Support of Regional Cinema of the Russian Union of Cinematographers.",
                 "status": "in_production",
-                "description": "On an island in the middle of a salt lake lives the only herd of wild horses in Russia.\n\nTogether with biologists who have been studying this herd for more than 15 years, the film crew sets out on an expedition to decipher the language of animals using the language of cinema and artificial intelligence, and to explore whether genuine mutual understanding between humans and horses is possible.\n\nFilm protagonists:\n· Mustangs — feral horses of Vodny Island in Lake Manych-Gudilo, within the Rostovsky Nature Reserve.\n· Zoologists — Natalia Spasskaya, Scientific Secretary of the Zoological Museum of Moscow State University, who has been studying this herd with her students for over 15 years.\n· Filmmakers — the team of the animation and experimental film studio End of Summer.\n· ML specialists — mathematics from Ekaterinburg.\n\nStart of filming: June 19, 2026.",
-                "credits": "Producer: Maria Sedyaeva | Director: Lidia Kanashova | Cinematographer: Daria Ismagulova | Sound Operator: Ivan Nesterets | Screenwriter: Maria Boteva | Line Producer: Natalia Schitsalova"
+                "description": "On an island in the middle of a salt lake lives the only herd of wild horses in Russia.\n\nTogether with biologists who have been studying this herd for more than 15 years, the film crew sets out on an expedition to decipher the language of animals through cinema and artificial intelligence, and to explore whether true mutual understanding between humans and horses is possible.\n\nFilm protagonists:\n· Mustangs — feral domestic horses living on Vodny Island in the salt lake Manych-Gudilo, within the Rostovsky Nature Reserve.\n· Zoologists — Natalia Spasskaya, Scientific Secretary of the Zoological Museum of Moscow State University, Candidate of Biological Sciences and head of research into the horse population on Vodny Island, who has been studying this herd with biology students for more than 15 years.\n· Filmmakers — the team of the animation and experimental film studio End of Summer.\n· ML specialists — machine learning developers at Kontur’s Artificial Intelligence Centre.\n\nStart of filming: June 19, 2026, Vodny Island, Rostov Oblast.\nCompletion of the film: October 2026, Ekaterinburg.",
+                "credits": "Producer: Maria Sedyaeva | Director: Lidia Kanashova | Cinematographer: Daria Ismagulova | Sound Operator: Ivan Nesterets | Screenwriter: Maria Boteva | Line Producer: Natalia Schitsalova",
+                "partner_label": "Film partner",
+                "partner_name": "Kontur",
+                "follow_description": "Be the first to hear about upcoming screenings of “Houyhnhnms and Us” and see more photos and videos from filming on the End of Summer studio’s Telegram channel.",
+                "links": [
+                    {
+                        "label": "Studio Telegram channel",
+                        "url": "https://t.me/konetzleta"
+                    }
+                ]
             }
         }
     },

@@ -1,10 +1,11 @@
 import { motion, useInView, AnimatePresence } from 'motion/react';
-import { useRef, useState, useEffect, useCallback } from 'react';
-import { ExternalLink, Play, Award, X, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { ExternalLink, Play, Award, X, Eye } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { PortfolioVideoPlayer } from './PortfolioVideoPlayer';
+import { PortfolioMediaGallery, type ProjectMedia } from './PortfolioMediaGallery';
+import { houyhnhnmsMedia } from '../houyhnhnmsMedia';
 
 import mechtyOStarosti from '@/assets/images/portfolio/mechty-o-starosti.webp'
 import spiachka from '@/assets/images/portfolio/spiachka.webp'
@@ -12,6 +13,8 @@ import kapiITapi from '@/assets/images/portfolio/kapi-i-tapi.webp'
 import obyknovennyiDrakon from '@/assets/images/portfolio/obyknovennyi-drakon.webp'
 import chtoIaZdesDelaiu from '@/assets/images/portfolio/chto-ia-zdes-delaiu.webp'
 import blokadnaiaMozaika from '@/assets/images/portfolio/blokadnaia-mozaika02.webp'
+import blokadnaiaMozaikaFirst from '@/assets/images/portfolio/blokadnaia-mozaika.webp'
+import blokadnaiaMozaikaThird from '@/assets/images/portfolio/blokadnaia-mozaika03.webp'
 import bumZemliKakEtoBylo from '@/assets/images/portfolio/bum-zemli-kak-eto-bylo.webp'
 import gospodinVelikii from '@/assets/images/portfolio/gospodin-velikii.webp'
 import mifyOGefesteBogeIStroiotriade from '@/assets/images/portfolio/mify-o-gefeste-boge-i-stroiotriade.webp'
@@ -19,7 +22,6 @@ import strashnyiGorod from '@/assets/images/portfolio/strashnyi-gorod.webp'
 import peizazhSOzhidaniem from '@/assets/images/portfolio/peizazh-s-ozhidaniem.webp'
 import novyiVkus from '@/assets/images/portfolio/novyi-vkus.webp'
 import narkoz from '@/assets/images/portfolio/narkoz.webp'
-import filmingProcessEndOfSummerStudio from '@/assets/images/portfolio/filming-process-end-of-summer-studio.webp'
 
 type ProjectStatus = 'released' | 'in_production' | 'in_development';
 
@@ -34,14 +36,17 @@ interface PortfolioItem {
   credits?: string;
   image: string;
   size: 'small' | 'medium' | 'large';
-  videoUrl?: string; // Presence of this URL determines if it's a video
+  videoUrl?: string;
+  media?: ProjectMedia[];
   awards?: string[];
   links?: { label: string; url: string }[];
+  partner?: { label: string; name: string; logo: string };
+  followDescription?: string;
   component?: React.ReactNode;
 }
 
 export function PortfolioSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   // --- ADD THESE HELPERS ---
   const getLinks = (key: string) => {
@@ -129,8 +134,21 @@ export function PortfolioSection() {
       status: 'in_production',
       description: t('portfolio.items.houyhnhnms.description'),
       credits: t('portfolio.items.houyhnhnms.credits'),
-      image: filmingProcessEndOfSummerStudio,
+      image: '/media/houyhnhnms-and-us/photo-01.webp',
+      media: houyhnhnmsMedia.map((media): ProjectMedia => media.type === 'image' ? {
+        type: 'image',
+        src: media.src,
+        alt: i18n.resolvedLanguage?.startsWith('ru') ? media.altRu : media.altEn,
+        credit: i18n.resolvedLanguage?.startsWith('ru') ? media.creditRu : media.creditEn,
+      } : { type: 'video', src: media.src, poster: media.poster }),
       size: "medium",
+      partner: {
+        label: t('portfolio.items.houyhnhnms.partner_label'),
+        name: t('portfolio.items.houyhnhnms.partner_name'),
+        logo: '/logo-kontur.png',
+      },
+      followDescription: t('portfolio.items.houyhnhnms.follow_description'),
+      links: getLinks('portfolio.items.houyhnhnms.links') as { label: string; url: string }[],
     },
     // Landscape Waiting / Пейзаж с ожиданием
     {
@@ -221,6 +239,12 @@ export function PortfolioSection() {
       image: blokadnaiaMozaika,
       size: "medium",
       videoUrl: t('portfolio.items.blokadnaia.video'),
+      media: [
+        { type: 'image', src: blokadnaiaMozaika },
+        { type: 'image', src: blokadnaiaMozaikaFirst },
+        { type: 'image', src: blokadnaiaMozaikaThird },
+        { type: 'video', src: t('portfolio.items.blokadnaia.video'), poster: '/video/siege-mosaic.webp' },
+      ],
     },
     // Dreams of Old Age / Мечты о старости
     {
@@ -332,33 +356,15 @@ export function PortfolioSection() {
     return t(`portfolio.status.${status}`);
   };
 
-  const handleNext = useCallback((e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (selectedParam === null) return;
-    const currentIndex = portfolioItems.findIndex(item => item.slug === selectedParam);
-    const nextIndex = (currentIndex + 1) % portfolioItems.length;
-    setSearchParams({ project: portfolioItems[nextIndex].slug });
-  }, [selectedParam, portfolioItems, setSearchParams]);
-
-  const handlePrev = useCallback((e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (selectedParam === null) return;
-    const currentIndex = portfolioItems.findIndex(item => item.slug === selectedParam);
-    const prevIndex = (currentIndex - 1 + portfolioItems.length) % portfolioItems.length;
-    setSearchParams({ project: portfolioItems[prevIndex].slug });
-  }, [selectedParam, portfolioItems, setSearchParams]);
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (selectedParam === null) return;
-      if (e.key === 'ArrowRight') handleNext();
-      if (e.key === 'ArrowLeft') handlePrev();
       if (e.key === 'Escape') setSearchParams({});
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedParam, handleNext, handlePrev]);
+  }, [selectedParam, setSearchParams]);
 
   const selectedItem = portfolioItems.find(item => item.slug === selectedParam);
 
@@ -374,28 +380,6 @@ export function PortfolioSection() {
       .then(data => setViewCount(data.count))
       .catch(() => setViewCount(null));
   }, [selectedItem?.slug]);
-
-  // Helper to get embed URL (Basic YouTube/Vimeo/Drive support)
-  const getEmbedUrl = (url: string) => {
-    if (!url) return null;
-    if (url.includes('youtube.com') || url.includes('youtu.be')) {
-      const videoId = url.split('v=')[1] || url.split('/').pop();
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&modestbranding=1&rel=0`;
-    }
-    if (url.includes('vimeo.com')) {
-      const videoId = url.split('/').pop();
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1`;
-    }
-    if (url.includes('drive.google.com')) {
-      return url.replace('/view?usp=sharing', '/preview').replace('/view', '/preview');
-    }
-    return null;
-  };
-
-  // Helper to determine if a URL is local
-  const isLocalVideo = (url: string) => {
-    return url && (url.startsWith('/video/') || url.endsWith('.mp4') || url.endsWith('.webm'));
-  };
 
   return (
     <section id="portfolio" className="py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
@@ -574,21 +558,6 @@ export function PortfolioSection() {
               onClick={() => setSearchParams({})}
             >
 
-              {/* Navigation Arrows */}
-              <button
-                className="absolute left-1 md:left-8 top-1/2 -translate-y-1/2 p-2 md:p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all z-50"
-                onClick={handlePrev}
-              >
-                <ChevronLeft size={32} className="md:size-10" />
-              </button>
-
-              <button
-                className="absolute right-1 md:right-8 top-1/2 -translate-y-1/2 p-2 md:p-3 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all z-50"
-                onClick={handleNext}
-              >
-                <ChevronRight size={32} className="md:size-10" />
-              </button>
-
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -615,37 +584,18 @@ export function PortfolioSection() {
                       className="w-full flex flex-col overflow-y-auto custom-scrollbar flex-1 bg-gray-900 min-h-0"
                     >
 
-                      {/* Top Element: Poster/Media (Fixed Height for cinematic feel) */}
-                      <div className="w-full h-[45vh] md:h-[55vh] relative bg-black shrink-0 border-b border-gray-800">
-                        {selectedItem.videoUrl && getEmbedUrl(selectedItem.videoUrl) ? (
-                          <iframe
-                            key={selectedItem.id}
-                            src={getEmbedUrl(selectedItem.videoUrl) || ''}
-                            className="w-full h-full object-cover"
-                            title={selectedItem.title}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                        ) : selectedItem.videoUrl && isLocalVideo(selectedItem.videoUrl) ? (
-                          <PortfolioVideoPlayer
-                            key={selectedItem.id}
-                            videoUrl={selectedItem.videoUrl}
-                            poster={selectedItem.videoUrl.replace(/\.(mp4|webm)$/, '.webp')}
-                            overlayTitle={selectedItem.title}
-                            overlaySubtitle={selectedItem.subtitle}
-                          />
-                        ) : (
-                          <>
-                            <ImageWithFallback
-                              src={selectedItem.image}
-                              alt={selectedItem.title}
-                              className="w-full h-full object-contain md:object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
-                          </>
-                        )}
-                      </div>
+                      <PortfolioMediaGallery
+                        key={selectedItem.slug}
+                        title={selectedItem.title}
+                        subtitle={selectedItem.subtitle}
+                        media={selectedItem.media?.length ? selectedItem.media : selectedItem.videoUrl ? [
+                          {
+                            type: 'video',
+                            src: selectedItem.videoUrl,
+                            poster: selectedItem.videoUrl.replace(/\.(mp4|webm)$/, '.webp'),
+                          },
+                        ] : [{ type: 'image', src: selectedItem.image }]}
+                      />
 
                       {/* Editorial Content Layout */}
                       <div className="relative px-6 py-12 md:py-16 md:px-20 flex flex-col items-center text-center">
@@ -717,6 +667,22 @@ export function PortfolioSection() {
                            </p>
                         </div>
 
+                        {selectedItem.partner && (
+                          <div className="mb-12 flex flex-col items-center gap-4">
+                            <p className="text-sm font-mono uppercase tracking-widest text-gray-400">
+                              {selectedItem.partner.label}
+                            </p>
+                            <div className="rounded-2xl bg-white px-6 py-4">
+                              <img
+                                src={selectedItem.partner.logo}
+                                alt={selectedItem.partner.name}
+                                className="h-10 w-auto max-w-[200px] object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          </div>
+                        )}
+
                         {/* 6. Credits (Clean Grid or List) */}
                         {selectedItem.credits && (
                           <div className="w-full max-w-3xl border-t border-gray-800/50 pt-10 pb-12 mb-4">
@@ -741,6 +707,11 @@ export function PortfolioSection() {
                         )}
 
                         {/* 7. Action Links */}
+                        {selectedItem.followDescription && (
+                          <p className="mb-6 max-w-2xl text-base md:text-lg leading-relaxed text-gray-300">
+                            {selectedItem.followDescription}
+                          </p>
+                        )}
                         <div className="flex flex-wrap justify-center gap-4 mb-4 w-full max-w-2xl">
                           {/* FIX: Check Array.isArray() before mapping */}
                           {Array.isArray(selectedItem.links) && selectedItem.links.map((link, idx) => (
