@@ -130,7 +130,7 @@ export function PortfolioSection() {
       slug: 'houyhnhnms-and-us',
       title: t('portfolio.items.houyhnhnms.title'),
       subtitle: t('portfolio.items.houyhnhnms.subtitle'),
-      status: 'released',
+      status: 'in_production',
       description: t('portfolio.items.houyhnhnms.description'),
       credits: t('portfolio.items.houyhnhnms.credits'),
       image: '/media/houyhnhnms-and-us/video-02.webp',
