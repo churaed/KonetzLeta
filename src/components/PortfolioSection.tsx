@@ -130,6 +130,7 @@ export function PortfolioSection() {
       slug: 'houyhnhnms-and-us',
       title: t('portfolio.items.houyhnhnms.title'),
       subtitle: t('portfolio.items.houyhnhnms.subtitle'),
+      tagline: t('portfolio.items.houyhnhnms.tagline', { defaultValue: '' }),
       status: 'in_production',
       description: t('portfolio.items.houyhnhnms.description'),
       credits: t('portfolio.items.houyhnhnms.credits'),
