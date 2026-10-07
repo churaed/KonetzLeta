@@ -143,6 +143,11 @@ export function PortfolioSection() {
         credit: i18n.resolvedLanguage?.startsWith('ru') ? media.creditRu : media.creditEn,
       } : { type: 'video', src: media.src, poster: media.poster }),
       size: "medium",
+      partner: {
+        label: t('portfolio.items.houyhnhnms.partner_label'),
+        name: t('portfolio.items.houyhnhnms.partner_name'),
+        logo: '/logo-kontur.png',
+      },
       followDescription: t('portfolio.items.houyhnhnms.follow_description'),
       links: getLinks('portfolio.items.houyhnhnms.links') as { label: string; url: string }[],
     },
