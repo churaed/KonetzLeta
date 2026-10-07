@@ -701,7 +701,7 @@ export function PortfolioSection() {
                         {viewCount && (
                           <div className="mb-6 flex items-center justify-center gap-2">
                             <Eye size={14} className="text-gray-500" />
-                            <span className="text-sm font-mono text-gray-500 uppercase tracking-widest">
+                            <span className="text-sm font-mono tabular-nums tracking-normal text-gray-500">
                               {viewCount}
                             </span>
                           </div>
