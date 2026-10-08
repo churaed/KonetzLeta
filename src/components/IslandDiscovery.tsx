@@ -25,8 +25,8 @@ const islandVisitors = [
   { id: 'landscape', src: landscape, at: 0, label: 'Island landscape' },
   { id: 'tree', src: tree, at: 0, label: 'Island tree' },
   { id: 'earth', src: earth, at: 0, label: 'Island ground' },
-  { id: 'horse', src: horse, at: 0, label: 'horse' },
-  { id: 'face', src: face, at: 1, label: 'face' },
+  { id: 'face', src: face, at: 0, label: 'face' },
+  { id: 'horse', src: horse, at: 1, label: 'horse' },
   { id: 'huddle', src: huddle, at: 1, label: 'Huddled horses' },
   { id: 'friends', src: friends, at: 2, label: 'friends' },
   { id: 'herd', src: herd, at: 2, label: 'Island herd' },
@@ -55,7 +55,7 @@ function getDesktopCapacity() {
   if (window.matchMedia(spaciousDesktopQuery).matches) return 2;
   return window.matchMedia(desktopQuery).matches ? 1 : 0;
 }
-const islandTargets = ['horse', 'face', 'friends', 'bones'];
+const islandTargets = ['face', 'horse', 'friends', 'bones'];
 
 export default function IslandDiscovery() {
   const { t } = useTranslation();
