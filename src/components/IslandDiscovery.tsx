@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState, useSyncExternalStore, type MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import './IslandDiscovery.css';
-import tree from '../assets/images/houyhnhnms-illustrations/tree.webp';
-import herd from '../assets/images/houyhnhnms-illustrations/herd.webp';
-import huddle from '../assets/images/houyhnhnms-illustrations/huddle.webp';
-import friends from '../assets/images/houyhnhnms-illustrations/friends.webp';
-import procession from '../assets/images/houyhnhnms-illustrations/procession.webp';
-import horse from '../assets/images/houyhnhnms-illustrations/horse.webp';
-import face from '../assets/images/houyhnhnms-illustrations/face.webp';
-import landscape from '../assets/images/houyhnhnms-illustrations/landscape.webp';
-import earth from '../assets/images/houyhnhnms-illustrations/earth.webp';
-import skeleton from '../assets/images/houyhnhnms-illustrations/skeleton.webp';
-import bones from '../assets/images/houyhnhnms-illustrations/bones.webp';
+import tree from '../assets/images/houyhnhnms-illustrations/optimized/tree.webp';
+import herd from '../assets/images/houyhnhnms-illustrations/optimized/herd.webp';
+import huddle from '../assets/images/houyhnhnms-illustrations/optimized/huddle.webp';
+import friends from '../assets/images/houyhnhnms-illustrations/optimized/friends.webp';
+import procession from '../assets/images/houyhnhnms-illustrations/optimized/procession.webp';
+import horse from '../assets/images/houyhnhnms-illustrations/optimized/horse.webp';
+import face from '../assets/images/houyhnhnms-illustrations/optimized/face.webp';
+import landscape from '../assets/images/houyhnhnms-illustrations/optimized/landscape.webp';
+import earth from '../assets/images/houyhnhnms-illustrations/optimized/earth.webp';
+import skeleton from '../assets/images/houyhnhnms-illustrations/optimized/skeleton.webp';
+import bones from '../assets/images/houyhnhnms-illustrations/optimized/bones.webp';
 import { outlineBounds } from './islandIllustrationBounds';
 
 const boundsByImage = new Map<string, {viewBox: string; width: number; height: number; ratio: number}>([

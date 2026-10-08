@@ -26,7 +26,8 @@ button.island-drawing:focus-visible{outline:1px dashed #e3e4dc;outline-offset:4p
 .island-horse{width:clamp(85px,13cqw,140px);left:65%;bottom:0;--island-rest:translate(-50%,42%);--island-lean:translate(-50%,16%)}
 .island-face{width:clamp(62px,7cqw,75px);right:0;bottom:190px;--island-rest:translate(32%,50%);--island-lean:translate(10%,50%)}
 .island-huddle{width:clamp(105px,17cqw,180px);left:15%;bottom:0;--island-rest:translate(-50%,48%)}
-.island-friends{width:clamp(90px,12cqw,130px);left:0;bottom:190px;--island-rest:translate(-48%,50%);--island-lean:translate(-15%,50%)}
+.island-friends{width:clamp(108px,14.4cqw,156px);left:0;bottom:214px;--island-rest:translate(-48%,50%);--island-lean:translate(-15%,50%)}
+.island-friends .island-drawing svg{transform:scaleX(-1)}
 .island-herd{width:clamp(110px,20cqw,210px);left:46%;bottom:0;--island-rest:translate(-50%,52%)}
 .island-bones{width:clamp(76px,8cqw,85px);left:0;bottom:350px;--island-rest:translate(-45%,50%);--island-lean:translate(-15%,50%)}
 .island-skeleton{width:clamp(70px,8cqw,85px);right:0;bottom:350px;--island-rest:translate(40%,50%)}
@@ -49,7 +50,7 @@ button.island-drawing:focus-visible{outline:1px dashed #e3e4dc;outline-offset:4p
  .island-tree{width:68px}.island-earth{width:72px}
  .island-huddle{width:70px}.island-herd{width:80px;left:43%}
  .island-horse{width:76px;left:62%}.island-procession{width:80px;left:80%}
- .island-face{bottom:150px}.island-friends{width:90px;bottom:150px}
+ .island-face{bottom:150px}.island-friends{width:108px;bottom:174px}
  .island-bones{bottom:290px}.island-skeleton{bottom:310px}
  .island-verdict{bottom:44px;font-size:17px}
 }
@@ -59,7 +60,7 @@ button.island-drawing:focus-visible{outline:1px dashed #e3e4dc;outline-offset:4p
  .island-host>.island-card{padding-bottom:60px}
  .island-bones{width:64px;top:22%;bottom:auto;--island-rest:translate(-45%,-50%);--island-lean:translate(-15%,-50%)}
  .island-skeleton{width:56px;top:22%;bottom:auto;--island-rest:translate(40%,-50%)}
- .island-friends{width:82px;top:64%;bottom:auto;--island-rest:translate(-48%,-50%);--island-lean:translate(-15%,-50%)}
+ .island-friends{width:98.4px;top:calc(64% - 24px);bottom:auto;--island-rest:translate(-48%,-50%);--island-lean:translate(-15%,-50%)}
  .island-face{width:62px;top:64%;bottom:auto;--island-rest:translate(32%,-50%);--island-lean:translate(10%,-50%)}
  .island-tree{width:65px}.island-earth{width:80px}
  .island-huddle{width:110px}.island-herd{width:130px}.island-horse{width:88px}.island-procession{width:120px}
