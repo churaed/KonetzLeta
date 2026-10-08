@@ -281,6 +281,7 @@
                 },
                 "partner_label": "Film partner",
                 "partner_name": "Kontur",
+                "partner_detection": "Show the detection box around the {{name}} logo",
                 "follow_description": "Be the first to hear about upcoming screenings of “Houyhnhnms and Us” and see more photos and videos from filming on the End of Summer studio’s Telegram channel.",
                 "links": [
                     {

@@ -4,6 +4,7 @@ import { ExternalLink, Play, Award, X, Eye } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import { HouyhnhnmsDescription } from './HouyhnhnmsDescription';
+import { PartnerDetectionLogo } from './PartnerDetectionLogo';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { PortfolioMediaGallery, type ProjectMedia } from './PortfolioMediaGallery';
 import { houyhnhnmsMedia } from '../houyhnhnmsMedia';
@@ -725,18 +726,11 @@ export function PortfolioSection() {
                         </div>
 
                         {selectedItem.partner && (
-                          <div className="mb-12 flex flex-col items-center gap-4">
+                          <div className="mb-12 flex flex-col items-center gap-8">
                             <p className="text-sm font-mono uppercase tracking-widest text-gray-400">
                               {selectedItem.partner.label}
                             </p>
-                            <div className="rounded-2xl bg-white px-6 py-4">
-                              <img
-                                src={selectedItem.partner.logo}
-                                alt={selectedItem.partner.name}
-                                className="h-10 w-auto max-w-[200px] object-contain"
-                                loading="lazy"
-                              />
-                            </div>
+                            <PartnerDetectionLogo logo={selectedItem.partner.logo} name={selectedItem.partner.name} />
                           </div>
                         )}
 

@@ -1,0 +1,9 @@
+.partner-detection{position:relative;display:block;cursor:pointer;touch-action:manipulation;min-height:44px}
+.partner-detection-box{position:absolute;inset:-6px;border:1px solid currentColor;pointer-events:none;opacity:0;transition:opacity .7s ease-out}
+.partner-detection-label{position:absolute;top:-1px;left:-1px;transform:translateY(-100%);padding:2px 6px;background:var(--color-red-400);color:#111827;font:11px/1.2 'JetBrains Mono',monospace;white-space:nowrap}
+.partner-detection[data-revealed=true] .partner-detection-box,.partner-detection:focus-visible .partner-detection-box{opacity:1;transition-duration:.15s}
+.partner-detection:focus-visible{outline:2px solid var(--color-red-400);outline-offset:10px}
+@media(hover:hover) and (pointer:fine){
+ .partner-detection:hover .partner-detection-box{opacity:1;transition-duration:.15s}
+}
+@media(prefers-reduced-motion:reduce){.partner-detection-box{transition:none!important}}
