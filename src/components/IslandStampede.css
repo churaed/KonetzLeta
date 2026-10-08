@@ -1,0 +1,12 @@
+/* Outside the clipped card: the finale crosses the entire viewport. */
+.island-stampede{position:fixed;inset:0;z-index:100;overflow:hidden;pointer-events:none}
+.stampede-runner{position:absolute;left:0;top:var(--lane);width:clamp(110px,var(--runner-width),880px);animation:stampede-cross var(--duration) linear var(--delay) both;filter:drop-shadow(0 2px 2px #0009)}
+.stampede-reverse{animation-name:stampede-cross-reverse}
+.stampede-gallop{animation:stampede-gallop var(--bounce) ease-in-out var(--delay) infinite;transform-origin:50% 85%}
+.stampede-gallop svg{display:block;width:100%;height:auto;transform:scaleX(var(--facing))}
+.stampede-straggler .stampede-gallop{animation-name:stampede-panic}
+@keyframes stampede-cross{from{transform:translate(-110%,-50%)}to{transform:translate(calc(100vw + 10%),-50%)}}
+@keyframes stampede-cross-reverse{from{transform:translate(calc(100vw + 10%),-50%)}to{transform:translate(-110%,-50%)}}
+@keyframes stampede-gallop{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-16px) rotate(2deg)}}
+@keyframes stampede-panic{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-30px) rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){.island-stampede{display:none}.island-stampede *{animation:none!important}}

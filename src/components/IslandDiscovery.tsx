@@ -13,6 +13,7 @@ import earth from '../assets/images/houyhnhnms-illustrations/optimized/earth.web
 import skeleton from '../assets/images/houyhnhnms-illustrations/optimized/skeleton.webp';
 import bones from '../assets/images/houyhnhnms-illustrations/optimized/bones.webp';
 import { outlineBounds } from './islandIllustrationBounds';
+import { IslandStampede } from './IslandStampede';
 
 const boundsByImage = new Map<string, {viewBox: string; width: number; height: number; ratio: number}>([
   [horse, outlineBounds.horse], [herd, outlineBounds.herd], [huddle, outlineBounds.huddle],
@@ -77,7 +78,7 @@ export default function IslandDiscovery() {
     setStep(current => Math.min(current + 1, islandTargets.length));
   }
 
-  return <div ref={scene} className="island-artwork" data-discovery-step={step}>
+  return <><div ref={scene} className="island-artwork" data-discovery-step={step}>
     <div className="island-scene">
       {visibleVisitors.map(visitor => {
         const active = visitor.id === islandTargets[step];
@@ -96,5 +97,7 @@ export default function IslandDiscovery() {
       </span>
       {complete && <p className="island-verdict text-red-400" tabIndex={-1}>{t('portfolio.items.houyhnhnms.discovery.complete')}</p>}
     </div>
-  </div>;
+  </div>
+    {complete ? <IslandStampede /> : null}
+  </>;
 }
