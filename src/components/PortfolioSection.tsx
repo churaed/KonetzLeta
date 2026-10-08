@@ -296,7 +296,7 @@ export function PortfolioSection() {
       title: t('portfolio.items.narkoz.title'),
       subtitle: t('portfolio.items.narkoz.subtitle'),
       tagline: t('portfolio.items.narkoz.tagline', { defaultValue: '' }),
-      status: 'in_production',
+      status: 'released',
       description: t('portfolio.items.narkoz.description'),
       image: narkoz,
       size: "medium",

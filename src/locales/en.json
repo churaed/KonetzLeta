@@ -118,7 +118,10 @@
                 "video": "/video/myths-hephaestus.mp4",
                 "awards": [
                     "Kremniy Festival",
-                    "Ural Film Days"
+                    "Ural Film Days",
+                    "ROSSIYA Open Documentary Film Festival — Audience Award",
+                    "Gorky Fest — Participation",
+                    "Prometheus Integral Film Festival — Participation"
                 ]
             },
             "strashnyi": {
@@ -255,7 +258,7 @@
                 "title": "Anesthesia",
                 "subtitle": "Experimental animated short film • 2025",
                 "tagline": "Anesthesia helps relieve pain.",
-                "status": "in_production",
+                "status": "released",
                 "description": "In 2019, Alexey Fedorchenko filmed his feature-length movie, \"The Big Snakes of Ulli-Kale.\" It had an animated chapter. An episode about surgeon Nikolai Pirogov's anesthesia revolution was cut off during editing. But it seems like a little help from the painkillers is always welcome.",
                 "links": [
                     { "label": "Kinopoisk", "url": "https://www.kinopoisk.ru/film/4839407/" },
