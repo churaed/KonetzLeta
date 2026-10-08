@@ -67,6 +67,7 @@
         "legal_info": "\"End of Summer\" — animation and experimental film studio\n \"End of Summer\" Co. Ltd. INN: 6679179711 OGRN: 1246600054601"
     },
     "portfolio": {
+        "close_project": "Close project",
         "gallery": {
             "label": "{{title}} media",
             "carousel": "carousel",
@@ -268,6 +269,16 @@
                 "status": "in_production",
                 "description": "On an island in the middle of a salt lake lives the only herd of wild horses in Russia.\n\nTogether with biologists who have been studying this herd for more than 15 years, the film crew sets out on an expedition to decipher the language of animals through cinema and artificial intelligence, and to explore whether true mutual understanding between humans and horses is possible.\n\nFilm protagonists:\n· Mustangs — feral domestic horses living on Vodny Island in the salt lake Manych-Gudilo, within the Rostovsky Nature Reserve.\n· Zoologists — Natalia Spasskaya, Scientific Secretary of the Zoological Museum of Moscow State University, Candidate of Biological Sciences and head of research into the horse population on Vodny Island, who has been studying this herd with biology students for more than 15 years.\n· Filmmakers — the team of the animation and experimental film studio End of Summer.\n· ML specialists — machine learning developers at Kontur’s Artificial Intelligence Centre.\n\nThe film was produced as part of a short film competition organized by the Foundation for the Support of Regional Cinema of the Russian Union of Cinematographers.\n\nStart of filming: June 19, 2026, Vodny Island, Rostov Oblast.\nCompletion of the film: October 2026, Ekaterinburg.",
                 "credits": "Producer: Maria Sedyaeva | Director: Lidia Kanashova | Cinematographer: Daria Ismagulova | Sound Operator: Ivan Nesterets | Line Producer: Natalia Schitsalova",
+                "discovery": {
+                    "complete": "The island is awake.",
+                    "progress": "{{count}} island illustrations revealed. Find the next curious visitor.",
+                    "targets": {
+                        "horse": "Discover the next island visitors",
+                        "face": "Follow the curious horse face",
+                        "friends": "Follow the pair of friends",
+                        "bones": "Discover the last island visitors"
+                    }
+                },
                 "partner_label": "Film partner",
                 "partner_name": "Kontur",
                 "follow_description": "Be the first to hear about upcoming screenings of “Houyhnhnms and Us” and see more photos and videos from filming on the End of Summer studio’s Telegram channel.",

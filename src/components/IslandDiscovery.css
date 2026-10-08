@@ -1,0 +1,70 @@
+/* The drawings share the card's rounded clipping boundary. */
+.island-host{container-type:inline-size}
+.island-artwork{position:absolute;inset:0;z-index:35;pointer-events:none;overflow:hidden;border-radius:inherit}
+.island-scene{position:absolute;inset:0;color:#e3e4dc}
+.island-drawing{display:block;margin:0;padding:0;border:0;background:transparent;pointer-events:none;line-height:1;transition:opacity .3s}
+.island-drawing svg{display:block;width:100%;height:auto;overflow:hidden;user-select:none}
+button.island-drawing{pointer-events:auto;cursor:pointer;touch-action:manipulation}
+button.island-drawing:focus-visible{outline:1px dashed #e3e4dc;outline-offset:4px;border-radius:4px}
+.island-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* Medium border visitors. Only the current target can lean in or receive a click. */
+.island-slot{position:absolute;transform:var(--island-rest);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.island-slot>.island-drawing{position:relative;width:100%;transform:none;opacity:.48}
+.island-slot>button.island-drawing{opacity:.55;min-height:44px}
+.island-slot>button.island-drawing:after{content:'';position:absolute;inset:-12px;pointer-events:auto}
+.island-slot:has(button:hover),.island-slot:has(button:focus-visible){transform:var(--island-lean);z-index:2}
+.island-slot>button.island-drawing:hover,.island-slot>button.island-drawing:focus-visible{opacity:.95}
+.island-landscape{width:clamp(220px,65cqw,660px);left:50%;bottom:0;--island-rest:translate(-50%,70%)}
+.island-landscape>.island-drawing{opacity:.28}
+.island-tree{width:clamp(80px,12cqw,130px);left:0;bottom:0;--island-rest:translate(-38%,20%)}
+.island-earth{width:clamp(95px,16cqw,170px);right:0;bottom:0;--island-rest:translate(35%,42%)}
+.island-horse{width:clamp(85px,13cqw,140px);left:65%;bottom:0;--island-rest:translate(-50%,42%);--island-lean:translate(-50%,16%)}
+.island-face{width:clamp(62px,7cqw,75px);right:0;bottom:190px;--island-rest:translate(32%,50%);--island-lean:translate(10%,50%)}
+.island-huddle{width:clamp(105px,17cqw,180px);left:15%;bottom:0;--island-rest:translate(-50%,48%)}
+.island-friends{width:clamp(90px,12cqw,130px);left:0;bottom:190px;--island-rest:translate(-48%,50%);--island-lean:translate(-15%,50%)}
+.island-herd{width:clamp(110px,20cqw,210px);left:46%;bottom:0;--island-rest:translate(-50%,52%)}
+.island-bones{width:clamp(76px,8cqw,85px);left:0;bottom:350px;--island-rest:translate(-45%,50%);--island-lean:translate(-15%,50%)}
+.island-skeleton{width:clamp(70px,8cqw,85px);right:0;bottom:350px;--island-rest:translate(40%,50%)}
+.island-procession{width:clamp(105px,19cqw,200px);left:80%;bottom:0;--island-rest:translate(-50%,52%)}
+.island-arrival{animation:island-reveal .65s ease-out both}
+.island-verdict{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;white-space:nowrap;animation:island-reveal .8s ease-out both;text-shadow:0 1px 8px #111827}
+/* The island occupies its own footer. Text scrolls above it, never beneath it. */
+.island-host>.island-card{padding-bottom:60px;max-height:min(90dvh,calc(100dvh - 152px))}
+.island-host>.island-card>.flex{min-height:0;flex:1;mask-image:linear-gradient(to bottom,#000 calc(100% - 20px),transparent)}
+.island-host .island-editorial{padding-inline:68px}
+@media(max-width:650px){
+ .island-host>.island-card{padding-bottom:60px;max-height:calc(100dvh - 160px)}
+ .island-host .island-editorial{padding-inline:48px}
+ .island-landscape{width:90%;--island-rest:translate(-50%,65%)}
+ .island-tree{width:68px}.island-earth{width:72px}
+ .island-huddle{width:70px}.island-herd{width:80px;left:43%}
+ .island-horse{width:76px;left:62%}.island-procession{width:80px;left:80%}
+ .island-face{bottom:150px}.island-friends{width:90px;bottom:150px}
+ .island-bones{bottom:290px}.island-skeleton{bottom:310px}
+ .island-verdict{bottom:44px;font-size:17px}
+}
+@keyframes island-reveal{from{opacity:0}to{opacity:1}}
+/* Wide phones keep the same discovery order in a shorter frame. */
+@media(max-height:600px) and (min-width:651px){
+ .island-host>.island-card{padding-bottom:60px}
+ .island-bones{width:64px;top:22%;bottom:auto;--island-rest:translate(-45%,-50%);--island-lean:translate(-15%,-50%)}
+ .island-skeleton{width:56px;top:22%;bottom:auto;--island-rest:translate(40%,-50%)}
+ .island-friends{width:82px;top:64%;bottom:auto;--island-rest:translate(-48%,-50%);--island-lean:translate(-15%,-50%)}
+ .island-face{width:62px;top:64%;bottom:auto;--island-rest:translate(32%,-50%);--island-lean:translate(10%,-50%)}
+ .island-tree{width:65px}.island-earth{width:80px}
+ .island-huddle{width:110px}.island-herd{width:130px}.island-horse{width:88px}.island-procession{width:120px}
+ .island-landscape{width:75%;--island-rest:translate(-50%,76%)}
+ .island-verdict{bottom:44px;font-size:17px}
+}
+
+
+@media(prefers-reduced-motion:reduce){.island-scene *{animation:none!important;transition:none!important}}
+
+/* Desktop discoveries occupy the empty upper margins, never the top edge or text column. */
+.island-guest-face-left{width:36px;left:0;top:10%;--island-rest:translate(-40%,-50%)}
+.island-guest-earth-right{width:70px;right:0;top:15%;--island-rest:translate(40%,-50%)}
+.island-guest-tree-left{width:55px;left:0;top:23%;--island-rest:translate(-40%,-50%)}
+.island-guest-friends-right{width:75px;right:0;top:26%;--island-rest:translate(40%,-50%)}
+.island-guest-earth-left{width:70px;left:0;top:36%;--island-rest:translate(-40%,-50%)}
+.island-guest-face-right{width:36px;right:0;top:37%;--island-rest:translate(40%,-50%)}
+.island-guest-horse{width:80px;left:31%;bottom:0;--island-rest:translate(-50%,50%)}

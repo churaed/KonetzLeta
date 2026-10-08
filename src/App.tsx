@@ -14,7 +14,6 @@ import { ScrollToTop } from './components/ScrollToTop';
 
 export default function App() {
   const location = useLocation();
-  const { t } = useTranslation();
 
   return (
     <>
@@ -28,29 +27,8 @@ export default function App() {
       <ScrollToTop />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="min-h-screen bg-black text-white overflow-x-hidden">
-              {/* Sections */}
-              <HeroSection />
-              <TeamSection />
-              <ShowreelSection />
-              <PortfolioSection />
-              <ServicesSection />
-              <ContactSection />
-              <footer className="py-20 text-center border-t border-gray-800">
-                <Link
-                  to="/privacy"
-                  className="text-gray-500 hover:text-red-400 font-mono text-sm transition-colors duration-200 inline-block min-h-[44px] min-w-[44px] flex items-center justify-center"
-                >
-                  {t('footer.privacy_policy')}
-                </Link>
-              </footer>
-              <PrivacyNotice />
-            </div>
-          }
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects/houyhnhnms-and-us" element={<HomePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/manifest" element={<ManifestPage />} />
       </Routes>
@@ -64,5 +42,28 @@ export default function App() {
         }
       `}</style> */}
     </>
+  );
+}
+function HomePage() {
+  const { t } = useTranslation();
+  return (
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Sections */}
+      <HeroSection />
+      <TeamSection />
+      <ShowreelSection />
+      <PortfolioSection />
+      <ServicesSection />
+      <ContactSection />
+      <footer className="py-20 text-center border-t border-gray-800">
+        <Link
+          to="/privacy"
+          className="text-gray-500 hover:text-red-400 font-mono text-sm transition-colors duration-200 inline-block min-h-[44px] min-w-[44px] flex items-center justify-center"
+        >
+          {t('footer.privacy_policy')}
+        </Link>
+      </footer>
+      <PrivacyNotice />
+    </div>
   );
 }

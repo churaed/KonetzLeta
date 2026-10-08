@@ -1,11 +1,16 @@
 import { motion, useInView, AnimatePresence } from 'motion/react';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { ExternalLink, Play, Award, X, Eye } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
+import { HouyhnhnmsDescription } from './HouyhnhnmsDescription';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { PortfolioMediaGallery, type ProjectMedia } from './PortfolioMediaGallery';
 import { houyhnhnmsMedia } from '../houyhnhnmsMedia';
+
+// Illustration code and assets load only when this film opens.
+const IslandDiscovery = lazy(() => import('./IslandDiscovery'));
+const horseFilmPath = '/projects/houyhnhnms-and-us';
 
 import mechtyOStarosti from '@/assets/images/portfolio/mechty-o-starosti.webp'
 import spiachka from '@/assets/images/portfolio/spiachka.webp'
@@ -63,65 +68,21 @@ export function PortfolioSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const rawParam = searchParams.get('project');
-  const selectedParam: string | null = rawParam;
+  const onHorseFilmPage = location.pathname.replace(/\/$/, '') === horseFilmPath;
+  const selectedParam = onHorseFilmPage ? 'houyhnhnms-and-us' : rawParam;
+  const closeProject = useCallback(() => {
+    if (onHorseFilmPage) navigate('/#portfolio');
+    else setSearchParams({});
+  }, [onHorseFilmPage, navigate, setSearchParams]);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [showAllAwards, setShowAllAwards] = useState(false);
   const modalScrollRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const lastTrackedSlug = useRef<string | null>(null);
   const [viewCount, setViewCount] = useState<string | null>(null);
-
-  useEffect(() => {
-    setShowAllAwards(false);
-    let wait: ReturnType<typeof setInterval> | undefined;
-    if (selectedParam !== null) {
-      const numericId = Number(selectedParam);
-      if (!isNaN(numericId)) {
-        const itemById = portfolioItems.find(p => p.id === numericId);
-        if (itemById) {
-          setSearchParams({ project: itemById.slug }, { replace: true });
-          return;
-        }
-        setSearchParams({});
-        return;
-      }
-      const itemBySlug = portfolioItems.find(p => p.slug === selectedParam);
-      if (!itemBySlug) {
-        setSearchParams({});
-        return;
-      }
-      document.body.style.overflow = 'hidden';
-      if (modalScrollRef.current) {
-        modalScrollRef.current.scrollTop = 0;
-      }
-      if (selectedParam !== lastTrackedSlug.current) {
-        lastTrackedSlug.current = selectedParam;
-        let retries = 0;
-        wait = setInterval(() => {
-          retries++;
-          if (window.goatcounter?.count) {
-            clearInterval(wait);
-            wait = undefined;
-            window.goatcounter.count({
-              path: `/projects/${selectedParam}`,
-              title: itemBySlug.title,
-              event: false,
-            });
-          } else if (retries >= 30) {
-            clearInterval(wait);
-            wait = undefined;
-          }
-        }, 100);
-      }
-    } else {
-      document.body.style.overflow = '';
-      lastTrackedSlug.current = null;
-    }
-    return () => {
-      document.body.style.overflow = '';
-      if (wait) clearInterval(wait);
-    };
-  }, [selectedParam]);
 
   const portfolioItems: PortfolioItem[] = [
     // Houyhnhnms and Us / Гуингмы и мы
@@ -342,6 +303,53 @@ export function PortfolioSection() {
     }
   ];
   
+  const selectedItem = portfolioItems.find(item => item.slug === selectedParam || (selectedParam !== null && item.id === Number(selectedParam)));
+  const selectedSlug = selectedItem?.slug;
+  const selectedTitle = selectedItem?.title;
+
+  // Keep old slug and numeric query links working, with one canonical horse-film URL.
+  useEffect(() => {
+    if (selectedParam === null) return;
+    if (!selectedSlug) {
+      navigate('/', { replace: true });
+    } else if (selectedSlug === 'houyhnhnms-and-us' && (location.pathname !== horseFilmPath || location.search)) {
+      navigate(horseFilmPath, { replace: true });
+    } else if (selectedParam !== selectedSlug) {
+      setSearchParams({ project: selectedSlug }, { replace: true });
+    }
+  }, [selectedParam, selectedSlug, location.pathname, location.search, navigate, setSearchParams]);
+
+  useEffect(() => {
+    setShowAllAwards(false);
+    if (!selectedSlug) {
+      lastTrackedSlug.current = null;
+      return;
+    }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    if (modalScrollRef.current) modalScrollRef.current.scrollTop = 0;
+    let wait: ReturnType<typeof setInterval> | undefined;
+    if (selectedSlug !== lastTrackedSlug.current) {
+      let retries = 0;
+      wait = setInterval(() => {
+        retries++;
+        if (window.goatcounter?.count) {
+          clearInterval(wait);
+          wait = undefined;
+          lastTrackedSlug.current = selectedSlug;
+          window.goatcounter.count({ path: `/projects/${selectedSlug}`, title: selectedTitle, event: false });
+        } else if (retries >= 30) {
+          clearInterval(wait);
+          wait = undefined;
+        }
+      }, 100);
+    }
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      if (wait) clearInterval(wait);
+    };
+  }, [selectedSlug, selectedTitle]);
+
   const getSizeClasses = (size: string) => {
     switch (size) {
       case 'large':
@@ -358,16 +366,44 @@ export function PortfolioSection() {
   };
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (selectedParam === null) return;
-      if (e.key === 'Escape') setSearchParams({});
+    if (!selectedSlug) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const frame = requestAnimationFrame(() => dialogRef.current?.querySelector<HTMLButtonElement>('button')?.focus({ preventScroll: true }));
+    return () => {
+      cancelAnimationFrame(frame);
+      if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
     };
+  }, [selectedSlug]);
 
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (!selectedSlug) return;
+      if (event.key === 'Escape') closeProject();
+      if (event.key !== 'Tab' || !dialogRef.current) return;
+      const elements = Array.from(dialogRef.current.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], [tabindex="0"]'))
+        .filter(element => element.getClientRects().length > 0);
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && (document.activeElement === first || !dialogRef.current.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus({ preventScroll: true });
+      } else if (!event.shiftKey && (document.activeElement === last || !dialogRef.current.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus({ preventScroll: true });
+      }
+    }
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedParam, setSearchParams]);
+  }, [selectedSlug, closeProject]);
 
-  const selectedItem = portfolioItems.find(item => item.slug === selectedParam);
+  useEffect(() => {
+    if (selectedSlug !== 'houyhnhnms-and-us' || !selectedTitle) return;
+    const previousTitle = document.title;
+    document.title = `${selectedTitle} · Конец лета`;
+    return () => { document.title = previousTitle; };
+  }, [selectedSlug, selectedTitle]);
+
 
   useEffect(() => {
     const slug = selectedItem?.slug;
@@ -420,8 +456,9 @@ export function PortfolioSection() {
           transition={{ duration: 1, delay: 0.3 }}
         >
           {portfolioItems.map((item, index) => (
-            <motion.div
+            <motion.a
               key={item.id}
+              href={item.slug === 'houyhnhnms-and-us' ? horseFilmPath : `/?project=${item.slug}`}
               id={`portfolio-item-${item.id}`}
               className={`relative group cursor-pointer ${getSizeClasses(item.size)}`}
               initial={{ opacity: 0, y: 100, rotateY: -20 }}
@@ -441,7 +478,14 @@ export function PortfolioSection() {
               }}
               onHoverStart={() => setHoveredItem(item.id)}
               onHoverEnd={() => setHoveredItem(null)}
-              onClick={() => setSearchParams({ project: item.slug })}
+              onClick={(event) => {
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                event.preventDefault();
+                if (item.slug === 'houyhnhnms-and-us') navigate(horseFilmPath);
+                else setSearchParams({ project: item.slug });
+              }}
+              onFocus={() => setHoveredItem(item.id)}
+              onBlur={() => setHoveredItem(null)}
               whileHover={{
                 y: -8,
                 transition: { duration: 0.3 }
@@ -544,7 +588,7 @@ export function PortfolioSection() {
                   transition={{ duration: 0.5 }}
                 />
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
 
@@ -556,7 +600,7 @@ export function PortfolioSection() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[60] flex items-start justify-center pt-20 p-4 md:pt-24 md:p-10 bg-black/80 backdrop-blur-xl"
-              onClick={() => setSearchParams({})}
+              onClick={closeProject}
             >
 
               <motion.div
@@ -564,17 +608,25 @@ export function PortfolioSection() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-full max-w-6xl"
+                ref={dialogRef}
+                className={`relative w-full max-w-6xl ${selectedItem.slug === 'houyhnhnms-and-us' ? 'island-host' : ''}`}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="project-title"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
                   className="absolute top-3 right-3 z-50 p-2 text-red-400 opacity-50 hover:opacity-100 hover:bg-white/10 rounded-full transition-all"
-                  onClick={() => setSearchParams({})}
+                  onClick={closeProject}
+                  aria-label={t('portfolio.close_project')}
                 >
                   <X size={24} />
                 </button>
 
-                <div className="relative w-full bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col max-h-[85vh] overflow-x-hidden">
+                <div className={`${selectedItem.slug === 'houyhnhnms-and-us' ? 'island-card' : ''} relative w-full bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col max-h-[85vh] overflow-x-hidden`}>
+                  {selectedItem.slug === 'houyhnhnms-and-us' && (
+                    <Suspense fallback={null}><IslandDiscovery /></Suspense>
+                  )}
                   <div className="flex flex-col w-full h-full overflow-hidden">
 
 
@@ -599,7 +651,7 @@ export function PortfolioSection() {
                       />
 
                       {/* Editorial Content Layout */}
-                      <div className="relative px-6 py-12 md:py-16 md:px-20 flex flex-col items-center text-center">
+                      <div className="island-editorial relative px-6 py-12 md:py-16 md:px-20 flex flex-col items-center text-center">
                         
                         {/* 1. Meta Eyebrow */}
                         <div className="flex items-center gap-3 text-xs md:text-sm font-mono uppercase tracking-widest text-gray-500 mb-6">
@@ -611,7 +663,7 @@ export function PortfolioSection() {
                         </div>
 
                         {/* 2. Title (Huge Serif) */}
-                        <h2 className="text-5xl md:text-7xl font-cormorant italic text-white mb-8 leading-none max-w-4xl">
+                        <h2 id="project-title" className="text-5xl md:text-7xl font-cormorant italic text-white mb-8 leading-none max-w-4xl">
                           {selectedItem.title}
                         </h2>
 
@@ -656,7 +708,10 @@ export function PortfolioSection() {
                         <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-10" />
 
                         {/* 5. Description */}
-                        <div className="prose prose-invert prose-lg max-w-2xl mb-12 text-left">
+                        <div className={`${selectedItem.slug === 'houyhnhnms-and-us' ? 'w-full max-w-4xl' : 'prose prose-invert prose-lg max-w-2xl'} mb-12 text-left`}>
+                          {selectedItem.slug === 'houyhnhnms-and-us' ? (
+                            <HouyhnhnmsDescription description={selectedItem.description} />
+                          ) : (
                            <p className="text-gray-300 font-light leading-relaxed text-lg md:text-xl whitespace-pre-line">
                              {selectedItem.description.split('\n').map((line, i) => {
                                const boldMatch = line.match(/^(· )(Мустанги|Зоологи|Кинематографисты|ML-специалисты|Mustangs|Zoologists|Filmmakers|ML specialists)( — )/);
@@ -666,6 +721,7 @@ export function PortfolioSection() {
                                return <span key={i}>{line}<br /></span>;
                              })}
                            </p>
+                          )}
                         </div>
 
                         {selectedItem.partner && (
