@@ -12,8 +12,13 @@ button.island-drawing:focus-visible{outline:1px dashed #e3e4dc;outline-offset:4p
 .island-slot>.island-drawing{position:relative;width:100%;transform:none;opacity:.48}
 .island-slot>button.island-drawing{opacity:.55;min-height:44px}
 .island-slot>button.island-drawing:after{content:'';position:absolute;inset:-12px;pointer-events:auto}
-.island-slot:has(button:hover),.island-slot:has(button:focus-visible){transform:var(--island-lean);z-index:2}
-.island-slot>button.island-drawing:hover,.island-slot>button.island-drawing:focus-visible{opacity:.95}
+.island-slot:has(button:focus-visible){transform:var(--island-lean);z-index:2}
+.island-slot>button.island-drawing:focus-visible{opacity:.95}
+/* Touch browsers can retain :hover after a tap. Lean in only with a mouse. */
+@media(hover:hover) and (pointer:fine){
+ .island-slot:has(button:hover){transform:var(--island-lean);z-index:2}
+ .island-slot>button.island-drawing:hover{opacity:.95}
+}
 .island-landscape{width:clamp(220px,65cqw,660px);left:50%;bottom:0;--island-rest:translate(-50%,70%)}
 .island-landscape>.island-drawing{opacity:.28}
 .island-tree{width:clamp(80px,12cqw,130px);left:0;bottom:0;--island-rest:translate(-38%,20%)}
@@ -28,6 +33,11 @@ button.island-drawing:focus-visible{outline:1px dashed #e3e4dc;outline-offset:4p
 .island-procession{width:clamp(105px,19cqw,200px);left:80%;bottom:0;--island-rest:translate(-50%,52%)}
 .island-arrival{animation:island-reveal .65s ease-out both}
 .island-verdict{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;white-space:nowrap;animation:island-reveal .8s ease-out both;text-shadow:0 1px 8px #111827}
+/* A tap reveals the next visitors directly, without a hover movement. */
+@media(hover:none),(pointer:coarse){
+ .island-slot{transition:none}
+ .island-arrival,.island-verdict{animation-duration:.25s}
+}
 /* The island occupies its own footer. Text scrolls above it, never beneath it. */
 .island-host>.island-card{padding-bottom:60px;max-height:min(90dvh,calc(100dvh - 152px))}
 .island-host>.island-card>.flex{min-height:0;flex:1;mask-image:linear-gradient(to bottom,#000 calc(100% - 20px),transparent)}
