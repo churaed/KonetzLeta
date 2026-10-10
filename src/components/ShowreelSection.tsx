@@ -29,6 +29,35 @@ export function ShowreelSection() {
   const [duration, setDuration] = useState(0);
   // State for current video playback time
   const [currentTime, setCurrentTime] = useState(0);
+  // Preload nothing on page load; fetch metadata only when the section nears the viewport
+  const [shouldPreload, setShouldPreload] = useState(false);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
+
+  // Effect to flip preload from "none" to "metadata" once the section approaches the viewport
+  useEffect(() => {
+    const el = videoWrapperRef.current;
+    if (!el || shouldPreload) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldPreload(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100% 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [shouldPreload]);
+
+  // Start metadata loading without resetting playback that is already pending.
+  useEffect(() => {
+    if (!shouldPreload) return;
+    const video = videoRef.current;
+    if (video && video.paused && video.readyState === HTMLMediaElement.HAVE_NOTHING) {
+      video.load();
+    }
+  }, [shouldPreload]);
 
   // Effect to handle video playback state changes
   useEffect(() => {
@@ -36,7 +65,7 @@ export function ShowreelSection() {
     if (video) {
       if (isPlaying) {
         // play() returns a promise. Handle potential browser rejection.
-        video.play().catch((error: any) => {
+        video.play().catch((error: unknown) => {
           console.error("Video play failed:", error);
           // If autoplay fails, pause the video state
           setIsPlaying(false);
@@ -143,6 +172,7 @@ export function ShowreelSection() {
         >
           {/* Video wrapper with responsive aspect ratio */}
           <div
+            ref={videoWrapperRef}
             className="relative w-full rounded-2xl overflow-hidden bg-black border border-gray-800/50"
             style={{ paddingTop: '56.25%' }}
           >
@@ -154,7 +184,7 @@ export function ShowreelSection() {
               playsInline
               muted={isMuted}
               poster="/video/showreel/showreel-poster.webp"
-              preload="metadata"
+              preload={shouldPreload ? 'metadata' : 'none'}
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
               onClick={() => setIsPlaying(!isPlaying)}
