@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useSyncExternalStore, type MouseEvent } from 'react';
+import { preload } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import './IslandDiscovery.css';
 import tree from '../assets/images/houyhnhnms-illustrations/optimized/tree.webp';
@@ -66,6 +67,12 @@ export default function IslandDiscovery() {
   const complete = step === islandTargets.length;
   const desktopCapacity = useSyncExternalStore(subscribeDesktop, getDesktopCapacity, () => 0);
   const visibleVisitors = [...islandVisitors, ...desktopVisitors.filter(visitor => visitor.tier <= desktopCapacity)].filter(visitor => visitor.at <= step);
+
+  useEffect(() => {
+    for (const src of boundsByImage.keys()) {
+      preload(src, { as: 'image' });
+    }
+  }, []);
 
   useEffect(() => {
     if (!keyboardDiscovery.current) return;
