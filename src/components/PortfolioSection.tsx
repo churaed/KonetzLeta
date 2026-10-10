@@ -1,5 +1,6 @@
 import { motion, useInView, AnimatePresence } from 'motion/react';
 import { useRef, useState, useEffect, useCallback, lazy, Suspense } from 'react';
+import { createPortal } from 'react-dom';
 import { ExternalLink, Play, Award, X, Eye } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
@@ -594,7 +595,7 @@ export function PortfolioSection() {
         </motion.div>
 
         {/* Modal Overlay */}
-        <AnimatePresence>
+        {createPortal(<AnimatePresence>
           {selectedParam && selectedItem && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -624,7 +625,7 @@ export function PortfolioSection() {
                   <X size={24} />
                 </button>
 
-                <div className={`${selectedItem.slug === 'houyhnhnms-and-us' ? 'island-card' : ''} relative w-full bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col max-h-[85vh] overflow-x-hidden`}>
+                <div className={`${selectedItem.slug === 'houyhnhnms-and-us' ? 'island-card' : ''} relative w-full bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col max-h-[calc(100dvh-7rem)] md:max-h-[calc(100dvh-9rem)] overflow-x-hidden`}>
                   {selectedItem.slug === 'houyhnhnms-and-us' && (
                     <Suspense fallback={null}><IslandDiscovery /></Suspense>
                   )}
@@ -739,7 +740,7 @@ export function PortfolioSection() {
                           <div className="w-full max-w-3xl border-t border-gray-800/50 pt-10 pb-12 mb-4">
                              <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-mono text-gray-500 leading-relaxed">
                                {selectedItem.credits.split('|').map((credit, idx) => (
-                                 <span key={idx} className="whitespace-nowrap">
+                                 <span key={idx} className="max-w-full whitespace-normal [overflow-wrap:anywhere] sm:whitespace-nowrap">
                                    {credit.trim()}
                                  </span>
                                ))}
@@ -788,7 +789,7 @@ export function PortfolioSection() {
               </motion.div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence>, document.body)}
       </div>
     </section>
   );

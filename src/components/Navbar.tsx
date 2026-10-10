@@ -175,7 +175,7 @@ export function Navbar() {
       {/* Navigation */}
       <motion.nav
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-linear-to-b from-black/90 to-black/60"
+        className="fixed top-0 left-0 right-0 z-[55] transition-all duration-500 bg-linear-to-b from-black/90 to-black/60"
         initial={false}
         animate={{
           y: shouldShow ? 0 : -100,
@@ -246,7 +246,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         <motion.div
-          className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
+          className={`lg:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain ${isMenuOpen ? 'block' : 'hidden'}`}
           initial={{ opacity: 0, height: 0 }}
           animate={{
             opacity: isMenuOpen ? 1 : 0,

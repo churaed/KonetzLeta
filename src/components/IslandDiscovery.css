@@ -61,22 +61,22 @@ button.island-drawing:focus-visible{outline:1px dashed #e3e4dc;outline-offset:4p
  .island-host .island-editorial{padding-inline:48px}
  .island-landscape{width:90%;--island-rest:translate(-50%,65%)}
  .island-tree{width:68px}.island-earth{width:72px}
- .island-huddle{width:70px}.island-herd{width:80px;left:43%}
- .island-horse{width:76px;left:62%}.island-procession{width:80px;left:80%}
- .island-face{bottom:150px}.island-friends{width:108px;bottom:174px}
- .island-bones{bottom:290px}.island-skeleton{bottom:310px}
+ .island-huddle{width:60px}.island-herd{width:68px;left:43%}
+ .island-horse{width:65px;left:62%}.island-procession{width:68px;left:80%}
+ .island-face{width:53px;bottom:150px}.island-friends{width:92px;bottom:174px}
+ .island-bones{width:65px;bottom:290px}.island-skeleton{width:60px;bottom:310px}
  .island-verdict{bottom:44px;font-size:17px}
 }
 @keyframes island-reveal{from{opacity:0}to{opacity:1}}
 /* Wide phones keep the same discovery order in a shorter frame. */
 @media(max-height:600px) and (min-width:651px){
  .island-host>.island-card{padding-bottom:60px}
- .island-bones{width:64px;top:22%;bottom:auto;--island-rest:translate(-45%,-50%);--island-lean:translate(-15%,-50%)}
- .island-skeleton{width:56px;top:22%;bottom:auto;--island-rest:translate(40%,-50%)}
- .island-friends{width:98.4px;top:calc(64% - 24px);bottom:auto;--island-rest:translate(-48%,-50%);--island-lean:translate(-15%,-50%)}
- .island-face{width:62px;top:64%;bottom:auto;--island-rest:translate(32%,-50%);--island-lean:translate(10%,-50%)}
+ .island-bones{width:54px;top:22%;bottom:auto;--island-rest:translate(-45%,-50%);--island-lean:translate(-15%,-50%)}
+ .island-skeleton{width:48px;top:22%;bottom:auto;--island-rest:translate(40%,-50%)}
+ .island-friends{width:84px;top:calc(64% - 24px);bottom:auto;--island-rest:translate(-48%,-50%);--island-lean:translate(-15%,-50%)}
+ .island-face{width:53px;top:64%;bottom:auto;--island-rest:translate(32%,-50%);--island-lean:translate(10%,-50%)}
  .island-tree{width:65px}.island-earth{width:80px}
- .island-huddle{width:110px}.island-herd{width:130px}.island-horse{width:88px}.island-procession{width:120px}
+ .island-huddle{width:94px}.island-herd{width:111px}.island-horse{width:75px}.island-procession{width:102px}
  .island-landscape{width:75%;--island-rest:translate(-50%,76%)}
  .island-verdict{bottom:44px;font-size:17px}
 }

@@ -5,6 +5,9 @@
 .stampede-gallop{animation:stampede-gallop var(--bounce) ease-in-out var(--delay) infinite;transform-origin:50% 85%}
 .stampede-gallop svg{display:block;width:100%;height:auto;transform:scaleX(var(--facing))}
 .stampede-straggler .stampede-gallop{animation-name:stampede-panic}
+@media(max-width:650px),(max-height:600px) and (max-width:1023px){
+ .stampede-runner{width:clamp(94px,calc(var(--runner-width) * .85),748px)}
+}
 @keyframes stampede-cross{from{transform:translate(-110%,-50%)}to{transform:translate(calc(100vw + 10%),-50%)}}
 @keyframes stampede-cross-reverse{from{transform:translate(calc(100vw + 10%),-50%)}to{transform:translate(-110%,-50%)}}
 @keyframes stampede-gallop{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-16px) rotate(2deg)}}
