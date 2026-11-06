@@ -2,8 +2,10 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 
 const indexHtml = await readFile('dist/index.html', 'utf8');
-await mkdir('dist/privacy', { recursive: true });
-await writeFile('dist/privacy/index.html', indexHtml);
+for (const route of ['privacy', 'events/archive']) {
+  await mkdir(`dist/${route}`, { recursive: true });
+  await writeFile(`dist/${route}/index.html`, indexHtml);
+}
 
 const destination = 'dist/projects/houyhnhnms-and-us';
 await mkdir(destination, { recursive: true });

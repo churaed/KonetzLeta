@@ -5,6 +5,8 @@ import { TeamSection } from './components/TeamSection';
 import { ShowreelSection } from './components/ShowreelSection';
 import { PortfolioSection } from './components/PortfolioSection';
 import { ServicesSection } from './components/ServicesSection';
+import { EventsArchivePage } from './components/EventsArchivePage';
+import { EventsSection } from './components/EventsSection';
 import { ContactSection } from './components/ContactSection';
 import { Navbar } from './components/Navbar';
 import { PrivacyNotice } from './components/PrivacyNotice';
@@ -22,13 +24,14 @@ export default function App() {
         rel="stylesheet"
       />
 
-      {location.pathname !== '/privacy' && location.pathname !== '/manifest' && <Navbar />}
+      {location.pathname !== '/privacy' && location.pathname !== '/manifest' && location.pathname !== '/events/archive' && <Navbar />}
 
       <ScrollToTop />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects/houyhnhnms-and-us" element={<HomePage />} />
+        <Route path="/events/archive" element={<EventsArchivePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/manifest" element={<ManifestPage />} />
       </Routes>
@@ -54,6 +57,7 @@ function HomePage() {
       <ShowreelSection />
       <PortfolioSection />
       <ServicesSection />
+      <EventsSection />
       <ContactSection />
       <footer className="py-20 text-center border-t border-gray-800">
         <Link

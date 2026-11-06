@@ -10,10 +10,188 @@
         "projects_subtitle": "and Preserves",
         "services": "Services",
         "services_subtitle": "and Products",
+        "events": "Events",
+        "events_subtitle": "of the Lunar Calendar",
         "contact": "Contact",
         "contact_subtitle": "us",
         "end": "End",
         "end_subtitle": "of Summer"
+    },
+    "events": {
+        "title": "Events",
+        "upcoming": "Current and upcoming events",
+        "past": "Past events",
+        "archive": {
+            "count_one": "{{count}} event",
+            "count_other": "{{count}} events",
+            "show_all": "All past events",
+            "collapse": "Collapse archive",
+            "back": "Back to home",
+            "intro": "Studio gatherings, screenings and workshops",
+            "year": "Year",
+            "all_years": "All years",
+            "pagination": "Archive pages",
+            "previous": "Previous",
+            "next": "Next",
+            "page": "{{page}} of {{total}}"
+        },
+        "email_subject": "Event",
+        "watch_video": "Watch video",
+        "actions": {
+            "register": "Sign up",
+            "enquire": "Details",
+            "apply": "Apply"
+        },
+        "email_actions": {
+            "register": "Sign up by email",
+            "enquire": "Ask for details by email",
+            "apply": "Apply by email"
+        },
+        "application_deadline": "Applications close 14 December 2026",
+        "items": {
+            "experimental-lab": {
+                "title": "Experimental Film and Animation Lab",
+                "date": "23 November – 28 December 2026",
+                "end_date": "28 December 2026",
+                "schedule": "6 three-hour sessions · Mondays at 18:00",
+                "capacity": "12 places",
+                "price": "2,500 ₽ per session or 12,000 ₽ for the full lab"
+            },
+            "beginners-animation": {
+                "title": "Animation for Beginners",
+                "date": "November 2026 – January 2027",
+                "end_date": "January 2027",
+                "schedule": "8 two-hour sessions · once a week",
+                "capacity": "Two parallel groups: Tuesdays and Sundays, 6 people per group",
+                "price": "16,000 ₽ for the full course"
+            },
+            "sprouts": {
+                "title": "A Celebration of Sprouts and Shoots",
+                "date": "26 December 2026",
+                "description": "An end-of-year open screening and discussion of the studio’s projects."
+            },
+            "short-animation": {
+                "title": "From 30 to 2.30",
+                "date": "11 February 2027",
+                "description": "Short Animation Festival."
+            },
+            "scary-things": {
+                "title": "Very Scary Things",
+                "date": "30 October 2026"
+            },
+            "experimental-cinema-day": {
+                "title": "Experimental Cinema Day",
+                "date": "31 August 2026"
+            },
+            "animation-workshop": {
+                "title": "Animation Workshop at the Creative Industries Festival",
+                "date": "27 August 2026"
+            },
+            "housewarming": {
+                "title": "Housewarming",
+                "date": "6 August 2026"
+            },
+            "mock-past-01": {
+                "title": "Mock · Hand-drawn Animation Evening",
+                "date": "15.12.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-02": {
+                "title": "Mock · Open Studio Workshop",
+                "date": "15.11.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-03": {
+                "title": "Mock · Documentary Film Discussion",
+                "date": "15.10.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-04": {
+                "title": "Mock · Sounds and Images",
+                "date": "15.09.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-05": {
+                "title": "Mock · Short Film Screening",
+                "date": "15.08.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-06": {
+                "title": "Mock · Paper Animation",
+                "date": "15.07.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-07": {
+                "title": "Mock · Film Club: Movement and Rhythm",
+                "date": "15.06.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-08": {
+                "title": "Mock · Meet the Artists",
+                "date": "15.05.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-09": {
+                "title": "Mock · Film Experiments",
+                "date": "15.04.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-10": {
+                "title": "Mock · Studio Screening",
+                "date": "15.03.2025",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-11": {
+                "title": "Mock · Stop-motion Workshop",
+                "date": "15.12.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-12": {
+                "title": "Mock · Debut Film Evening",
+                "date": "15.11.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-13": {
+                "title": "Mock · Drawing in Motion",
+                "date": "15.10.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-14": {
+                "title": "Mock · Work-in-progress Screening",
+                "date": "15.09.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-15": {
+                "title": "Mock · Puppets on Screen",
+                "date": "15.08.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-16": {
+                "title": "Mock · Film and Found Objects",
+                "date": "15.07.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-17": {
+                "title": "Mock · Light Workshop",
+                "date": "15.06.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-18": {
+                "title": "Mock · Storyboard Discussion",
+                "date": "15.05.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-19": {
+                "title": "Mock · Animation Walk",
+                "date": "15.04.2024",
+                "description": "Fictional event for archive layout review."
+            },
+            "mock-past-20": {
+                "title": "Mock · Open Screen",
+                "date": "15.03.2024",
+                "description": "Fictional event for archive layout review."
+            }
+        }
     },
     "hero": {
         "title_part1": "End",

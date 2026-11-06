@@ -1,0 +1,290 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Лунные обложки</title><style>body{background:#000;color:#fff;padding:40px}main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.events-section {
+  scroll-margin-top: calc(var(--navbar-height, 80px) + 24px);
+}
+
+.events-group + .events-group {
+  margin-top: 6rem;
+}
+
+.events-group-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.event-card {
+  min-width: 0;
+  border-bottom: 1px solid #303030;
+}
+
+.event-card article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.event-cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #141414;
+}
+
+.event-cover img, .event-cover video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-lunar-art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 75% 35%, #382025, #141414 70%);
+}
+
+.event-orbit {
+  position: absolute;
+  width: 80%;
+  aspect-ratio: 1;
+  border: 1px solid #f8717140;
+  border-radius: 50%;
+  left: 35%;
+  top: -35%;
+}
+
+.event-moon {
+  position: absolute;
+  width: 31%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #f87171;
+  left: 58%;
+  top: 19%;
+  box-shadow: 0 0 60px #f8717110;
+}
+
+.event-moon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #1f1719;
+  transform: translateX(25%);
+}
+
+.event-cover--half .event-moon {
+  background: linear-gradient(90deg, #f87171 50%, #25191c 50%);
+}
+
+.event-cover--half .event-moon::after, .event-cover--full .event-moon::after {
+  display: none;
+}
+
+.event-cover--new .event-moon {
+  background: #1b1618;
+  border: 1px solid #f87171;
+}
+
+.event-cover--new .event-moon::after {
+  display: none;
+}
+
+.event-cover-date {
+  position: absolute;
+  bottom: 4%;
+  left: 7%;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #f7e9e9;
+}
+
+.event-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem 0 2rem;
+}
+
+.event-date {
+  font-size: .8rem;
+  line-height: 1.6;
+  color: #f87171;
+  margin-bottom: .75rem;
+}
+
+.event-title {
+  font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+  line-height: 1.15;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.event-description {
+  color: #c9c9c9;
+  font-size: .85rem;
+  line-height: 1.8;
+  margin-top: 1rem;
+}
+
+.event-facts {
+  display: grid;
+  gap: .5rem;
+  color: #a9a9a9;
+  font-size: .8rem;
+  line-height: 1.8;
+  list-style: none;
+  padding: 0;
+  margin-top: 1.25rem;
+}
+
+.event-price {
+  color: #eee;
+}
+
+.event-action-wrap {
+  display: grid;
+  /* Keep a shared note row so deadlines do not lift a single card's button. */
+  grid-template-rows: auto minmax(1.125rem, auto);
+  row-gap: .75rem;
+  margin-top: auto;
+  padding-top: 1.75rem;
+}
+
+.event-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 48px;
+  border: 1px solid #f8717180;
+  padding: .8rem 1rem;
+  font-size: .8rem;
+  color: #fff;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+  padding-inline-end: calc(1rem - 2px);
+}
+
+@media (hover: hover) {
+  .event-action:hover {
+    background: #f871711a;
+    border-color: #f87171;
+  }
+}
+
+.event-action:focus-visible {
+  outline: 2px solid #f87171;
+  outline-offset: 4px;
+}
+
+.event-deadline {
+  color: #a9a9a9;
+  font-size: .75rem;
+  line-height: 1.5;
+}
+
+.archive-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.archive-header .events-group-title {
+  margin-bottom: 0;
+}
+
+.archive-count {
+  color: #a9a9a9;
+  font-size: .8rem;
+}
+
+@media (max-width: 639px) {
+  .events-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+  .event-cover-date {
+    font-size: 4.5rem;
+  }
+  .events-group + .events-group {
+    margin-top: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-action {
+    transition: none;
+  }
+}
+
+.archive-page-link { color: #f87171; font-size: .85rem; min-height: 44px; display: inline-flex; align-items: center; text-underline-offset: 5px; }
+@media (hover: hover) {
+  .archive-page-link:hover { text-decoration: underline; }
+  .archive-pagination button:not(:disabled):hover { background-color: #ffffff0d; border-color: #aaa; }
+}
+.chronicle-list { list-style: none; padding: 0; }
+.chronicle-row { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 2rem; padding: 1.5rem 0; border-top: 1px solid #303030; align-items: start; }
+.chronicle-row .event-date { margin: .4rem 0 0; }
+.chronicle-title { font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.2; color: #fff; overflow-wrap: anywhere; }
+.archive-page-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4rem; }
+.archive-page-heading { padding-bottom: 2.5rem; border-bottom: 1px solid #303030; }
+.archive-page-heading h1 { font-size: clamp(3rem, 7vw, 6rem); line-height: 1.1; }
+.archive-page-heading p { color: #a9a9a9; margin-top: 1.5rem; font-size: .85rem; line-height: 1.8; }
+.archive-results { scroll-margin-top: 2rem; margin-top: 2rem; }
+.chronicle-year + .chronicle-year { margin-top: 3rem; }
+.chronicle-year h2 { color: #a9a9a9; font-size: 1.25rem; margin-bottom: 1.5rem; }
+.archive-index-row { grid-template-columns: 8rem minmax(0, 1fr) 9rem; }
+.archive-index-row .event-cover { aspect-ratio: 4 / 3; }
+.archive-index-row .event-cover-date { display: none; }
+.archive-pagination { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 3rem; font-size: .8rem; }
+.archive-pagination button { min-height: 44px; padding: .75rem 1rem; border: 1px solid #777; cursor: pointer; }
+.archive-pagination button:disabled { opacity: .35; cursor: default; }
+.archive-page-link:focus-visible, .archive-pagination button:focus-visible, .archive-results:focus-visible { outline: 2px solid #f87171; outline-offset: 4px; }
+@media (max-width: 639px) {
+  .chronicle-row, .archive-index-row { grid-template-columns: 6rem minmax(0, 1fr); gap: 1rem; }
+  .archive-index-row .event-cover { display: none; }
+  .archive-pagination { gap: .5rem; }
+  .archive-pagination button { padding: .75rem .5rem; }
+}
+
+.archive-page-heading + .archive-count { margin-top: 2rem; }
+
+.event-cover img {
+  outline: 1px solid oklch(1 0 0 / 0.1);
+  outline-offset: -1px;
+}
+.event-ui-icon { flex-shrink: 0; color: currentColor; }
+.directional-icon:dir(rtl) { transform: scaleX(-1); }
+.archive-page-link { gap: .5rem; }
+.archive-pagination button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, opacity 150ms ease-out;
+}
+.archive-pagination button:first-child { padding-inline-start: calc(1rem - 2px); }
+.archive-pagination button:last-child { padding-inline-end: calc(1rem - 2px); }
+.archive-pagination button:disabled { border-color: #444; }
+@media (prefers-reduced-motion: no-preference) {
+  .archive-pagination button:not([data-static]) {
+    transition: scale 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, opacity 150ms ease-out;
+  }
+  .archive-pagination button:not(:disabled):not([data-static]):active { scale: .96; }
+}
+</style><main><div class="event-cover event-cover--crescent"><div class="event-lunar-art"><span class="event-orbit"></span><span class="event-moon"></span><span class="event-cover-date font-cormorant">23.11</span></div></div><div class="event-cover event-cover--half"><div class="event-lunar-art"><span class="event-orbit"></span><span class="event-moon"></span><span class="event-cover-date font-cormorant">XI — I</span></div></div><div class="event-cover event-cover--full"><div class="event-lunar-art"><span class="event-orbit"></span><span class="event-moon"></span><span class="event-cover-date font-cormorant">26.12</span></div></div><div class="event-cover event-cover--new"><div class="event-lunar-art"><span class="event-orbit"></span><span class="event-moon"></span><span class="event-cover-date font-cormorant">11.02</span></div></div></main></html>

@@ -1,0 +1,49 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Прошедшие события — варианты</title>
+<!-- Specs: A: existing coral/black, Georgia + monospace, year-indexed rows. B: muted rose/charcoal, Georgia + monospace, photographic two-column gallery. C: parchment/ink with coral, Georgia + monospace, large chronological programme. -->
+<style>
+:root{--coral:#f87171;--space:24px}*{box-sizing:border-box}body{margin:0;font-family:var(--font-sans,Arial);color:var(--foreground,#eee)}aside{position:sticky;top:0;z-index:2;background:var(--card,#222);padding:16px;border-radius:12px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}label{display:flex;gap:8px;align-items:center;font-size:13px}button,select,input{font:inherit}button{cursor:pointer;padding:10px 16px}section{margin:28px 0}h2{font-size:19px;margin:0 0 8px}p.caption{font-size:14px;line-height:1.6;color:var(--muted-foreground,#aaa);margin:0 0 16px}.stage{padding:clamp(20px,4vw,40px);background:#080808;color:#eee;border-radius:12px}.heading{font:italic 38px Georgia;margin:0 0 28px}.year{font:13px monospace;color:var(--coral);margin-bottom:20px}.list{display:grid;gap:var(--space)}article h3{font:italic 25px/1.2 Georgia;margin:8px 0}time{font:12px monospace;color:var(--coral)}.art{background:#21191b;position:relative;overflow:hidden;min-height:100px}.art:before{content:'';position:absolute;width:65%;aspect-ratio:1;border:1px solid var(--coral);border-radius:50%;left:45%;top:-20%}.art:after{content:'';position:absolute;width:35%;aspect-ratio:1;border-radius:50%;background:var(--coral);left:40%;top:25%;opacity:.7}.a article{display:grid;grid-template-columns:110px 1fr;gap:20px;padding-bottom:var(--space);border-bottom:1px solid #333}.a .art{height:90px;min-height:0}.b .list{grid-template-columns:repeat(2,minmax(0,1fr))}.b .art{aspect-ratio:4/3}.b article:nth-child(2n) .art:after{background:#21191b;border:1px solid var(--coral)}.b h3{font-size:28px}.b time{display:block;margin-top:18px}.c{background:#eee9df;color:#25211e}.c .heading{font-size:44px}.c article{display:grid;grid-template-columns:85px 1fr;gap:20px;border-top:1px solid #aaa;padding-top:var(--space)}.c .day{font:38px Georgia;color:#25211e}.c .month{font:11px monospace;display:block;margin-top:6px}.c h3{font-size:32px;margin:0}.c .art{height:65px;min-height:0;margin-top:16px;width:100%}.c .year{color:#63584e}.more{margin-top:24px;background:transparent;color:inherit;border:1px solid #777;width:100%;font:12px monospace}.note{font-size:13px;line-height:1.6}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--coral);outline-offset:4px}@media(max-width:480px){.b .list{grid-template-columns:1fr}.a article{grid-template-columns:80px 1fr}.c article{grid-template-columns:65px 1fr}.heading{font-size:30px}}
+
+.archive-tools{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}.archive-tools input,.archive-tools select{min-width:0;max-width:100%;padding:10px;border:1px solid #777;background:transparent;color:inherit;border-radius:0}.archive-tools label{flex:1 1 180px;align-items:stretch;flex-direction:column}.archive-tools select option{color:#222;background:#fff}.results{font:12px/1.6 monospace;margin:16px 0;color:inherit}.year-heading{grid-column:1/-1;font:16px monospace;margin:12px 0 0;padding-top:16px;border-top:1px solid #777}.list article{min-width:0}.list h3{overflow-wrap:anywhere}.more[hidden]{display:none}.demo-note{font-size:13px;line-height:1.6;color:var(--muted-foreground,#aaa)}.c time{color:#69514a}button,input,select{min-height:44px}
+</style>
+<!-- Exploration controls: remove this aside and the final script for delivery. -->
+<aside aria-label="Настройки"><label>Вариант <select id="view"><option value="all">Все варианты</option><option value="a">А · Хронология</option><option value="b">Б · Галерея</option><option value="c">В · Программа</option></select></label><label>Интервалы <input id="density" type="range" min="16" max="48" value="24"></label><label>Акцент <input id="accent" type="color" value="#f87171"></label></aside>
+<main><p class="demo-note">Проверка объёма: 24 события за 2024–2026 годы. Первые четыре взяты из материалов студии; остальные 20 отмечены как примеры для проверки архива.</p>
+<section data-variant="a"><h2>А · Хронология</h2><p class="caption">Спокойный архив в стиле сайта. Компактные обложки и одинаковый ритм строк помогают быстро найти событие по дате.</p><div class="stage a"><h3 class="heading">Прошедшие события</h3><div class="list" id="a"></div></div></section>
+<section data-variant="b"><h2>Б · Галерея воспоминаний</h2><p class="caption">Обложки становятся главным содержанием. Лучше всего подойдёт, когда появятся фотографии, постеры и видео с прошедших встреч.</p><div class="stage b"><h3 class="heading">Прошедшие события</h3><div class="list" id="b"></div></div></section>
+<section data-variant="c"><h2>В · Студийная программа</h2><p class="caption">Светлая вставка напоминает печатную программу показов. Крупные даты задают хронологию и заметно отделяют архив от будущих событий.</p><div class="stage c"><h3 class="heading">Прошедшие события</h3><div class="list" id="c"></div></div></section>
+<p class="note">Рекомендую Б, когда будут готовы обложки: архив сможет показывать жизнь студии. А удобнее для быстрого просмотра и занимает меньше места. В выразительнее, но сильнее меняет привычный чёрный фон сайта.</p>
+</main>
+<script>
+
+const original=[['30','10','Очень страшные дела'],['31','08','День экспериментального кино'],['27','08','Мастер-класс по анимации на фестивале креативных индустрий'],['06','08','Новоселье']];
+const events=original.map(([d,m,title])=>({d,m,y:'2026',title}));
+for(let i=0;i<20;i++)events.push({d:String(25-i%20).padStart(2,'0'),m:String(12-i%10).padStart(2,'0'),y:i<10?'2025':'2024',title:'Пример архивного события '+(i+1)});
+events.sort((a,b)=>(b.y+b.m+b.d).localeCompare(a.y+a.m+a.d));
+const escapeHtml=value=>value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+for(const variant of ['a','b','c']){
+ const list=document.getElementById(variant),stage=list.parentElement;
+ const tools=document.createElement('div');tools.className='archive-tools';
+ tools.innerHTML=`<label>Найти событие<input type="search" placeholder="Название события" aria-controls="${variant}"></label><label>Год<select aria-controls="${variant}"><option value="all">Все годы</option>${[...new Set(events.map(e=>e.y))].map(y=>`<option>${y}</option>`).join('')}</select></label>`;
+ stage.insertBefore(tools,list);
+ const status=document.createElement('p');status.className='results';status.setAttribute('role','status');stage.insertBefore(status,list);
+ const more=document.createElement('button');more.className='more';more.type='button';more.setAttribute('aria-controls',variant);stage.append(more);
+ const search=tools.querySelector('input'),year=tools.querySelector('select');let limit=6;
+ function render(focusNew=false){
+  const query=search.value.trim().toLocaleLowerCase('ru');
+  const filtered=events.filter(e=>(year.value==='all'||e.y===year.value)&&e.title.toLocaleLowerCase('ru').includes(query));
+  const visible=filtered.slice(0,limit);let previousYear='';
+  list.innerHTML=visible.map((e,index)=>{const {d,m,y}=e,title=escapeHtml(e.title);const heading=y!==previousYear?`<h4 class="year-heading">${y}</h4>`:'';previousYear=y;
+   const date=`<time datetime="${y}-${m}-${d}">${d}.${m}.${y}</time>`;
+   const content=variant==='c'?`<div class="day">${d}<span class="month">${m} / ${y}</span></div><div>${date}<h3>${title}</h3><div class="art" aria-hidden="true"></div></div>`:variant==='a'?`<div class="art" aria-hidden="true"></div><div>${date}<h3>${title}</h3></div>`:`<div class="art" aria-hidden="true"></div>${date}<h3>${title}</h3>`;
+   return heading+`<article tabindex="-1" data-index="${index}">${content}</article>`;
+  }).join('');
+  status.textContent=filtered.length?`Показано ${visible.length} из ${filtered.length}`:'События не найдены. Попробуйте другое название или год.';
+  more.hidden=visible.length>=filtered.length;more.textContent=`Показать ещё ${Math.min(6,filtered.length-visible.length)}`;
+  if(focusNew)list.querySelector(`[data-index="${limit-6}"]`)?.focus({preventScroll:true});
+ }
+ search.addEventListener('input',()=>{limit=6;render()});year.addEventListener('change',()=>{limit=6;render()});more.addEventListener('click',()=>{limit+=6;render(true)});render();
+}
+const view=document.getElementById('view'),density=document.getElementById('density'),accent=document.getElementById('accent');
+function apply(){document.documentElement.style.setProperty('--space',density.value+'px');document.documentElement.style.setProperty('--coral',accent.value);document.querySelectorAll('[data-variant]').forEach(s=>s.hidden=view.value!=='all'&&s.dataset.variant!==view.value);try{localStorage.setItem('archive-variants',JSON.stringify({view:view.value,density:density.value,accent:accent.value}))}catch{}}
+try{const saved=JSON.parse(localStorage.getItem('archive-variants'));if(saved){view.value=saved.view;density.value=saved.density;accent.value=saved.accent}}catch{}[view,density,accent].forEach(el=>el.addEventListener('input',apply));apply();
+</script></html>

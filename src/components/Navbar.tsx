@@ -61,7 +61,7 @@ export function Navbar() {
 
     // This function's ONLY job is now to report if the mouse is in the hover zone.
     const handleMouseMove = (e: MouseEvent) => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1280) {
         setIsHovering(e.clientY < 100);
       } else {
         setIsHovering(false);
@@ -110,6 +110,7 @@ export function Navbar() {
     { name: t('navbar.showreel'), subtitle: t('navbar.showreel_subtitle'), href: '#showreel' },
     { name: t('navbar.projects'), subtitle: t('navbar.projects_subtitle'), href: '#portfolio' },
     { name: t('navbar.services'), subtitle: t('navbar.services_subtitle'), href: '#services' },
+    { name: t('navbar.events'), subtitle: t('navbar.events_subtitle'), href: '#events' },
     { name: t('navbar.contact'), subtitle: t('navbar.contact_subtitle'), href: '#contact' },
     { name: t('navbar.end'), subtitle: t('navbar.end_subtitle'), href: '#hero' },
   ];
@@ -156,9 +157,9 @@ export function Navbar() {
   return (
     <>
       {/* Hover indicator for desktop */}
-      {!navVisible && window.innerWidth >= 1024 && (
+      {!navVisible && window.innerWidth >= 1280 && (
         <motion.div
-          className="fixed top-0 left-1/2 transform -translate-x-1/2 z-40 hidden lg:block"
+          className="fixed top-0 left-1/2 transform -translate-x-1/2 z-40 hidden xl:block"
           initial={{ opacity: 0, y: -20 }}
           animate={{
             opacity: isHovering ? 1 : 0,
@@ -186,7 +187,7 @@ export function Navbar() {
           {/* Left Side - Studio Description + Mobile Menu */}
           <div className="flex items-center space-x-4">
             <motion.button
-              className="lg:hidden order-first text-white min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="xl:hidden order-first text-white min-h-[44px] min-w-[44px] flex items-center justify-center"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -198,21 +199,21 @@ export function Navbar() {
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
 
-            <div className="lg:hidden">
+            <div className="xl:hidden">
               <LanguageSwitcher />
             </div>
           </div>
 
           {/* Desktop Language Switcher - Absolute positioned to the right */}
-          <div className="hidden lg:block absolute right-6 top-1/2 -translate-y-1/2">
+          <div className="hidden xl:block absolute right-6 top-1/2 -translate-y-1/2">
             <LanguageSwitcher />
           </div>
 
           {/* Desktop Navigation - Centered nav items with responsive spacing */}
           <div className="
-              hidden lg:flex items-center justify-center
+              hidden xl:flex items-center justify-center
               absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-              gap-x-6 md:gap-x-8 lg:gap-x-12 xl:gap-x-16
+              gap-x-16 2xl:gap-x-20
             ">
             {navItems.map((item) => (
               <Link
@@ -227,12 +228,12 @@ export function Navbar() {
                 className="group relative text-sm font-mono tracking-wider text-white/80 hover:text-white transition-colors duration-300 whitespace-nowrap"
               >
                 {/* This container moves up on hover to keep the whole block centered */}
-                <div className="relative transition-transform duration-300 ease-out group-hover:-translate-y-2">
+                <div className="relative transition-transform duration-300 ease-out group-hover:-translate-y-2 group-focus-within:-translate-y-2">
                   <span className="block text-center">{item.name}</span>
                   <span className="
                     block text-center text-xs text-red-400
                     absolute top-full left-1/2 -translate-x-1/2 mt-1
-                    opacity-0 transition-opacity duration-300 group-hover:opacity-100
+                    opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100
                   ">
                     {item.subtitle}
                   </span>
@@ -246,7 +247,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         <motion.div
-          className={`lg:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain ${isMenuOpen ? 'block' : 'hidden'}`}
+          className={`xl:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain ${isMenuOpen ? 'block' : 'hidden'}`}
           initial={{ opacity: 0, height: 0 }}
           animate={{
             opacity: isMenuOpen ? 1 : 0,
