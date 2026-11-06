@@ -133,6 +133,7 @@
       }
     ],
     "showCover": false,
-    "showIntro": false
+    "showIntro": false,
+    "registrationLabel": "Подать Заявку"
   }
 ]

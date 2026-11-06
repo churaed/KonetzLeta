@@ -1,10 +1,11 @@
 import { useReducedMotion } from 'motion/react';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, Play, Pause } from 'lucide-react';
+import { ArrowLeft, Play, Pause } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { eventPages, type EventPageBlock, type ProgrammeMedia } from '../data/eventPages';
 import { studioEvents } from '../data/events';
+import { ApplicationAction } from './ApplicationAction';
 import { EventCover } from './EventCover';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import './EventsSection.css';
@@ -52,12 +53,13 @@ export function EventDetailPage() {
   const key = `events.items.${event.id}`;
   const action = event.actionUrl || `mailto:konetzleta@gmail.com?subject=${encodeURIComponent(`${contentT('events.email_subject')}: ${page.title}`)}`;
   const registration = event.action && event.group === 'upcoming' && event.registrationOpen !== false
-    ? <a className="event-action" href={action} target={event.actionUrl ? '_blank' : undefined} rel={event.actionUrl ? 'noopener noreferrer' : undefined}>{contentT(event.actionUrl ? `events.actions.${event.action}` : `events.email_actions.${event.action}`)}<ArrowUpRight strokeWidth={1.5} size={16} aria-hidden="true" /></a>
+    ? <ApplicationAction href={action} label={page.registrationLabel || contentT(event.actionUrl ? `events.actions.${event.action}` : `events.email_actions.${event.action}`)} external={Boolean(event.actionUrl)} />
     : null;
   return <main className="event-detail-page">
     <div className="event-detail-shell">
       <div className="archive-page-topbar"><Link className="archive-page-link font-mono" to="/#events"><ArrowLeft className="directional-icon" strokeWidth={1.5} size={16} aria-hidden="true" />{t('events.archive.back')}</Link><LanguageSwitcher /></div>
       {page.status === 'draft' && <p className="event-draft-note font-mono" role="status">Черновик · доступен только в режиме разработки. Содержание уточняется.</p>}
+
       <article lang={page.language}>
         <header className="event-detail-heading"><p className="event-date font-mono"><time dateTime={event.dateTime}>{contentT(`${key}.date`)}</time></p><h1 className="font-cormorant italic">{page.title}</h1>{page.showIntro !== false && <p className="event-detail-intro font-mono">{page.description}</p>}</header>
         {page.showCover !== false && <div className="events-frame--ambient event-detail-hero"><EventCover event={event} title={page.title} ambient /></div>}

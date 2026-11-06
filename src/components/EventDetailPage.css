@@ -82,3 +82,16 @@
 .event-animation-control:focus-visible { outline: 2px solid #fff; outline-offset: 4px; border-radius: 50%; }
 @media (hover:hover) { .event-animation-control:hover { color: #fca5a5; } }
 @container event-content (max-width:400px) { .event-programme-controls { gap: 12px; } }
+
+.event-detail-primary-action { min-height: 96px; width: 100%; padding: 1.5rem 2rem; background: var(--color-red-400, #f87171); border-color: var(--color-red-400, #f87171); color: #000; font-size: clamp(1.4rem, 3vw, 1.8rem); line-height: 1.3; font-weight: 500; }
+.event-detail-primary-action svg { width: 24px; height: 24px; flex-shrink: 0; }
+@media (hover:hover) { .event-detail-primary-action:hover { background: #fca5a5; border-color: #fca5a5; } }
+.event-detail-primary-action:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
+
+.application-action-slot { min-height: 96px; margin-top: 2rem; }
+.application-action-slot .event-detail-primary-action { margin-top: 0; }
+.application-capsule-dock { position: fixed; inset-inline: 16px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 50; display: flex; justify-content: center; pointer-events: none; }
+.application-capsule { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 56px; max-width: 100%; padding: 14px 24px; background: var(--color-red-400, #f87171); color: #000; font-family: 'JetBrains Mono', monospace; font-size: 1rem; line-height: 1.3; box-shadow: 0 4px 24px #0009; border: 1px solid transparent; pointer-events: auto; }
+.application-capsule svg { flex-shrink: 0; }
+.application-capsule:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+@media (hover:hover) { .application-capsule:hover { background: #fca5a5; } }

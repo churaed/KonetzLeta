@@ -15,6 +15,7 @@ export interface EventPageContent {
   description: string;
   showCover?: boolean;
   showIntro?: boolean;
+  registrationLabel?: string;
   blocks: EventPageBlock[];
 }
 declare const __EVENT_PAGES__: EventPageContent[];
