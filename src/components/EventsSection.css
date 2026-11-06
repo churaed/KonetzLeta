@@ -296,3 +296,34 @@
 @media (prefers-reduced-transparency: reduce), (forced-colors: active) {
  .events-frame--ambient .event-cover-backdrop { display: none; }
 }
+
+/* Homepage event reading hierarchy; archive/detail pages keep their own scale. */
+.events-section > .max-w-7xl { container: homepage-events / inline-size; }
+.events-section { padding-block: clamp(5rem, 8vw, 8rem); }
+.events-section .event-date { font-size: .9rem; }
+.events-section .event-description,
+.events-section .event-facts { font-size: 1rem; line-height: 1.7; }
+.events-section .event-facts { gap: .75rem; }
+.events-section .event-price { margin-top: .5rem; color: #eee; }
+.events-section .event-action { font-size: .9rem; }
+.events-section .event-deadline { font-size: .85rem; }
+.events-section .event-title a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: #ffffff60; }
+.events-section .event-detail-link:focus-visible { outline: 2px solid #f87171; outline-offset: 5px; }
+@media (hover:hover) {
+ .events-section .event-title a:hover { color: #f87171; text-decoration-color: currentColor; }
+}
+@container homepage-events (max-width: 680px) {
+ .events-grid { grid-template-columns: minmax(0,1fr); gap: 3rem; }
+ .events-section > div > header { margin-bottom: 3rem; }
+ .event-content { padding-bottom: 1.5rem; }
+ .event-action-wrap { grid-template-rows: auto; }
+ .event-action-wrap:has(.event-deadline) { grid-template-rows: auto auto; }
+}
+@container homepage-events (max-width: 400px) {
+ .events-archive .chronicle-row { grid-template-columns: minmax(0,1fr); gap: .75rem; }
+ .events-archive .chronicle-row .event-date { margin: 0; }
+ .events-archive .chronicle-title { font-size: 1.8rem; }
+}
+@container homepage-events (min-width: 681px) {
+ .event-action-wrap { grid-template-rows: auto minmax(1.5rem, auto); }
+}
