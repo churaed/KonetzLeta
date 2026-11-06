@@ -25,29 +25,4 @@ export const studioEvents: StudioEvent[] = [
   { id: 'housewarming', group: 'past', dateTime: '2026-08-06', coverDate: '06.08', phase: 'full' },
 ];
 
-// Temporary mock archive entries for layout review. Remove before publishing.
-const mockPastEvents: StudioEvent[] = [
-  {"id": "mock-past-01", "group": "past", "dateTime": "2025-12-15", "coverDate": "15.12", "phase": "new"},
-  {"id": "mock-past-02", "group": "past", "dateTime": "2025-11-15", "coverDate": "15.11", "phase": "crescent"},
-  {"id": "mock-past-03", "group": "past", "dateTime": "2025-10-15", "coverDate": "15.10", "phase": "half"},
-  {"id": "mock-past-04", "group": "past", "dateTime": "2025-09-15", "coverDate": "15.09", "phase": "full"},
-  {"id": "mock-past-05", "group": "past", "dateTime": "2025-08-15", "coverDate": "15.08", "phase": "new"},
-  {"id": "mock-past-06", "group": "past", "dateTime": "2025-07-15", "coverDate": "15.07", "phase": "crescent"},
-  {"id": "mock-past-07", "group": "past", "dateTime": "2025-06-15", "coverDate": "15.06", "phase": "half"},
-  {"id": "mock-past-08", "group": "past", "dateTime": "2025-05-15", "coverDate": "15.05", "phase": "full"},
-  {"id": "mock-past-09", "group": "past", "dateTime": "2025-04-15", "coverDate": "15.04", "phase": "new"},
-  {"id": "mock-past-10", "group": "past", "dateTime": "2025-03-15", "coverDate": "15.03", "phase": "crescent"},
-  {"id": "mock-past-11", "group": "past", "dateTime": "2024-12-15", "coverDate": "15.12", "phase": "half"},
-  {"id": "mock-past-12", "group": "past", "dateTime": "2024-11-15", "coverDate": "15.11", "phase": "full"},
-  {"id": "mock-past-13", "group": "past", "dateTime": "2024-10-15", "coverDate": "15.10", "phase": "new"},
-  {"id": "mock-past-14", "group": "past", "dateTime": "2024-09-15", "coverDate": "15.09", "phase": "crescent"},
-  {"id": "mock-past-15", "group": "past", "dateTime": "2024-08-15", "coverDate": "15.08", "phase": "half"},
-  {"id": "mock-past-16", "group": "past", "dateTime": "2024-07-15", "coverDate": "15.07", "phase": "full"},
-  {"id": "mock-past-17", "group": "past", "dateTime": "2024-06-15", "coverDate": "15.06", "phase": "new"},
-  {"id": "mock-past-18", "group": "past", "dateTime": "2024-05-15", "coverDate": "15.05", "phase": "crescent"},
-  {"id": "mock-past-19", "group": "past", "dateTime": "2024-04-15", "coverDate": "15.04", "phase": "half"},
-  {"id": "mock-past-20", "group": "past", "dateTime": "2024-03-15", "coverDate": "15.03", "phase": "full"},
-];
-studioEvents.push(...mockPastEvents);
-
 export const pastEvents = studioEvents.filter(event => event.group === 'past').sort((a, b) => b.dateTime.localeCompare(a.dateTime));

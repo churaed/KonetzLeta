@@ -18,12 +18,22 @@
         "end_subtitle": "of Summer"
     },
     "events": {
-        "detail": {"not_found": "Event page not found", "participation": "Participation"},
+        "detail": {
+            "not_found": "Event page not found",
+            "participation": "Participation",
+            "studio_name": "End of Summer",
+            "meeting": "Session {{number}}.",
+            "pause_animations": "Pause all animations",
+            "play_animations": "Play all animations",
+            "draft_note": "Draft · available in development mode only. Content is being finalised."
+        },
         "title": "Events",
         "upcoming": "Current and upcoming events",
         "past": "Past events",
         "archive": {
             "count_one": "{{count}} event",
+            "count_few": "{{count}} events",
+            "count_many": "{{count}} events",
             "count_other": "{{count}} events",
             "show_all": "All past events",
             "collapse": "Collapse archive",
@@ -91,106 +101,6 @@
             "housewarming": {
                 "title": "Housewarming",
                 "date": "6 August 2026"
-            },
-            "mock-past-01": {
-                "title": "Mock · Hand-drawn Animation Evening",
-                "date": "15.12.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-02": {
-                "title": "Mock · Open Studio Workshop",
-                "date": "15.11.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-03": {
-                "title": "Mock · Documentary Film Discussion",
-                "date": "15.10.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-04": {
-                "title": "Mock · Sounds and Images",
-                "date": "15.09.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-05": {
-                "title": "Mock · Short Film Screening",
-                "date": "15.08.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-06": {
-                "title": "Mock · Paper Animation",
-                "date": "15.07.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-07": {
-                "title": "Mock · Film Club: Movement and Rhythm",
-                "date": "15.06.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-08": {
-                "title": "Mock · Meet the Artists",
-                "date": "15.05.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-09": {
-                "title": "Mock · Film Experiments",
-                "date": "15.04.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-10": {
-                "title": "Mock · Studio Screening",
-                "date": "15.03.2025",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-11": {
-                "title": "Mock · Stop-motion Workshop",
-                "date": "15.12.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-12": {
-                "title": "Mock · Debut Film Evening",
-                "date": "15.11.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-13": {
-                "title": "Mock · Drawing in Motion",
-                "date": "15.10.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-14": {
-                "title": "Mock · Work-in-progress Screening",
-                "date": "15.09.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-15": {
-                "title": "Mock · Puppets on Screen",
-                "date": "15.08.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-16": {
-                "title": "Mock · Film and Found Objects",
-                "date": "15.07.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-17": {
-                "title": "Mock · Light Workshop",
-                "date": "15.06.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-18": {
-                "title": "Mock · Storyboard Discussion",
-                "date": "15.05.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-19": {
-                "title": "Mock · Animation Walk",
-                "date": "15.04.2024",
-                "description": "Fictional event for archive layout review."
-            },
-            "mock-past-20": {
-                "title": "Mock · Open Screen",
-                "date": "15.03.2024",
-                "description": "Fictional event for archive layout review."
             }
         }
     },
@@ -320,6 +230,7 @@
             "bum": {
                 "title": "BOOMBOOM: Save the planet!",
                 "subtitle": "Promotion of the «BOOMBOOM: Save the planet!» animated series • 2024",
+                "tagline": "Ecosystems fight for survival — and the planet has its own opinion.",
                 "status": "in_production",
                 "description": "«BOOMBOOM: Save the planet!» is an adventure animated series in which various ecosystems compete for survival on planet Earth, while the planet itself has its own unique perspective on the matter.\n\nAs part of the series promotion, we produce the podcast 'How It Was,' where creator and director Mariia Sediaeva discusses the creative journey with various participants—from screenwriters and artists to animators, voice actors, and sound designers.\n\nWe also maintain a Telegram blog dedicated to the collaborative process of building the series' original universe.",
                 "credits": "Author & Director: Mariia Sediaeva",

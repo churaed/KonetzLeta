@@ -20,7 +20,20 @@ export interface EventPageContent {
 }
 declare const __EVENT_PAGES__: EventPageContent[];
 export const eventPages = __EVENT_PAGES__;
-export function availableEventPath(eventId: string) {
-  const page = eventPages.find(page => page.eventId === eventId && (page.status === 'published' || import.meta.env.DEV));
+
+const isAvailable = (page: EventPageContent) => page.status === 'published' || import.meta.env.DEV;
+const languageCode = (language?: string) => language?.toLowerCase().split('-')[0];
+
+export function findEventPage(eventId: string, language?: string) {
+  const pages = eventPages.filter(page => page.eventId === eventId && isAvailable(page));
+  return (language ? pages.find(page => page.language === languageCode(language)) : undefined) ?? pages[0];
+}
+
+export function availableEventPath(eventId: string, language?: string) {
+  const page = findEventPage(eventId, language);
   return page ? `/events/${page.slug}` : undefined;
+}
+
+export function siblingEventPage(page: EventPageContent, language: string) {
+  return eventPages.find(item => item.eventId === page.eventId && item.language === languageCode(language) && isAvailable(item));
 }

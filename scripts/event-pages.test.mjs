@@ -17,6 +17,16 @@ test('duplicate and reserved slugs cannot publish', () => {
   page.slug = 'archive';
   assert.throws(() => loadEventPages([page]), /reserved slug/);
 });
+test('one page per event language is allowed, duplicates are not', () => {
+  const ru = fixture();
+  const en = structuredClone(ru);
+  en.slug = 'experimental-lab-2026-en';
+  en.language = 'en';
+  assert.equal(loadEventPages([ru, en]).length, 2);
+  const duplicate = structuredClone(en);
+  duplicate.slug = 'experimental-lab-2026-en-copy';
+  assert.throws(() => loadEventPages([ru, en, duplicate]), /duplicate language for event/);
+});
 test('unknown events and blocks fail with a recovery clue', () => {
   const page = fixture(); page.eventId = 'missing';
   assert.throws(() => loadEventPages([page]), /unknown event/);

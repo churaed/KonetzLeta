@@ -4,7 +4,7 @@ import { resolve, sep } from 'node:path';
 export function loadEventPages(pages = JSON.parse(readFileSync(new URL('../content/event-pages.json', import.meta.url), 'utf8'))) {
   const eventsSource = readFileSync(new URL('../src/data/events.ts', import.meta.url), 'utf8');
   const slugs = new Set();
-  const eventIds = new Set();
+  const translations = new Set();
   const fail = message => { throw new Error(`Event pages: ${message}`); };
   const nonempty = value => typeof value === 'string' && value.trim().length > 0;
   const validateAsset = (src, slug) => {
@@ -18,10 +18,11 @@ export function loadEventPages(pages = JSON.parse(readFileSync(new URL('../conte
     if (slugs.has(page.slug)) fail(`duplicate slug: ${page.slug}`);
     slugs.add(page.slug);
     if (!nonempty(page.eventId) || !eventsSource.includes(`id: '${page.eventId}'`)) fail(`unknown event: ${page.eventId}`);
-    if (eventIds.has(page.eventId)) fail(`multiple pages for event: ${page.eventId}`);
-    eventIds.add(page.eventId);
     if (!['draft', 'published'].includes(page.status)) fail(`invalid status: ${page.slug}`);
     if (!nonempty(page.title) || !nonempty(page.description) || !nonempty(page.language)) fail(`missing title, description or language: ${page.slug}`);
+    const translation = `${page.eventId}:${page.language}`;
+    if (translations.has(translation)) fail(`duplicate language for event: ${page.eventId} (${page.language})`);
+    translations.add(translation);
     if (!Array.isArray(page.blocks) || !page.blocks.length) fail(`missing blocks: ${page.slug}`);
     for (const block of page.blocks) {
       if (!nonempty(block.heading)) fail(`block needs a heading: ${page.slug}`);

@@ -135,5 +135,142 @@
     "showCover": false,
     "showIntro": false,
     "registrationLabel": "Подать Заявку"
+  },
+  {
+    "eventId": "experimental-lab",
+    "slug": "experimental-lab-2026-en",
+    "status": "published",
+    "language": "en",
+    "title": "Experimental Film and Animation Lab",
+    "description": "The theme of the lab is ritual. We will try filmmaking as a form of meditation.",
+    "blocks": [
+      {
+        "type": "facts",
+        "heading": "When and where",
+        "items": [
+          "6 sessions of 3 hours (break included), Mondays at 18:00",
+          "The lab runs from 23 November to 28 December 2026",
+          "Venue: Yekaterinburg, Khlebozavod No. 6, 8 Marta St. 203, 2nd floor, End of Summer office"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "About the lab",
+        "paragraphs": [
+          "The theme of the lab is ritual — ritual as the practice of allowing yourself to do something meaningless, profane and outside any structure. The aim of the lab is to try filmmaking as a form of meditation."
+        ]
+      },
+      {
+        "type": "programme",
+        "heading": "Six sessions",
+        "items": [
+          {
+            "title": "Anatomy of Decay",
+            "description": "something fades away; it is sad and beautiful. learning to let go",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-1.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-1-poster.webp",
+              "alt": "Session 1. Anatomy of Decay"
+            }
+          },
+          {
+            "title": "Éclair for the Drowning",
+            "description": "an animation technique as a source of magical metamorphoses",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-2.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-2-poster.webp",
+              "alt": "Session 2. Éclair for the Drowning"
+            }
+          },
+          {
+            "title": "Dance of Time",
+            "description": "exploring rhythm and duration in cinema",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-3.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-3-poster.webp",
+              "alt": "Session 3. Dance of Time"
+            }
+          },
+          {
+            "title": "Towards the Sun",
+            "description": "glitter, splash, ray, glare, reflection",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-4.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-4-poster.webp",
+              "alt": "Session 4. Towards the Sun"
+            }
+          },
+          {
+            "title": "Farewell, Image!",
+            "description": "cinema born in the viewer's mind",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-5.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-5-poster.webp",
+              "alt": "Session 5. Farewell, Image!"
+            }
+          },
+          {
+            "title": "Autofiction",
+            "description": "looking closely at ourselves",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-6.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-6-poster.webp",
+              "alt": "Session 6. Autofiction"
+            }
+          }
+        ],
+        "afterword": "We make films at every session."
+      },
+      {
+        "type": "people",
+        "heading": "Lab facilitators",
+        "items": [
+          {
+            "name": "Mariia Sediaeva",
+            "url": "https://www.kinopoisk.ru/name/10272779/",
+            "description": "director and artist"
+          },
+          {
+            "name": "Andrei Vetoshkin",
+            "url": "https://www.kinopoisk.ru/name/5421867/",
+            "description": "cinematographer"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Taking part",
+        "paragraphs": [
+          "Anyone who wants to try filmmaking and explore what the process might mean to them can take part. No prior skills are required.",
+          "About equipment: you are welcome to bring your favourite camera and/or laptop, but it is not required — a smartphone is more than enough. Specialised equipment and materials will be provided during the sessions.",
+          "To make communication easier, all lab participants will be added to a private Telegram chat."
+        ]
+      },
+      {
+        "type": "booking",
+        "heading": "Participation terms",
+        "capacity": "12 places in the lab",
+        "prices": [
+          {
+            "label": "Single session",
+            "value": "2 500 ₽"
+          },
+          {
+            "label": "All 6 sessions",
+            "value": "12 000 ₽"
+          }
+        ],
+        "note": "Payment on site or via a link sent to the email address given in your application."
+      }
+    ],
+    "showCover": false,
+    "showIntro": false,
+    "registrationLabel": "Apply"
   }
 ]

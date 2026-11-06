@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useReducedMotion } from 'motion/react';
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ onChange }: { onChange?: (language: string) => void }) {
     const reducedMotion = useReducedMotion();
     const { i18n } = useTranslation();
 
+    const currentLanguage = i18n.language.split('-')[0];
     const toggleLanguage = () => {
-        const newLang = i18n.language === 'ru' ? 'en' : 'ru';
+        const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
         i18n.changeLanguage(newLang);
+        onChange?.(newLang);
     };
 
     return (
@@ -18,7 +20,7 @@ export function LanguageSwitcher() {
             whileTap={reducedMotion ? undefined : { scale: 0.96 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
         >
-            {i18n.language === 'ru' ? 'EN' : 'RU'}
+            {currentLanguage === 'ru' ? 'EN' : 'RU'}
         </motion.button>
     );
 }
