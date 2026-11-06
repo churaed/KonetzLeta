@@ -5,11 +5,13 @@ import { pastEvents, studioEvents, type StudioEvent } from '../data/events';
 import './EventsSection.css';
 import { EventPageLink } from './EventPageLink';
 import { EventCover } from './EventCover';
+import { LunarBackground } from './LunarBackground';
 
 export function EventsSection() {
   const { t } = useTranslation();
   return (
     <section id="events" aria-labelledby="events-title" className="events-section py-32 bg-black">
+      <LunarBackground />
       <div className="max-w-7xl mx-auto px-6">
         <header className="text-center mb-20 space-y-8">
           <h2 id="events-title" className="text-6xl md:text-8xl font-cormorant italic text-white leading-tight">
