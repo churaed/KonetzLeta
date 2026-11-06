@@ -30,21 +30,11 @@
         "title": "Events",
         "upcoming": "Current and upcoming events",
         "past": "Past events",
+        "past_photos": {
+            "label": "Photos from {{name}}"
+        },
         "archive": {
-            "count_one": "{{count}} event",
-            "count_few": "{{count}} events",
-            "count_many": "{{count}} events",
-            "count_other": "{{count}} events",
-            "show_all": "All past events",
-            "collapse": "Collapse archive",
-            "back": "Back to home",
-            "intro": "Studio gatherings, screenings and workshops",
-            "year": "Year",
-            "all_years": "All years",
-            "pagination": "Archive pages",
-            "previous": "Previous",
-            "next": "Next",
-            "page": "{{page}} of {{total}}"
+            "back": "Back to home"
         },
         "email_subject": "Event",
         "watch_video": "Watch video",
@@ -88,19 +78,40 @@
             },
             "scary-things": {
                 "title": "Very Scary Things",
-                "date": "30 October 2026"
+                "date": "30 October 2026",
+                "photos": {
+                    "masks": "A table of paper masks and sculptures at the Very Scary Things party",
+                    "skeleton": "A foil skeleton hanging on the wall",
+                    "pumpkins": "Paper pumpkins on the window",
+                    "poster": "A red poster with a drawn monster"
+                }
             },
             "experimental-cinema-day": {
                 "title": "Experimental Cinema Day",
-                "date": "31 August 2026"
+                "date": "31 August 2026",
+                "photos": {
+                    "notes": "A cork board with participants' notes on what experimental cinema is",
+                    "audience": "Audience at an Experimental Cinema Day screening",
+                    "screen": "An animated frame on the projector screen",
+                    "table": "Notes and a marker on a table after a discussion"
+                }
             },
             "animation-workshop": {
                 "title": "Animation Workshop at the Creative Industries Festival",
-                "date": "27 August 2026"
+                "date": "27 August 2026",
+                "photos": {
+                    "poster": "Poster for the workshop “Tanya Wants to Play with You!”",
+                    "talk": "Workshop host in front of a screen showing the studio presentation"
+                }
             },
             "housewarming": {
                 "title": "Housewarming",
-                "date": "6 August 2026"
+                "date": "6 August 2026",
+                "photos": {
+                    "clay": "Clay animals on the windowsill",
+                    "apples": "Apples and a drawing that reads End of Summer",
+                    "room": "The studio space after the housewarming"
+                }
             }
         }
     },

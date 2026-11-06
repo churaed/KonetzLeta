@@ -1,13 +1,12 @@
 import { MotionConfig } from 'motion/react';
 import './components/HomePage.css';
-import { Routes, Route, useLocation, Link } from 'react-router-dom';
+import { Routes, Route, useLocation, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { HeroSection } from './components/HeroSection';
 import { TeamSection } from './components/TeamSection';
 import { ShowreelSection } from './components/ShowreelSection';
 import { PortfolioSection } from './components/PortfolioSection';
 import { ServicesSection } from './components/ServicesSection';
-import { EventsArchivePage } from './components/EventsArchivePage';
 import { EventDetailPage } from './components/EventDetailPage';
 import { EventsSection } from './components/EventsSection';
 import { ContactSection } from './components/ContactSection';
@@ -34,7 +33,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects/houyhnhnms-and-us" element={<HomePage />} />
-        <Route path="/events/archive" element={<EventsArchivePage />} />
+        <Route path="/events/archive" element={<Navigate to="/#events" replace />} />
         <Route path="/events/:slug" element={<EventDetailPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/manifest" element={<ManifestPage />} />

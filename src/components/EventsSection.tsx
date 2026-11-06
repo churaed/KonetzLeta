@@ -1,11 +1,11 @@
 import { ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { pastEvents, studioEvents, type StudioEvent } from '../data/events';
+import { studioEvents, type StudioEvent } from '../data/events';
 import './EventsSection.css';
 import { EventPageLink } from './EventPageLink';
 import { EventCover } from './EventCover';
 import { LunarBackground } from './LunarBackground';
+import { PastEventsArchive } from './PastEventsArchive';
 
 export function EventsSection() {
   const { t } = useTranslation();
@@ -76,28 +76,6 @@ function EventCard({ event, ambient }: { event: StudioEvent; ambient: boolean })
         </div>
       </article>
     </li>
-  );
-}
-
-function PastEventsArchive() {
-  const { t } = useTranslation();
-  const events = pastEvents.slice(0, 3);
-  if (!events.length) return null;
-  return (
-    <div className="events-group events-archive" aria-labelledby="events-past">
-      <header className="archive-header">
-        <h3 id="events-past" className="events-group-title font-cormorant italic">{t('events.past')}</h3>
-        <Link className="archive-page-link font-mono" to="/events/archive">{t('events.archive.show_all')} <ArrowUpRight className="event-ui-icon" size={16} strokeWidth={1.5} aria-hidden="true" /></Link>
-      </header>
-      <ul className="chronicle-list">
-        {events.map(event => (
-          <li key={event.id} className="chronicle-row">
-            <time className="event-date font-mono" dateTime={event.dateTime}>{t(`events.items.${event.id}.date`)}</time>
-            <h4 className="chronicle-title font-cormorant italic"><EventPageLink eventId={event.id}>{t(`events.items.${event.id}.title`)}</EventPageLink></h4>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
 
