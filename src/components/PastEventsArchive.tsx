@@ -120,9 +120,9 @@ function PastEventPolaroid({ events, playing }: { events: StudioEvent[]; playing
           <li key={event.id}>
             <div className="wall-polaroid-photo">
               <EventMedia event={event} ratio="1x1" playing={playing} offset={index * 1100} />
+              <time className="wall-polaroid-date font-mono" dateTime={event.dateTime}>{formatPastDate(event)}</time>
             </div>
             <div className="wall-polaroid-caption">
-              <time className="wall-polaroid-date font-mono" dateTime={event.dateTime}>{formatPastDate(event)}</time>
               <FitTitle text={title} />
             </div>
           </li>

@@ -56,8 +56,12 @@
   border: 1px solid #4a272c;
   background: linear-gradient(160deg, #33191d, #211012 72%);
   box-shadow: 0 22px 46px #000c, inset 0 0 0 1px #ffffff08;
-  transform: rotate(var(--r, 0deg));
+  transform: rotate(var(--r, 0deg)) translateZ(0);
   transform-origin: 50% 100%;
+  backface-visibility: hidden;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: transform 220ms ease-out;
 }
 
@@ -73,6 +77,14 @@
   background: #0b0b0b;
 }
 
+.wall-polaroid-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #050505b8, #05050526 26%, transparent 48%);
+  pointer-events: none;
+}
+
 .wall-polaroid .past-frame img {
   outline: none;
 }
@@ -82,16 +94,19 @@
 }
 
 .wall-polaroid-caption {
-  display: grid;
-  gap: .35rem;
   margin-top: .9rem;
 }
 
 .wall-polaroid-date {
+  position: absolute;
+  inset-inline-start: .8rem;
+  inset-block-end: .55rem;
+  z-index: 2;
   color: #f87171;
   font-size: .8rem;
-  line-height: 1.5;
+  line-height: 1.4;
   letter-spacing: .04em;
+  text-shadow: 0 1px 12px #000;
 }
 
 .wall-polaroid-title {
