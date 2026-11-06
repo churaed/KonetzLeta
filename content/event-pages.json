@@ -1,0 +1,138 @@
+[
+  {
+    "eventId": "experimental-lab",
+    "slug": "experimental-lab-2026",
+    "status": "draft",
+    "language": "ru",
+    "title": "Лаборатория экспериментального кино и анимации",
+    "description": "Тема лаборатории — ритуал. Попробуем создание кино как форму медитации.",
+    "blocks": [
+      {
+        "type": "facts",
+        "heading": "Когда и где",
+        "items": [
+          "6 занятий по 3 часа (включая перерыв) по пн в 18.00",
+          "Период проведения лаборатории с 23 ноября по 28 декабря 2026 года",
+          "Место проведения — Екатеринбург, Хлебозавод №6, 8 марта 203, 2 этаж, офис Конец лета"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "О лаборатории",
+        "paragraphs": [
+          "Тема лаборатории — ритуал. Ритуал, как практика разрешить себе делать что-то бессмысленное, профанное, внеструктурное. Задача лаборатории — попробовать создание кино как форму медитации."
+        ]
+      },
+      {
+        "type": "programme",
+        "heading": "Шесть встреч",
+        "items": [
+          {
+            "title": "Анатомия распада",
+            "description": "что-то угасает, это грустно и красиво. учимся отпускать",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-1.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-1-poster.webp",
+              "alt": "Встреча 1. Анатомия распада"
+            }
+          },
+          {
+            "title": "Эклер для утопающих",
+            "description": "анимационный прием как источник волшебных метаморфоз",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-2.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-2-poster.webp",
+              "alt": "Встреча 2. Эклер для утопающих"
+            }
+          },
+          {
+            "title": "Танец времени",
+            "description": "исследование ритма и продолжительности в кино",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-3.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-3-poster.webp",
+              "alt": "Встреча 3. Танец времени"
+            }
+          },
+          {
+            "title": "Навстречу солнцу",
+            "description": "блеск, всплеск, луч, блик, отражение",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-4.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-4-poster.webp",
+              "alt": "Встреча 4. Навстречу солнцу"
+            }
+          },
+          {
+            "title": "Прощай, образ!",
+            "description": "кино, рождающееся в голове зрителя",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-5.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-5-poster.webp",
+              "alt": "Встреча 5. Прощай, образ!"
+            }
+          },
+          {
+            "title": "Автофикшен",
+            "description": "всматриваемся в себя",
+            "media": {
+              "type": "image",
+              "src": "images/events/experimental-lab-2026/meeting-6.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-6-poster.webp",
+              "alt": "Встреча 6. Автофикшен"
+            }
+          }
+        ],
+        "afterword": "Создаем кино каждую встречу."
+      },
+      {
+        "type": "people",
+        "heading": "Ведущие лаборатории",
+        "items": [
+          {
+            "name": "Мария Седяева",
+            "url": "https://www.kinopoisk.ru/name/10272779/",
+            "description": "режиссер и художница"
+          },
+          {
+            "name": "Андрей Ветошкин",
+            "url": "https://www.kinopoisk.ru/name/5421867/",
+            "description": "оператор"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Для участия",
+        "paragraphs": [
+          "Участником может быть любой желающий попробовать снимать кино и поисследовать, чем этот процесс может быть ему/ей интересен. Специальных навыков не требуется.",
+          "Про технику: вы можете прийти со своей любимой камерой и/или ноутбуком, но и это не обязательно. Смартфона вполне будет достаточно. Специфическое оборудование и материалы будут предоставляться во время встреч.",
+          "Для удобства коммуникации все участники лаборатории будут добавлены в закрытый телеграм чат."
+        ]
+      },
+      {
+        "type": "booking",
+        "heading": "Условия участия",
+        "capacity": "12 мест в лаборатории",
+        "prices": [
+          {
+            "label": "Одно занятие",
+            "value": "2 500 ₽"
+          },
+          {
+            "label": "Все 6 занятий",
+            "value": "12 000 ₽"
+          }
+        ],
+        "note": "Оплата на месте или по ссылке, отправленной на почту, указанную в заявке."
+      }
+    ],
+    "showCover": false,
+    "showIntro": false
+  }
+]

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { pastEvents, studioEvents, type StudioEvent } from '../data/events';
 import './EventsSection.css';
+import { EventPageLink } from './EventPageLink';
 import { EventCover } from './EventCover';
 
 export function EventsSection() {
@@ -46,13 +47,13 @@ function EventCard({ event, ambient }: { event: StudioEvent; ambient: boolean })
   return (
     <li className="event-card">
       <article aria-labelledby={`event-${event.id}`}>
-        <EventCover event={event} title={title} ambient={ambient} />
+        <EventPageLink eventId={event.id} label={title}><EventCover event={event} title={title} ambient={ambient} /></EventPageLink>
         <div className="event-content">
           <p className="event-date font-mono">
             <time dateTime={event.dateTime}>{t(`${key}.date`)}</time>
             {event.endDateTime ? <time className="sr-only" dateTime={event.endDateTime}>{t(`${key}.end_date`)}</time> : null}
           </p>
-          <h4 id={`event-${event.id}`} className="event-title font-cormorant italic">{title}</h4>
+          <h4 id={`event-${event.id}`} className="event-title font-cormorant italic"><EventPageLink eventId={event.id}>{title}</EventPageLink></h4>
           {description ? <p className="event-description font-mono">{description}</p> : null}
           {schedule || capacity || price ? (
             <ul className="event-facts font-mono">
@@ -61,7 +62,7 @@ function EventCard({ event, ambient }: { event: StudioEvent; ambient: boolean })
               {price ? <li className="event-price">{price}</li> : null}
             </ul>
           ) : null}
-          {event.action ? (
+          {event.action && event.group === 'upcoming' && event.registrationOpen !== false ? (
             <div className="event-action-wrap">
               <a className="event-action font-mono" href={event.actionUrl || emailUrl} target={event.actionUrl ? '_blank' : undefined} rel={event.actionUrl ? 'noopener noreferrer' : undefined} aria-label={`${t(event.actionUrl ? `events.actions.${event.action}` : `events.email_actions.${event.action}`)}: ${title}`}>
                 <span>{t(event.actionUrl ? `events.actions.${event.action}` : `events.email_actions.${event.action}`)}</span>
@@ -90,7 +91,7 @@ function PastEventsArchive() {
         {events.map(event => (
           <li key={event.id} className="chronicle-row">
             <time className="event-date font-mono" dateTime={event.dateTime}>{t(`events.items.${event.id}.date`)}</time>
-            <h4 className="chronicle-title font-cormorant italic">{t(`events.items.${event.id}.title`)}</h4>
+            <h4 className="chronicle-title font-cormorant italic"><EventPageLink eventId={event.id}>{t(`events.items.${event.id}.title`)}</EventPageLink></h4>
           </li>
         ))}
       </ul>

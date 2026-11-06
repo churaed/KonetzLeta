@@ -8,6 +8,7 @@ export interface StudioEvent {
   media?: { type: 'image' | 'video'; src: string; poster?: string };
   action?: 'register' | 'enquire' | 'apply';
   actionUrl?: string;
+  registrationOpen?: boolean;
 }
 
 // Upcoming order follows the brief: the beginners' course has no exact start day.

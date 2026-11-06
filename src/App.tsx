@@ -6,6 +6,7 @@ import { ShowreelSection } from './components/ShowreelSection';
 import { PortfolioSection } from './components/PortfolioSection';
 import { ServicesSection } from './components/ServicesSection';
 import { EventsArchivePage } from './components/EventsArchivePage';
+import { EventDetailPage } from './components/EventDetailPage';
 import { EventsSection } from './components/EventsSection';
 import { ContactSection } from './components/ContactSection';
 import { Navbar } from './components/Navbar';
@@ -24,7 +25,7 @@ export default function App() {
         rel="stylesheet"
       />
 
-      {location.pathname !== '/privacy' && location.pathname !== '/manifest' && location.pathname !== '/events/archive' && <Navbar />}
+      {location.pathname !== '/privacy' && location.pathname !== '/manifest' && !location.pathname.startsWith('/events/') && <Navbar />}
 
       <ScrollToTop />
 
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects/houyhnhnms-and-us" element={<HomePage />} />
         <Route path="/events/archive" element={<EventsArchivePage />} />
+        <Route path="/events/:slug" element={<EventDetailPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/manifest" element={<ManifestPage />} />
       </Routes>

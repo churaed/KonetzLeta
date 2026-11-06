@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { pastEvents } from '../data/events';
+import { EventPageLink } from './EventPageLink';
 import { EventCover } from './EventCover';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import './EventsSection.css';
@@ -49,10 +50,10 @@ export function EventsArchivePage() {
                     <article className="chronicle-row archive-index-row">
                       <time className="event-date font-mono" dateTime={event.dateTime}>{t(`events.items.${event.id}.date`)}</time>
                       <div>
-                        <h3 className="chronicle-title font-cormorant italic">{t(`events.items.${event.id}.title`)}</h3>
+                        <h3 className="chronicle-title font-cormorant italic"><EventPageLink eventId={event.id}>{t(`events.items.${event.id}.title`)}</EventPageLink></h3>
                         {t(`events.items.${event.id}.description`, { defaultValue: '' }) ? <p className="event-description font-mono">{t(`events.items.${event.id}.description`)}</p> : null}
                       </div>
-                      <EventCover event={event} title={t(`events.items.${event.id}.title`)} />
+                      <EventPageLink eventId={event.id} label={t(`events.items.${event.id}.title`)}><EventCover event={event} title={t(`events.items.${event.id}.title`)} /></EventPageLink>
                     </article>
                   </li>
                 ))}

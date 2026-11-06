@@ -1,8 +1,9 @@
 // GitHub Pages needs an HTML entry for each directly accessible route.
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { loadEventPages } from './event-pages.mjs';
 
 const indexHtml = await readFile('dist/index.html', 'utf8');
-for (const route of ['privacy', 'events/archive']) {
+for (const route of ['privacy', 'events/archive', ...loadEventPages().filter(page => page.status === 'published').map(page => `events/${page.slug}`)]) {
   await mkdir(`dist/${route}`, { recursive: true });
   await writeFile(`dist/${route}/index.html`, indexHtml);
 }

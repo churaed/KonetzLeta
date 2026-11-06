@@ -18,6 +18,7 @@
         "end_subtitle": "of Summer"
     },
     "events": {
+        "detail": {"not_found": "Event page not found", "participation": "Participation"},
         "title": "Events",
         "upcoming": "Current and upcoming events",
         "past": "Past events",
