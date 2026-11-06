@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { loadEventPages } from './event-pages.mjs';
 const fixture = () => structuredClone(loadEventPages()[0]);
-test('lab is a draft with its custom slug', () => {
+test('lab is published with its custom slug', () => {
   const page = fixture();
-  assert.equal(page.status, 'draft');
+  assert.equal(page.status, 'published');
   assert.equal(page.slug, 'experimental-lab-2026');
 });
 test('valid published content is accepted', () => {
