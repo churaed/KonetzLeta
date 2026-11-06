@@ -548,6 +548,10 @@
         }
     },
     "showreel": {
+    "pause": "Pause showreel",
+    "unmute": "Unmute",
+    "mute": "Mute",
+    "play": "Play showreel",
         "title_part1": "Show",
         "title_part2": "reel",
         "subtitle": "Let our work speak for itself —\na story lives in every frame.",

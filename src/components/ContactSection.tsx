@@ -138,7 +138,7 @@ export function ContactSection() {
         >
 
           {/* Renders contact methods dynamically */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="contact-grid grid gap-6">
             {contactMethods.map((method, index) => {
               // Shared animation + inner content for every card variant
               const motionProps = {
@@ -152,8 +152,8 @@ export function ContactSection() {
               const inner = (
                 <>
                   {/* Icon for the contact method */}
-                  <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-400 to-red-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                    <method.icon size={18} className="text-white" />
+                  <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-400 to-red-300 ">
+                    <method.icon size={18} className="text-black" />
                   </div>
                   {/* Label and value for the contact method */}
                   <div className="min-w-0">
@@ -169,7 +169,7 @@ export function ContactSection() {
                     key={index}
                     {...motionProps}
                     aria-disabled="true"
-                    className="group flex items-center space-x-4 p-4 rounded-xl bg-white/5 border border-white/10 opacity-50 cursor-not-allowed"
+                    className="contact-card group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 opacity-50 cursor-not-allowed"
                   >
                     {inner}
                   </motion.div>
@@ -181,7 +181,7 @@ export function ContactSection() {
                   href={method.action}
                   target={method.action?.startsWith('http') ? '_blank' : undefined}
                   rel={method.action?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="group flex items-center space-x-4 p-4 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 hover:border-red-500/50 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10"
+                  className="contact-card group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 transition-colors duration-150 hover:border-red-400/50 hover:bg-white/10"
                   {...motionProps}
                 >
                   {inner}

@@ -462,7 +462,7 @@ export function PortfolioSection() {
               key={item.id}
               href={item.slug === 'houyhnhnms-and-us' ? horseFilmPath : `/?project=${item.slug}`}
               id={`portfolio-item-${item.id}`}
-              className={`relative group cursor-pointer ${getSizeClasses(item.size)}`}
+              className={`portfolio-card relative group cursor-pointer ${getSizeClasses(item.size)}`}
               initial={{ opacity: 0, y: 100, rotateY: -20 }}
               animate={isInView ? {
                 opacity: 1,
@@ -502,9 +502,9 @@ export function PortfolioSection() {
 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"
-                  initial={{ opacity: 0.6 }}
+                  initial={{ opacity: 1 }}
                   animate={{
-                    opacity: hoveredItem === item.id ? 0.9 : 0.6
+                    opacity: 1
                   }}
                   transition={{ duration: 0.4 }}
                 />
@@ -532,14 +532,14 @@ export function PortfolioSection() {
                   </div>
                 )}
 
-                <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col justify-end h-full z-10 pointer-events-none">
+                <div className="portfolio-caption absolute bottom-0 left-0 right-0 p-8 flex flex-col justify-end h-full z-10 pointer-events-none">
                   
                   {/* Metadata Container */}
                   <div className="relative">
                     
                     {/* Always Visible Label */}
                     <motion.p 
-                      className="text-xs font-mono text-red-400 mb-2 uppercase tracking-[0.2em]"
+                      className="portfolio-metadata font-mono text-red-300 mb-2"
                       animate={{ opacity: hoveredItem === item.id ? 1 : 0.8 }}
                     >
                       {item.subtitle}
@@ -636,7 +636,7 @@ export function PortfolioSection() {
                     {/* OPTION 2: Centered "Festival" Layout */}
                     <div 
                       ref={modalScrollRef}
-                      className="w-full flex flex-col overflow-y-auto custom-scrollbar flex-1 bg-gray-900 min-h-0"
+                      className="w-full flex flex-col overflow-y-auto overscroll-contain custom-scrollbar flex-1 bg-gray-900 min-h-0"
                     >
 
                       <PortfolioMediaGallery

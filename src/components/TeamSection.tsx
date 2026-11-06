@@ -12,10 +12,10 @@ import teamImg from '@/assets/images/team.webp'
 // --- The Vite Way to Import All Logos ---
 // This tells Vite to find all .png, .jpg, and .svg files in the awards directory.
 // `eager: true` makes it import them all at once, which is fine for this use case.
-const logoModules = import.meta.glob('@/assets/images/awards/**/*.{webp,png,jpg,svg}', { eager: true });
+const logoModules = import.meta.glob<{ default: string }>('@/assets/images/awards/**/*.{webp,png,jpg,svg}', { eager: true });
 
 // This transforms the imported modules into a simple array of URLs.
-const partnerLogos = Object.values(logoModules).map((module: any) => module.default);
+const partnerLogos = Object.values(logoModules).map((module) => module.default);
 
 // TeamSection component for displaying team information and partner logos
 export function TeamSection() {
@@ -82,7 +82,7 @@ export function TeamSection() {
           </motion.div>
 
           {/* Central team image */}
-          <motion.div variants={itemVariants} className="relative w-full max-w-4xl md:max-w-2xl lg:max-w-3xl group">
+          <motion.div variants={itemVariants} className="team-photo relative w-full max-w-3xl group">
             <motion.img
               src={teamImg}
               alt="Команда"
@@ -94,7 +94,7 @@ export function TeamSection() {
           </motion.div>
 
           {/* Description text block with an avatar */}
-          <motion.div variants={itemVariants} className="relative max-w-3xl">
+          <motion.div variants={itemVariants} className="team-copy relative w-full max-w-3xl">
             {/* Main descriptive paragraph */}
             <p className="text-xl font-cormorant italic text-gray-300 max-w-4xl mx-auto leading-relaxed whitespace-pre-line">
               {t('team.description')}

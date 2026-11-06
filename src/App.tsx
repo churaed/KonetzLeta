@@ -1,3 +1,5 @@
+import { MotionConfig } from 'motion/react';
+import './components/HomePage.css';
 import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { HeroSection } from './components/HeroSection';
@@ -52,7 +54,8 @@ export default function App() {
 function HomePage() {
   const { t } = useTranslation();
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <MotionConfig reducedMotion="user">
+    <div className="homepage min-h-screen bg-black text-white overflow-x-hidden">
       {/* Sections */}
       <HeroSection />
       <TeamSection />
@@ -71,5 +74,6 @@ function HomePage() {
       </footer>
       <PrivacyNotice />
     </div>
+    </MotionConfig>
   );
 }

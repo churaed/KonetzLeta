@@ -22,12 +22,12 @@ export function PrivacyNotice() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="
             fixed bottom-0 left-0 right-0 z-50
-            flex items-center justify-between w-full
+            flex items-center justify-between gap-4 w-full
             px-6 py-3
             bg-black/80 backdrop-blur-lg
             border-t border-gray-800/50
           "
-          role="alert"
+          role="status"
         >
           {/* Left side: Icon and Text */}
           <div className="flex items-center space-x-3">
@@ -51,7 +51,7 @@ export function PrivacyNotice() {
               transition-colors duration-200
             "
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.96 }}
             aria-label={t('privacy_notice.dismiss')}
           >
             {t('privacy_notice.dismiss')}

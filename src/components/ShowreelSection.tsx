@@ -200,14 +200,17 @@ export function ShowreelSection() {
             <motion.div
               initial={{ opacity: 1 }}
               animate={{ opacity: hasStarted ? 0 : 1, transition: { duration: 0.5 } }}
-              className={`absolute inset - 0 flex flex - col items - center justify - center bg - black / 30 backdrop - blur - sm ${hasStarted ? 'pointer-events-none' : ''} `}
+              className={`showreel-intro absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm ${hasStarted ? 'pointer-events-none' : ''} `}
             >
               {/* Main play button with hover animations */}
               <motion.button
                 onClick={handleInitialPlay}
-                className="relative mb-8"
+                aria-label={t('showreel.play', { defaultValue: 'Play showreel' })}
+                tabIndex={hasStarted ? -1 : 0}
+                disabled={hasStarted}
+                className="relative mb-4"
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
                 {/* Play button circle with hover effects and adaptive size */}
@@ -239,6 +242,7 @@ export function ShowreelSection() {
             {/* Video control buttons overlay - now visible after start */}
             <motion.div
               className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 flex justify-between items-center"
+              inert={!hasStarted}
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: hasStarted ? 0 : 10, opacity: hasStarted ? 1 : 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
@@ -248,9 +252,10 @@ export function ShowreelSection() {
                 {/* Play/pause toggle button with adaptive size */}
                 <motion.button
                   onClick={() => setIsPlaying(!isPlaying)}
+                  aria-label={t(isPlaying ? 'showreel.pause' : 'showreel.play')}
                   className="bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30 min-h-[44px] min-w-[44px]"
                   whileHover={{ scale: 1.1, borderColor: "rgba(239, 68, 68, 0.8)" }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.96 }}
                 >
                   {isPlaying ? (
                     <Pause className="text-red-400 size-4 md:size-5" />
@@ -262,9 +267,11 @@ export function ShowreelSection() {
                 {/* Mute/unmute toggle button with adaptive size */}
                 <motion.button
                   onClick={() => setIsMuted(!isMuted)}
+                  aria-label={t(isMuted ? 'showreel.unmute' : 'showreel.mute')}
+                  aria-pressed={!isMuted}
                   className="bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-red-400/30 min-h-[44px] min-w-[44px]"
                   whileHover={{ scale: 1.1, borderColor: "rgba(239, 68, 68, 0.8)" }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.96 }}
                 >
                   {isMuted ? (
                     <VolumeX className="text-red-400 size-4 md:size-5" />

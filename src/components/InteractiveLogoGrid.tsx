@@ -1,7 +1,7 @@
 // src/components/InteractiveLogoGrid.tsx
 
-import { useRef, useEffect, memo } from 'react';
-import { motion, useMotionValue, animate } from 'motion/react';
+import { useRef, useEffect, useState, memo } from 'react';
+import { motion, motionValue, useReducedMotion, animate } from 'motion/react';
 
 // NEW: Configuration object for physics parameters makes tweaking easy.
 const PHYSICS_CONFIG = {
@@ -21,12 +21,13 @@ function useFlockAnimation(
   containerRef: React.RefObject<HTMLDivElement | null>,
   itemsCount: number
 ) {
-  const motionValues = useRef(
+  const reducedMotion = useReducedMotion();
+  const [motionValues] = useState(() =>
     Array.from({ length: itemsCount }, () => ({
-      x: useMotionValue(0),
-      y: useMotionValue(0),
+      x: motionValue(0),
+      y: motionValue(0),
     }))
-  ).current;
+  );
 
   const animParams = useRef(
     Array.from({ length: itemsCount }, () => {
@@ -48,6 +49,10 @@ function useFlockAnimation(
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    if (reducedMotion) {
+      motionValues.forEach(({ x, y }) => { x.set(0); y.set(0); });
+      return;
+    }
 
     const logoElements = Array.from(container.children) as HTMLDivElement[];
     const homePositions = logoElements.map((el) => ({
@@ -118,7 +123,7 @@ function useFlockAnimation(
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [containerRef, itemsCount, motionValues, animParams]);
+  }, [containerRef, itemsCount, motionValues, animParams, reducedMotion]);
 
   return motionValues;
 }
@@ -136,7 +141,7 @@ export const InteractiveLogoGrid = memo(function InteractiveLogoGrid({ logos }: 
   return (
     <div
       ref={gridRef}
-      className="relative w-full max-w-6xl grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 md:gap-6 pt-12"
+      className="partner-logos relative w-full max-w-6xl grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 md:gap-6 pt-12"
     >
       {logos.map((logo, index) => (
         <motion.div

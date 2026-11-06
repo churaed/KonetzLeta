@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -8,13 +8,14 @@ import imgHeroBird from '@/assets/images/hero-bird.webp'
 // Main hero section component with animated particle background
 export function HeroSection() {
   // Reference to the canvas element for particle animation
+  const reducedMotion = useReducedMotion();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { t } = useTranslation();
 
   // Initialize and run the particle animation effect
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || reducedMotion) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     canvas.width = window.innerWidth;
@@ -26,7 +27,7 @@ export function HeroSection() {
     const particles: Array<{ x: number; y: number; vx: number; vy: number; size: number; opacity: number; hue: number; type: 'dot' | 'line' | 'triangle'; }> = [];
 
     // Initialize particles with random properties
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < (window.innerWidth < 640 ? 36 : 90); i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -116,12 +117,12 @@ export function HeroSection() {
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <section
       id="hero"
-      className="relative h-screen overflow-hidden pt-[var(--navbar-height)] box-border @container"
+      className="hero-section relative overflow-hidden pt-[var(--navbar-height)] box-border @container"
     >
       {/* Animated particle background canvas */}
       <canvas
@@ -146,14 +147,14 @@ export function HeroSection() {
             className="flex-shrink-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
           >
             <h1 className="text-6xl @md:text-8xl @lg:text-[9rem] @xl:text-[10rem] font-cormorant italic leading-none">
               <motion.span
                 className="block text-white"
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.2, delay: 0.8 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
               >
                 {t('hero.title_part1')}
               </motion.span>
@@ -161,7 +162,7 @@ export function HeroSection() {
                 className="block text-red-400 -mt-2 @md:-mt-4"
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.2, delay: 1.2 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
                 {t('hero.title_part2')}
               </motion.span>
@@ -173,13 +174,13 @@ export function HeroSection() {
             className="flex-shrink-0 space-y-4 max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.8 }}
+            transition={{ duration: 1, delay: 0.3 }}
           >
             <motion.div
               className="w-24 h-px bg-gradient-to-r from-transparent via-red-400 to-transparent mx-auto"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 2.2 }}
+              transition={{ duration: 1, delay: 0.3 }}
             />
             <p className="text-lg font-mono text-gray-400 tracking-wide">
               {t('hero.subtitle')}
@@ -194,7 +195,7 @@ export function HeroSection() {
               className="w-full h-full object-contain max-w-xs md:max-w-sm lg:max-w-md"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 2.5 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
             />
           </div>
 
@@ -216,11 +217,11 @@ export function HeroSection() {
           className="flex-shrink-0 pb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 3.2 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
           {/* Button that scrolls to about section */}
           <motion.button
-            onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' })}
             className="flex flex-col items-center text-gray-400 hover:text-red-400 transition-colors group min-h-[44px] justify-center"
             whileHover={{ y: -5 }}
             transition={{ type: "spring", stiffness: 400 }}
