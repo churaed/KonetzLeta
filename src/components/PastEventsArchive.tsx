@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import type { StudioEvent } from '../data/events';
@@ -68,22 +68,63 @@ function EventMedia({ event, ratio, playing, offset }: { event: StudioEvent; rat
     : <Moon event={event} ratio={ratio} />;
 }
 
+function FitTitle({ text }: { text: string }) {
+  const ref = useRef<HTMLHeadingElement>(null);
+
+  useLayoutEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    let lastWidth = 0;
+
+    const fit = () => {
+      element.style.fontSize = '';
+      let size = parseFloat(getComputedStyle(element).fontSize);
+      const lineHeight = 1.15;
+      const twoLines = () => size * lineHeight * 2 + 1;
+      while (element.scrollHeight > twoLines() && size > 13) {
+        size -= 1;
+        element.style.fontSize = `${size}px`;
+      }
+    };
+
+    fit();
+    void document.fonts?.ready.then(() => {
+      if (element.isConnected) fit();
+    });
+    const observer = new ResizeObserver(entries => {
+      const width = entries[0]?.contentRect.width ?? 0;
+      if (Math.abs(width - lastWidth) < 1) return;
+      lastWidth = width;
+      fit();
+    });
+    if (element.parentElement) observer.observe(element.parentElement);
+    return () => observer.disconnect();
+  }, [text]);
+
+  return <h4 ref={ref} className="wall-polaroid-title font-cormorant italic">{text}</h4>;
+}
+
+function formatPastDate(event: StudioEvent) {
+  const [year, month, day] = event.dateTime.split('-');
+  return year && month && day ? `${day}.${month}.${year}` : event.coverDate;
+}
+
 function PastEventPolaroid({ events, playing }: { events: StudioEvent[]; playing: boolean }) {
   const { t } = useTranslation();
   return (
     <ul className="wall-polaroid">
       {events.map((event, index) => {
         const key = `events.items.${event.id}`;
+        const title = t(`${key}.title`);
         return (
           <li key={event.id}>
             <div className="wall-polaroid-photo">
               <EventMedia event={event} ratio="1x1" playing={playing} offset={index * 1100} />
-              <time className="wall-polaroid-date font-cormorant italic" dateTime={event.dateTime}>
-                {event.coverDate}
-                <span className="sr-only"> — {t(`${key}.date`)}</span>
-              </time>
             </div>
-            <h4 className="wall-polaroid-title font-cormorant italic">{t(`${key}.title`)}</h4>
+            <div className="wall-polaroid-caption">
+              <time className="wall-polaroid-date font-mono" dateTime={event.dateTime}>{formatPastDate(event)}</time>
+              <FitTitle text={title} />
+            </div>
           </li>
         );
       })}

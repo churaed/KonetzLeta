@@ -41,6 +41,8 @@
 
 .wall-polaroid {
   display: flex;
+  align-items: flex-start;
+  gap: .75rem;
   list-style: none;
   margin: 0;
   padding: 1.75rem 1rem 2rem;
@@ -50,7 +52,6 @@
   flex: 1 1 0;
   min-width: 0;
   position: relative;
-  margin-inline-start: -1.5%;
   padding: .55rem .65rem 1.1rem;
   border: 1px solid #4a272c;
   background: linear-gradient(160deg, #33191d, #211012 72%);
@@ -72,14 +73,6 @@
   background: #0b0b0b;
 }
 
-.wall-polaroid-photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, #050505e0 2%, #05050540 44%, transparent 70%);
-  pointer-events: none;
-}
-
 .wall-polaroid .past-frame img {
   outline: none;
 }
@@ -88,24 +81,25 @@
   display: none;
 }
 
+.wall-polaroid-caption {
+  display: grid;
+  gap: .35rem;
+  margin-top: .9rem;
+}
+
 .wall-polaroid-date {
-  position: absolute;
-  inset-inline-start: .85rem;
-  inset-block-end: .5rem;
-  z-index: 2;
-  color: #f7eaea;
-  font-size: clamp(2.3rem, 3.2vw, 3.4rem);
-  line-height: 1;
-  letter-spacing: -.02em;
-  text-shadow: 0 2px 22px #000d;
+  color: #f87171;
+  font-size: .8rem;
+  line-height: 1.5;
+  letter-spacing: .04em;
 }
 
 .wall-polaroid-title {
-  margin-top: .9rem;
-  color: #eedfdf;
-  font-size: 1.18rem;
-  line-height: 1.22;
+  color: #f5e9e9;
+  font-size: clamp(1.4rem, 1rem + 1.6cqi, 2.05rem);
+  line-height: 1.15;
   overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -131,11 +125,7 @@
   }
 
   .wall-polaroid-date {
-    font-size: clamp(2rem, 9vw, 2.8rem);
-  }
-
-  .wall-polaroid-title {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 }
 
