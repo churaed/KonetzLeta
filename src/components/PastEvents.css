@@ -75,6 +75,9 @@
   position: relative;
   overflow: hidden;
   background: #0b0b0b;
+  /* Composite the clip before rotating it so photo edges receive antialiasing. */
+  -webkit-mask-image: linear-gradient(#fff, #fff);
+  mask-image: linear-gradient(#fff, #fff);
 }
 
 .wall-polaroid-photo::after {
@@ -119,7 +122,7 @@
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .wall-polaroid li:hover {
-    transform: rotate(0deg) translateY(-4px);
+    transform: rotate(0deg) translateY(-4px) translateZ(0);
     z-index: 9;
   }
 }
