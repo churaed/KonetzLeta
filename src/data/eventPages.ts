@@ -1,5 +1,6 @@
 export interface ProgrammeMedia { type: 'image' | 'video'; src: string; poster: string; alt: string }
 export type EventPageBlock =
+  | { type: 'contacts'; heading: string; email: string; phone: string }
   | { type: 'text'; heading: string; paragraphs: string[] }
   | { type: 'booking'; heading: string; capacity: string; prices: { label: string; value: string }[]; note: string }
   | { type: 'facts'; heading: string; items: string[] }

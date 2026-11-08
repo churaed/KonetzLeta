@@ -130,6 +130,12 @@
           }
         ],
         "note": "Оплата на месте или по ссылке, отправленной на почту, указанную в заявке."
+      },
+      {
+        "type": "contacts",
+        "heading": "Связаться с организаторами",
+        "email": "konetzleta@gmail.com",
+        "phone": "+79022610028"
       }
     ],
     "showCover": false,
@@ -267,6 +273,12 @@
           }
         ],
         "note": "Payment on site or via a link sent to the email address given in your application."
+      },
+      {
+        "type": "contacts",
+        "heading": "Contact the organisers",
+        "email": "konetzleta@gmail.com",
+        "phone": "+79022610028"
       }
     ],
     "showCover": false,

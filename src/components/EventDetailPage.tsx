@@ -26,6 +26,7 @@ function ContentBlock({ block, registration, language }: { block: EventPageBlock
   const isPlaying = playing ?? !reducedMotion;
   return <section className={`event-detail-block event-detail-block--${block.type}`}>
     <h2 className="font-cormorant italic">{block.heading}</h2>
+    {block.type === 'contacts' && <><p><a className="event-person-link" href={`mailto:${block.email}`}>{block.email}</a></p><p><a className="event-person-link" href={`tel:${block.phone}`}>{block.phone}</a></p></>}
     {block.type === 'text' && block.paragraphs.map((text, index) => <p key={index}>{text}</p>)}
     {block.type === 'booking' && <div className="event-booking">
       <p className="event-booking-capacity">{block.capacity}</p>
