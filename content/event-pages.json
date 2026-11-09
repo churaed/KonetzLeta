@@ -62,8 +62,8 @@
             "description": "блеск, всплеск, луч, блик, отражение",
             "media": {
               "type": "image",
-              "src": "images/events/experimental-lab-2026/meeting-4.webp",
-              "poster": "images/events/experimental-lab-2026/meeting-4-poster.webp",
+              "src": "images/events/experimental-lab-2026/meeting-5.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-5-poster.webp",
               "alt": "Встреча 4. Навстречу солнцу"
             }
           },
@@ -72,8 +72,8 @@
             "description": "кино, рождающееся в голове зрителя",
             "media": {
               "type": "image",
-              "src": "images/events/experimental-lab-2026/meeting-5.webp",
-              "poster": "images/events/experimental-lab-2026/meeting-5-poster.webp",
+              "src": "images/events/experimental-lab-2026/meeting-4.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-4-poster.webp",
               "alt": "Встреча 5. Прощай, образ!"
             }
           },
@@ -205,8 +205,8 @@
             "description": "glitter, splash, ray, glare, reflection",
             "media": {
               "type": "image",
-              "src": "images/events/experimental-lab-2026/meeting-4.webp",
-              "poster": "images/events/experimental-lab-2026/meeting-4-poster.webp",
+              "src": "images/events/experimental-lab-2026/meeting-5.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-5-poster.webp",
               "alt": "Session 4. Towards the Sun"
             }
           },
@@ -215,8 +215,8 @@
             "description": "cinema born in the viewer's mind",
             "media": {
               "type": "image",
-              "src": "images/events/experimental-lab-2026/meeting-5.webp",
-              "poster": "images/events/experimental-lab-2026/meeting-5-poster.webp",
+              "src": "images/events/experimental-lab-2026/meeting-4.webp",
+              "poster": "images/events/experimental-lab-2026/meeting-4-poster.webp",
               "alt": "Session 5. Farewell, Image!"
             }
           },
