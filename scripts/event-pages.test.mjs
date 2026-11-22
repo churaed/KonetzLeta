@@ -50,3 +50,10 @@ test('programme media requires a real asset and static poster', () => {
   media.poster = 'missing.webp';
   assert.throws(() => loadEventPages([page]), /media needs existing public-relative src/);
 });
+test('booking documents require non-empty labels and https URLs', () => {
+  const page = fixture();
+  const booking = page.blocks.find(block => block.type === 'booking');
+  assert.ok(booking.documents && booking.documents.length === 2);
+  booking.documents[0].url = 'http://example.com';
+  assert.throws(() => loadEventPages([page]), /invalid booking documents/);
+});

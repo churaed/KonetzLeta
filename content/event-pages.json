@@ -129,7 +129,17 @@
             "value": "12 000 ₽"
           }
         ],
-        "note": "Оплата на месте или по ссылке, отправленной на почту, указанную в заявке."
+        "note": "Оплата на месте или по ссылке, отправленной на почту, указанную в заявке.",
+        "documents": [
+          {
+            "label": "Политика обработки персональных данных",
+            "url": "https://disk.yandex.ru/i/62-z8IKB3bhRQw"
+          },
+          {
+            "label": "Договор публичной оферты",
+            "url": "https://disk.yandex.ru/i/cdSYg3vyzp5cLA"
+          }
+        ]
       },
       {
         "type": "contacts",
@@ -272,7 +282,17 @@
             "value": "12 000 ₽"
           }
         ],
-        "note": "Payment on site or via a link sent to the email address given in your application."
+        "note": "Payment on site or via a link sent to the email address given in your application.",
+        "documents": [
+          {
+            "label": "Personal data processing policy",
+            "url": "https://disk.yandex.ru/i/62-z8IKB3bhRQw"
+          },
+          {
+            "label": "Public offer agreement",
+            "url": "https://disk.yandex.ru/i/cdSYg3vyzp5cLA"
+          }
+        ]
       },
       {
         "type": "contacts",

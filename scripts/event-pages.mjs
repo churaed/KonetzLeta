@@ -32,6 +32,7 @@ export function loadEventPages(pages = JSON.parse(readFileSync(new URL('../conte
         if (!nonempty(block.email) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(block.email) || !/^\+\d+$/.test(block.phone)) fail(`invalid contacts block: ${page.slug}`);
       } else if (block.type === 'booking') {
         if (!nonempty(block.capacity) || !nonempty(block.note) || !Array.isArray(block.prices) || !block.prices.length || !block.prices.every(price => nonempty(price.label) && nonempty(price.value))) fail(`invalid booking block: ${page.slug}`);
+        if (block.documents !== undefined && (!Array.isArray(block.documents) || !block.documents.length || !block.documents.every(doc => nonempty(doc.label) && /^https:\/\//.test(doc.url)))) fail(`invalid booking documents: ${page.slug}`);
       } else if (block.type === 'facts') {
         if (!Array.isArray(block.items) || !block.items.length || !block.items.every(nonempty)) fail(`invalid facts: ${page.slug}`);
       } else if (block.type === 'programme') {

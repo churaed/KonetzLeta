@@ -2,7 +2,7 @@ export interface ProgrammeMedia { type: 'image' | 'video'; src: string; poster: 
 export type EventPageBlock =
   | { type: 'contacts'; heading: string; email: string; phone: string }
   | { type: 'text'; heading: string; paragraphs: string[] }
-  | { type: 'booking'; heading: string; capacity: string; prices: { label: string; value: string }[]; note: string }
+  | { type: 'booking'; heading: string; capacity: string; prices: { label: string; value: string }[]; note: string; documents?: { label: string; url: string }[] }
   | { type: 'facts'; heading: string; items: string[] }
   | { type: 'programme'; heading: string; items: { title: string; description: string; media?: ProgrammeMedia }[]; afterword?: string }
   | { type: 'people'; heading: string; items: { name: string; url: string; description: string }[] }
