@@ -3,7 +3,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Play, Pause } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { eventPages, siblingEventPage, type EventPageBlock, type ProgrammeMedia } from '../data/eventPages';
+import { findEventPageBySlug, siblingEventPage, type EventPageBlock, type ProgrammeMedia } from '../data/eventPages';
 import { studioEvents } from '../data/events';
 import { ApplicationAction } from './ApplicationAction';
 import { EventCover } from './EventCover';
@@ -46,7 +46,7 @@ export function EventDetailPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-  const page = eventPages.find(item => item.slug === slug && (item.status === 'published' || import.meta.env.DEV));
+  const page = findEventPageBySlug(slug);
   const event = studioEvents.find(item => item.id === page?.eventId);
 
   useEffect(() => {

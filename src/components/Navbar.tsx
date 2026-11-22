@@ -18,6 +18,7 @@ export function Navbar() {
 
 
   const navRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   // Calculate height of the navbar for HeroSection content top padding
   useEffect(() => {
@@ -176,6 +177,13 @@ export function Navbar() {
       {/* Navigation */}
       <motion.nav
         ref={navRef}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape' && isMenuOpen) {
+            event.preventDefault();
+            setIsMenuOpen(false);
+            menuButtonRef.current?.focus();
+          }
+        }}
         className="fixed top-0 left-0 right-0 z-[55] transition-all duration-500 bg-linear-to-b from-black/90 to-black/60"
         initial={false}
         animate={{
@@ -188,7 +196,12 @@ export function Navbar() {
           <div className="flex items-center space-x-4">
             <motion.button
               className="xl:hidden order-first text-white min-h-[44px] min-w-[44px] flex items-center justify-center"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              ref={menuButtonRef}
+              type="button"
+              aria-label={t(isMenuOpen ? 'navbar.close_menu' : 'navbar.open_menu')}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setIsMenuOpen(open => !open)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{
@@ -247,6 +260,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         <motion.div
+          id="mobile-navigation"
           className={`xl:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain ${isMenuOpen ? 'block' : 'hidden'}`}
           initial={{ opacity: 0, height: 0 }}
           animate={{

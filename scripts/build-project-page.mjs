@@ -33,9 +33,19 @@ const indexHtml = builtHtml.replace(
   `${charset}\n    <meta http-equiv="Content-Security-Policy" content="${policy}">`,
 );
 await writeFile(indexPath, indexHtml);
-for (const route of ['privacy', 'events/archive', ...loadEventPages().filter(page => page.status === 'published').map(page => `events/${page.slug}`)]) {
-  await mkdir(`dist/${route}`, { recursive: true });
-  await writeFile(`dist/${route}/index.html`, indexHtml);
+const eventRoutes = loadEventPages()
+  .filter(page => page.status === 'published')
+  .map(page => ({ path: `events/${page.slug}`, language: Intl.getCanonicalLocales(page.language)[0] }));
+const routes = [
+  { path: 'privacy' },
+  { path: 'manifest' },
+  { path: 'events/archive' },
+  ...eventRoutes,
+];
+for (const { path, language } of routes) {
+  const routeHtml = language ? indexHtml.replace('<html lang="en">', `<html lang="${language}">`) : indexHtml;
+  await mkdir(`dist/${path}`, { recursive: true });
+  await writeFile(`dist/${path}/index.html`, routeHtml);
 }
 
 const destination = 'dist/projects/houyhnhnms-and-us';

@@ -1,5 +1,7 @@
 {
     "navbar": {
+        "open_menu": "Открыть меню",
+        "close_menu": "Закрыть меню",
         "start": "Начало",
         "start_subtitle": "Лета",
         "about": "О Нас",
