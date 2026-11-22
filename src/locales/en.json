@@ -1,5 +1,7 @@
 {
     "navbar": {
+        "open_menu": "Open menu",
+        "close_menu": "Close menu",
         "start": "Start",
         "start_subtitle": "of Summer",
         "about": "About Us",

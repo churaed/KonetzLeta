@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { MotionConfig } from 'motion/react';
 import './components/HomePage.css';
-import { Routes, Route, useLocation, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useMatch, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { HeroSection } from './components/HeroSection';
 import { TeamSection } from './components/TeamSection';
@@ -15,9 +16,17 @@ import { PrivacyNotice } from './components/PrivacyNotice';
 import { PrivacyPage } from './components/PrivacyPage';
 import { ManifestPage } from './components/ManifestPage';
 import { ScrollToTop } from './components/ScrollToTop';
+import { findEventPageBySlug } from './data/eventPages';
 
 export default function App() {
   const location = useLocation();
+  const eventRoute = useMatch('/events/:slug');
+  const { i18n } = useTranslation();
+  const documentLanguage = findEventPageBySlug(eventRoute?.params.slug)?.language ?? i18n.resolvedLanguage ?? 'ru';
+
+  useEffect(() => {
+    document.documentElement.lang = documentLanguage;
+  }, [documentLanguage]);
 
   return (
     <>

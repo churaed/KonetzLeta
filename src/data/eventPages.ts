@@ -25,6 +25,10 @@ export const eventPages = __EVENT_PAGES__;
 const isAvailable = (page: EventPageContent) => page.status === 'published' || import.meta.env.DEV;
 const languageCode = (language?: string) => language?.toLowerCase().split('-')[0];
 
+export function findEventPageBySlug(slug?: string) {
+  return eventPages.find(page => page.slug === slug && isAvailable(page));
+}
+
 export function findEventPage(eventId: string, language?: string) {
   const pages = eventPages.filter(page => page.eventId === eventId && isAvailable(page));
   return (language ? pages.find(page => page.language === languageCode(language)) : undefined) ?? pages[0];
