@@ -2,7 +2,37 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { loadEventPages } from './event-pages.mjs';
 
-const indexHtml = await readFile('dist/index.html', 'utf8');
+// Motion and styled-jsx need inline styles. Scripts are restricted to the
+// application bundle and the integrity-pinned GoatCounter script.
+const policy = [
+  "default-src 'self'",
+  "base-uri 'none'",
+  "object-src 'none'",
+  "form-action 'self'",
+  "script-src 'self' https://gc.zgo.at/count.v5.js",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "img-src 'self' data: https://churaed.goatcounter.com/count",
+  "connect-src 'self' https://churaed.goatcounter.com",
+  "frame-src https://www.youtube.com https://player.vimeo.com https://drive.google.com",
+].join('; ');
+
+const indexPath = 'dist/index.html';
+const builtHtml = await readFile(indexPath, 'utf8');
+const charset = '<meta charset="UTF-8" />';
+const generatedPolicy = /<meta charset="UTF-8" \/>(?:\n    <meta http-equiv="Content-Security-Policy" content="[^"]*">)?/;
+if (!generatedPolicy.test(builtHtml)) {
+  throw new Error('Unable to insert the Content Security Policy after the charset declaration.');
+}
+const goatCounterAttribute = 'data-goatcounter="';
+if (!builtHtml.includes(goatCounterAttribute)) {
+  throw new Error('Unable to disable the automatic GoatCounter count on the film page.');
+}
+const indexHtml = builtHtml.replace(
+  generatedPolicy,
+  `${charset}\n    <meta http-equiv="Content-Security-Policy" content="${policy}">`,
+);
+await writeFile(indexPath, indexHtml);
 for (const route of ['privacy', 'events/archive', ...loadEventPages().filter(page => page.status === 'published').map(page => `events/${page.slug}`)]) {
   await mkdir(`dist/${route}`, { recursive: true });
   await writeFile(`dist/${route}/index.html`, indexHtml);
@@ -11,7 +41,7 @@ for (const route of ['privacy', 'events/archive', ...loadEventPages().filter(pag
 const destination = 'dist/projects/houyhnhnms-and-us';
 await mkdir(destination, { recursive: true });
 const html = indexHtml.replace(
-  'data-goatcounter="',
+  goatCounterAttribute,
   `data-goatcounter-settings='{"no_onload":true}' data-goatcounter="`,
 );
 // The film component records its own view, so skip GoatCounter's automatic onload count.
